@@ -24,10 +24,11 @@
       </div>  
        <div class="col-md-5 vForm-item">  
         <label for="name3">制单时间:</label>  
-        <input type="text" name="starDate" id="starDate" class="Wdate"  
+
+        <input type="text" name="createDateStart" id="starDate" class="Wdate"  
         onFocus="WdatePicker({isShowClear:false,isShowToday:false,isShowOK:false,readOnly:true,maxDate:'#F{$dp.$D(\'endDate\')||\'2030-10-01\'}'})"/>  
-      
-        <input type="text" name="endDate" id="endDate" class="Wdate" 
+        至
+        <input type="text" name="createDateEnd" id="endDate" class="Wdate"  
         onFocus="WdatePicker({isShowClear:false,isShowToday:false,isShowOK:false,readOnly:true,minDate:'#F{$dp.$D(\'starDate\')}',maxDate:'2030-10-01'})"//>
       </div>   
       <div class="col-md-3 vForm-item">  
@@ -39,17 +40,20 @@
         <input id="locationTo" name="locationTo" style="width:200px;height:28px">  
       </div>  
       <div class="col-md-5 vForm-item">  
-        <label for="consignFsate">编板状态:</label>  
-        <select id="consignFsate" editable='false' name='consignFsate' class="easyui-combobox" name="fstate" style="width:200px;height:28px">  
+        <label for="dispatchFstate">编板状态:</label>  
+        <select id="dispatchFstate" editable='false' name='dispatchFstate' class="easyui-combobox" name="fstate" style="width:200px;height:28px">  
           <option value="0">全部</option>  
           <option value="1">已编板</option>  
           <option value="2">未编板</option>   
         </select>  
         <span>
           <a id="search" href="#" class="easyui-linkbutton" data-options="iconCls:'icon-search'">查询</a>  
-          <a id="make" href="#" class="easyui-linkbutton" data-options="iconCls:'icon-ok'">编板</a>  
-          <a id="import" href="#" class="easyui-linkbutton" data-options="iconCls:'icon-print'">导入</a>
-        </span>     
+        </span>    
+      </div> 
+      <div class="col-md-12 vForm-item"> 
+        <a   href="#" class="easyui-linkbutton"  style="width:70px;margin-right:10px;">导入</a>
+        <span><input id="import" type="file"  name="exportFile" style="position: absolute;top:0;opacity:0;width:52px;"></span>
+        <a id="make" href="#" class="easyui-linkbutton" data-options="iconCls:'icon-ok'">编板</a> 
       </div>  
   </form>  
   <!-- 查询表单结束 -->
@@ -62,7 +66,7 @@
   <!-- 新增/编辑弹出框开始 -->
   <div id="planDialog">
     <form id="planFf" class='row vForm' method='post'>  
-      <input type="hidden" name="id"/>
+       <input type="hidden" name="consignId"/>
       <div class="col-md-2 vForm-item form-label">  
         <label for="consignNo">运单号:</label>
       </div>  
@@ -79,13 +83,13 @@
         <label for="locationFromCombobox">起运地:</label>   
       </div>  
       <div class="col-md-4 vForm-item"> 
-        <input data-readonly="true" id="locationFromCombobox" name="locationFromCombobox" style="width: 200px;height:28px;" data-options="required:true">  
+        <input data-readonly="true" id="locationFromCombobox" name="locationFrom" style="width: 200px;height:28px;" data-options="required:true">  
       </div> 
       <div class="col-md-2 vForm-item form-label">  
         <label for="locationToCombobox">目的地:</label>   
       </div>  
       <div class="col-md-4 vForm-item"> 
-        <input data-readonly="true" id="locationToCombobox" name="locationToCombobox" style="width: 200px;height:28px;" data-options="required:true">  
+        <input data-readonly="true" id="locationToCombobox" name="locationTo" style="width: 200px;height:28px;" data-options="required:true">  
       </div> 
       <div class="col-md-2 vForm-item form-label">  
         <label for="carBrand">品牌:</label>   
@@ -118,34 +122,34 @@
   <div id="bbDialog">
     <form id="bbFf" class='row vForm' method='post'>  
       <div class="col-md-2 vForm-item form-label">  
-        <label for="name1">承运商:</label>   
+        <label for="carrierName">承运商:</label>   
       </div>  
       <div class="col-md-4 vForm-item"> 
-        <input  name="name1" data-options="required:true" id="bbCys">  
+        <input  name="carrierName" data-options="required:true" id="carrierName">  
       </div> 
       <div class="col-md-2 vForm-item form-label">  
-        <label for="name2">轿运车:</label>   
+        <label for="transportTool">轿运车:</label>   
       </div>  
       <div class="col-md-4 vForm-item"> 
-        <input name="name2" data-options="required:true"  id="bbJyc">  
+        <input name="transportTool" data-options="required:true"  id="transportTool">  
       </div> 
       <div class="col-md-2 vForm-item form-label">  
-        <label for="name3">主驾驶:</label>   
+        <label for="mainDrive">主驾:</label>   
       </div>  
       <div class="col-md-4 vForm-item"> 
-        <input name="name3"  data-options="required:true" id="bbZjs" class="easyui-validatebox">  
+        <input name="mainDrive"  data-options="required:true" id="mainDrive" class="easyui-validatebox">  
       </div> 
       <div class="col-md-2 vForm-item form-label">  
-        <label for="name4">联系方法:</label>   
+        <label for="mainDrivePhone">联系方法:</label>   
       </div>  
       <div class="col-md-4 vForm-item"> 
-        <input  name="name4" data-options="required:true" id="bbLxff" class="easyui-validatebox">  
+        <input  name="mainDrivePhone" data-options="required:true" id="mainDrivePhone" class="easyui-validatebox">  
       </div> 
       <div class="col-md-2 vForm-item form-label">  
-        <label for="name5">所带运单:</label>   
+        <label for="consignNos">所带运单:</label>   
       </div>  
       <div class="col-md-4 vForm-item"> 
-        <input name="name5"  style="width: 200px" data-options="required:true" id="bbYd">  
+        <input name="consignNos"  style="width: 200px" data-options="required:true" id="consignNos">  
       </div> 
     </form>  
   </div>
