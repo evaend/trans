@@ -32,10 +32,12 @@
       
         <span>
           <a id="search" href="#" class="easyui-linkbutton" data-options="iconCls:'icon-search'">查询</a>  
-          <a id="export" href="#" class="easyui-linkbutton" data-options="iconCls:'icon-print'">导出</a>  
-          <a id="check" href="#" class="easyui-linkbutton" data-options="iconCls:'icon-ok'">对账</a>
         </span> 
       </div>  
+      <div class="col-md-12">
+        <a id="export" href="#" class="easyui-linkbutton" data-options="iconCls:'icon-print'">导出</a>  
+        <a id="check" href="#" class="easyui-linkbutton" data-options="iconCls:'icon-ok'">对账</a>
+      </div> 
   </form>  
   <!-- 查询表单结束 -->
   <!-- grid开始 -->
@@ -46,7 +48,7 @@
     <!-- 编辑弹出框开始 -->
   <div id="editWin">
     <form id="editForm" class='row vForm'>  
-      <input type="hidden" name="id"/>
+      <input type="hidden" name="chargeId"/>
       <div class="col-md-2 vForm-item form-label">  
         <label for="consignNo">运单号:</label>   
       </div>  
