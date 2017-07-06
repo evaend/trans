@@ -166,11 +166,10 @@ var ajaxPost = function ajaxPost() {
     method: 'post',
     dataType: 'json'
   }, opts)).then(function (data) {
-    cb(data);
     if (data.status) {
       cb(data.result);
     } else {
-      $.messager.alert(data.msg || '发生未知异常,请联系管理员!');
+      $.messager.alert('错误提示', data.msg || '发生未知异常,请联系管理员!');
     }
   });
 };
@@ -226,6 +225,9 @@ var setFormData = function setFormData(form, data, callback) {
  */
 var resetFormData = function resetFormData(form, callback) {
   form[0].reset();
+  form.find('[type=hidden]').map(function (index, item) {
+    return $(item).val('');
+  });
   form.find('[data-readonly=true]').map(function (index, item) {
     $(item).prop('readonly', false).removeClass('easyui-disabled');
   });
@@ -419,7 +421,7 @@ var Table = function Table() {
   this.init = function (selector, opts) {
     if (selector && opts) {
       selector.datagrid(__WEBPACK_IMPORTED_MODULE_0_babel_runtime_core_js_object_assign___default()({}, {
-        method: 'get',
+        method: 'post',
         height: $(window).height() + 20,
         collapsible: true,
         striped: true,
@@ -1000,51 +1002,6 @@ $export($export.S + $export.F * !__webpack_require__(2), 'Object', {defineProper
 
 /***/ }),
 /* 49 */
-/***/ (function(module, exports, __webpack_require__) {
-
-/* WEBPACK VAR INJECTION */(function($) {/**
- * @file ValidateRules 校验规则
- */
-$.extend($.fn.validatebox.defaults.rules, {
-  minLength: {
-    validator: function validator(value, param) {
-      return value.length >= param[0];
-    },
-    message: '至少输入 {0} 个字符.'
-  },
-  maxLength: {
-    validator: function validator(value, param) {
-      return value.length <= param[0];
-    },
-    message: '最多输入 {0} 个字符.'
-  },
-  number: {
-    validator: function validator(value, param) {
-      return (/^[0-9]\d*(\.\d+)?$/.test(value)
-      ); //number: /^\d+$/,//数字value.length >= param[0];   
-    },
-    message: '请输入数字'
-  }
-});
-
-$.fn.combobox.defaults.onHidePanel = function () {
-  var valueField = $(this).combobox("options").valueField;
-  var val = $(this).combobox("getValue"); //当前combobox的值
-  var allData = $(this).combobox("getData"); //获取combobox所有数据
-  var result = true; //为true说明输入的值在下拉框数据中不存在
-  for (var i = 0; i < allData.length; i++) {
-    if (val == allData[i][valueField]) {
-      result = false;
-    }
-  }
-  if (result) {
-    $(this).combobox("clear");
-  }
-};
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
-
-/***/ }),
-/* 50 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1097,7 +1054,7 @@ var Cascade = function Cascade() {
     selector.combobox(__WEBPACK_IMPORTED_MODULE_0_babel_runtime_core_js_object_assign___default()({}, {
       mode: 'remote',
       url: opts.url || '',
-      valueField: 'id',
+      valueField: 'text',
       textField: 'text',
       width: 200,
       height: 28
@@ -1108,8 +1065,7 @@ var Cascade = function Cascade() {
 var cascade = new Cascade();
 
 /***/ }),
-/* 51 */,
-/* 52 */
+/* 50 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1130,7 +1086,6 @@ var Location = function Location() {
     var url = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '';
 
     if ($.isArray(selectors)) {
-      console.log(selectors);
       selectors.map(function (item, index) {
         return _this.create(item, url);
       });
@@ -1143,7 +1098,7 @@ var Location = function Location() {
     selector.combobox({
       mode: 'remote',
       url: url || '../staticData/searchLocationsForSelect',
-      valueField: 'id',
+      valueField: 'text',
       textField: 'text',
       width: 200,
       height: 28
@@ -1155,6 +1110,52 @@ var location = new Location();
 /* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(0)))
 
 /***/ }),
+/* 51 */
+/***/ (function(module, exports, __webpack_require__) {
+
+/* WEBPACK VAR INJECTION */(function($) {/**
+ * @file ValidateRules 校验规则
+ */
+$.extend($.fn.validatebox.defaults.rules, {
+  minLength: {
+    validator: function validator(value, param) {
+      return value.length >= param[0];
+    },
+    message: '至少输入 {0} 个字符.'
+  },
+  maxLength: {
+    validator: function validator(value, param) {
+      return value.length <= param[0];
+    },
+    message: '最多输入 {0} 个字符.'
+  },
+  number: {
+    validator: function validator(value, param) {
+      return (/^[0-9]\d*(\.\d+)?$/.test(value)
+      ); //number: /^\d+$/,//数字value.length >= param[0];   
+    },
+    message: '请输入数字'
+  }
+});
+
+$.fn.combobox.defaults.onHidePanel = function () {
+  var valueField = $(this).combobox("options").valueField;
+  var val = $(this).combobox("getValue"); //当前combobox的值
+  var allData = $(this).combobox("getData"); //获取combobox所有数据
+  var result = true; //为true说明输入的值在下拉框数据中不存在
+  for (var i = 0; i < allData.length; i++) {
+    if (val == allData[i][valueField]) {
+      result = false;
+    }
+  }
+  if (result) {
+    $(this).combobox("clear");
+  }
+};
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
+
+/***/ }),
+/* 52 */,
 /* 53 */,
 /* 54 */,
 /* 55 */,
@@ -1172,8 +1173,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__utils_common__ = __webpack_require__(8);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__component_message__ = __webpack_require__(15);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__actions_grid__ = __webpack_require__(19);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__component_location__ = __webpack_require__(52);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__component_cascade__ = __webpack_require__(50);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__component_location__ = __webpack_require__(50);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__component_cascade__ = __webpack_require__(49);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_jQuery__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_jQuery___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_8_jQuery__);
 
@@ -1185,7 +1186,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 
-__webpack_require__(49);
+__webpack_require__(51);
 var $grid = __WEBPACK_IMPORTED_MODULE_8_jQuery___default()('#incomeGrid'),
     $dialog = __WEBPACK_IMPORTED_MODULE_8_jQuery___default()('#incomeDialog'),
     $form = __WEBPACK_IMPORTED_MODULE_8_jQuery___default()('#incomeFf');
@@ -1198,6 +1199,15 @@ __WEBPACK_IMPORTED_MODULE_7__component_cascade__["a" /* cascade */].init({
   children: ['../staticData/carFindForSelect?type=model&']
 });
 
+//consignOrgName
+__WEBPACK_IMPORTED_MODULE_8_jQuery___default()('#consignOrgId').combobox({
+  url: '../staticData/searchOrgForSelect',
+  valueField: 'id',
+  textField: 'text',
+  editable: false,
+  width: 200,
+  height: 28
+});
 //表格初始化
 __WEBPACK_IMPORTED_MODULE_1__component_table__["a" /* table */].init($grid, {
   toolbar: [{
@@ -1209,6 +1219,7 @@ __WEBPACK_IMPORTED_MODULE_1__component_table__["a" /* table */].init($grid, {
         __WEBPACK_IMPORTED_MODULE_8_jQuery___default()('#locationTo').combobox('setValue', '');
         __WEBPACK_IMPORTED_MODULE_8_jQuery___default()('#carBrand').combobox('setValue', '');
         __WEBPACK_IMPORTED_MODULE_8_jQuery___default()('#carModel').combobox('setValue', '');
+        __WEBPACK_IMPORTED_MODULE_8_jQuery___default()('#consignOrgId').combobox('setValue', '');
       });
       __WEBPACK_IMPORTED_MODULE_2__component_window__["a" /* modalWindow */].setTitle($dialog, '新增').open($dialog);
     }
@@ -1218,6 +1229,7 @@ __WEBPACK_IMPORTED_MODULE_1__component_table__["a" /* table */].init($grid, {
     handler: function handler() {
       __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_5__actions_grid__["a" /* gridEdit */])($grid, function (rows) {
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3__utils_common__["b" /* setFormData */])($form, rows[0], function () {
+          __WEBPACK_IMPORTED_MODULE_8_jQuery___default()('#consignOrgId').combobox('setValue', rows[0].consignOrgId);
           __WEBPACK_IMPORTED_MODULE_8_jQuery___default()('#locationFrom').combobox('setValue', rows[0].locationFrom);
           __WEBPACK_IMPORTED_MODULE_8_jQuery___default()('#locationTo').combobox('setValue', rows[0].locationTo);
           __WEBPACK_IMPORTED_MODULE_8_jQuery___default()('#carBrand').combobox('setValue', rows[0].carBrand);
@@ -1231,21 +1243,28 @@ __WEBPACK_IMPORTED_MODULE_1__component_table__["a" /* table */].init($grid, {
     iconCls: 'icon-remove',
     handler: function handler() {
       __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_5__actions_grid__["b" /* gridDelete */])($grid, function (rows) {
-        console.log('删除数据', rows);
         // 后台交互
-        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3__utils_common__["d" /* ajaxPost */])({ url: '../contractRecords/deleteContract', data: rows }, function (data) {});
-        // 刷新表格
-        __WEBPACK_IMPORTED_MODULE_1__component_table__["a" /* table */].reload($grid);
+        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3__utils_common__["d" /* ajaxPost */])({ url: '../contractRecords/deleteContract', data: __WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_extends___default()({}, rows, { contractType: '01' }) }, function (data) {
+          console.log('删除数据', rows);
+          // 刷新表格
+          __WEBPACK_IMPORTED_MODULE_1__component_table__["a" /* table */].reload($grid);
+        });
       });
     }
   }],
   title: '收入合同表',
-  url: '../contractRecords/searchContractInfo?contractType=01', //'../../lib/mock/incomeContract.json',
-  columns: [[{ field: 'contractId', checkbox: true }, { field: 'consignOrgName', title: '托运单位', width: 100 }, { field: 'locationFrom', title: '起运地', width: 100 }, { field: 'locationTo', title: '目的地', width: 100 }, { field: 'carBrand', title: '品牌', width: 100 }, { field: 'carModel', title: '车型', width: 100 }, { field: 'freightRates', title: '运价', width: 100, textAlign: 'right' }, { field: 'chargePeriod', title: '结费周期', width: 100 }, { field: 'contractStart', title: '合同开始日期', width: 100 }, { field: 'contractEnd', title: '合同结束日期', width: 100 }, { field: 'modifier', title: '修改人', width: 100 }, { field: 'modifyDate', title: '修改日期', width: 100 }]]
+  url: '../contractRecords/searchContractInfo', //'../../lib/mock/incomeContract.json',
+  columns: [[{ field: 'contractId', checkbox: true }, { field: 'consignOrgId', hidden: true }, { field: 'consignOrgName', title: '托运单位', width: 100 }, { field: 'locationFrom', title: '起运地', width: 100 }, { field: 'locationTo', title: '目的地', width: 100 }, { field: 'carBrand', title: '品牌', width: 100 }, { field: 'carModel', title: '车型', width: 100 }, { field: 'freightRates', title: '运价', width: 100, textAlign: 'right' }, { field: 'chargePeriod', title: '结费周期', width: 100 }, { field: 'contractStart', title: '合同开始日期', width: 100 }, { field: 'contractEnd', title: '合同结束日期', width: 100 }, { field: 'modifier', title: '修改人', width: 100 }, { field: 'modifyDate', title: '修改日期', width: 100 }]],
+  queryParams: {
+    contractType: '01'
+  }
 });
 
 __WEBPACK_IMPORTED_MODULE_2__component_window__["a" /* modalWindow */].init($dialog, { title: '收入合同' }, function (text) {
-  var postData = __WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_extends___default()({}, __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3__utils_common__["c" /* getFormData */])($form), { contractType: '01' });
+  var postData = __WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_extends___default()({}, __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3__utils_common__["c" /* getFormData */])($form), {
+    consignOrgName: __WEBPACK_IMPORTED_MODULE_8_jQuery___default()('#consignOrgId').combobox('getText'),
+    contractType: '01'
+  });
   //===== 校验 =======
   //===== 校验结束 =====
   var isValid = $form.form('validate');
@@ -1266,7 +1285,9 @@ __WEBPACK_IMPORTED_MODULE_2__component_window__["a" /* modalWindow */].init($dia
 
 //查询按钮
 __WEBPACK_IMPORTED_MODULE_8_jQuery___default()('#search').on('click', function () {
-  var postData = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3__utils_common__["c" /* getFormData */])(__WEBPACK_IMPORTED_MODULE_8_jQuery___default()('#ff'));
+  var postData = __WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_extends___default()({}, __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3__utils_common__["c" /* getFormData */])(__WEBPACK_IMPORTED_MODULE_8_jQuery___default()('#ff')), {
+    contractType: '01'
+  });
   console.log(postData);
   //刷新表格
   __WEBPACK_IMPORTED_MODULE_1__component_table__["a" /* table */].load($grid, postData);

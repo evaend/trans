@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "/dist";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 60);
+/******/ 	return __webpack_require__(__webpack_require__.s = 61);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -143,8 +143,8 @@ module.exports = function(it){
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function($) {/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return ajaxPost; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return getFormData; });
+/* WEBPACK VAR INJECTION */(function($) {/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return ajaxPost; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return getFormData; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return setFormData; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return resetFormData; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_extends__ = __webpack_require__(18);
@@ -166,11 +166,10 @@ var ajaxPost = function ajaxPost() {
     method: 'post',
     dataType: 'json'
   }, opts)).then(function (data) {
-    cb(data);
     if (data.status) {
       cb(data.result);
     } else {
-      $.messager.alert(data.msg || '发生未知异常,请联系管理员!');
+      $.messager.alert('错误提示', data.msg || '发生未知异常,请联系管理员!');
     }
   });
 };
@@ -226,6 +225,9 @@ var setFormData = function setFormData(form, data, callback) {
  */
 var resetFormData = function resetFormData(form, callback) {
   form[0].reset();
+  form.find('[type=hidden]').map(function (index, item) {
+    return $(item).val('');
+  });
   form.find('[data-readonly=true]').map(function (index, item) {
     $(item).prop('readonly', false).removeClass('easyui-disabled');
   });
@@ -419,7 +421,7 @@ var Table = function Table() {
   this.init = function (selector, opts) {
     if (selector && opts) {
       selector.datagrid(__WEBPACK_IMPORTED_MODULE_0_babel_runtime_core_js_object_assign___default()({}, {
-        method: 'get',
+        method: 'post',
         height: $(window).height() + 20,
         collapsible: true,
         striped: true,
@@ -445,7 +447,7 @@ var Table = function Table() {
       return selector.datagrid('deleteRow', selector.datagrid('getRowIndex', item));
     });
     if (url) {
-      __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__utils_common__["d" /* ajaxPost */])({
+      __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__utils_common__["c" /* ajaxPost */])({
         url: url,
         method: 'get'
       }, function (data) {
@@ -1010,7 +1012,8 @@ $export($export.S + $export.F * !__webpack_require__(2), 'Object', {defineProper
 /* 57 */,
 /* 58 */,
 /* 59 */,
-/* 60 */
+/* 60 */,
+/* 61 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1054,35 +1057,44 @@ __WEBPACK_IMPORTED_MODULE_0__component_table__["a" /* table */].init($grid, {
     iconCls: 'icon-remove',
     handler: function handler() {
       __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4__actions_grid__["b" /* gridDelete */])($grid, function (rows) {
-        console.log('删除数据', rows);
-        // 后台交互
-        // 刷新表格
-        __WEBPACK_IMPORTED_MODULE_0__component_table__["a" /* table */].reload($grid);
+        // 后台交互  人事档案删除
+        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__utils_common__["c" /* ajaxPost */])({ url: '', data: { rows: rows } }, function (data) {
+          console.log('删除数据', rows);
+          // 刷新表格
+          __WEBPACK_IMPORTED_MODULE_0__component_table__["a" /* table */].reload($grid);
+        });
       });
     }
   }],
   title: '人事档案表',
-  url: '../../lib/mock/common.json',
-  columns: [[{ field: 'id', checkbox: true }, { field: 'name1', title: '姓名', width: 100 }, { field: 'name2', title: '性别', width: 100 }, { field: 'name3', title: '电话号码', width: 100 }, { field: 'name4', title: '出生日期', width: 100 }, { field: 'name5', title: '身份证号', width: 100 }, { field: 'name6', title: '家庭住址', width: 100 }, { field: 'name7', title: '紧急联系人电话', width: 100 }, { field: 'name8', title: '入职时间', width: 100 }, { field: 'name9', title: '银行卡号', width: 100 }, { field: 'name10', title: '备注', width: 100 }, { field: 'modifyDate', title: '修改日期', width: 100 }]]
+  url: '', //../../lib/mock/common.json',人事档案列表
+  columns: [[{ field: 'personRecordsId', checkbox: true }, { field: 'pName', title: '姓名', width: 100 }, { field: 'pGender', title: '性别', width: 100 }, { field: 'pEmergencyPhone', title: '电话号码', width: 100 }, { field: 'pBirthdate', title: '出生日期', width: 100 }, { field: 'pIdno', title: '身份证号', width: 100 }, { field: 'pHomeAddress', title: '家庭住址', width: 100 }, { field: 'name7', title: '紧急联系人', width: 100 }, { field: 'name7', title: '紧急联系人电话', width: 100 }, { field: 'name8', title: '入职时间', width: 100 }, { field: 'pBankCard', title: '银行卡号', width: 100 }, { field: 'remark', title: '备注', width: 100 }, { field: 'modifyDate', title: '修改日期', width: 100 }]]
 });
 
 __WEBPACK_IMPORTED_MODULE_1__component_window__["a" /* modalWindow */].init($dialog, { title: '人事档案' }, function (text) {
-  var postData = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__utils_common__["c" /* getFormData */])($form);
+  var postData = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__utils_common__["d" /* getFormData */])($form);
   //===== 校验 =======
   //===== 校验结束 =====
-  console.log('新增一条记录', postData);
-  //新增成功,关闭窗口
-  __WEBPACK_IMPORTED_MODULE_1__component_window__["a" /* modalWindow */].close($dialog);
-  __WEBPACK_IMPORTED_MODULE_3__component_message__["a" /* message */].alert({
-    msg: '\u4EBA\u4E8B\u6863\u6848' + text + '\u6210\u529F'
-  });
-  //表格刷新
-  __WEBPACK_IMPORTED_MODULE_0__component_table__["a" /* table */].reload($grid);
+  var isValid = $form.form('validate');
+  if (isValid) {
+    //人事档案新增url
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__utils_common__["c" /* ajaxPost */])({ url: '', data: postData }, function (data) {
+      //===== 校验结束 =====
+      console.log('一条记录', postData);
+      //新增成功,关闭窗口
+      __WEBPACK_IMPORTED_MODULE_1__component_window__["a" /* modalWindow */].close($dialog);
+      __WEBPACK_IMPORTED_MODULE_3__component_message__["a" /* message */].alert({
+        msg: '\u4EBA\u4E8B\u6863\u6848' + text + '\u6210\u529F'
+      });
+      //表格刷新
+      __WEBPACK_IMPORTED_MODULE_0__component_table__["a" /* table */].reload($grid);
+    });
+  }
 });
 
 //查询按钮
 __WEBPACK_IMPORTED_MODULE_5_jQuery___default()('#search').on('click', function () {
-  var postData = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__utils_common__["c" /* getFormData */])(__WEBPACK_IMPORTED_MODULE_5_jQuery___default()('#ff'));
+  var postData = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__utils_common__["d" /* getFormData */])(__WEBPACK_IMPORTED_MODULE_5_jQuery___default()('#ff'));
   //刷新表格
   __WEBPACK_IMPORTED_MODULE_0__component_table__["a" /* table */].load($grid, postData);
 });

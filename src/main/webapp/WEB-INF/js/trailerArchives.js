@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "/dist";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 64);
+/******/ 	return __webpack_require__(__webpack_require__.s = 65);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -166,11 +166,10 @@ var ajaxPost = function ajaxPost() {
     method: 'post',
     dataType: 'json'
   }, opts)).then(function (data) {
-    cb(data);
     if (data.status) {
       cb(data.result);
     } else {
-      $.messager.alert(data.msg || '发生未知异常,请联系管理员!');
+      $.messager.alert('错误提示', data.msg || '发生未知异常,请联系管理员!');
     }
   });
 };
@@ -226,6 +225,9 @@ var setFormData = function setFormData(form, data, callback) {
  */
 var resetFormData = function resetFormData(form, callback) {
   form[0].reset();
+  form.find('[type=hidden]').map(function (index, item) {
+    return $(item).val('');
+  });
   form.find('[data-readonly=true]').map(function (index, item) {
     $(item).prop('readonly', false).removeClass('easyui-disabled');
   });
@@ -419,7 +421,7 @@ var Table = function Table() {
   this.init = function (selector, opts) {
     if (selector && opts) {
       selector.datagrid(__WEBPACK_IMPORTED_MODULE_0_babel_runtime_core_js_object_assign___default()({}, {
-        method: 'get',
+        method: 'post',
         height: $(window).height() + 20,
         collapsible: true,
         striped: true,
@@ -1014,7 +1016,8 @@ $export($export.S + $export.F * !__webpack_require__(2), 'Object', {defineProper
 /* 61 */,
 /* 62 */,
 /* 63 */,
-/* 64 */
+/* 64 */,
+/* 65 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1035,6 +1038,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 var $grid = __WEBPACK_IMPORTED_MODULE_5_jQuery___default()('#trailerGrid'),
     $dialog = __WEBPACK_IMPORTED_MODULE_5_jQuery___default()('#trailerDialog'),
     $form = __WEBPACK_IMPORTED_MODULE_5_jQuery___default()('#trailerFf');
+//consignOrgName
+__WEBPACK_IMPORTED_MODULE_5_jQuery___default()('#consignOrgId').combobox({
+  url: '../staticData/searchOrgForSelect',
+  valueField: 'id',
+  textField: 'text',
+  editable: false,
+  width: 200,
+  height: 28
+});
 //表格初始化
 __WEBPACK_IMPORTED_MODULE_0__component_table__["a" /* table */].init($grid, {
   toolbar: [{
@@ -1066,22 +1078,27 @@ __WEBPACK_IMPORTED_MODULE_0__component_table__["a" /* table */].init($grid, {
     }
   }],
   title: '轿运车档案',
-  url: '../../lib/mock/common.json',
-  columns: [[{ field: 'id', checkbox: true }, { field: 'name1', title: '轿运车', width: 100 }, { field: 'name2', title: '挂车号', width: 100 }, { field: 'name3', title: '核载', width: 100 }, { field: 'name4', title: '承运商', width: 100 }, { field: 'name5', title: '承运商类型', width: 100 }, { field: 'name6', title: '主驾', width: 100, textAlign: 'right' }, { field: 'name7', title: '副驾', width: 100 }, { field: 'name8', title: '联系电话', width: 100 }, { field: 'name9', title: '档案开始日期', width: 100 }, { field: 'name10', title: '档案结束日期', width: 100 }, { field: 'name11', title: '注册时间', width: 100 }, { field: 'name11', title: '投保时间', width: 100 }, { field: 'name11', title: '还款日', width: 100 }, { field: 'name11', title: '还款金额 ', width: 100 }]]
+  url: '../contractRecords/searchRecordInfo',
+  columns: [[{ field: 'recordId', checkbox: true }, { field: 'transportTool', title: '轿运车', width: 100 }, { field: 'trailerNo', title: '挂车号', width: 100 }, { field: 'loadAmount', title: '核载', width: 100 }, { field: 'carrierName', title: '承运商', width: 100 }, { field: 'carrierType', title: '承运商类型', width: 100 }, { field: 'mainDrive', title: '主驾', width: 100, textAlign: 'right' }, { field: 'mainDrivePhone', title: '联系电话', width: 100 }, { field: 'coPilot', title: '副驾', width: 100 }, { field: 'coPilotPhone', title: '联系电话', width: 100 }, { field: 'recordStart', title: '档案开始日期', width: 100 }, { field: 'recordEnd', title: '档案结束日期', width: 100 }, { field: 'registerDate', title: '注册时间', width: 100 }, { field: 'insuranceDate', title: '投保时间', width: 100 }, { field: 'repaymentDay', title: '还款日', width: 100 }, { field: 'repaymentAmount', title: '还款金额 ', width: 100 }]]
 });
 
 __WEBPACK_IMPORTED_MODULE_1__component_window__["a" /* modalWindow */].init($dialog, { title: '轿运车档案' }, function (text) {
   var postData = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__utils_common__["c" /* getFormData */])($form);
   //===== 校验 =======
   //===== 校验结束 =====
-  console.log('新增一条记录', postData);
-  //新增成功,关闭窗口
-  __WEBPACK_IMPORTED_MODULE_1__component_window__["a" /* modalWindow */].close($dialog);
-  __WEBPACK_IMPORTED_MODULE_3__component_message__["a" /* message */].alert({
-    msg: '\u8F7F\u8FD0\u8F66\u6863\u6848' + text + '\u6210\u529F'
-  });
-  //表格刷新
-  __WEBPACK_IMPORTED_MODULE_0__component_table__["a" /* table */].reload($grid);
+  var isValid = $form.form('validate');
+  if (isValid) {
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__utils_common__["d" /* ajaxPost */])({ url: '../contractRecords/addUpdateRecordInfo', data: postData }, function (data) {
+      console.log('新增一条记录', postData);
+      //新增成功,关闭窗口
+      __WEBPACK_IMPORTED_MODULE_1__component_window__["a" /* modalWindow */].close($dialog);
+      __WEBPACK_IMPORTED_MODULE_3__component_message__["a" /* message */].alert({
+        msg: '\u8F7F\u8FD0\u8F66\u6863\u6848' + text + '\u6210\u529F'
+      });
+      //表格刷新
+      __WEBPACK_IMPORTED_MODULE_0__component_table__["a" /* table */].reload($grid);
+    });
+  }
 });
 
 //查询按钮

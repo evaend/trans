@@ -53,11 +53,12 @@
   <div id="incomeDialog">
     <form id="incomeFf" class='row vForm'>  
       <input type="hidden" name="contractId"/>  
+      <input type="hidden" name="consignOrgName"/>
       <div class="col-md-2 vForm-item form-label">  
-        <label for="consignOrgName">托运单位:</label>   
+        <label for="consignOrgId">托运单位:</label>   
       </div>  
       <div class="col-md-4 vForm-item">  
-        <input class="easyui-validatebox" type="text" name="consignOrgName" data-options="required:true"/>  
+        <input class="easyui-validatebox" id="consignOrgId" type="text" name="consignOrgId" data-options="required:true"/>  
       </div> 
       <div class="col-md-2 vForm-item form-label">  
         <label for="locationFrom">起运地:</label>   
