@@ -282,6 +282,7 @@ public class TransManagementController {
 		 	@RequestParam(value="consignFile", required=false)MultipartFile consignExcelFile, 
 			HttpServletRequest request, 
 			HttpSession session) throws Exception {
+			System.out.println("================");
 			long startTime = System.currentTimeMillis();
 			if(consignExcelFile==null || consignExcelFile.isEmpty()){
 				throw new ValidationException("请上传excel文件");

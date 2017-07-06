@@ -22,7 +22,7 @@
         <label for="chassisNo">底盘号:</label>  
         <input class="easyui-validatebox" type="text" name="chassisNo" />  
       </div>  
-       <div class="col-md-5 vForm-item">  
+       <div class="col-md-6 vForm-item">  
         <label for="name3">制单时间:</label>  
 
         <input type="text" name="createDateStart" id="starDate" class="Wdate"  
@@ -51,8 +51,8 @@
         </span>    
       </div> 
       <div class="col-md-12 vForm-item"> 
-        <a   href="#" class="easyui-linkbutton"  style="width:70px;margin-right:10px;">导入</a>
-        <span><input id="import" type="file"  name="exportFile" style="position: absolute;top:0;opacity:0;width:52px;"></span>
+          <a href="#" class="easyui-linkbutton"  style="width:70px;margin-right:10px;">导入</a>
+          <span><input id="import" type="file"  name="consignFile" style="position: absolute;top:0;opacity:0;width:52px;"></span>
         <a id="make" href="#" class="easyui-linkbutton" data-options="iconCls:'icon-ok'">编板</a> 
       </div>  
   </form>  
@@ -156,6 +156,7 @@
   <!-- 编板弹出框结束 -->
 
 <script type="text/javascript" src="../lib/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="../lib/ajaxfileupload.js"></script>
 <script type="text/javascript" src="../lib/easyui/jquery.easyui.min.js"></script>   
 <script type="text/javascript" src="../lib/easyui/easyui-lang-zh_CN.js"></script>  
 <script type="text/javascript" src="../lib/My97DatePicker/WdatePicker.js"></script>
