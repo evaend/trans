@@ -1350,7 +1350,7 @@ __WEBPACK_IMPORTED_MODULE_7_jQuery___default()('#import').on('change', function 
       msg: '\u8BF7\u9009\u62E9\u6587\u4EF6'
     });
   } else {
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4__utils_common__["b" /* ajaxPost */])({ url: '../trans/importConsign', consignFile: files['File'] }, function (data) {
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4__utils_common__["b" /* ajaxPost */])({ url: '../trans/importConsign',dataType:"text", consignFile: files['File'] }, function (data) {
       //if(data){
       console.log('新增一条记录', files);
       //}
