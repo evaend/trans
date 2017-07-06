@@ -37,7 +37,7 @@
       cd.AMOUNT "amount", cd.CHASSIS_NO "chassisNo", 
       date_format(cd.DESPATCH_DATE,'%Y-%m-%d') "despatchDate",c.LOCATION_TO "locationTo", c.RECEIVE_ORG_NAME "receiveOrgName", 
       c.CONSIGN_ORG_NAME "consignOrgName", dp.main_drive "mainDrive",
-      dp.MAIN_DRIVE_PHONE "mainDrivePhone",r.co_pliot "coPliot",
+      dp.MAIN_DRIVE_PHONE "mainDrivePhone",r.CO_PILOT "coPilot",
       c.LOCATION_FROM "locationFrom",r.CARRIER_NAME "carrierName",r.TRANSPORT_TOOL "transportTool",
       ci.FREIGHT_RATES "freightRates",ci.ADVANCES "advances",ci.PREPAID_OIL_CARD "prepaidOilCard",
       ci.QUALITY_LOSS "qualityLoss",ci.SUBSIDY "subsidy",ci.REVERSE_CHARGE "reverseCharge",ci.MIS_COSTS "misCosts",
