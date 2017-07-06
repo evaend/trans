@@ -2,6 +2,9 @@ package com.erp.trans.entity;
 
 import java.util.Date;
 
+import com.erp.trans.common.annotation.BaseSql;
+
+@BaseSql(tableName="td_person_records", resultName="com.erp.trans.dao.PersonRecordsMapper.BaseResultMap")
 public class PersonRecords {
     private String personRecordsId;
 
@@ -28,6 +31,12 @@ public class PersonRecords {
     private String modifyUserid;
 
     private String orgId;
+    
+    private String pEmergency;
+    
+    private String deparmentId;
+    
+    private String pPhone;
 
     public String getPersonRecordsId() {
         return personRecordsId;
@@ -132,4 +141,28 @@ public class PersonRecords {
     public void setOrgId(String orgId) {
         this.orgId = orgId == null ? null : orgId.trim();
     }
+
+	public String getpEmergency() {
+		return pEmergency;
+	}
+
+	public void setpEmergency(String pEmergency) {
+		this.pEmergency = pEmergency;
+	}
+
+	public String getDeparmentId() {
+		return deparmentId;
+	}
+
+	public void setDeparmentId(String deparmentId) {
+		this.deparmentId = deparmentId;
+	}
+
+	public String getpPhone() {
+		return pPhone;
+	}
+
+	public void setpPhone(String pPhone) {
+		this.pPhone = pPhone;
+	}
 }

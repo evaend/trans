@@ -16,9 +16,11 @@
   	  cd.CONSIGN_DETAIL_ID "consignDetailId",
   	  c.CONSIGN_NO "consignNo", cd.CAR_BRAND "carBrand", cd.CAR_MODEL "carModel", 
       cd.AMOUNT "amount", cd.CHASSIS_NO "chassisNo", 
-      cd.DESPATCH_DATE "despatchDate",c.LOCATION_TO "locationTo", c.RECEIVE_ORG_NAME "receiveOrgName", 
+      date_format(cd.DESPATCH_DATE,'%Y-%m-%d') "despatchDate",c.LOCATION_TO "locationTo", c.RECEIVE_ORG_NAME "receiveOrgName", 
       c.CONSIGN_ORG_NAME "consignOrgName", 
-      c.LOCATION_FROM "locationFrom",r.CARRIER_NAME "carrierName",r.TRANSPORT_TOOL "transportTool"
+      c.LOCATION_FROM "locationFrom",r.CARRIER_NAME "carrierName",r.TRANSPORT_TOOL "transportTool",
+      date_format(c.create_date,'%Y-%m-%d %T') "createDate", 
+      u.USER_NAME "modifyUser"
   </sql>
    <select id="searchDispatchInfo" resultType="hashMap"
 		parameterType="com.erp.trans.common.entity.Pager">
@@ -28,15 +30,16 @@
 		left join tb_consign c on cd.consign_id = c.consign_id
 		left join tb_despatch_plan dp on cd.despatch_plan_id = dp.despatch_plan_id
 		left join td_record_info r on dp.record_id = r.record_id
+		left join ts_user_info u on u.user_id = cd.MODIFY_USER_ID
 		<where>
 			<if test="conditiions.orgId != null and conditiions.orgId != '0' and conditiions.orgId != '-1'">
 				and c.ORG_ID = #{conditiions.orgId,jdbcType=VARCHAR}
 			</if>
 			<if test="conditiions.consignNo != null and conditiions.consignNo != ''">
-				and  <![CDATA[   regexp_like(c.consign_no, #{conditiions.consignNo,jdbcType=VARCHAR}) ]]>
+				and  c.consign_no REGEXP #{conditiions.consignNo,jdbcType=VARCHAR}
 			</if>
 			<if test="conditiions.chassisNo != null and conditiions.chassisNo != ''">
-				and  <![CDATA[   regexp_like(cd.CHASSIS_NO, #{conditiions.chassisNo,jdbcType=VARCHAR}) ]]>
+				and  cd.CHASSIS_NO REGEXP #{conditiions.chassisNo,jdbcType=VARCHAR}
 			</if>
 			<if test="conditiions.locationFrom != null and conditiions.locationFrom != ''">
 				and  c.LOCATION_FROM = #{conditiions.chassisNo,jdbcType=VARCHAR})
@@ -44,8 +47,8 @@
 			<if test="conditiions.locationTo != null and conditiions.locationTo != ''">
 				and  c.LOCATION_TO = #{conditiions.locationTo,jdbcType=VARCHAR})
 			</if>
-			<if test="conditiions.dispatchFstate != null and conditiions.dispatchFstate != ''">
-				and cd.dispatch_fstate = #{conditiions.dispatchFstate,jdbcType=VARCHAR}
+			<if test="conditiions.dispatchFstate != null and conditiions.dispatchFstate != '' and conditiions.dispatchFstate != 0">
+				and cd.DESPATCH_FSTATE = #{conditiions.dispatchFstate,jdbcType=VARCHAR}
 			</if>
 			<if test="conditiions.createDateStart != null and conditiions.createDateStart != ''">
 				and <![CDATA[ date_format(c.create_date,'%Y-%m-%d') >= #{conditiions.createDateStart,jdbcType=VARCHAR} ]]>

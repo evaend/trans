@@ -117,18 +117,20 @@ public class TransManagementController {
 		String orgId = (String) request.getSession().getAttribute(LoginUser.SESSION_USER_ORGID);
 		if (StringUtils.isNotBlank(createDateStart)) {
 			pager.addQueryParam("createDateStart", createDateStart);
-		} else {
-			Calendar cal = Calendar.getInstance();
-			cal.add(Calendar.YEAR, -1);
-			pager.addQueryParam("createDateStart", formatter.format(cal.getTime()));// 默认前一年开始
-		}
+		} 
+//		else {
+//			Calendar cal = Calendar.getInstance();
+//			cal.add(Calendar.YEAR, -1);
+//			pager.addQueryParam("createDateStart", formatter.format(cal.getTime()));// 默认前一年开始
+//		}
 
 		if (StringUtils.isNotBlank(createDateEnd)) {
 			pager.addQueryParam("createDateEnd", createDateEnd);
-		} else {
-			Calendar cal1 = Calendar.getInstance();
-			pager.addQueryParam("createDateEnd", formatter.format(cal1.getTime()));// 默认当前时间
-		}
+		} 
+//		else {
+//			Calendar cal1 = Calendar.getInstance();
+//			pager.addQueryParam("createDateEnd", formatter.format(cal1.getTime()));// 默认当前时间
+//		}
 
 		pager.addQueryParam("orgId", orgId);// 当前登录机构
 		pager.addQueryParam("consignNo", consignNo);//运单号
@@ -278,7 +280,6 @@ public class TransManagementController {
 	@RequestMapping("/importConsign")
 	public void importConsign( 
 		 	@RequestParam(value="consignFile", required=false)MultipartFile consignExcelFile, 
-		 	@RequestParam(value="test", required=false)String test, 
 			HttpServletRequest request, 
 			HttpSession session) throws Exception {
 			long startTime = System.currentTimeMillis();

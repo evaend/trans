@@ -2,13 +2,16 @@ package com.erp.trans.entity;
 
 import java.math.BigDecimal;
 import java.util.Date;
+import java.util.List;
+import java.util.Map;
 
-public class VehiceDepreciation {
+import com.erp.trans.common.annotation.BaseSql;
+import com.erp.trans.common.entity.Pager;
+@BaseSql(tableName="tb_vehicle_depreciation", resultName="com.erp.trans.dao.VehicleDepreciationMapper.BaseResultMap")
+public class VehicleDepreciation {
     private String vehicleDepreciationId;
 
-    private String trailerNo;
-
-    private String handCarNo;
+    private String transportToolNo;
 
     private BigDecimal vehicleAssets;
 
@@ -30,20 +33,12 @@ public class VehiceDepreciation {
         this.vehicleDepreciationId = vehicleDepreciationId == null ? null : vehicleDepreciationId.trim();
     }
 
-    public String getTrailerNo() {
-        return trailerNo;
+    public String getTransportToolNo() {
+        return transportToolNo;
     }
 
-    public void setTrailerNo(String trailerNo) {
-        this.trailerNo = trailerNo == null ? null : trailerNo.trim();
-    }
-
-    public String getHandCarNo() {
-        return handCarNo;
-    }
-
-    public void setHandCarNo(String handCarNo) {
-        this.handCarNo = handCarNo == null ? null : handCarNo.trim();
+    public void setTransportToolNo(String transportToolNo) {
+        this.transportToolNo = transportToolNo == null ? null : transportToolNo.trim();
     }
 
     public BigDecimal getVehicleAssets() {

@@ -2,6 +2,9 @@ package com.erp.trans.entity;
 
 import java.util.Date;
 
+import com.erp.trans.common.annotation.BaseSql;
+
+@BaseSql(tableName="tb_travel_allowance", resultName="com.erp.trans.dao.TravelAllowanceMapper.BaseResultMap")
 public class TravelAllowance {
     private String travelAllowanceId;
 

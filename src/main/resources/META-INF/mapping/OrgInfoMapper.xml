@@ -29,8 +29,8 @@
 			o.fstate = '01'
 			<if test="conditiions !=null">
 				<if test="conditiions.searchParams !=null and conditiions.searchParams !=''">
-				    and (regexp_like(o.org_name, #{conditiions.searchParams, jdbcType=VARCHAR})
-					or regexp_like(o.org_ailias, #{conditiions.searchParams, jdbcType=VARCHAR}))
+				    and ((o.org_name REGEXP #{conditiions.searchParams, jdbcType=VARCHAR})
+					or (o.org_ailias REGEXP #{conditiions.searchParams, jdbcType=VARCHAR}))
 				</if>
 				<if test="conditiions.orgType !=null and conditiions.orgType !=''">
 				    and o.org_type = #{conditiions.orgType, jdbcType=VARCHAR}

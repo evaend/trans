@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.erp.trans.dao.OfficeSpaceFeeMapper">
   <resultMap id="BaseResultMap" type="com.erp.trans.entity.OfficeSpaceFee">
-    <result column="OFFICE_SPACE_ID" jdbcType="VARCHAR" property="officeSpaceId" />
+    <id column="OFFICE_SPACE_ID" jdbcType="VARCHAR" property="officeSpaceId" />
     <result column="OFFICE_SPACE_NAME" jdbcType="VARCHAR" property="officeSpaceName" />
     <result column="MONTH_RENT" jdbcType="DECIMAL" property="monthRent" />
     <result column="LEASE" jdbcType="VARCHAR" property="lease" />
@@ -10,8 +10,27 @@
     <result column="MODIFY_USERID" jdbcType="VARCHAR" property="modifyUserid" />
     <result column="ORG_ID" jdbcType="VARCHAR" property="orgId" />
   </resultMap>
+  <sql id="Base_Column_List">
+   OFFICE_SPACE_ID,OFFICE_SPACE_NAME,MONTH_RENT,LEASE,MODIFY_DATE,MODIFY_USERID,ORG_ID
+  </sql>
+  <!-- 查询办公场地信息 -->
+  <select id="searchOfficeSpaceFee" resultMap="BaseResultMap" parameterType="com.erp.trans.common.entity.Pager">
+		select <include refid="Base_Column_List"></include>
+		from tb_office_space_fee os
+		<where>
+			<if test="conditiions !=null">
+				<if test="conditiions.orgId != null and conditiions.orgId != '0' and conditiions.orgId != '-1'">
+					and os.ORG_ID = #{conditiions.orgId,jdbcType=VARCHAR}
+				</if>
+				<if test="conditiions.officeSpaceName !=null and conditiions.officeSpaceName !=''">
+				    and os.OFFICE_SPACE_NAME REGEXP #{conditiions.officeSpaceName, jdbcType=VARCHAR}
+				</if>
+			</if>
+		</where> 
+		order by os.MODIFY_DATE desc
+    </select>
   <insert id="insert" parameterType="com.erp.trans.entity.OfficeSpaceFee">
-    insert into TB_OFFICE_SPACE_FEE (OFFICE_SPACE_ID, OFFICE_SPACE_NAME, MONTH_RENT, 
+    insert into tb_office_space_fee (OFFICE_SPACE_ID, OFFICE_SPACE_NAME, MONTH_RENT, 
       LEASE, MODIFY_DATE, MODIFY_USERID, 
       ORG_ID)
     values (#{officeSpaceId,jdbcType=VARCHAR}, #{officeSpaceName,jdbcType=VARCHAR}, #{monthRent,jdbcType=DECIMAL}, 
@@ -19,7 +38,7 @@
       #{orgId,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.erp.trans.entity.OfficeSpaceFee">
-    insert into TB_OFFICE_SPACE_FEE
+    insert into tb_office_space_fee
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="officeSpaceId != null">
         OFFICE_SPACE_ID,

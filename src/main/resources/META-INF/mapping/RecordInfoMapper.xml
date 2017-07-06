@@ -38,7 +38,7 @@
 		    r.org_id = #{conditiions.orgId, jdbcType=VARCHAR}
 			<if test="conditiions !=null">
 				<if test="conditiions.searchParams !=null and conditiions.searchParams !=''">
-				    and regexp_like(r.CARRIER_NAME, #{conditiions.searchParams, jdbcType=VARCHAR})
+				    and r.CARRIER_NAME REGEXP #{conditiions.searchParams, jdbcType=VARCHAR}
 				</if>
 			</if>
 		</where> 
@@ -53,7 +53,7 @@
 		    and r.carrier_id = #{conditiions.carrierId, jdbcType=VARCHAR}
 			<if test="conditiions !=null">
 				<if test="conditiions.searchParams !=null and conditiions.searchParams !=''">
-				    and regexp_like(r.TRANSPORT_TOOL, #{conditiions.searchParams, jdbcType=VARCHAR})
+				    and r.TRANSPORT_TOOL REGEXP #{conditiions.searchParams, jdbcType=VARCHAR}
 				</if>
 			</if>
 		</where> 
@@ -69,19 +69,19 @@
 				and r.ORG_ID = #{conditiions.orgId,jdbcType=varchar}
 			</if>
 			<if test="conditiions.trailerNo != null and conditiions.trailerNo != ''">
-				and  <![CDATA[   regexp_like(r.trailer_no, #{conditiions.trailerNo,jdbcType=VARCHAR}) ]]>
+				and  <![CDATA[   r.trailer_no REGEXP #{conditiions.trailerNo,jdbcType=VARCHAR} ]]>
 			</if>
 			<if test="conditiions.carrierName != null and conditiions.carrierName != ''">
-				and  <![CDATA[   regexp_like(r.carrier_name, #{conditiions.carrierName,jdbcType=VARCHAR}) ]]>
+				and  <![CDATA[   r.carrier_name REGEXP #{conditiions.carrierName,jdbcType=VARCHAR} ]]>
 			</if>
 			<if test="conditiions.transportTool != null and conditiions.transportTool != ''">
-				and <![CDATA[   regexp_like(r.transport_tool, #{conditiions.transportTool,jdbcType=VARCHAR}) ]]>
+				and <![CDATA[   r.transport_tool REGEXP #{conditiions.transportTool,jdbcType=VARCHAR} ]]>
 			</if>
 			<if test="conditiions.mainDrive != null and conditiions.mainDrive != ''">
-				and <![CDATA[   regexp_like(r.main_drive, #{conditiions.mainDrive,jdbcType=VARCHAR}) ]]>
+				and <![CDATA[   r.main_drive REGEXP #{conditiions.mainDrive,jdbcType=VARCHAR} ]]>
 			</if>
 			<if test="conditiions.coPilot!= null and conditiions.coPilot != ''">
-				and <![CDATA[   regexp_like(r.co_pilot, #{conditiions.coPilot,jdbcType=VARCHAR}) ]]>
+				and <![CDATA[   r.co_pilot REGEXP #{conditiions.coPilot,jdbcType=VARCHAR} ]]>
 			</if>
 			<if test="conditiions.recordStart != null and conditiions.recordStart != ''">
 				and  <![CDATA[ date_format(r.record_start,'%Y-%m-%d') >= #{conditiions.recordStart,jdbcType=VARCHAR} ]]>

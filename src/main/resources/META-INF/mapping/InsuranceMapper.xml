@@ -1,69 +1,98 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.erp.trans.dao.InsuranceMapper" >
-  <resultMap id="BaseResultMap" type="com.erp.trans.entity.Insurance" >
-    <result column="INSURANCE_ID" property="insuranceId" jdbcType="VARCHAR" />
-    <result column="INSURANCE_TYPE" property="insuranceType" jdbcType="VARCHAR" />
-    <result column="INSURANCE_AMOUNT" property="insuranceAmount" jdbcType="VARCHAR" />
-    <result column="INSURANCE_COMPANY" property="insuranceCompany" jdbcType="VARCHAR" />
-    <result column="MODIFY_DATE" property="modifyDate" jdbcType="TIMESTAMP" />
-    <result column="MODIFY_USERID" property="modifyUserid" jdbcType="VARCHAR" />
-    <result column="ORG_ID" property="orgId" jdbcType="VARCHAR" />
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.erp.trans.dao.InsuranceMapper">
+  <resultMap id="BaseResultMap" type="com.erp.trans.entity.Insurance">
+    <id column="INSURANCE_ID" jdbcType="VARCHAR" property="insuranceId" />
+    <result column="INSURANCE_TYPE" jdbcType="VARCHAR" property="insuranceType" />
+    <result column="INSURANCE_AMOUNT" jdbcType="VARCHAR" property="insuranceAmount" />
+    <result column="INSURANCE_COMPANY" jdbcType="VARCHAR" property="insuranceCompany" />
+    <result column="MODIFY_DATE" jdbcType="TIMESTAMP" property="modifyDate" />
+    <result column="MODIFY_USERID" jdbcType="VARCHAR" property="modifyUserid" />
+    <result column="ORG_ID" jdbcType="VARCHAR" property="orgId" />
+    <result column="INSURANCE_NO" jdbcType="VARCHAR" property="insuranceNo" />
   </resultMap>
-  <insert id="insert" parameterType="com.erp.trans.entity.Insurance" >
-    insert into TB_INSURANCE (INSURANCE_ID, INSURANCE_TYPE, INSURANCE_AMOUNT, 
+  <sql id="Base_Column_List">
+   INSURANCE_ID,INSURANCE_TYPE,INSURANCE_AMOUNT,INSURANCE_COMPANY,INSURANCE_NO
+  </sql>
+  <!-- 查询保险信息 -->
+  <select id="searchVehicleDep" resultMap="BaseResultMap" parameterType="com.erp.trans.common.entity.Pager">
+		select <include refid="Base_Column_List"></include>
+		from tb_insurance i
+		<where>
+			<if test="conditiions !=null">
+				<if test="conditiions.orgId != null and conditiions.orgId != '0' and conditiions.orgId != '-1'">
+					and i.ORG_ID = #{conditiions.orgId,jdbcType=VARCHAR}
+				</if>
+				<if test="conditiions.startDate != null and conditiions.startDate != ''">
+				and <![CDATA[ date_format(i.MODIFY_DATE,'%Y-%m-%d') >= #{conditiions.startDate,jdbcType=VARCHAR} ]]>
+			</if>
+			<if test="conditiions.createDateEnd != null and conditiions.createDateEnd != ''">
+				and <![CDATA[ date_format(i.MODIFY_DATE,'%Y-%m-%d') <=  #{conditiions.createDateEnd,jdbcType=VARCHAR} ]]>
+			</if>
+			</if>
+		</where> 
+		order by i.MODIFY_DATE desc
+    </select>
+  <insert id="insert" parameterType="com.erp.trans.entity.Insurance">
+    insert into tb_insurance (INSURANCE_ID, INSURANCE_TYPE, INSURANCE_AMOUNT, 
       INSURANCE_COMPANY, MODIFY_DATE, MODIFY_USERID, 
-      ORG_ID)
+      ORG_ID, INSURANCE_NO)
     values (#{insuranceId,jdbcType=VARCHAR}, #{insuranceType,jdbcType=VARCHAR}, #{insuranceAmount,jdbcType=VARCHAR}, 
       #{insuranceCompany,jdbcType=VARCHAR}, #{modifyDate,jdbcType=TIMESTAMP}, #{modifyUserid,jdbcType=VARCHAR}, 
-      #{orgId,jdbcType=VARCHAR})
+      #{orgId,jdbcType=VARCHAR}, #{insuranceNo,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.erp.trans.entity.Insurance" >
-    insert into TB_INSURANCE
-    <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="insuranceId != null" >
+  <insert id="insertSelective" parameterType="com.erp.trans.entity.Insurance">
+    insert into tb_insurance
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="insuranceId != null">
         INSURANCE_ID,
       </if>
-      <if test="insuranceType != null" >
+      <if test="insuranceType != null">
         INSURANCE_TYPE,
       </if>
-      <if test="insuranceAmount != null" >
+      <if test="insuranceAmount != null">
         INSURANCE_AMOUNT,
       </if>
-      <if test="insuranceCompany != null" >
+      <if test="insuranceCompany != null">
         INSURANCE_COMPANY,
       </if>
-      <if test="modifyDate != null" >
+      <if test="modifyDate != null">
         MODIFY_DATE,
       </if>
-      <if test="modifyUserid != null" >
+      <if test="modifyUserid != null">
         MODIFY_USERID,
       </if>
-      <if test="orgId != null" >
+      <if test="orgId != null">
         ORG_ID,
       </if>
+      <if test="insuranceNo != null">
+        INSURANCE_NO,
+      </if>
     </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="insuranceId != null" >
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="insuranceId != null">
         #{insuranceId,jdbcType=VARCHAR},
       </if>
-      <if test="insuranceType != null" >
+      <if test="insuranceType != null">
         #{insuranceType,jdbcType=VARCHAR},
       </if>
-      <if test="insuranceAmount != null" >
+      <if test="insuranceAmount != null">
         #{insuranceAmount,jdbcType=VARCHAR},
       </if>
-      <if test="insuranceCompany != null" >
+      <if test="insuranceCompany != null">
         #{insuranceCompany,jdbcType=VARCHAR},
       </if>
-      <if test="modifyDate != null" >
+      <if test="modifyDate != null">
         #{modifyDate,jdbcType=TIMESTAMP},
       </if>
-      <if test="modifyUserid != null" >
+      <if test="modifyUserid != null">
         #{modifyUserid,jdbcType=VARCHAR},
       </if>
-      <if test="orgId != null" >
+      <if test="orgId != null">
         #{orgId,jdbcType=VARCHAR},
+      </if>
+      <if test="insuranceNo != null">
+        #{insuranceNo,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>

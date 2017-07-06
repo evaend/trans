@@ -65,17 +65,7 @@
 					and u.USER_LEVEL in ('02', '03') and u.ORG_ID = #{conditiions.sessionOrgId, jdbcType=DECIMAL}
 				</otherwise>
 			</choose>
-			<if test="conditiions!=null and !conditiions.empty">
-				<if test="conditiions.searchName != null and conditiions.searchName != ''">
-					and (
-							regexp_like(u.USER_NO, #{conditiions.searchName, jdbcType=VARCHAR})
-						or regexp_like(u.USER_NAME, #{conditiions.searchName, jdbcType=VARCHAR})
-						or regexp_like(o.ORG_NAME, #{conditiions.searchName, jdbcType=VARCHAR})
-						or regexp_like(o.ORG_ALIAS, #{conditiions.searchName, jdbcType=VARCHAR})
-						or regexp_like(o.FQUN, #{conditiions.searchName, jdbcType=VARCHAR})
-					)
-			   </if>
-		   </if>
+		
 			
 		<!-- 排序 -->
 		<choose>
@@ -122,11 +112,7 @@
 		and not exists(
 		  SELECT u.ORG_ID FROM ts_user_info u WHERE u.ORG_ID=o.ORG_ID AND u.USER_LEVEL='02'
 		)
-		<if test="conditiions!=null">
-			<if test="conditiions.searchName!=null and conditiions.searchName!=''">
-				and regexp_like(o.ORG_NAME, #{conditiions.searchName, jdbcType=VARCHAR})
-			</if>
-		</if>
+		
 	</select>
 	
 	<!-- 根据用户id查询用户信息 -->

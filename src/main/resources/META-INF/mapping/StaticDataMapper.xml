@@ -20,8 +20,8 @@
 			s.static_class = '市代码'
 			<if test="conditiions !=null">
 				<if test="conditiions.searchParams !=null and conditiions.searchParams !=''">
-				    and (regexp_like(s.static_name, #{conditiions.searchParams, jdbcType=VARCHAR})
-					or regexp_like(s.fqun, #{conditiions.searchParams, jdbcType=VARCHAR}))
+				    and ((s.static_name REGEXP #{conditiions.searchParams, jdbcType=VARCHAR})
+					or (s.fqun REGEXP #{conditiions.searchParams, jdbcType=VARCHAR}))
 				</if>
 			</if>
 		</where> 
@@ -43,12 +43,12 @@
 		<where>
 			<if test="conditiions.type !=null and conditiions.type =='brand'">
 				<if test="conditiions.searchParams !=null and conditiions.searchParams !=''">
-				    and regexp_like(car.brand_name, #{conditiions.searchParams, jdbcType=VARCHAR})				
+				    and car.brand_name REGEXP #{conditiions.searchParams, jdbcType=VARCHAR}				
 				</if>
 			</if>
 			<if test="conditiions.type !=null and conditiions.type =='model'">
 				<if test="conditiions.searchParams !=null and conditiions.searchParams !=''">
-				    and regexp_like(car.series_name, #{conditiions.searchParams, jdbcType=VARCHAR})
+				    and car.series_name REGEXP #{conditiions.searchParams, jdbcType=VARCHAR}
 				</if>
 				<if test="conditiions.pid !=null and conditiions.pid !=''">
 				    and car.brand_id = #{conditiions.pid, jdbcType=VARCHAR}

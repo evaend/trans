@@ -1,62 +1,121 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.erp.trans.dao.TaxInfoMapper" >
-  <resultMap id="BaseResultMap" type="com.erp.trans.entity.TaxInfo" >
-    <result column="TAX_ID" property="taxId" jdbcType="VARCHAR" />
-    <result column="TAX_DATE" property="taxDate" jdbcType="TIMESTAMP" />
-    <result column="TAX_AMOUNT" property="taxAmount" jdbcType="DECIMAL" />
-    <result column="MODIFY_DATE" property="modifyDate" jdbcType="TIMESTAMP" />
-    <result column="MODIFY_USERID" property="modifyUserid" jdbcType="VARCHAR" />
-    <result column="ORG_ID" property="orgId" jdbcType="VARCHAR" />
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.erp.trans.dao.TaxInfoMapper">
+  <resultMap id="BaseResultMap" type="com.erp.trans.entity.TaxInfo">
+    <id column="TAX_ID" jdbcType="VARCHAR" property="taxId" />
+    <result column="TAX_DATE" jdbcType="TIMESTAMP" property="taxDate" />
+    <result column="MODIFY_DATE" jdbcType="TIMESTAMP" property="modifyDate" />
+    <result column="MODIFY_USERID" jdbcType="VARCHAR" property="modifyUserid" />
+    <result column="ORG_ID" jdbcType="VARCHAR" property="orgId" />
+    <result column="TAX_NO" jdbcType="VARCHAR" property="taxNo" />
+    <result column="TAX_TYPE" jdbcType="VARCHAR" property="taxType" />
+    <result column="TAX_AMOUNT" jdbcType="VARCHAR" property="taxAmount" />
+    <result column="TAX_RATE" jdbcType="VARCHAR" property="taxRate" />
+    <result column="TAX_PRICE" jdbcType="VARCHAR" property="taxPrice" />
+    <result column="TAX_FREE_AMOUNT" jdbcType="VARCHAR" property="taxFreeAmount" />
   </resultMap>
-  <insert id="insert" parameterType="com.erp.trans.entity.TaxInfo" >
-    insert into TB_TAX_INFO (TAX_ID, TAX_DATE, TAX_AMOUNT, 
-      MODIFY_DATE, MODIFY_USERID, ORG_ID
-      )
-    values (#{taxId,jdbcType=VARCHAR}, #{taxDate,jdbcType=TIMESTAMP}, #{taxAmount,jdbcType=DECIMAL}, 
-      #{modifyDate,jdbcType=TIMESTAMP}, #{modifyUserid,jdbcType=VARCHAR}, #{orgId,jdbcType=VARCHAR}
-      )
+   <sql id="Base_Column_List">
+   TAX_ID,TAX_DATE,TAX_NO,TAX_TYPE,TAX_AMOUNT,TAX_RATE,TAX_PRICE,TAX_FREE_AMOUNT
+  </sql>
+  <!-- 查询出差补贴信息 -->
+  <select id="searchTaxInfo" resultMap="BaseResultMap" parameterType="com.erp.trans.common.entity.Pager">
+		select <include refid="Base_Column_List"></include>
+		from tb_tax_info ti
+		<where>
+			<if test="conditiions !=null">
+				<if test="conditiions.orgId != null and conditiions.orgId != '0' and conditiions.orgId != '-1'">
+					and ti.ORG_ID = #{conditiions.orgId,jdbcType=VARCHAR}
+				</if>
+				<if test="conditiions.startDate != null and conditiions.startDate != ''">
+				and <![CDATA[ date_format(ti.TAX_DATE,'%Y-%m-%d') >= #{conditiions.startDate,jdbcType=VARCHAR} ]]>
+			</if>
+			<if test="conditiions.createDateEnd != null and conditiions.createDateEnd != ''">
+				and <![CDATA[ date_format(ti.TAX_DATE,'%Y-%m-%d') <=  #{conditiions.createDateEnd,jdbcType=VARCHAR} ]]>
+			</if>
+			</if>
+		</where> 
+		order by ti.MODIFY_DATE desc
+    </select>
+  <insert id="insert" parameterType="com.erp.trans.entity.TaxInfo">
+    insert into tb_tax_info (TAX_ID, TAX_DATE, MODIFY_DATE, 
+      MODIFY_USERID, ORG_ID, TAX_NO, 
+      TAX_TYPE, TAX_AMOUNT, TAX_RATE, 
+      TAX_PRICE, TAX_FREE_AMOUNT)
+    values (#{taxId,jdbcType=VARCHAR}, #{taxDate,jdbcType=TIMESTAMP}, #{modifyDate,jdbcType=TIMESTAMP}, 
+      #{modifyUserid,jdbcType=VARCHAR}, #{orgId,jdbcType=VARCHAR}, #{taxNo,jdbcType=VARCHAR}, 
+      #{taxType,jdbcType=VARCHAR}, #{taxAmount,jdbcType=VARCHAR}, #{taxRate,jdbcType=VARCHAR}, 
+      #{taxPrice,jdbcType=VARCHAR}, #{taxFreeAmount,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.erp.trans.entity.TaxInfo" >
-    insert into TB_TAX_INFO
-    <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="taxId != null" >
+  <insert id="insertSelective" parameterType="com.erp.trans.entity.TaxInfo">
+    insert into tb_tax_info
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="taxId != null">
         TAX_ID,
       </if>
-      <if test="taxDate != null" >
+      <if test="taxDate != null">
         TAX_DATE,
       </if>
-      <if test="taxAmount != null" >
-        TAX_AMOUNT,
-      </if>
-      <if test="modifyDate != null" >
+      <if test="modifyDate != null">
         MODIFY_DATE,
       </if>
-      <if test="modifyUserid != null" >
+      <if test="modifyUserid != null">
         MODIFY_USERID,
       </if>
-      <if test="orgId != null" >
+      <if test="orgId != null">
         ORG_ID,
       </if>
+      <if test="taxNo != null">
+        TAX_NO,
+      </if>
+      <if test="taxType != null">
+        TAX_TYPE,
+      </if>
+      <if test="taxAmount != null">
+        TAX_AMOUNT,
+      </if>
+      <if test="taxRate != null">
+        TAX_RATE,
+      </if>
+      <if test="taxPrice != null">
+        TAX_PRICE,
+      </if>
+      <if test="taxFreeAmount != null">
+        TAX_FREE_AMOUNT,
+      </if>
     </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="taxId != null" >
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="taxId != null">
         #{taxId,jdbcType=VARCHAR},
       </if>
-      <if test="taxDate != null" >
+      <if test="taxDate != null">
         #{taxDate,jdbcType=TIMESTAMP},
       </if>
-      <if test="taxAmount != null" >
-        #{taxAmount,jdbcType=DECIMAL},
-      </if>
-      <if test="modifyDate != null" >
+      <if test="modifyDate != null">
         #{modifyDate,jdbcType=TIMESTAMP},
       </if>
-      <if test="modifyUserid != null" >
+      <if test="modifyUserid != null">
         #{modifyUserid,jdbcType=VARCHAR},
       </if>
-      <if test="orgId != null" >
+      <if test="orgId != null">
         #{orgId,jdbcType=VARCHAR},
+      </if>
+      <if test="taxNo != null">
+        #{taxNo,jdbcType=VARCHAR},
+      </if>
+      <if test="taxType != null">
+        #{taxType,jdbcType=VARCHAR},
+      </if>
+      <if test="taxAmount != null">
+        #{taxAmount,jdbcType=VARCHAR},
+      </if>
+      <if test="taxRate != null">
+        #{taxRate,jdbcType=VARCHAR},
+      </if>
+      <if test="taxPrice != null">
+        #{taxPrice,jdbcType=VARCHAR},
+      </if>
+      <if test="taxFreeAmount != null">
+        #{taxFreeAmount,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>

@@ -23,6 +23,7 @@
       c.CONSIGN_ID "consignId",  c.CONSIGN_NO "consignNo",  c.CAMOUNT "camount", 
        c.LOCATION_TO "locationTo",  c.RECEIVE_ORG_ID "receiveOrgId",  c.RECEIVE_ORG_NAME "receiveOrgName", 
        c.CONSIGN_FSATE "consignFsate",  c.CONSIGN_ORG_ID "consignOrgId",  c.CONSIGN_ORG_NAME "consignOrgName", 
+       r.carrier_name "carrierName",
        c.LOCATION_FROM "lactionFrom",  date_format(c.MODIFY_DATE,'%Y-%m-%d %T') "modifyDate", 
       u.USER_NAME "modifyUser"
   </sql>
@@ -48,15 +49,22 @@
 		<include refid="Consign_Return_List"></include>
 		from tb_consign c
 		left join ts_user_info u on u.user_id = c.MODIFY_USER_ID
+		left join (
+			select cd.consign_id,dc.consign_no,r.carrier_name
+			from tb_consign_detail cd,tb_despatch_plan dp,td_record_info r,tb_desplan_conno dc
+			where cd.despatch_plan_id = dp.despatch_plan_id
+			and dp.record_id = r.record_id
+			and dp.despatch_plan_id = dc.despatch_plan_id
+		) r on r.consign_id = warrier.consign_id
 		<where>
 			<if test="conditiions.orgId != null and conditiions.orgId != '0' and conditiions.orgId != '-1'">
-				and c.ORG_ID = #{conditiions.orgId,jdbcType=varchar}
+				and c.ORG_ID = #{conditiions.orgId,jdbcType=VARCHAR}
 			</if>
 			<if test="conditiions.consignNo != null and conditiions.consignNo != ''">
-				and  <![CDATA[   regexp_like(c.consign_no, #{conditiions.consignNo,jdbcType=VARCHAR}) ]]>
+				and  c.consign_no regexp #{conditiions.consignNo,jdbcType=VARCHAR}
 			</if>
 			<if test="conditiions.carrierName != null and conditiions.carrierName != ''">
-				and  <![CDATA[   regexp_like(, #{conditiions.carrierName,jdbcType=VARCHAR}) ]]>
+				and  r.carrier_name regexp #{conditiions.carrierName,jdbcType=VARCHAR}
 			</if>
 			<if test="conditiions.consignFstate != null and conditiions.consignFstate != ''">
 				and c.CONSIGN_FSATE = #{conditiions.consignFstate,jdbcType=VARCHAR}

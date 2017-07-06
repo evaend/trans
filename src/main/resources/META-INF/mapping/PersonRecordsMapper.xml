@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.erp.trans.dao.PersonRecordsMapper" >
   <resultMap id="BaseResultMap" type="com.erp.trans.entity.PersonRecords" >
-    <result column="PERSON_RECORDS_ID" property="personRecordsId" jdbcType="VARCHAR" />
+    <id column="PERSON_RECORDS_ID" property="personRecordsId" jdbcType="VARCHAR" />
     <result column="P_NAME" property="pName" jdbcType="VARCHAR" />
     <result column="P_GENDER" property="pGender" jdbcType="VARCHAR" />
     <result column="P_BIRTHDATE" property="pBirthdate" jdbcType="TIMESTAMP" />
@@ -14,8 +14,42 @@
     <result column="P_FSTATE" property="pFstate" jdbcType="VARCHAR" />
     <result column="MODIFY_DATE" property="modifyDate" jdbcType="TIMESTAMP" />
     <result column="MODIFY_USERID" property="modifyUserid" jdbcType="VARCHAR" />
+    <result column="P_EMERGENCY" property="pEmergency" jdbcType="VARCHAR" />
     <result column="ORG_ID" property="orgId" jdbcType="VARCHAR" />
+    <result column="DEPARMENT_ID" property="deparmentId" jdbcType="VARCHAR" />
+    <result column="P_PHONE" property="pPhone" jdbcType="VARCHAR" />
   </resultMap>
+   <sql id="Base_Column_List">
+    pr.person_records_id "personRecordsId",pr.P_NAME "pName",
+    pr.P_GENDER "pGender",pr.P_BIRTHDATE "pBirthdate",pr.P_IDNO "pIdno",pr.P_PHONE "pPhone",
+    pr.P_HOME_ADDRESS "pHomeAddress",pr.P_EMERGENCY "pEmergency",
+    pr.P_EMERGENCY_PHONE "pEmergencyPhone",
+    pr.P_BANK_CARD "pBankCard",pr.REMARK "remark",od.DEPARTMENT_NAME "departmentName"
+  </sql>
+  <!-- 查询人事档案信息 -->
+  <select id="searchPersonRecords" resultType="HashMap" parameterType="com.erp.trans.common.entity.Pager">
+		select <include refid="Base_Column_List"></include>
+		from td_person_records pr
+		left join td_org_department  od on pr.DEPARMENT_ID = od.DEPARMENT_ID
+		<where>
+			<if test="conditiions !=null">
+				<if test="conditiions.orgId != null and conditiions.orgId != '0' and conditiions.orgId != '-1'">
+					and pr.ORG_ID = #{conditiions.orgId,jdbcType=VARCHAR}
+				</if>
+				<if test="conditiions.pName !=null and conditiions.pName !=''">
+				    and pr.p_name REGEXP #{conditiions.pName, jdbcType=VARCHAR}
+				</if>
+			</if>
+		</where> 
+		order by pr.MODIFY_DATE desc
+    </select>
+   <insert id="batchCreateSalaryMonth">
+   insert into tb_salary ( SALARY_ID,SALARY_YEAR,
+    SALARY_MONTH,MODIFY_DATE )
+    select replace(uuid(),'-',''),year(date_add(NOW(), interval -1 MONTH)),
+    month(date_add(NOW(), interval -1 MONTH)),now()
+    from td_person_records  
+   </insert>
   <insert id="insert" parameterType="com.erp.trans.entity.PersonRecords" >
     insert into TD_PERSON_RECORDS (PERSON_RECORDS_ID, P_NAME, P_GENDER, 
       P_BIRTHDATE, P_IDNO, P_HOME_ADDRESS, 

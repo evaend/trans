@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.erp.trans.dao.VehicleDepreciationMapper" >
+  <resultMap id="BaseResultMap" type="com.erp.trans.entity.VehicleDepreciation" >
+    <id column="VEHICLE_DEPRECIATION_ID" property="vehicleDepreciationId" jdbcType="VARCHAR" />
+    <result column="TRANSPORT_TOOL_NO" property="transportToolNo" jdbcType="VARCHAR" />
+    <result column="VEHICLE_ASSETS" property="vehicleAssets" jdbcType="DECIMAL" />
+    <result column="SERVICE_LIFE" property="serviceLife" jdbcType="VARCHAR" />
+    <result column="MONTHLY_DEPRECIATION" property="monthlyDepreciation" jdbcType="VARCHAR" />
+    <result column="MODIFY_DATE" property="modifyDate" jdbcType="TIMESTAMP" />
+    <result column="MODIFY_USERID" property="modifyUserid" jdbcType="VARCHAR" />
+    <result column="ORG_ID" property="orgId" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List">
+   VEHICLE_DEPRECIATION_ID,TRANSPORT_TOOL_NO,VEHICLE_ASSETS,SERVICE_LIFE,MONTHLY_DEPRECIATION
+  </sql>
+  <!-- 查询车辆折旧信息 -->
+  <select id="searchVehicleDep" resultMap="BaseResultMap" parameterType="com.erp.trans.common.entity.Pager">
+		select <include refid="Base_Column_List"></include>
+		from tb_vehicle_depreciation vd
+		<where>
+			<if test="conditiions !=null">
+				<if test="conditiions.orgId != null and conditiions.orgId != '0' and conditiions.orgId != '-1'">
+					and vd.ORG_ID = #{conditiions.orgId,jdbcType=VARCHAR}
+				</if>
+				<if test="conditiions.startDate != null and conditiions.startDate != ''">
+				and <![CDATA[ date_format(vd.MODIFY_DATE,'%Y-%m-%d') >= #{conditiions.startDate,jdbcType=VARCHAR} ]]>
+			</if>
+			<if test="conditiions.createDateEnd != null and conditiions.createDateEnd != ''">
+				and <![CDATA[ date_format(vd.MODIFY_DATE,'%Y-%m-%d') <=  #{conditiions.createDateEnd,jdbcType=VARCHAR} ]]>
+			</if>
+			</if>
+		</where> 
+		order by cd.MODIFY_DATE desc
+    </select>
+  <insert id="insert" parameterType="com.erp.trans.entity.VehicleDepreciation" >
+    insert into tb_vehicle_depreciation (VEHICLE_DEPRECIATION_ID, TRANSPORT_TOOL_NO, 
+      VEHICLE_ASSETS, SERVICE_LIFE, MONTHLY_DEPRECIATION, 
+      MODIFY_DATE, MODIFY_USERID, ORG_ID
+      )
+    values (#{vehicleDepreciationId,jdbcType=VARCHAR}, #{transportToolNo,jdbcType=VARCHAR}, 
+      #{vehicleAssets,jdbcType=DECIMAL}, #{serviceLife,jdbcType=VARCHAR}, #{monthlyDepreciation,jdbcType=VARCHAR}, 
+      #{modifyDate,jdbcType=TIMESTAMP}, #{modifyUserid,jdbcType=VARCHAR}, #{orgId,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.erp.trans.entity.VehicleDepreciation" >
+    insert into tb_vehicle_depreciation
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="vehicleDepreciationId != null" >
+        VEHICLE_DEPRECIATION_ID,
+      </if>
+      <if test="transportToolNo != null" >
+        TRANSPORT_TOOL_NO,
+      </if>
+      <if test="vehicleAssets != null" >
+        VEHICLE_ASSETS,
+      </if>
+      <if test="serviceLife != null" >
+        SERVICE_LIFE,
+      </if>
+      <if test="monthlyDepreciation != null" >
+        MONTHLY_DEPRECIATION,
+      </if>
+      <if test="modifyDate != null" >
+        MODIFY_DATE,
+      </if>
+      <if test="modifyUserid != null" >
+        MODIFY_USERID,
+      </if>
+      <if test="orgId != null" >
+        ORG_ID,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="vehicleDepreciationId != null" >
+        #{vehicleDepreciationId,jdbcType=VARCHAR},
+      </if>
+      <if test="transportToolNo != null" >
+        #{transportToolNo,jdbcType=VARCHAR},
+      </if>
+      <if test="vehicleAssets != null" >
+        #{vehicleAssets,jdbcType=DECIMAL},
+      </if>
+      <if test="serviceLife != null" >
+        #{serviceLife,jdbcType=VARCHAR},
+      </if>
+      <if test="monthlyDepreciation != null" >
+        #{monthlyDepreciation,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyDate != null" >
+        #{modifyDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyUserid != null" >
+        #{modifyUserid,jdbcType=VARCHAR},
+      </if>
+      <if test="orgId != null" >
+        #{orgId,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+</mapper>

@@ -109,10 +109,10 @@ public class SynBasicData {
 	 */
 	@ResponseBody
 	@RequestMapping(value = "/searchOrgForSelect")
-	public List<Map<String,Object>> searchOrgForSelect(String searchParams, HttpSession session) {
+	public List<Map<String,Object>> searchOrgForSelect(String q, HttpSession session) {
 		Pager pager = new Pager(false);
 		
-		pager.addQueryParam("searchParams", searchParams);
+		pager.addQueryParam("searchParams", q);
 		pager.addQueryParam("orgType", CustomConst.OrgType.ORGNORMAL);
 
 		return synBasicDataService.searchOrgForSelect(pager);
@@ -123,24 +123,24 @@ public class SynBasicData {
 	 */
 	@ResponseBody
 	@RequestMapping(value = "/searchLocationsForSelect")
-	public List<Map<String,Object>> searchLocationsForSelect(String searchParams, HttpSession session) {
+	public List<Map<String,Object>> searchLocationsForSelect(String q, HttpSession session) {
 		Pager pager = new Pager(false);
 		
-		pager.addQueryParam("searchParams", searchParams);
+		pager.addQueryParam("searchParams", q);
 
 		return synBasicDataService.searchLocationsForSelect(pager);
 	}
 	
 	@ResponseBody
 	@RequestMapping(value = "/carFindForSelect")
-	public List<Map<String,Object>> carFindForSelect(String searchParams, 
+	public List<Map<String,Object>> carFindForSelect(String q, 
 			String type,
 			String pid,
 			HttpSession session) throws ValidationException {
 		LocalAssertUtils.notBlank(type, "请确定要查询的类型，品牌或车型");
 		Pager pager = new Pager(false);
 		
-		pager.addQueryParam("searchParams", searchParams);
+		pager.addQueryParam("searchParams", q);
 		pager.addQueryParam("type", type);
 		pager.addQueryParam("pid", pid);
 

@@ -2,6 +2,8 @@ package com.erp.trans.entity;
 
 import java.util.Date;
 
+import com.erp.trans.common.annotation.BaseSql;
+@BaseSql(tableName="tb_office_space_fee", resultName="com.erp.trans.dao.OfficeSpaceFeeMapper.BaseResultMap")
 public class OfficeSpaceFee {
     private String officeSpaceId;
 

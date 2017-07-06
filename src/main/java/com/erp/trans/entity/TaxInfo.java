@@ -2,18 +2,30 @@ package com.erp.trans.entity;
 
 import java.util.Date;
 
+import com.erp.trans.common.annotation.BaseSql;
+@BaseSql(tableName="tb_tax_info", resultName="com.erp.trans.dao.TaxInfoMapper.BaseResultMap")
 public class TaxInfo {
     private String taxId;
 
     private Date taxDate;
-
-    private Long taxAmount;
 
     private Date modifyDate;
 
     private String modifyUserid;
 
     private String orgId;
+
+    private String taxNo;
+
+    private String taxType;
+
+    private String taxAmount;
+
+    private String taxRate;
+
+    private String taxPrice;
+
+    private String taxFreeAmount;
 
     public String getTaxId() {
         return taxId;
@@ -29,14 +41,6 @@ public class TaxInfo {
 
     public void setTaxDate(Date taxDate) {
         this.taxDate = taxDate;
-    }
-
-    public Long getTaxAmount() {
-        return taxAmount;
-    }
-
-    public void setTaxAmount(Long taxAmount) {
-        this.taxAmount = taxAmount;
     }
 
     public Date getModifyDate() {
@@ -61,5 +65,53 @@ public class TaxInfo {
 
     public void setOrgId(String orgId) {
         this.orgId = orgId == null ? null : orgId.trim();
+    }
+
+    public String getTaxNo() {
+        return taxNo;
+    }
+
+    public void setTaxNo(String taxNo) {
+        this.taxNo = taxNo == null ? null : taxNo.trim();
+    }
+
+    public String getTaxType() {
+        return taxType;
+    }
+
+    public void setTaxType(String taxType) {
+        this.taxType = taxType == null ? null : taxType.trim();
+    }
+
+    public String getTaxAmount() {
+        return taxAmount;
+    }
+
+    public void setTaxAmount(String taxAmount) {
+        this.taxAmount = taxAmount == null ? null : taxAmount.trim();
+    }
+
+    public String getTaxRate() {
+        return taxRate;
+    }
+
+    public void setTaxRate(String taxRate) {
+        this.taxRate = taxRate == null ? null : taxRate.trim();
+    }
+
+    public String getTaxPrice() {
+        return taxPrice;
+    }
+
+    public void setTaxPrice(String taxPrice) {
+        this.taxPrice = taxPrice == null ? null : taxPrice.trim();
+    }
+
+    public String getTaxFreeAmount() {
+        return taxFreeAmount;
+    }
+
+    public void setTaxFreeAmount(String taxFreeAmount) {
+        this.taxFreeAmount = taxFreeAmount == null ? null : taxFreeAmount.trim();
     }
 }

@@ -416,7 +416,7 @@ public class BaseSqlInterceptor implements Interceptor {
 									}
 									link = rm.getColumn() + " in ( " + value + " )";
 								}else if("like".equals(queryType)){
-									link = "regexp_like(" + rm.getColumn() + ", '" + StringEscapeUtils.escapeSql(value.toString()) + "')";
+									link = "" + rm.getColumn() + " REGEXP '" + StringEscapeUtils.escapeSql(value.toString()) + "'";
 								}else if("=".equals(queryType)){
 									link = rm.getColumn() + " = " + " '" + StringEscapeUtils.escapeSql(value.toString()) + "' ";
 								}
@@ -437,7 +437,7 @@ public class BaseSqlInterceptor implements Interceptor {
 									}
 									link = rm.getColumn() + " in ( " + value + " )";
 								}else if("like".equals(queryType)){
-									link = "regexp_like(" + rm.getColumn() + ", '" + StringEscapeUtils.escapeSql(value.toString()) + "')";
+									link = "" + rm.getColumn() + " REGEXP '" + StringEscapeUtils.escapeSql(value.toString()) + "'";
 								}else if("=".equals(queryType)){
 									link = rm.getColumn() + " = " + " '" + StringEscapeUtils.escapeSql(value.toString()) + "' ";
 								}

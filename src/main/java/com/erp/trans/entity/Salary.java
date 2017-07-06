@@ -2,6 +2,9 @@ package com.erp.trans.entity;
 
 import java.util.Date;
 
+import com.erp.trans.common.annotation.BaseSql;
+
+@BaseSql(tableName="tb_salary", resultName="com.erp.trans.dao.SalaryMapper.BaseResultMap")
 public class Salary {
     private String salaryId;
 
@@ -13,7 +16,7 @@ public class Salary {
 
     private String basePay;
 
-    private Long positionSalary;
+    private String positionSalary;
 
     private String evaluationReward;
 
@@ -23,13 +26,15 @@ public class Salary {
 
     private String payRetro;
 
-    private String buckleUp;
+    private String payDedu;
 
     private Date modifyDate;
 
     private String modifyUserid;
 
     private String orgId;
+
+    private String actualPay;
 
     public String getSalaryId() {
         return salaryId;
@@ -71,12 +76,12 @@ public class Salary {
         this.basePay = basePay == null ? null : basePay.trim();
     }
 
-    public Long getPositionSalary() {
+    public String getPositionSalary() {
         return positionSalary;
     }
 
-    public void setPositionSalary(Long positionSalary) {
-        this.positionSalary = positionSalary;
+    public void setPositionSalary(String positionSalary) {
+        this.positionSalary = positionSalary == null ? null : positionSalary.trim();
     }
 
     public String getEvaluationReward() {
@@ -111,12 +116,12 @@ public class Salary {
         this.payRetro = payRetro == null ? null : payRetro.trim();
     }
 
-    public String getBuckleUp() {
-        return buckleUp;
+    public String getPayDedu() {
+        return payDedu;
     }
 
-    public void setBuckleUp(String buckleUp) {
-        this.buckleUp = buckleUp == null ? null : buckleUp.trim();
+    public void setPayDedu(String payDedu) {
+        this.payDedu = payDedu == null ? null : payDedu.trim();
     }
 
     public Date getModifyDate() {
@@ -141,5 +146,13 @@ public class Salary {
 
     public void setOrgId(String orgId) {
         this.orgId = orgId == null ? null : orgId.trim();
+    }
+
+    public String getActualPay() {
+        return actualPay;
+    }
+
+    public void setActualPay(String actualPay) {
+        this.actualPay = actualPay == null ? null : actualPay.trim();
     }
 }

@@ -35,8 +35,9 @@
   	  ci.CHARGE_ID "chargeId",
   	  c.CONSIGN_NO "consignNo", cd.CAR_BRAND "carBrand", cd.CAR_MODEL "carModel", 
       cd.AMOUNT "amount", cd.CHASSIS_NO "chassisNo", 
-      cd.DESPATCH_DATE "despatchDate",c.LOCATION_TO "locationTo", c.RECEIVE_ORG_NAME "receiveOrgName", 
-      c.CONSIGN_ORG_NAME "consignOrgName", 
+      date_format(cd.DESPATCH_DATE,'%Y-%m-%d') "despatchDate",c.LOCATION_TO "locationTo", c.RECEIVE_ORG_NAME "receiveOrgName", 
+      c.CONSIGN_ORG_NAME "consignOrgName", dp.main_drive "mainDrive",
+      dp.MAIN_DRIVE_PHONE "mainDrivePhone",r.co_pliot "coPliot",
       c.LOCATION_FROM "locationFrom",r.CARRIER_NAME "carrierName",r.TRANSPORT_TOOL "transportTool",
       ci.FREIGHT_RATES "freightRates",ci.ADVANCES "advances",ci.PREPAID_OIL_CARD "prepaidOilCard",
       ci.QUALITY_LOSS "qualityLoss",ci.SUBSIDY "subsidy",ci.REVERSE_CHARGE "reverseCharge",ci.MIS_COSTS "misCosts",
@@ -59,18 +60,18 @@
 				and c.ORG_ID = #{conditiions.orgId,jdbcType=VARCHAR}
 			</if>
 			<if test="conditiions.chargeType!= null and conditiions.chargeType != ''">
-				and  ci.charge_type = #{conditiions.chargeType,jdbcType=VARCHAR})
+				and  ci.charge_type = #{conditiions.chargeType,jdbcType=VARCHAR}
 			</if>
 			<if test="conditiions.consignOrgName != null and conditiions.consignOrgName != ''">
-				and  <![CDATA[   regexp_like(c.CONSIGN_ORG_NAME, #{conditiions.consignOrgName,jdbcType=VARCHAR}) ]]>
+				and  c.CONSIGN_ORG_NAME REGEXP #{conditiions.consignOrgName,jdbcType=VARCHAR}
 			</if>
 			<if test="conditiions.carrierName != null and conditiions.carrierName != ''">
-				and  <![CDATA[   regexp_like(r.CARRIER_NAME, #{conditiions.carrierName,jdbcType=VARCHAR}) ]]>
+				and  r.CARRIER_NAME REGEXP #{conditiions.carrierName,jdbcType=VARCHAR}
 			</if>
 			<if test="conditiions.transportTool != null and conditiions.transportTool != ''">
-				and  <![CDATA[   regexp_like(r.TRANSPORT_TOOL, #{conditiions.transportTool,jdbcType=VARCHAR}) ]]>
+				and  r.TRANSPORT_TOOL REGEXP #{conditiions.transportTool,jdbcType=VARCHAR}
 			</if>
-			<if test="conditiions.chargeFstate != null and conditiions.chargeFstate != ''">
+			<if test="conditiions.chargeFstate != null and conditiions.chargeFstate != '' and conditiions.chargeFstate != 0">
 				and ci.charge_fstate = #{conditiions.chargeFstate,jdbcType=VARCHAR}
 			</if>
 			<if test="conditiions.dispatchDateStart != null and conditiions.dispatchDateStart != ''">

@@ -50,10 +50,10 @@
 				and  c.location_to = #{conditiions.locationTo,jdbcType=VARCHAR})
 			</if>
 			<if test="conditiions.carrierName != null and conditiions.carrierName != ''">
-				and  <![CDATA[   regexp_like(c.carrier_name, #{conditiions.carrierName,jdbcType=VARCHAR}) ]]>
+				and  <![CDATA[   c.carrier_name REGEXP #{conditiions.carrierName,jdbcType=VARCHAR} ]]>
 			</if>
 			<if test="conditiions.consignOrgName != null and conditiions.consignOrgName != ''">
-				and <![CDATA[   regexp_like(c.consign_org_name, #{conditiions.consignOrgName,jdbcType=VARCHAR}) ]]>
+				and <![CDATA[   c.consign_org_name REGEXP #{conditiions.consignOrgName,jdbcType=VARCHAR} ]]>
 			</if>
 			<if test="conditiions.contractStart != null and conditiions.contractStart != ''">
 				and  <![CDATA[ date_format(c.contract_start,'%Y-%m-%d') >= #{conditiions.contractStart,jdbcType=VARCHAR} ]]>

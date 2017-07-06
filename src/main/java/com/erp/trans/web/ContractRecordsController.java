@@ -121,13 +121,14 @@ public class ContractRecordsController {
 	 */
 	@ResponseBody
 	@RequestMapping(value = "deleteContract")
-	public void deleteContract(Contract contract,
+	public void deleteContract(String[] contractIds,
 			HttpServletRequest request) throws ValidationException {
-		if(contract == null){
+		if(contractIds == null){
 			throw new ValidationException("请选择合同");
 		}
-		LocalAssertUtils.notBlank(contract.getContractId(), "请先选择一条系统中的合同");
-		contractRecordsService.deleteInfo(contract);
+		for(String contractId:contractIds){
+			contractRecordsService.deleteInfoById(Contract.class,contractId);
+		}
 	}
 	
 	/**
@@ -211,13 +212,14 @@ public class ContractRecordsController {
 	 */
 	@ResponseBody
 	@RequestMapping(value = "deleteRecordInfo")
-	public void deleteRecordInfo(RecordInfo recordInfo,
+	public void deleteRecordInfo(String[] recordIds,
 			HttpServletRequest request) throws ValidationException {
-		if(recordInfo == null){
+		if(recordIds == null){
 			throw new ValidationException("请选择档案");
 		}
-		LocalAssertUtils.notBlank(recordInfo.getRecordId(), "请先选择一条系统中的档案");
-		contractRecordsService.deleteInfo(recordInfo);
+		for(String recordId:recordIds){
+			contractRecordsService.deleteInfoById(RecordInfo.class, recordId);
+		}
 	}
 	
 	/**
@@ -226,10 +228,10 @@ public class ContractRecordsController {
 	 */
 	@ResponseBody
 	@RequestMapping(value = "/searchCarriersForSelectByOrg")
-	public List<Map<String,Object>> searchCarriersForSelectByOrg(String searchParams, HttpSession session) {
+	public List<Map<String,Object>> searchCarriersForSelectByOrg(String q, HttpSession session) {
 		Pager pager = new Pager(false);
 		
-		pager.addQueryParam("searchParams", searchParams);
+		pager.addQueryParam("searchParams", q);
 		// 操作人机构
 		String orgId = (String) session.getAttribute(LoginUser.SESSION_USER_ORGID);
 		pager.addQueryParam("orgId", orgId);
@@ -244,12 +246,12 @@ public class ContractRecordsController {
 	 */
 	@ResponseBody
 	@RequestMapping(value = "/searchRecordsForSelectByCarrierId")
-	public List<Map<String,Object>> searchRecordsForSelectByOrg(String searchParams, 
+	public List<Map<String,Object>> searchRecordsForSelectByOrg(String q, 
 			String carrierId,
 			HttpSession session) throws ValidationException {
 		LocalAssertUtils.notBlank(carrierId, "请先选择承运商");
 		Pager pager = new Pager(false);
-		pager.addQueryParam("searchParams", searchParams);
+		pager.addQueryParam("searchParams", q);
 		pager.addQueryParam("carrierId", carrierId);
 		// 操作人机构
 		String orgId = (String) session.getAttribute(LoginUser.SESSION_USER_ORGID);

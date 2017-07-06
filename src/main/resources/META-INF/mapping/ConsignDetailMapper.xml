@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.erp.trans.dao.ConsignDetailMapper" >
   <resultMap id="BaseResultMap" type="com.erp.trans.entity.ConsignDetail" >
-    <result column="CONSIGN_DETAIL_ID" property="consignDetailId" jdbcType="VARCHAR" />
+    <id column="CONSIGN_DETAIL_ID" property="consignDetailId" jdbcType="VARCHAR" />
     <result column="CONSIGN_ID" property="consignId" jdbcType="VARCHAR" />
     <result column="CAR_BRAND" property="carBrand" jdbcType="VARCHAR" />
     <result column="CAR_MODEL" property="carModel" jdbcType="VARCHAR" />

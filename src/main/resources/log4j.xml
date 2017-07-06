@@ -35,7 +35,7 @@
 		</layout>
 	</appender>
 
-	<logger name="com.phxl.ysy" additivity="true">
+	<logger name="com.erp.trans" additivity="true">
 		<level value="${logger.level$com.erp.trans}"></level>
 	</logger>
 	

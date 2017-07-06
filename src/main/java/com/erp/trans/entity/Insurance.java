@@ -2,6 +2,9 @@ package com.erp.trans.entity;
 
 import java.util.Date;
 
+import com.erp.trans.common.annotation.BaseSql;
+
+@BaseSql(tableName="tb_insurance", resultName="com.erp.trans.dao.InsuranceMapper.BaseResultMap")
 public class Insurance {
     private String insuranceId;
 
@@ -16,6 +19,8 @@ public class Insurance {
     private String modifyUserid;
 
     private String orgId;
+
+    private String insuranceNo;
 
     public String getInsuranceId() {
         return insuranceId;
@@ -71,5 +76,13 @@ public class Insurance {
 
     public void setOrgId(String orgId) {
         this.orgId = orgId == null ? null : orgId.trim();
+    }
+
+    public String getInsuranceNo() {
+        return insuranceNo;
+    }
+
+    public void setInsuranceNo(String insuranceNo) {
+        this.insuranceNo = insuranceNo == null ? null : insuranceNo.trim();
     }
 }

@@ -1,20 +1,39 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.erp.trans.dao.TravelAllowanceMapper" >
-  <resultMap id="BaseResultMap" type="com.erp.trans.entity.TravelAllowance" >
-    <result column="TRAVEL_ALLOWANCE_ID" property="travelAllowanceId" jdbcType="VARCHAR" />
-    <result column="TRAVEL_DATE" property="travelDate" jdbcType="TIMESTAMP" />
-    <result column="TRAVEL_TYPE" property="travelType" jdbcType="VARCHAR" />
-    <result column="TRAVELERS" property="travelers" jdbcType="VARCHAR" />
-    <result column="TRAVEL_AMOUNT" property="travelAmount" jdbcType="VARCHAR" />
-    <result column="REIMBURSE_PERSON" property="reimbursePerson" jdbcType="VARCHAR" />
-    <result column="REMARK" property="remark" jdbcType="VARCHAR" />
-    <result column="MODIFY_DATE" property="modifyDate" jdbcType="TIMESTAMP" />
-    <result column="MODIFY_USERID" property="modifyUserid" jdbcType="VARCHAR" />
-    <result column="ORG_ID" property="orgId" jdbcType="VARCHAR" />
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.erp.trans.dao.TravelAllowanceMapper">
+  <resultMap id="BaseResultMap" type="com.erp.trans.entity.TravelAllowance">
+    <id column="TRAVEL_ALLOWANCE_ID" jdbcType="VARCHAR" property="travelAllowanceId" />
+    <result column="TRAVEL_DATE" jdbcType="TIMESTAMP" property="travelDate" />
+    <result column="TRAVEL_TYPE" jdbcType="VARCHAR" property="travelType" />
+    <result column="TRAVELERS" jdbcType="VARCHAR" property="travelers" />
+    <result column="TRAVEL_AMOUNT" jdbcType="VARCHAR" property="travelAmount" />
+    <result column="REIMBURSE_PERSON" jdbcType="VARCHAR" property="reimbursePerson" />
+    <result column="REMARK" jdbcType="VARCHAR" property="remark" />
+    <result column="MODIFY_DATE" jdbcType="TIMESTAMP" property="modifyDate" />
+    <result column="MODIFY_USERID" jdbcType="VARCHAR" property="modifyUserid" />
+    <result column="ORG_ID" jdbcType="VARCHAR" property="orgId" />
   </resultMap>
-  <insert id="insert" parameterType="com.erp.trans.entity.TravelAllowance" >
-    insert into TB_TRAVEL_ALLOWANCE (TRAVEL_ALLOWANCE_ID, TRAVEL_DATE, 
+   <sql id="Base_Column_List">
+   TRAVEL_ALLOWANCE_ID,TRAVEL_DATE,TRAVEL_TYPE,TRAVELERS,TRAVEL_AMOUNT,REIMBURSE_PERSON,REMARK
+  </sql>
+  <!-- 查询出差补贴信息 -->
+  <select id="searchTravelAllowance" resultMap="BaseResultMap" parameterType="com.erp.trans.common.entity.Pager">
+		select <include refid="Base_Column_List"></include>
+		from tb_travel_allowance ta
+		<where>
+			<if test="conditiions !=null">
+				<if test="conditiions.orgId != null and conditiions.orgId != '0' and conditiions.orgId != '-1'">
+					and ta.ORG_ID = #{conditiions.orgId,jdbcType=VARCHAR}
+				</if>
+				<if test="conditiions.travelers !=null and conditiions.travelers !=''">
+				    and ta.travelers REGEXP #{conditiions.travelers, jdbcType=VARCHAR}
+				</if>
+			</if>
+		</where> 
+		order by ta.MODIFY_DATE desc
+    </select>
+  <insert id="insert" parameterType="com.erp.trans.entity.TravelAllowance">
+    insert into tb_travel_allowance (TRAVEL_ALLOWANCE_ID, TRAVEL_DATE, 
       TRAVEL_TYPE, TRAVELERS, TRAVEL_AMOUNT, 
       REIMBURSE_PERSON, REMARK, MODIFY_DATE, 
       MODIFY_USERID, ORG_ID)
@@ -23,69 +42,69 @@
       #{reimbursePerson,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}, #{modifyDate,jdbcType=TIMESTAMP}, 
       #{modifyUserid,jdbcType=VARCHAR}, #{orgId,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.erp.trans.entity.TravelAllowance" >
-    insert into TB_TRAVEL_ALLOWANCE
-    <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="travelAllowanceId != null" >
+  <insert id="insertSelective" parameterType="com.erp.trans.entity.TravelAllowance">
+    insert into tb_travel_allowance
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="travelAllowanceId != null">
         TRAVEL_ALLOWANCE_ID,
       </if>
-      <if test="travelDate != null" >
+      <if test="travelDate != null">
         TRAVEL_DATE,
       </if>
-      <if test="travelType != null" >
+      <if test="travelType != null">
         TRAVEL_TYPE,
       </if>
-      <if test="travelers != null" >
+      <if test="travelers != null">
         TRAVELERS,
       </if>
-      <if test="travelAmount != null" >
+      <if test="travelAmount != null">
         TRAVEL_AMOUNT,
       </if>
-      <if test="reimbursePerson != null" >
+      <if test="reimbursePerson != null">
         REIMBURSE_PERSON,
       </if>
-      <if test="remark != null" >
+      <if test="remark != null">
         REMARK,
       </if>
-      <if test="modifyDate != null" >
+      <if test="modifyDate != null">
         MODIFY_DATE,
       </if>
-      <if test="modifyUserid != null" >
+      <if test="modifyUserid != null">
         MODIFY_USERID,
       </if>
-      <if test="orgId != null" >
+      <if test="orgId != null">
         ORG_ID,
       </if>
     </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="travelAllowanceId != null" >
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="travelAllowanceId != null">
         #{travelAllowanceId,jdbcType=VARCHAR},
       </if>
-      <if test="travelDate != null" >
+      <if test="travelDate != null">
         #{travelDate,jdbcType=TIMESTAMP},
       </if>
-      <if test="travelType != null" >
+      <if test="travelType != null">
         #{travelType,jdbcType=VARCHAR},
       </if>
-      <if test="travelers != null" >
+      <if test="travelers != null">
         #{travelers,jdbcType=VARCHAR},
       </if>
-      <if test="travelAmount != null" >
+      <if test="travelAmount != null">
         #{travelAmount,jdbcType=VARCHAR},
       </if>
-      <if test="reimbursePerson != null" >
+      <if test="reimbursePerson != null">
         #{reimbursePerson,jdbcType=VARCHAR},
       </if>
-      <if test="remark != null" >
+      <if test="remark != null">
         #{remark,jdbcType=VARCHAR},
       </if>
-      <if test="modifyDate != null" >
+      <if test="modifyDate != null">
         #{modifyDate,jdbcType=TIMESTAMP},
       </if>
-      <if test="modifyUserid != null" >
+      <if test="modifyUserid != null">
         #{modifyUserid,jdbcType=VARCHAR},
       </if>
-      <if test="orgId != null" >
+      <if test="orgId != null">
         #{orgId,jdbcType=VARCHAR},
       </if>
     </trim>
