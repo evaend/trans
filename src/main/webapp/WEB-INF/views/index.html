@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="../lib/easyui/themes/metro/easyui.css">
+	  <link rel="stylesheet" type="text/css" href="../lib/easyui/themes/icon.css">
+    <link rel="stylesheet" type="text/css" href="../lib/normalize.css">
+    <title>12222</title>
+    <!--<title>物流管理系统ERP</title>-->
+</head>
+<body class="easyui-layout">
+  <div data-options="region:'north',border:false" style="height:60px;background:#f7f9fa;padding:10px;line-height:40px;font-size:16px;color:#34495e">
+    <!--整车物流管理平台-->
+    整车物流管理平台
+  </div>
+  <div 
+    data-options="region:'west',split:true,title:'导航菜单'" 
+    style="width:150px;color:dodgerblue">
+    <div id='menuList'>
+      
+    </div>
+  </div>
+  <div data-options="region:'east',split:true,collapsed:true,title:'操作日志'" style="width:150px;padding:10px;">操作日志列表</div>
+  <div data-options="region:'south',border:false" style="height:50px;background:#f7f9fa;padding:10px;text-align: center;color:#34495e">
+    版权所有©️VVVVVania
+  </div>
+  <div data-options="region:'center'" id='center'>
+    <div id="tt">
+    </div>
+  </div>
+<script type="text/javascript" src="../lib/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="../lib/easyui/jquery.easyui.min.js"></script>  
+<script>
+  var mock = [
+    {title: '运输管理', id: 1, subList: [
+      {title: '发运计划信息', id: 13, uri: '../views/plan.html'},
+      {title: '运单管理', id: 12, uri: '../views/waybill.html'},
+    ]},
+    {title: '结算管理', id: 2, subList: [
+      {title: '托运方结费', id: 21, uri: '../views/tyfCharge.html'},
+      {title: '承运商结费', id: 23, uri: '../views/cysCharge.html'},
+      {title: '司机结费', id: 31, uri: '../views/sjCharge.html'},
+    ]},
+    {title: '运营成本', id: 3, subList: [
+      {title: '人员工资', id: 32, uri: '../views/wages.html'},
+      {title: '办公场地费用', id: 33, uri: '../views/officePlace.html'},
+      {title: '差旅招待', id: 33, uri: '../views/clzd.html'},
+      {title: '税收', id: 33, uri: '../views/revenue.html'},
+      {title: '车辆折旧', id: 33, uri: '../views/depreciation.html'},
+      {title: '保险', id: 33, uri: '../views/insurance.html'},
+    ]},
+    {title: '统计报表', id: 4, subList: [
+      {title: '统计', id: 11, uri: 'http://www.baidu.com'}
+    ]},
+    {title: '合同档案', id: 5, subList: [
+      {title: '收入合同', id: 41, uri: '../views/incomeContract.html'},
+      {title: '成本合同', id: 42, uri: '../views/costContract.html'},
+      {title: '轿运车档案', id: 43, uri: '../views/trailerArchives.html'},
+      {title: '人事档案', id: 43, uri: '../views/personalArchives.html'}
+    ]},
+    {title: '系统管理', id: 6, subList: [
+      {title: '用户管理', id: 51, uri: 'http://www.baidu.com'},
+      {title: '模块管理', id: 52, uri: 'http://www.baidu.com'}
+    ]}
+  ]
+</script>  
+<script type="text/javascript" src="../js/home.js"></script></body>
+</html>
