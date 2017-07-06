@@ -422,7 +422,7 @@ var Table = function Table() {
     if (selector && opts) {
       selector.datagrid(__WEBPACK_IMPORTED_MODULE_0_babel_runtime_core_js_object_assign___default()({}, {
         method: 'get',
-        height: $(window).height() + 20,
+        height: $(window).height() - 180,
         collapsible: true,
         striped: true,
         rownumbers: true
@@ -1061,7 +1061,8 @@ __WEBPACK_IMPORTED_MODULE_0__component_table__["a" /* table */].init($grid, {
   }],
   title: '司机结费',
   url: '../charge/searchChargeList?chargeType=03',
-  columns: [[{ field: 'id', checkbox: true }, { field: 'name1', title: '发运日期', width: 100 }, { field: 'name2', title: '轿运车号', width: 100 }, { field: 'name3', title: '车次', width: 100 }, { field: 'mainDrive', title: '主驾', width: 100 }, { field: 'coPilot', title: '副驾', width: 100 }, { field: 'locationFrom', title: '起运地', width: 100 }, { field: 'locationTo', title: '目的地', width: 100 }, { field: 'kiloPrice', title: '单价/公里', width: 100 }, { field: 'name9', title: '数量', width: 100 }, { field: 'kiloMeters', title: '公里数', width: 100 }, { field: 'oilCost1', title: '油耗1', width: 100 }, { field: 'oilCost2', title: '油耗2', width: 100 }, { field: 'oilCost3', title: '油耗3', width: 100 }, { field: 'oilCost4', title: '油耗4', width: 100 }, { field: 'oilSubsidy', title: '油耗补贴', width: 100 }, { field: 'name16', title: '结费金额', width: 100 }, { field: 'name17', title: '修改人', width: 100 }, { field: 'modifyDate', title: '修改时间', width: 100 }]]
+  height: __WEBPACK_IMPORTED_MODULE_5_jQuery___default()(window).height() - 65,
+  columns: [[{ field: 'id', checkbox: true }, { field: 'name1', title: '发运日期', width: 100 }, { field: 'transportTool', title: '轿运车号', width: 100 }, { field: 'name3', title: '车次', width: 100 }, { field: 'mainDrive', title: '主驾', width: 100 }, { field: 'coPilot', title: '副驾', width: 100 }, { field: 'locationFrom', title: '起运地', width: 100 }, { field: 'locationTo', title: '目的地', width: 100 }, { field: 'kiloPrice', title: '单价/公里', width: 100 }, { field: 'chargeAmount', title: '数量', width: 100 }, { field: 'kiloMeters', title: '公里数', width: 100 }, { field: 'oilCost1', title: '油耗1', width: 100 }, { field: 'oilCost2', title: '油耗2', width: 100 }, { field: 'oilCost3', title: '油耗3', width: 100 }, { field: 'oilCost4', title: '油耗4', width: 100 }, { field: 'oilSubsidy', title: '油耗补贴', width: 100 }, { field: 'name16', title: '结费金额', width: 100 }, { field: 'name17', title: '修改人', width: 100 }, { field: 'modifyDate', title: '修改时间', width: 100 }]]
 });
 
 //编辑window初始化
@@ -1072,16 +1073,18 @@ __WEBPACK_IMPORTED_MODULE_1__component_window__["a" /* modalWindow */].init($dia
   var isValid = $form.form('validate');
   console.log(isValid);
   if (isValid) {
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__utils_common__["b" /* ajaxPost */])({ url: '../../lib/mock/success.json', method: 'get' }, function (data) {
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__utils_common__["b" /* ajaxPost */])({ url: '../charge/editAccount', data: postData }, function (data) {
       //===== 校验结束 =====
       console.log('编辑一条记录', postData);
-      //新增成功,关闭窗口
-      __WEBPACK_IMPORTED_MODULE_1__component_window__["a" /* modalWindow */].close($dialog);
-      __WEBPACK_IMPORTED_MODULE_4__component_message__["a" /* message */].alert({
-        msg: '\u53F8\u673A\u7ED3\u8D39' + text + '\u6210\u529F'
-      });
-      //表格刷新
-      __WEBPACK_IMPORTED_MODULE_0__component_table__["a" /* table */].reload($grid);
+      if (data) {
+        //新增成功,关闭窗口
+        __WEBPACK_IMPORTED_MODULE_1__component_window__["a" /* modalWindow */].close($dialog);
+        __WEBPACK_IMPORTED_MODULE_4__component_message__["a" /* message */].alert({
+          msg: '\u53F8\u673A\u7ED3\u8D39' + text + '\u6210\u529F'
+        });
+        //表格刷新
+        __WEBPACK_IMPORTED_MODULE_0__component_table__["a" /* table */].reload($grid);
+      }
     });
   }
 });

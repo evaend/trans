@@ -1043,8 +1043,9 @@ __WEBPACK_IMPORTED_MODULE_0__component_table__["a" /* table */].init($grid, {
     }
   }],
   title: '承运商结费',
-  url: '../charge/searchChargeList?chargeType=01',
-  columns: [[{ field: 'id', checkbox: true }, { field: 'sendDate', title: '制单日期', width: 100 }, { field: 'sendDate', title: '发运日期', width: 100 }, { field: 'consignNo', title: '运单号', width: 100 }, { field: 'chassisNo', title: '底盘号', width: 100 }, { field: 'locationFrom', title: '起运地', width: 100 }, { field: 'locationTo', title: '目的地', width: 100 }, { field: 'carBrand', title: '品牌', width: 100 }, { field: 'carModel', title: '车型', width: 100 }, { field: 'amonut', title: '数量', width: 100, align: 'right' }, { field: 'consignOrgName', title: '承运商', width: 100 }, { field: 'consignOrgName', title: '轿运车', width: 100 }, { field: 'consignOrgName', title: '主驾', width: 100 }, { field: 'consignOrgName', title: '副驾', width: 100 }, { field: 'freightRates', title: '运价', width: 100 }, { field: 'freight', title: '运费', width: 100 }, { field: 'subsidy', title: '补贴', width: 100 }, { field: 'qualityLoss', title: '质损费', width: 100 }, { field: 'misCosts', title: '杂项扣费', width: 100 }, { field: 'gpsPayment', title: 'GPS扣款', width: 100 }, { field: 'reverseCharge', title: '倒板费', width: 100 }, { field: 'advances', title: '预付款', width: 100 }, { field: 'repaidOilCard', title: '预付油卡', width: 100 }, { field: 'bill', title: '结费金额', width: 100 }, { field: 'modifier', title: '修改人', width: 100 }, { field: 'modifyDate', title: '修改时间', width: 100 }]]
+  url: '../charge/searchChargeList?chargeType=02',
+  height: __WEBPACK_IMPORTED_MODULE_5_jQuery___default()(window).height() - 95,
+  columns: [[{ field: 'id', checkbox: true }, { field: 'sendDate', title: '制单日期', width: 100 }, { field: 'sendDate', title: '发运日期', width: 100 }, { field: 'consignNo', title: '运单号', width: 100 }, { field: 'chassisNo', title: '底盘号', width: 100 }, { field: 'locationFrom', title: '起运地', width: 100 }, { field: 'locationTo', title: '目的地', width: 100 }, { field: 'carBrand', title: '品牌', width: 100 }, { field: 'carModel', title: '车型', width: 100 }, { field: 'chargeAmount', title: '数量', width: 100, align: 'right' }, { field: 'consignOrgName', title: '承运商', width: 100 }, { field: 'consignOrgName', title: '轿运车', width: 100 }, { field: 'consignOrgName', title: '主驾', width: 100 }, { field: 'consignOrgName', title: '副驾', width: 100 }, { field: 'freightRates', title: '运价', width: 100 }, { field: 'freight', title: '运费', width: 100 }, { field: 'subsidy', title: '补贴', width: 100 }, { field: 'qualityLoss', title: '质损费', width: 100 }, { field: 'misCosts', title: '杂项扣费', width: 100 }, { field: 'gpsPayment', title: 'GPS扣款', width: 100 }, { field: 'reverseCharge', title: '倒板费', width: 100 }, { field: 'advances', title: '预付款', width: 100 }, { field: 'repaidOilCard', title: '预付油卡', width: 100 }, { field: 'bill', title: '结费金额', width: 100 }, { field: 'modifier', title: '修改人', width: 100 }, { field: 'modifyDate', title: '修改时间', width: 100 }]]
 });
 
 //编辑window初始化
@@ -1055,16 +1056,18 @@ __WEBPACK_IMPORTED_MODULE_1__component_window__["a" /* modalWindow */].init(__WE
   var isValid = $form.form('validate');
   console.log(isValid);
   if (isValid) {
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__utils_common__["b" /* ajaxPost */])({ url: '../../lib/mock/success.json', method: 'get' }, function (data) {
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__utils_common__["b" /* ajaxPost */])({ url: '../charge/editAccount', data: postData }, function (data) {
       //===== 校验结束 =====
       console.log('编辑一条记录', postData);
-      //新增成功,关闭窗口
-      __WEBPACK_IMPORTED_MODULE_1__component_window__["a" /* modalWindow */].close($dialog);
-      __WEBPACK_IMPORTED_MODULE_4__component_message__["a" /* message */].alert({
-        msg: '\u6258\u8FD0\u65B9\u7ED3\u8D39' + text + '\u6210\u529F'
-      });
-      //表格刷新
-      __WEBPACK_IMPORTED_MODULE_0__component_table__["a" /* table */].reload($grid);
+      if (data) {
+        //新增成功,关闭窗口
+        __WEBPACK_IMPORTED_MODULE_1__component_window__["a" /* modalWindow */].close($dialog);
+        __WEBPACK_IMPORTED_MODULE_4__component_message__["a" /* message */].alert({
+          msg: '\u6258\u8FD0\u65B9\u7ED3\u8D39' + text + '\u6210\u529F'
+        });
+        //表格刷新
+        __WEBPACK_IMPORTED_MODULE_0__component_table__["a" /* table */].reload($grid);
+      }
     });
   }
 });
@@ -1079,15 +1082,41 @@ __WEBPACK_IMPORTED_MODULE_5_jQuery___default()('#search').on('click', function (
 
 //导出
 __WEBPACK_IMPORTED_MODULE_5_jQuery___default()('#export').on('click', function () {
-  alert('调用导出接口');
-  // ajaxPost('', (data) => {
-
-  // })
+  var postData = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__utils_common__["a" /* getFormData */])(__WEBPACK_IMPORTED_MODULE_5_jQuery___default()('#ff'));
+  postData.chargeType = '01';
+  __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__utils_common__["b" /* ajaxPost */])({ url: '../charge/exportChargeInfoList', data: postData }, function (data) {
+    //===== 校验结束 =====
+    console.log('导出成功', postData);
+    if (data) {
+      __WEBPACK_IMPORTED_MODULE_4__component_message__["a" /* message */].alert({ msg: '\u5BFC\u51FA\u6210\u529F' });
+    }
+  });
 });
 
 //对账
 __WEBPACK_IMPORTED_MODULE_5_jQuery___default()('#check').on('click', function () {
-  alert('调用对账接口');
+  var selectd = __WEBPACK_IMPORTED_MODULE_5_jQuery___default()('#cysChargeGrid').datagrid('getSelections');
+  var len = selectd.length;
+  if (len === 0) {
+    __WEBPACK_IMPORTED_MODULE_5_jQuery___default.a.messager.alert('提示', '至少选择一项', 'info');
+  } else {
+    __WEBPACK_IMPORTED_MODULE_5_jQuery___default.a.messager.confirm('对账提示', '是否确认对账?', function (r) {
+      if (r) {
+        var opts = [];
+        selectd.map(function (item, index) {
+          opts.push({ chargeId: item.chargeId });
+        });
+        console.log('编辑一条记录', opts);
+        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__utils_common__["b" /* ajaxPost */])({ url: '../charge/balanceOfAccount', chargeIds: opts }, function (data) {
+          if (data) {
+            console.log(opts, 'opts');
+            //表格刷新
+            __WEBPACK_IMPORTED_MODULE_0__component_table__["a" /* table */].reload($grid);
+          }
+        });
+      }
+    });
+  }
 });
 
 /***/ })
