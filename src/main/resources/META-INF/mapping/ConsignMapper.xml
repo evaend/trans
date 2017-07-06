@@ -17,6 +17,8 @@
     <result column="CREATE_USER_ID" property="createUserId" jdbcType="VARCHAR" />
     <result column="MODIFY_USER_ID" property="modifyUserId" jdbcType="VARCHAR" />
     <result column="ORG_ID" property="orgId" jdbcType="VARCHAR" />
+    <result column="EXCEPTION_REASON" property="exceptionReason" jdbcType="VARCHAR" />
+    <result column="RETURN_DATE" property="returnDate" jdbcType="TIMESTAMP" />
   </resultMap>
   
   <sql id="Consign_Return_List">
@@ -24,7 +26,7 @@
        c.LOCATION_TO "locationTo",  c.RECEIVE_ORG_ID "receiveOrgId",  c.RECEIVE_ORG_NAME "receiveOrgName", 
        c.CONSIGN_FSATE "consignFsate",  c.CONSIGN_ORG_ID "consignOrgId",  c.CONSIGN_ORG_NAME "consignOrgName", 
        r.carrier_name "carrierName",
-       c.LOCATION_FROM "lactionFrom",  date_format(c.MODIFY_DATE,'%Y-%m-%d %T') "modifyDate", 
+       c.LOCATION_FROM "locationFrom",  date_format(c.MODIFY_DATE,'%Y-%m-%d %T') "modifyDate", 
       u.USER_NAME "modifyUser"
   </sql>
    <insert id="importConsigns" >
@@ -55,7 +57,7 @@
 			where cd.despatch_plan_id = dp.despatch_plan_id
 			and dp.record_id = r.record_id
 			and dp.despatch_plan_id = dc.despatch_plan_id
-		) r on r.consign_id = warrier.consign_id
+		) r on r.consign_id = c.consign_id
 		<where>
 			<if test="conditiions.orgId != null and conditiions.orgId != '0' and conditiions.orgId != '-1'">
 				and c.ORG_ID = #{conditiions.orgId,jdbcType=VARCHAR}
@@ -84,6 +86,14 @@
     consign_fsate=
   <foreach collection="consigns" item="item" index="index" separator=" " open="case consign_id" close="end">
       when #{item.consignId,jdbcType=VARCHAR} then #{item.consignFsate,jdbcType=VARCHAR}
+  </foreach>
+  , EXCEPTION_REASON=
+  <foreach collection="consigns" item="item" index="index" separator=" " open="case consign_id" close="end">
+      when #{item.consignId,jdbcType=VARCHAR} then #{item.exceptionReason,jdbcType=VARCHAR}
+  </foreach>
+   , RETURN_DATE=
+  <foreach collection="consigns" item="item" index="index" separator=" " open="case consign_id" close="end">
+      when #{item.consignId,jdbcType=VARCHAR} then #{item.returnDate,jdbcType=TIMESTAMP}
   </foreach>
   ,MODIFY_USER_ID=
   <foreach collection="consigns" item="item" index="index" separator=" " open="case consign_id" close="end">

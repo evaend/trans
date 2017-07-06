@@ -1,6 +1,7 @@
 package com.erp.trans.web;
 
 import java.math.BigDecimal;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -26,6 +27,7 @@ import com.erp.trans.common.constant.CustomConst.ConsignFstate;
 import com.erp.trans.common.constant.CustomConst.LoginUser;
 import com.erp.trans.common.entity.Pager;
 import com.erp.trans.common.exception.ValidationException;
+import com.erp.trans.common.util.DateUtils;
 import com.erp.trans.common.util.ExcelUtils;
 import com.erp.trans.common.util.ExcelUtils.EntityHandler;
 import com.erp.trans.entity.Consign;
@@ -109,9 +111,9 @@ public class TransManagementController {
 			@RequestParam(value = "dispatchFstate", required = false) String dispatchFstate,
 			@RequestParam(value = "page", required = false) Integer page,
 			@RequestParam(value = "pagesize", required = false) Integer pagesize, HttpServletRequest request) {
-		Pager<Map<String, Object>> pager = new Pager<Map<String, Object>>(true);
-		pager.setPageSize(pagesize == null ? 15 : pagesize);
-		pager.setPageNum(page == null ? 1 : page);
+		Pager<Map<String, Object>> pager = new Pager<Map<String, Object>>(false);
+//		pager.setPageSize(pagesize == null ? 15 : pagesize);
+//		pager.setPageNum(page == null ? 1 : page);
 		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");// 年-月-日格式化
 		// 当前登录用户的机构
 		String orgId = (String) request.getSession().getAttribute(LoginUser.SESSION_USER_ORGID);
@@ -216,6 +218,7 @@ public class TransManagementController {
 		consigndto.setModifyDate(new Date());
 		consigndto.setCreateDate(new Date());
 		consigndto.setModifyUserId(userId);
+		consigndto.setCreateUserId(userId);
 		consigndto.setOrgId(orgId);
 		
 		transManagementService.insertConsignDto(consigndto);
@@ -236,12 +239,14 @@ public class TransManagementController {
 	
 	/**
 	 * 修改运单状态
+	 * @throws ParseException 
 	 */
 	@ResponseBody
 	@RequestMapping(value = "updateConsignFstate")
 	public void updateConsignFstate(String[] consignIds,
-			String fstate,
-			HttpServletRequest request) throws ValidationException {
+			String fstate,String exceptionReason,
+			String returnDate,
+			HttpServletRequest request) throws ValidationException, ParseException {
 		if(consignIds == null || consignIds.length == 0){
 			throw new ValidationException("请选择要更改状态的运单");
 		}
@@ -254,6 +259,12 @@ public class TransManagementController {
 			Consign consign = new Consign();
 			consign.setConsignId(consignId);
 			consign.setConsignFsate(fstate);
+			if(StringUtils.isNotBlank(exceptionReason)){
+				consign.setExceptionReason(exceptionReason);
+			}
+			if(StringUtils.isNotBlank(returnDate)){
+				consign.setReturnDate(DateUtils.convertDate(returnDate, "yyyy-MM-dd"));
+			}			
 			consign.setModifyUserId(userId);
 			consign.setModifyDate(new Date());
 			consigns.add(consign);
@@ -282,7 +293,6 @@ public class TransManagementController {
 		 	@RequestParam(value="consignFile", required=false)MultipartFile consignExcelFile, 
 			HttpServletRequest request, 
 			HttpSession session) throws Exception {
-			System.out.println("================");
 			long startTime = System.currentTimeMillis();
 			if(consignExcelFile==null || consignExcelFile.isEmpty()){
 				throw new ValidationException("请上传excel文件");

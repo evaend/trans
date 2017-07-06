@@ -37,6 +37,10 @@ public class Consign {
 
     private String orgId;
     
+    private String exceptionReason;
+    
+    private Date returnDate;
+    
     List<ConsignDetail> consignDetails;
 
     public String getConsignId() {
@@ -166,4 +170,21 @@ public class Consign {
 	public void setConsignDetails(List<ConsignDetail> consignDetails) {
 		this.consignDetails = consignDetails;
 	}
+
+	public String getExceptionReason() {
+		return exceptionReason;
+	}
+
+	public void setExceptionReason(String exceptionReason) {
+		this.exceptionReason = exceptionReason;
+	}
+
+	public Date getReturnDate() {
+		return returnDate;
+	}
+
+	public void setReturnDate(Date returnDate) {
+		this.returnDate = returnDate;
+	}
+	
 }

@@ -186,7 +186,7 @@ public class ChargeManagementController {
 					"freightRates", "subsidy","qualityLoss","misCosts","gpsPayment","reverseCharge","advances","prepaidOilCard","chargeAmount",
 					"modifyUserName","modifyDate");
 		}
-		if(chargeType.equals(CustomConst.ChargeType.CONSIGN)){//承运商结费导出
+		if(chargeType.equals(CustomConst.ChargeType.CARRIER)){//承运商结费导出
 			fieldName = Arrays.asList("carrierName", "transportTool","despatchDate", "consignNo", "chassisNo", "carBrand",
 					"carModel", "amount","locationFrom", "locationTo","mainDrive", "coPliot",
 					"freightRates", "subsidy","qualityLoss","misCosts","gpsPayment","reverseCharge","advances","prepaidOilCard","chargeAmount",

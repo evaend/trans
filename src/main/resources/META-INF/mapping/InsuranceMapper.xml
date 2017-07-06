@@ -15,7 +15,7 @@
    INSURANCE_ID,INSURANCE_TYPE,INSURANCE_AMOUNT,INSURANCE_COMPANY,INSURANCE_NO
   </sql>
   <!-- 查询保险信息 -->
-  <select id="searchVehicleDep" resultMap="BaseResultMap" parameterType="com.erp.trans.common.entity.Pager">
+  <select id="searchInsurance" resultMap="BaseResultMap" parameterType="com.erp.trans.common.entity.Pager">
 		select <include refid="Base_Column_List"></include>
 		from tb_insurance i
 		<where>

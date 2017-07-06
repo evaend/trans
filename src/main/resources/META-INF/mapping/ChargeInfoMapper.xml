@@ -159,7 +159,7 @@
 	</insert>
 	
 	<update id="updateChargeInfo">
- update td_charge_info set
+ update tb_charge_info set
     charge_fsate=
   <foreach collection="chargeInfos" item="item" index="index" separator=" " open="case charge_id" close="end">
       when #{item.chargeId,jdbcType=VARCHAR} then #{item.chargeFstate,jdbcType=VARCHAR}

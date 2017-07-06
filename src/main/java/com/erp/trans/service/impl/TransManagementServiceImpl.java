@@ -193,8 +193,20 @@ public class TransManagementServiceImpl  extends BaseService implements TransMan
 			throw new ValidationException("运单号已存在，请检查");
 		}
 //		1、新增运单主记录
-		Consign consign = (Consign)consigndto;
+		Consign consign = new Consign();
 		consign.setConsignId(IdentifieUtil.getGuId());
+		consign.setCamount(consigndto.getCamount());
+		consign.setConsignFsate(consigndto.getConsignFsate());
+		consign.setConsignNo(consigndto.getConsignNo());
+		consign.setConsignOrgName(consigndto.getConsignOrgName());
+		consign.setCreateDate(consigndto.getCreateDate());
+		consign.setCreateUserId(consigndto.getCreateUserId());
+		consign.setLocationFrom(consigndto.getLocationFrom());
+		consign.setLocationTo(consigndto.getLocationTo());
+		consign.setOrgId(consigndto.getOrgId());
+		consign.setReceiveOrgName(consigndto.getReceiveOrgName());
+		consign.setModifyDate(consigndto.getModifyDate());
+		consign.setModifyUserId(consigndto.getModifyUserId());
 		this.insertInfo(consign);
 //		2、新增运单明细记录
 		ConsignDetail consignDetail = new ConsignDetail();
