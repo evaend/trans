@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" type="text/css" href="../../lib/bootstrap.css">
-    <link rel="stylesheet" type="text/css" href="../../lib/normalize.css">
-    <link rel="stylesheet" type="text/css" href="../../lib/easyui/themes/material/easyui.css">
-    <link rel="stylesheet" type="text/css" href="../../lib/easyui/themes/icon.css">
-    <link rel="stylesheet" type="text/css" href="../../src/style/app.css">
+    <link rel="stylesheet" type="text/css" href="../lib/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="../lib/normalize.css">
+    <link rel="stylesheet" type="text/css" href="../lib/easyui/themes/material/easyui.css">
+    <link rel="stylesheet" type="text/css" href="../lib/easyui/themes/icon.css">
+    <link rel="stylesheet" type="text/css" href="../css/app.css">
     <title>人事档案</title>
 </head>
 <body>
@@ -32,23 +32,24 @@
   <!-- 编板弹出框开始 -->
   <div id="personalDialog">
     <form id="personalFf" class='row vForm'>  
+      <input type="hidden" name="personRecordsId"/>
       <div class="col-md-2 vForm-item form-label">  
         <label for="pName">姓名:</label>   
       </div>  
       <div class="col-md-4 vForm-item">  
-        <input class="easyui-validatebox" type="text" name="pName" />  
+        <input class="easyui-validatebox" type="text" name="pName" data-options="required:true"/>  
       </div> 
       <div class="col-md-2 vForm-item form-label">  
         <label for="pGender">性别:</label>   
       </div>  
       <div class="col-md-4 vForm-item">  
-        <input class="easyui-validatebox" type="text" name="pGender" />  
+        <input class="easyui-validatebox" type="text" name="pGender" data-options="required:true"/>  
       </div>  
       <div class="col-md-2 vForm-item form-label">  
-        <label for="pEmergencyPhone">电话号码:</label>  
+        <label for="pPhone">电话号码:</label>  
       </div>  
       <div class="col-md-4 vForm-item">  
-        <input class="easyui-validatebox" type="text" name="pEmergencyPhone" />  
+        <input class="easyui-validatebox" type="text" name="pEmergencyPhone" data-options="required:true"/>  
       </div>  
       <div class="col-md-2 vForm-item form-label">  
         <label for="pBirthdate">出生日期:</label>   
@@ -61,31 +62,31 @@
         <label for="pIdno">身份证号:</label>    
       </div>   
       <div class="col-md-4 vForm-item">  
-        <input class="easyui-validatebox" type="text" name="pIdno" />  
+        <input class="easyui-validatebox" type="text" name="pIdno" data-options="required:true"/>  
       </div>  
       <div class="col-md-2 vForm-item form-label">  
         <label for="pHomeAddress">家庭住址:</label>   
       </div>  
       <div class="col-md-4 vForm-item">    
-        <input class="easyui-validatebox" type="text" name="pHomeAddress" />  
+        <input class="easyui-validatebox" type="text" name="pHomeAddress" data-options="required:true"/>  
       </div>  
       <div class="col-md-2 vForm-item form-label">  
-        <label for="name2">紧急联系人</label>    
+        <label for="pEmergency">紧急联系人</label>    
       </div>  
       <div class="col-md-4 vForm-item">  
-        <input class="easyui-validatebox" type="text" name="name2" />  
+        <input class="easyui-validatebox" type="text" name="pEmergency" data-options="required:true"/>  
       </div>  
       <div class="col-md-2 vForm-item form-label">  
-        <label for="name6">紧急联系人电话:</label>    
+        <label for="pEmergencyPhone">紧急联系人电话:</label>    
       </div>  
       <div class="col-md-4 vForm-item">  
-        <input class="easyui-validatebox" type="text" name="name7" />  
+        <input class="easyui-validatebox" type="text" name="pEmergencyPhone" data-options="required:true"/>  
       </div>  
       <div class="col-md-2 vForm-item form-label">  
         <label for="pBankCard">银行卡号:</label>    
       </div>  
       <div class="col-md-4 vForm-item">  
-        <input class="easyui-validatebox" type="text" name="pBankCard" />  
+        <input class="easyui-validatebox" type="text" name="pBankCard" data-options="required:true"/>  
       </div> 
       <div class="col-md-2 vForm-item form-label">  
         <label for="remark">备注:</label>    
@@ -97,9 +98,10 @@
   </div>
   <!-- 编板弹出框结束 -->
 
-<script type="text/javascript" src="../../lib/jquery-3.2.1.min.js"></script>
-<script type="text/javascript" src="../../lib/easyui/jquery.easyui.min.js"></script>   
-<script type="text/javascript" src="../../lib/easyui/easyui-lang-zh_CN.js"></script>  
-<script type="text/javascript" src="../../lib/My97datePicker/WdatePicker.js"></script> 
+<script type="text/javascript" src="../lib/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="../lib/easyui/jquery.easyui.min.js"></script>   
+<script type="text/javascript" src="../lib/easyui/easyui-lang-zh_CN.js"></script>  
+<script type="text/javascript" src="../lib/My97DatePicker/WdatePicker.js"></script> 
+<script type="text/javascript" src="../js/personalArchives.js"></script> 
 </body>
 </html>
