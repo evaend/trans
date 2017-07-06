@@ -1075,23 +1075,13 @@ __WEBPACK_IMPORTED_MODULE_1__component_window__["a" /* modalWindow */].init(__WE
 //查询
 __WEBPACK_IMPORTED_MODULE_5_jQuery___default()('#search').on('click', function () {
   var postData = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__utils_common__["a" /* getFormData */])(__WEBPACK_IMPORTED_MODULE_5_jQuery___default()('#ff'));
+  postData.chargeType = '02';
   console.log(postData);
+  __WEBPACK_IMPORTED_MODULE_5_jQuery___default()('#export').attr('href', '../charge/exportChargeInfoList?' + postData);
   //刷新表格
   __WEBPACK_IMPORTED_MODULE_0__component_table__["a" /* table */].load($grid, postData);
 });
-
-//导出
-__WEBPACK_IMPORTED_MODULE_5_jQuery___default()('#export').on('click', function () {
-  var postData = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__utils_common__["a" /* getFormData */])(__WEBPACK_IMPORTED_MODULE_5_jQuery___default()('#ff'));
-  postData.chargeType = '01';
-  __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__utils_common__["b" /* ajaxPost */])({ url: '../charge/exportChargeInfoList', data: postData }, function (data) {
-    //===== 校验结束 =====
-    console.log('导出成功', postData);
-    if (data) {
-      __WEBPACK_IMPORTED_MODULE_4__component_message__["a" /* message */].alert({ msg: '\u5BFC\u51FA\u6210\u529F' });
-    }
-  });
-});
+__WEBPACK_IMPORTED_MODULE_5_jQuery___default()('#export').attr('href', '../charge/exportChargeInfoList?chargeType=02');
 
 //对账
 __WEBPACK_IMPORTED_MODULE_5_jQuery___default()('#check').on('click', function () {
