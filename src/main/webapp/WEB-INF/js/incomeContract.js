@@ -1271,6 +1271,7 @@ __WEBPACK_IMPORTED_MODULE_2__component_window__["a" /* modalWindow */].init($dia
   });
   //===== 校验 =======
   //===== 校验结束 =====
+  console.log(postData)
   var isValid = $form.form('validate');
   if (isValid) {
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3__utils_common__["c" /* ajaxPost */])({ url: '../contractRecords/addUpdateContractInfo', data: postData }, function (data) {

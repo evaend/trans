@@ -1002,6 +1002,52 @@ $export($export.S + $export.F * !__webpack_require__(2), 'Object', {defineProper
 
 /***/ }),
 /* 49 */
+/***/ (function(module, exports, __webpack_require__) {
+
+/* WEBPACK VAR INJECTION */(function($) {/**
+ * @file ValidateRules 校验规则
+ */
+$.extend($.fn.validatebox.defaults.rules, {
+  minLength: {
+    validator: function validator(value, param) {
+      return value.length >= param[0];
+    },
+    message: '至少输入 {0} 个字符.'
+  },
+  maxLength: {
+    validator: function validator(value, param) {
+      return value.length <= param[0];
+    },
+    message: '最多输入 {0} 个字符.'
+  },
+  number: {
+    validator: function validator(value, param) {
+      return (/^[0-9]\d*(\.\d+)?$/.test(value)
+      ); //number: /^\d+$/,//数字value.length >= param[0];   
+    },
+    message: '请输入数字'
+  }
+});
+
+$.fn.combobox.defaults.onHidePanel = function () {
+  var valueField = $(this).combobox("options").valueField;
+  var val = $(this).combobox("getValue"); //当前combobox的值
+  alert(val);
+  var allData = $(this).combobox("getData"); //获取combobox所有数据
+  var result = true; //为true说明输入的值在下拉框数据中不存在
+  for (var i = 0; i < allData.length; i++) {
+    if (val == allData[i][valueField]) {
+      result = false;
+    }
+  }
+  if (result) {
+    $(this).combobox("clear");
+  }
+};
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
+
+/***/ }),
+/* 50 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1065,7 +1111,7 @@ var Cascade = function Cascade() {
 var cascade = new Cascade();
 
 /***/ }),
-/* 50 */
+/* 51 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1110,51 +1156,6 @@ var location = new Location();
 /* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(0)))
 
 /***/ }),
-/* 51 */
-/***/ (function(module, exports, __webpack_require__) {
-
-/* WEBPACK VAR INJECTION */(function($) {/**
- * @file ValidateRules 校验规则
- */
-$.extend($.fn.validatebox.defaults.rules, {
-  minLength: {
-    validator: function validator(value, param) {
-      return value.length >= param[0];
-    },
-    message: '至少输入 {0} 个字符.'
-  },
-  maxLength: {
-    validator: function validator(value, param) {
-      return value.length <= param[0];
-    },
-    message: '最多输入 {0} 个字符.'
-  },
-  number: {
-    validator: function validator(value, param) {
-      return (/^[0-9]\d*(\.\d+)?$/.test(value)
-      ); //number: /^\d+$/,//数字value.length >= param[0];   
-    },
-    message: '请输入数字'
-  }
-});
-
-$.fn.combobox.defaults.onHidePanel = function () {
-  var valueField = $(this).combobox("options").valueField;
-  var val = $(this).combobox("getValue"); //当前combobox的值
-  var allData = $(this).combobox("getData"); //获取combobox所有数据
-  var result = true; //为true说明输入的值在下拉框数据中不存在
-  for (var i = 0; i < allData.length; i++) {
-    if (val == allData[i][valueField]) {
-      result = false;
-    }
-  }
-  if (result) {
-    $(this).combobox("clear");
-  }
-};
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
-
-/***/ }),
 /* 52 */,
 /* 53 */,
 /* 54 */,
@@ -1172,8 +1173,8 @@ $.fn.combobox.defaults.onHidePanel = function () {
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__component_table__ = __webpack_require__(16);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__component_window__ = __webpack_require__(17);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__component_cascade__ = __webpack_require__(49);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__component_location__ = __webpack_require__(50);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__component_cascade__ = __webpack_require__(50);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__component_location__ = __webpack_require__(51);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__utils_common__ = __webpack_require__(8);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__component_message__ = __webpack_require__(15);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__actions_grid__ = __webpack_require__(19);
@@ -1187,7 +1188,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 
-__webpack_require__(51);
+__webpack_require__(49);
 
 var $grid = __WEBPACK_IMPORTED_MODULE_7_jQuery___default()('#planGrid'),
     $dialog = __WEBPACK_IMPORTED_MODULE_7_jQuery___default()('#planDialog'),
@@ -1219,10 +1220,16 @@ __WEBPACK_IMPORTED_MODULE_0__component_table__["a" /* table */].init($grid, {
     iconCls: 'icon-remove',
     handler: function handler() {
       __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_6__actions_grid__["b" /* gridDelete */])($grid, function (rows) {
-        console.log('删除数据', rows);
+        var consignIds = [];
+        rows.map(function (item, index) {
+          return consignIds.push(item.consignId);
+        });
         // 后台交互
-        // 刷新表格
-        __WEBPACK_IMPORTED_MODULE_0__component_table__["a" /* table */].reload($grid);
+        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4__utils_common__["c" /* ajaxPost */])({ url: '../trans/deleteConsignDetail', data: { consignIds: consignIds } }, function (data) {
+          console.log('删除数据', contractIds);
+          // 刷新表格
+          __WEBPACK_IMPORTED_MODULE_0__component_table__["a" /* table */].reload($grid);
+        });
       });
     }
   }],
@@ -1261,6 +1268,7 @@ __WEBPACK_IMPORTED_MODULE_1__component_window__["a" /* modalWindow */].init($dia
 __WEBPACK_IMPORTED_MODULE_1__component_window__["a" /* modalWindow */].init($bbDialog, { title: '编板' }, function (text) {
   var postData = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4__utils_common__["d" /* getFormData */])($bbForm);
   //===== 校验 =======
+  postData.consignNos = __WEBPACK_IMPORTED_MODULE_7_jQuery___default()("#consignNos").combobox('getValues');
   var isValid = $bbForm.form('validate');
   //===== 校验结束 =====
   if (isValid) {
@@ -1298,8 +1306,8 @@ __WEBPACK_IMPORTED_MODULE_7_jQuery___default()('#transportTool').combobox({
   valueField: 'id',
   textField: 'text',
   onSelect: function onSelect(rec) {
-    __WEBPACK_IMPORTED_MODULE_7_jQuery___default()('#mainDrive').val(rec.zj);
-    __WEBPACK_IMPORTED_MODULE_7_jQuery___default()('#mainDrivePhone').val(rec.lxfs);
+    __WEBPACK_IMPORTED_MODULE_7_jQuery___default()('#mainDrive').val(rec.mainDrive);
+    __WEBPACK_IMPORTED_MODULE_7_jQuery___default()('#mainDrivePhone').val(rec.mainDrivePhone);
   }
 });
 
@@ -1321,7 +1329,6 @@ __WEBPACK_IMPORTED_MODULE_7_jQuery___default()('#make').on('click', function () 
   __WEBPACK_IMPORTED_MODULE_7_jQuery___default.a.unique(opts.sort()).map(function (item, index) {
     return data.push({ text: item, id: item });
   });
-  console.log(data);
   __WEBPACK_IMPORTED_MODULE_7_jQuery___default()('#consignNos').combobox({
     data: data,
     width: 200,
@@ -1329,7 +1336,8 @@ __WEBPACK_IMPORTED_MODULE_7_jQuery___default()('#make').on('click', function () 
     valueField: 'id',
     textField: 'text',
     multiple: true,
-    editable: false
+    editable: false,
+    onHidePanel: function onHidePanel() {}
   });
   __WEBPACK_IMPORTED_MODULE_1__component_window__["a" /* modalWindow */].open($bbDialog);
 });
@@ -1356,7 +1364,7 @@ __WEBPACK_IMPORTED_MODULE_7_jQuery___default()('#import').on('change', function 
       secureuri: false,
       fileElementId: 'import',
       success: function success(data) {
-        console.log(data);
+        __WEBPACK_IMPORTED_MODULE_0__component_table__["a" /* table */].reload($grid);
       }
     });
   }
