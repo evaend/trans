@@ -25,10 +25,10 @@
         </div>
          <div class="col-md-6 vForm-item">  
           <label for="name3">合同日期:</label>  
-          <input type="text" name="name3" id="starDate" class="Wdate"  
+          <input type="text" name="contractStart" id="starDate" class="Wdate"  
           onFocus="WdatePicker({isShowClear:false,isShowToday:false,isShowOK:false,readOnly:true,maxDate:'#F{$dp.$D(\'endDate\')||\'2030-10-01\'}'})"/>  
           至
-          <input type="text" name="name4" id="endDate" class="Wdate" 
+          <input type="text" name="contractEnd" id="endDate" class="Wdate" 
           onFocus="WdatePicker({isShowClear:false,isShowToday:false,isShowOK:false,readOnly:true,minDate:'#F{$dp.$D(\'starDate\')}',maxDate:'2030-10-01'})"//>
         </div> 
       </div>
@@ -51,7 +51,8 @@
   <!-- 表格结束 -->
   <!-- 编板弹出框开始 -->
   <div id="costDialog">
-    <form id="costFf" class='row vForm'>  
+    <form id="costFf" class='row vForm'> 
+      <input type="hidden" name="contractId"/> 
       <div class="col-md-2 vForm-item form-label">  
         <label for="carrierId">承运商:</label>   
       </div>  
