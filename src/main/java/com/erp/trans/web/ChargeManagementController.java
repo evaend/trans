@@ -96,7 +96,7 @@ public class ChargeManagementController {
 	 */
 	@ResponseBody
 	@RequestMapping(value = "balanceOfAccount")
-	public void balanceOfAccount(String[] chargeIds,
+	public void balanceOfAccount(@RequestParam(value = "chargeIds[]", required = false)String[] chargeIds,
 			HttpServletRequest request) throws ValidationException {
 		if(chargeIds == null || chargeIds.length == 0){
 			throw new ValidationException("请选择要对账的车辆信息");

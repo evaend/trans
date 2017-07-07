@@ -82,7 +82,7 @@
 	</select>
 
   <update id="updateConsign">
- update td_consign set
+ update tb_consign set
     consign_fsate=
   <foreach collection="consigns" item="item" index="index" separator=" " open="case consign_id" close="end">
       when #{item.consignId,jdbcType=VARCHAR} then #{item.consignFsate,jdbcType=VARCHAR}
