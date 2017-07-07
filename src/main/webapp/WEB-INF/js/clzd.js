@@ -1062,7 +1062,7 @@ __WEBPACK_IMPORTED_MODULE_0__component_table__["a" /* table */].init($grid, {
         });
         // 刷新表格
         // 后台交互
-        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__utils_common__["b" /* ajaxPost */])({ url: '../operationCosts/deleteOfficeSpaceFee', travelAllowanceIds: opts }, function (data) {
+        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__utils_common__["b" /* ajaxPost */])({ url: '../operationCosts/deleteTravelAllowance', data: { travelAllowanceIds: opts } }, function (data) {
           //===== 校验结束 =====
           console.log('编辑一条记录', travelAllowanceIds);
           // 刷新表格
@@ -1112,6 +1112,7 @@ __WEBPACK_IMPORTED_MODULE_5_jQuery___default()('#search').on('click', function (
   //刷新表格
   __WEBPACK_IMPORTED_MODULE_0__component_table__["a" /* table */].load($grid, postData);
 });
+console.log(Math.round(new Date() / 1000));
 
 /***/ })
 /******/ ]);
