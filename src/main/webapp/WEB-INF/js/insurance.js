@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "/dist";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 58);
+/******/ 	return __webpack_require__(__webpack_require__.s = 59);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -143,8 +143,8 @@ module.exports = function(it){
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function($) {/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return ajaxPost; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return getFormData; });
+/* WEBPACK VAR INJECTION */(function($) {/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return ajaxPost; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return getFormData; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return setFormData; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return resetFormData; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_extends__ = __webpack_require__(18);
@@ -166,11 +166,10 @@ var ajaxPost = function ajaxPost() {
     method: 'post',
     dataType: 'json'
   }, opts)).then(function (data) {
-    cb(data);
     if (data.status) {
       cb(data.result);
     } else {
-      $.messager.alert(data.msg || '发生未知异常,请联系管理员!');
+      $.messager.alert('错误提示', data.msg || '发生未知异常,请联系管理员!');
     }
   });
 };
@@ -226,6 +225,9 @@ var setFormData = function setFormData(form, data, callback) {
  */
 var resetFormData = function resetFormData(form, callback) {
   form[0].reset();
+  form.find('[type=hidden]').map(function (index, item) {
+    return $(item).val('');
+  });
   form.find('[data-readonly=true]').map(function (index, item) {
     $(item).prop('readonly', false).removeClass('easyui-disabled');
   });
@@ -419,7 +421,7 @@ var Table = function Table() {
   this.init = function (selector, opts) {
     if (selector && opts) {
       selector.datagrid(__WEBPACK_IMPORTED_MODULE_0_babel_runtime_core_js_object_assign___default()({}, {
-        method: 'get',
+        method: 'post',
         height: $(window).height() + 20,
         collapsible: true,
         striped: true,
@@ -445,7 +447,7 @@ var Table = function Table() {
       return selector.datagrid('deleteRow', selector.datagrid('getRowIndex', item));
     });
     if (url) {
-      __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__utils_common__["d" /* ajaxPost */])({
+      __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__utils_common__["c" /* ajaxPost */])({
         url: url,
         method: 'get'
       }, function (data) {
@@ -1001,14 +1003,59 @@ $export($export.S + $export.F * !__webpack_require__(2), 'Object', {defineProper
 /***/ }),
 /* 49 */,
 /* 50 */,
-/* 51 */,
+/* 51 */
+/***/ (function(module, exports, __webpack_require__) {
+
+/* WEBPACK VAR INJECTION */(function($) {/**
+ * @file ValidateRules 校验规则
+ */
+$.extend($.fn.validatebox.defaults.rules, {
+  minLength: {
+    validator: function validator(value, param) {
+      return value.length >= param[0];
+    },
+    message: '至少输入 {0} 个字符.'
+  },
+  maxLength: {
+    validator: function validator(value, param) {
+      return value.length <= param[0];
+    },
+    message: '最多输入 {0} 个字符.'
+  },
+  number: {
+    validator: function validator(value, param) {
+      return (/^[0-9]\d*(\.\d+)?$/.test(value)
+      ); //number: /^\d+$/,//数字value.length >= param[0];   
+    },
+    message: '请输入数字'
+  }
+});
+
+$.fn.combobox.defaults.onHidePanel = function () {
+  var valueField = $(this).combobox("options").valueField;
+  var val = $(this).combobox("getValue"); //当前combobox的值
+  var allData = $(this).combobox("getData"); //获取combobox所有数据
+  var result = true; //为true说明输入的值在下拉框数据中不存在
+  for (var i = 0; i < allData.length; i++) {
+    if (val == allData[i][valueField]) {
+      result = false;
+    }
+  }
+  if (result) {
+    $(this).combobox("clear");
+  }
+};
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
+
+/***/ }),
 /* 52 */,
 /* 53 */,
 /* 54 */,
 /* 55 */,
 /* 56 */,
 /* 57 */,
-/* 58 */
+/* 58 */,
+/* 59 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1029,12 +1076,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 
+__webpack_require__(51);
 
 var $grid = __WEBPACK_IMPORTED_MODULE_6_jQuery___default()('#insuranceGrid'),
     $dialog = __WEBPACK_IMPORTED_MODULE_6_jQuery___default()('#insuranceDialog'),
     $form = __WEBPACK_IMPORTED_MODULE_6_jQuery___default()('#insuranceFf'),
     combobox = {
-  zl: [{ id: 1, text: '交强险' }, { id: 2, text: '货物险' }, { id: 3, text: '第三者责任险' }]
+  zl: [{ id: "交强险", text: '交强险' }, { id: "货物险", text: '货物险' }, { id: "第三者责任险", text: '第三者责任险' }]
 };
 
 //表格初始化
@@ -1064,28 +1112,32 @@ __WEBPACK_IMPORTED_MODULE_1__component_table__["a" /* table */].init($grid, {
     iconCls: 'icon-remove',
     handler: function handler() {
       __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4__actions_grid__["b" /* gridDelete */])($grid, function (rows) {
-        console.log('删除数据', rows);
+        var insuranceIds = [];
+        rows.map(function (item, index) {
+          return insuranceIds.push(item.insuranceId);
+        });
         // 后台交互
-        // 刷新表格
-        __WEBPACK_IMPORTED_MODULE_5__component_message__["a" /* message */].alert({ msg: "删除成功!" });
-        __WEBPACK_IMPORTED_MODULE_1__component_table__["a" /* table */].reload($grid);
+        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3__utils_common__["c" /* ajaxPost */])({ url: '../operationCosts/deleteInsurances', data: { insuranceIds: insuranceIds } }, function (data) {
+          console.log('删除数据', insuranceIds);
+          // 刷新表格
+          __WEBPACK_IMPORTED_MODULE_1__component_table__["a" /* table */].reload($grid);
+        });
       });
     }
   }],
   title: '保险表',
-  url: '../../lib/mock/common.json',
-  columns: [[{ field: 'id', checkbox: true }, { field: 'name1', title: '保险单号', width: 100 }, { field: 'name2', title: '种类', width: 100 }, { field: 'name3', title: '金额', width: 100 }, { field: 'name4', title: '保险金额', width: 100 }]]
+  url: '../operationCosts/searchInsurance',
+  columns: [[{ field: 'insuranceId', checkbox: true }, { field: 'insuranceNo', title: '保险单号', width: 100 }, { field: 'insuranceType', title: '种类', width: 100 }, { field: 'insuranceAmount', title: '金额', width: 100 }, { field: 'insuranceCompany', title: '保险公司', width: 100 }]]
 });
 
 //编辑window初始化
 __WEBPACK_IMPORTED_MODULE_2__component_window__["a" /* modalWindow */].init($dialog, { title: '编辑' }, function (text) {
-  var postData = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3__utils_common__["c" /* getFormData */])($form);
+  var postData = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3__utils_common__["d" /* getFormData */])($form);
   //===== 校验 =======
   //===== 校验 =======
   var isValid = $form.form('validate');
-  console.log(isValid);
   if (isValid) {
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3__utils_common__["d" /* ajaxPost */])({ url: '../../lib/mock/success.json', method: 'get' }, function (data) {
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3__utils_common__["c" /* ajaxPost */])({ url: '../operationCosts/addUpdateInsurance' }, function (data) {
       //===== 校验结束 =====
       console.log('编辑一条记录', postData);
       //新增成功,关闭窗口
@@ -1101,7 +1153,7 @@ __WEBPACK_IMPORTED_MODULE_2__component_window__["a" /* modalWindow */].init($dia
 
 //查询
 __WEBPACK_IMPORTED_MODULE_6_jQuery___default()('#search').on('click', function () {
-  var postData = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3__utils_common__["c" /* getFormData */])(__WEBPACK_IMPORTED_MODULE_6_jQuery___default()('#ff'));
+  var postData = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3__utils_common__["d" /* getFormData */])(__WEBPACK_IMPORTED_MODULE_6_jQuery___default()('#ff'));
   console.log(postData);
   //刷新表格
   __WEBPACK_IMPORTED_MODULE_1__component_table__["a" /* table */].load($grid, postData);

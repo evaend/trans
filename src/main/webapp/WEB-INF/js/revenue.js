@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "/dist";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 62);
+/******/ 	return __webpack_require__(__webpack_require__.s = 63);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -143,11 +143,11 @@ module.exports = function(it){
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function($) {/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return ajaxPost; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return getFormData; });
+/* WEBPACK VAR INJECTION */(function($) {/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return ajaxPost; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return getFormData; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return setFormData; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return resetFormData; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_extends__ = __webpack_require__(18);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_extends__ = __webpack_require__(19);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_extends___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_extends__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_babel_runtime_core_js_object_assign__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_babel_runtime_core_js_object_assign___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_babel_runtime_core_js_object_assign__);
@@ -166,11 +166,10 @@ var ajaxPost = function ajaxPost() {
     method: 'post',
     dataType: 'json'
   }, opts)).then(function (data) {
-    cb(data);
     if (data.status) {
       cb(data.result);
     } else {
-      $.messager.alert(data.msg || '发生未知异常,请联系管理员!');
+      $.messager.alert('错误提示', data.msg || '发生未知异常,请联系管理员!');
     }
   });
 };
@@ -226,6 +225,9 @@ var setFormData = function setFormData(form, data, callback) {
  */
 var resetFormData = function resetFormData(form, callback) {
   form[0].reset();
+  form.find('[type=hidden]').map(function (index, item) {
+    return $(item).val('');
+  });
   form.find('[data-readonly=true]').map(function (index, item) {
     $(item).prop('readonly', false).removeClass('easyui-disabled');
   });
@@ -419,7 +421,7 @@ var Table = function Table() {
   this.init = function (selector, opts) {
     if (selector && opts) {
       selector.datagrid(__WEBPACK_IMPORTED_MODULE_0_babel_runtime_core_js_object_assign___default()({}, {
-        method: 'get',
+        method: 'post',
         height: $(window).height() + 20,
         collapsible: true,
         striped: true,
@@ -445,7 +447,7 @@ var Table = function Table() {
       return selector.datagrid('deleteRow', selector.datagrid('getRowIndex', item));
     });
     if (url) {
-      __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__utils_common__["d" /* ajaxPost */])({
+      __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__utils_common__["c" /* ajaxPost */])({
         url: url,
         method: 'get'
       }, function (data) {
@@ -546,35 +548,6 @@ var modalWindow = new Window();
 
 /***/ }),
 /* 18 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-exports.__esModule = true;
-
-var _assign = __webpack_require__(1);
-
-var _assign2 = _interopRequireDefault(_assign);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-exports.default = _assign2.default || function (target) {
-  for (var i = 1; i < arguments.length; i++) {
-    var source = arguments[i];
-
-    for (var key in source) {
-      if (Object.prototype.hasOwnProperty.call(source, key)) {
-        target[key] = source[key];
-      }
-    }
-  }
-
-  return target;
-};
-
-/***/ }),
-/* 19 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -614,6 +587,35 @@ var gridEdit = function gridEdit(grid, callback) {
   }
 };
 /* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(0)))
+
+/***/ }),
+/* 19 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+exports.__esModule = true;
+
+var _assign = __webpack_require__(1);
+
+var _assign2 = _interopRequireDefault(_assign);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+exports.default = _assign2.default || function (target) {
+  for (var i = 1; i < arguments.length; i++) {
+    var source = arguments[i];
+
+    for (var key in source) {
+      if (Object.prototype.hasOwnProperty.call(source, key)) {
+        target[key] = source[key];
+      }
+    }
+  }
+
+  return target;
+};
 
 /***/ }),
 /* 20 */
@@ -999,7 +1001,51 @@ var $export = __webpack_require__(10);
 $export($export.S + $export.F * !__webpack_require__(2), 'Object', {defineProperty: __webpack_require__(12).f});
 
 /***/ }),
-/* 49 */,
+/* 49 */
+/***/ (function(module, exports, __webpack_require__) {
+
+/* WEBPACK VAR INJECTION */(function($) {/**
+ * @file ValidateRules 校验规则
+ */
+$.extend($.fn.validatebox.defaults.rules, {
+  minLength: {
+    validator: function validator(value, param) {
+      return value.length >= param[0];
+    },
+    message: '至少输入 {0} 个字符.'
+  },
+  maxLength: {
+    validator: function validator(value, param) {
+      return value.length <= param[0];
+    },
+    message: '最多输入 {0} 个字符.'
+  },
+  number: {
+    validator: function validator(value, param) {
+      return (/^[0-9]\d*(\.\d+)?$/.test(value)
+      ); //number: /^\d+$/,//数字value.length >= param[0];   
+    },
+    message: '请输入数字'
+  }
+});
+
+$.fn.combobox.defaults.onHidePanel = function () {
+  var valueField = $(this).combobox("options").valueField;
+  var val = $(this).combobox("getValue"); //当前combobox的值
+  var allData = $(this).combobox("getData"); //获取combobox所有数据
+  var result = true; //为true说明输入的值在下拉框数据中不存在
+  for (var i = 0; i < allData.length; i++) {
+    if (val == allData[i][valueField]) {
+      result = false;
+    }
+  }
+  if (result) {
+    $(this).combobox("clear");
+  }
+};
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
+
+/***/ }),
 /* 50 */,
 /* 51 */,
 /* 52 */,
@@ -1012,17 +1058,18 @@ $export($export.S + $export.F * !__webpack_require__(2), 'Object', {defineProper
 /* 59 */,
 /* 60 */,
 /* 61 */,
-/* 62 */
+/* 62 */,
+/* 63 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_extends__ = __webpack_require__(18);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_extends__ = __webpack_require__(19);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_extends___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_extends__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__component_table__ = __webpack_require__(16);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__component_window__ = __webpack_require__(17);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__utils_common__ = __webpack_require__(8);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__actions_grid__ = __webpack_require__(19);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__actions_grid__ = __webpack_require__(18);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__component_message__ = __webpack_require__(15);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_jQuery__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_jQuery___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_jQuery__);
@@ -1033,12 +1080,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 
+__webpack_require__(49);
 
 var $grid = __WEBPACK_IMPORTED_MODULE_6_jQuery___default()('#revenueGrid'),
     $dialog = __WEBPACK_IMPORTED_MODULE_6_jQuery___default()('#revenueDialog'),
     $form = __WEBPACK_IMPORTED_MODULE_6_jQuery___default()('#revenueFf'),
     combobox = {
-  sl: [{ id: 1, text: '6%' }, { id: 2, text: '11%' }]
+  taxType: [{ id: '运输', text: '运输' }, { id: '仓储', text: '仓储' }]
 };
 
 //表格初始化
@@ -1068,28 +1116,33 @@ __WEBPACK_IMPORTED_MODULE_1__component_table__["a" /* table */].init($grid, {
     iconCls: 'icon-remove',
     handler: function handler() {
       __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4__actions_grid__["b" /* gridDelete */])($grid, function (rows) {
-        console.log('删除数据', rows);
+        var taxIds = [];
+        rows.map(function (item, index) {
+          return taxIds.push(item.taxId);
+        });
+        console.log(taxIds)
         // 后台交互
-        // 刷新表格
-        __WEBPACK_IMPORTED_MODULE_5__component_message__["a" /* message */].alert({ msg: "删除成功!" });
-        __WEBPACK_IMPORTED_MODULE_1__component_table__["a" /* table */].reload($grid);
+        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3__utils_common__["c" /* ajaxPost */])({ url: '../operationCosts/deleteTaxInfo', data: { taxIds: taxIds } }, function (data) {
+          console.log('删除数据', taxIds);
+          // 刷新表格
+          __WEBPACK_IMPORTED_MODULE_1__component_table__["a" /* table */].reload($grid);
+        });
       });
     }
   }],
   title: '税收表',
-  url: '../../lib/mock/common.json',
-  columns: [[{ field: 'id', checkbox: true }, { field: 'name1', title: '日期', width: 100 }, { field: 'name2', title: '税号', width: 100 }, { field: 'name3', title: '种类', width: 100 }, { field: 'name4', title: '含税金额', width: 100 }, { field: 'name5', title: '税率', width: 100 }, { field: 'name6', title: '不含税金额', width: 100 }]]
+  url: '../operationCosts/searchTaxInfo',
+  columns: [[{ field: 'taxId', checkbox: true }, { field: 'taxDate', title: '日期', width: 100 }, { field: 'taxNo', title: '税号', width: 100 }, { field: 'taxType', title: '种类', width: 100 }, { field: 'taxAmount', title: '含税金额', width: 100 }, { field: 'taxRate', title: '税率', width: 100 }, { field: 'taxFreeAmount', title: '不含税金额', width: 100 }]]
 });
 
 //编辑window初始化
 __WEBPACK_IMPORTED_MODULE_2__component_window__["a" /* modalWindow */].init($dialog, { title: '编辑' }, function (text) {
-  var postData = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3__utils_common__["c" /* getFormData */])($form);
+  var postData = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3__utils_common__["d" /* getFormData */])($form);
   //===== 校验 =======
   //===== 校验 =======
   var isValid = $form.form('validate');
-  console.log(isValid);
   if (isValid) {
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3__utils_common__["d" /* ajaxPost */])({ url: '../../lib/mock/success.json', method: 'get' }, function (data) {
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3__utils_common__["c" /* ajaxPost */])({ url: '../operationCosts/addUpdateTaxInfo', data: postData }, function (data) {
       //===== 校验结束 =====
       console.log('编辑一条记录', postData);
       //新增成功,关闭窗口
@@ -1105,7 +1158,7 @@ __WEBPACK_IMPORTED_MODULE_2__component_window__["a" /* modalWindow */].init($dia
 
 //查询
 __WEBPACK_IMPORTED_MODULE_6_jQuery___default()('#search').on('click', function () {
-  var postData = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3__utils_common__["c" /* getFormData */])(__WEBPACK_IMPORTED_MODULE_6_jQuery___default()('#ff'));
+  var postData = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3__utils_common__["d" /* getFormData */])(__WEBPACK_IMPORTED_MODULE_6_jQuery___default()('#ff'));
   console.log(postData);
   //刷新表格
   __WEBPACK_IMPORTED_MODULE_1__component_table__["a" /* table */].load($grid, postData);
@@ -1127,6 +1180,36 @@ for (var key in combobox) {
     height: 28
   }));
 }
+__WEBPACK_IMPORTED_MODULE_6_jQuery___default()('#sl').combobox({
+  data: [{ id: '6%', text: '6%' }, { id: '11%', text: '11%' }],
+  valueField: 'id',
+  textField: 'text',
+  width: 200,
+  height: 28,
+  onSelect: function onSelect(record) {
+    count();
+  }
+});
+__WEBPACK_IMPORTED_MODULE_6_jQuery___default()("#taxAmount").on('input', function () {
+  count();
+});
+
+//taxPrice taxFreeAmount
+var count = function count() {
+  var reg = /^[1-9]\d*(\.\d+)?$/;
+  var sl = __WEBPACK_IMPORTED_MODULE_6_jQuery___default()('#sl').combobox('getValue'),
+      taxAmount = __WEBPACK_IMPORTED_MODULE_6_jQuery___default()('#taxAmount').val();
+  var taxPrice = 0,
+      taxFreeAmount = 0;
+  if (sl && reg.test(taxAmount)) {
+    var percent = sl.replace("%", "");
+    percent = percent / 100;
+    taxPrice = taxAmount * percent;
+    taxFreeAmount = taxAmount - taxPrice;
+  }
+  __WEBPACK_IMPORTED_MODULE_6_jQuery___default()('#taxPrice').val(taxPrice);
+  __WEBPACK_IMPORTED_MODULE_6_jQuery___default()('#taxFreeAmount').val(taxFreeAmount);
+};
 
 /***/ })
 /******/ ]);
