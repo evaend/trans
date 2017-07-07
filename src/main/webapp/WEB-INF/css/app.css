@@ -39,6 +39,45 @@ body {
     padding: 6px 12px;
     font-size: 12px;
 }
+.btn-ower:hover{
+  color: #fff;
+}
+/*主页 头部*/
+.eu-top{
+  width: 100%
+}
+.eu-top-left{
+  width: 50%;
+  float: left;
+}
+.eu-top-left span{
+  font-size: 14px;
+  color: #108ee9;
+}
+.eu-top-right{
+  width: 50%;
+  float: right;
+  text-align: right;
+}
+.eu-top-right a{
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  font-size: 12px;
+  color: #fff;
+  text-align: center;
+  text-decoration: none;
+  background-color: #108ee9;
+  border-radius: 40px; 
+}
+.eu-top-right a:visited{
+  color: #fff;
+  text-decoration: none;
+}
+.eu-top-right a:hover{
+  color: #fff;
+}
 .input260{
   width: 260px;
 }

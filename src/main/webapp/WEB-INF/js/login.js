@@ -129,10 +129,10 @@ if(typeof __e == 'number')__e = core; // eslint-disable-line no-undef
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function($) {/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return ajaxPost; });
+/* WEBPACK VAR INJECTION */(function($) {/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return ajaxPost; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return getFormData; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return setFormData; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return resetFormData; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return setFormData; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return resetFormData; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_extends__ = __webpack_require__(18);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_extends___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_extends__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_babel_runtime_core_js_object_assign__ = __webpack_require__(1);
@@ -737,7 +737,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 var $form = __WEBPACK_IMPORTED_MODULE_1_jQuery___default()('#loginForm'),
-    $userNo = __WEBPACK_IMPORTED_MODULE_1_jQuery___default()('#userNo');
+    $userNo = __WEBPACK_IMPORTED_MODULE_1_jQuery___default()('#userNo'),
+    $pwd = __WEBPACK_IMPORTED_MODULE_1_jQuery___default()("#pwd");
 
 $userNo.on('blur', function () {
     if ($userNo.val().length === 0) {
@@ -747,14 +748,29 @@ $userNo.on('blur', function () {
         __WEBPACK_IMPORTED_MODULE_1_jQuery___default()("#errMsg").addClass("hidden");
     }
 });
+$pwd.on('blur', function () {
+    if ($pwd.val().length === 0) {
+        __WEBPACK_IMPORTED_MODULE_1_jQuery___default()("#errMsg").removeClass("hidden");
+        __WEBPACK_IMPORTED_MODULE_1_jQuery___default()("#errMsg").html("密码不能为空！");
+    } else {
+        __WEBPACK_IMPORTED_MODULE_1_jQuery___default()("#errMsg").addClass("hidden");
+    }
+});
 
 __WEBPACK_IMPORTED_MODULE_1_jQuery___default()('#loginBtn').on('click', function () {
     var postData = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__utils_common__["a" /* getFormData */])(__WEBPACK_IMPORTED_MODULE_1_jQuery___default()('#loginForm'));
     console.log(postData, '登录数据');
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__utils_common__["b" /* ajaxPost */])({ url: '../login/userLogin', data: postData }, function (data) {
-        if (data) {
-            console.log('新增一条记录', postData);
+    __WEBPACK_IMPORTED_MODULE_1_jQuery___default.a.ajax({
+        method: 'post',
+        dataType: 'json',
+        url: '../login/userLogin',
+        data: postData
+    }).then(function (data) {
+        if (data.loginResult === "success") {
             window.location.href = "index.html";
+        } else {
+            __WEBPACK_IMPORTED_MODULE_1_jQuery___default()("#errMsg").removeClass("hidden");
+            __WEBPACK_IMPORTED_MODULE_1_jQuery___default()("#errMsg").html("登录失败");
         }
     });
 });

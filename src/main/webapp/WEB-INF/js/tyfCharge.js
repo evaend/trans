@@ -1064,22 +1064,19 @@ __WEBPACK_IMPORTED_MODULE_0__component_table__["a" /* table */].init($grid, {
 __WEBPACK_IMPORTED_MODULE_1__component_window__["a" /* modalWindow */].init($dialog, { title: '编辑' }, function (text) {
   var postData = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__utils_common__["a" /* getFormData */])($form);
   //===== 校验 =======
-  //===== 校验 =======
   var isValid = $form.form('validate');
   console.log(isValid);
   if (isValid) {
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__utils_common__["b" /* ajaxPost */])({ url: '../charge/editAccount', data: postData }, function (data) {
       //===== 校验结束 =====
       console.log('编辑一条记录', postData);
-      if (data) {
-        //新增成功,关闭窗口
-        __WEBPACK_IMPORTED_MODULE_1__component_window__["a" /* modalWindow */].close($dialog);
-        __WEBPACK_IMPORTED_MODULE_4__component_message__["a" /* message */].alert({
-          msg: '\u6258\u8FD0\u65B9\u7ED3\u8D39' + text + '\u6210\u529F'
-        });
-        //表格刷新
-        __WEBPACK_IMPORTED_MODULE_0__component_table__["a" /* table */].reload($grid);
-      }
+      //新增成功,关闭窗口
+      __WEBPACK_IMPORTED_MODULE_1__component_window__["a" /* modalWindow */].close($dialog);
+      __WEBPACK_IMPORTED_MODULE_4__component_message__["a" /* message */].alert({
+        msg: '\u6258\u8FD0\u65B9\u7ED3\u8D39' + text + '\u6210\u529F'
+      });
+      //表格刷新
+      __WEBPACK_IMPORTED_MODULE_0__component_table__["a" /* table */].reload($grid);
     });
   }
 });
@@ -1106,14 +1103,15 @@ __WEBPACK_IMPORTED_MODULE_5_jQuery___default()('#check').on('click', function ()
       if (r) {
         var opts = [];
         selectd.map(function (item, index) {
-          opts.push({ chargeId: item.chargeId });
+          opts.push(item.chargeId);
         });
         console.log('编辑一条记录', opts);
-        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__utils_common__["b" /* ajaxPost */])({ url: '../charge/balanceOfAccount', chargeIds: opts }, function (data) {
-          if (data) {
-            //表格刷新
-            __WEBPACK_IMPORTED_MODULE_0__component_table__["a" /* table */].reload($grid);
-          }
+        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__utils_common__["b" /* ajaxPost */])({ url: '../charge/balanceOfAccount', data: { chargeIds: opts } }, function (data) {
+          //表格刷新
+          __WEBPACK_IMPORTED_MODULE_4__component_message__["a" /* message */].alert({
+            msg: '\u5BF9\u8D26\u6210\u529F'
+          });
+          __WEBPACK_IMPORTED_MODULE_0__component_table__["a" /* table */].reload($grid);
         });
       }
     });
