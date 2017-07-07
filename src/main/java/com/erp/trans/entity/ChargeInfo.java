@@ -4,7 +4,7 @@ import java.util.Date;
 
 import com.erp.trans.common.annotation.BaseSql;
 
-@BaseSql(tableName="td_charge_info", resultName="com.erp.trans.dao.ChargeInfoMapper.BaseResultMap")
+@BaseSql(tableName="tb_charge_info", resultName="com.erp.trans.dao.ChargeInfoMapper.BaseResultMap")
 public class ChargeInfo {
     private String chargeId;
 
