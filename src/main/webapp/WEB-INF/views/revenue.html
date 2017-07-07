@@ -16,8 +16,11 @@
   <form id="ff" class='row vForm'>  
     <div class="col-md-6 vForm-item">  
       <label for="taxDate">日期:</label>  
-      <input type="text" name="taxDate" id="starDate" class="Wdate"  
-        onFocus="WdatePicker({isShowClear:false,isShowToday:false,isShowOK:false,readOnly:true,maxDate:'\'2030-10-01\'}'})"/>  
+        <input type="text" name="starDate" id="starDate" class="Wdate"  
+        onFocus="WdatePicker({isShowClear:false,isShowToday:false,isShowOK:false,readOnly:true,maxDate:'#F{$dp.$D(\'endDate\')||\'2030-10-01\'}'})"/>  
+        至
+        <input type="text" name="endDate" id="endDate" class="Wdate"  
+        onFocus="WdatePicker({isShowClear:false,isShowToday:false,isShowOK:false,readOnly:true,minDate:'#F{$dp.$D(\'starDate\')}',maxDate:'2030-10-01'})"/>   
       <a id="search" href="#" class="easyui-linkbutton" data-options="iconCls:'icon-search'">查询</a>  
     </div>  
   </form>
