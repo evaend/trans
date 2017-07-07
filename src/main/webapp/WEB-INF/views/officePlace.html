@@ -5,11 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>办公场地</title>
-  <link rel="stylesheet" type="text/css" href="../../lib/bootstrap.css">
-  <link rel="stylesheet" type="text/css" href="../../lib/normalize.css">
-  <link rel="stylesheet" type="text/css" href="../../lib/easyui/themes/material/easyui.css">
-  <link rel="stylesheet" type="text/css" href="../../lib/easyui/themes/icon.css">
-  <link rel="stylesheet" type="text/css" href="../../src/style/app.css">
+  <link rel="stylesheet" type="text/css" href="../lib/bootstrap.css">
+  <link rel="stylesheet" type="text/css" href="../lib/normalize.css">
+  <link rel="stylesheet" type="text/css" href="../lib/easyui/themes/material/easyui.css">
+  <link rel="stylesheet" type="text/css" href="../lib/easyui/themes/icon.css">
+  <link rel="stylesheet" type="text/css" href="../css/app.css">
 </head>
 <body>
   <!-- 查询表单开始 -->
@@ -29,6 +29,7 @@
   <!-- 编板弹出框开始 -->
   <div id="officeDialog">
     <form id="officeFf" class='row vForm'>  
+      <input type='hidden' name='officeSpaceId'/>
       <div class="col-md-2 vForm-item form-label">  
         <label for="officeSpaceName">场地名称:</label>   
       </div>  
@@ -44,8 +45,8 @@
     </form>  
   </div>
   <!-- 编板弹出框结束 --> 
-<script type="text/javascript" src="../../lib/jquery-3.2.1.min.js"></script>
-<script type="text/javascript" src="../../lib/easyui/jquery.easyui.min.js"></script>   
-<script type="text/javascript" src="../../lib/easyui/easyui-lang-zh_CN.js"></script>    
-</body>
+<script type="text/javascript" src="../lib/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="../lib/easyui/jquery.easyui.min.js"></script>   
+<script type="text/javascript" src="../lib/easyui/easyui-lang-zh_CN.js"></script>    
+<script type="text/javascript" src="../js/officePlace.js"></script></body>
 </html>

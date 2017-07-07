@@ -5,11 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>人员工资</title>
-  <link rel="stylesheet" type="text/css" href="../../lib/bootstrap.css">
-  <link rel="stylesheet" type="text/css" href="../../lib/normalize.css">
-  <link rel="stylesheet" type="text/css" href="../../lib/easyui/themes/material/easyui.css">
-  <link rel="stylesheet" type="text/css" href="../../lib/easyui/themes/icon.css">
-  <link rel="stylesheet" type="text/css" href="../../src/style/app.css">
+  <link rel="stylesheet" type="text/css" href="../lib/bootstrap.css">
+  <link rel="stylesheet" type="text/css" href="../lib/normalize.css">
+  <link rel="stylesheet" type="text/css" href="../lib/easyui/themes/material/easyui.css">
+  <link rel="stylesheet" type="text/css" href="../lib/easyui/themes/icon.css">
+  <link rel="stylesheet" type="text/css" href="../css/app.css">
 </head>
 <body>
   <!-- 查询表单开始 -->
@@ -27,12 +27,19 @@
   <!-- 编板弹出框开始 -->
   <div id="wagesDialog">
     <form id="wagesFf" class='row vForm'>  
-      <input type='hidden' name='id'/>
+      <input type='hidden' name='salaryId'/>
       <div class="col-md-2 vForm-item form-label">  
         <label for="pName">姓名:</label>   
       </div>  
       <div class="col-md-4 vForm-item">  
         <input class="easyui-validatebox" data-readonly='true' type="text" name="pName" />  
+      </div> 
+      <div class="col-md-2 vForm-item form-label">  
+        <label for="pName">日期:</label>   
+      </div>  
+      <div class="col-md-4 vForm-item">  
+        <input type="text" name="name3" id="starDate" class="Wdate"  
+        onFocus="WdatePicker({isShowClear:false,isShowToday:false,isShowOK:false,readOnly:true,maxDate:'\'2030-10-01\'}'})"/>   
       </div> 
       <div class="col-md-2 vForm-item form-label">  
         <label for="basePay">底薪:</label>   
@@ -79,8 +86,9 @@
     </form>  
   </div>
   <!-- 编板弹出框结束 -->
-<script type="text/javascript" src="../../lib/jquery-3.2.1.min.js"></script>
-<script type="text/javascript" src="../../lib/easyui/jquery.easyui.min.js"></script>   
-<script type="text/javascript" src="../../lib/easyui/easyui-lang-zh_CN.js"></script>    
-</body>
+<script type="text/javascript" src="../lib/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="../lib/easyui/jquery.easyui.min.js"></script>   
+<script type="text/javascript" src="../lib/easyui/easyui-lang-zh_CN.js"></script>  
+<script type="text/javascript" src="../lib/My97DatePicker/WdatePicker.js"></script>  
+<script type="text/javascript" src="../js/wages.js"></script></body>
 </html>
