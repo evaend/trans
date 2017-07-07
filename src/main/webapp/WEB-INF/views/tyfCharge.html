@@ -18,7 +18,7 @@
         <label for="consignOrgName">托运单位:</label>  
         <input class="easyui-validatebox" type="text" name="consignOrgName" />  
       </div>  
-      <div class="col-md-5 vForm-item">  
+      <div class="col-md-6 vForm-item">  
         <label for="dispatchDateStart">发车日期:</label>  
         <input type="text" name="dispatchDateStart" id="starDate" class="Wdate"  
         onFocus="WdatePicker({isShowClear:false,isShowToday:false,isShowOK:false,readOnly:true,maxDate:'#F{$dp.$D(\'endDate\')||\'2030-10-01\'}'})"/>  
@@ -26,7 +26,7 @@
         <input type="text" name="dispatchDateEnd" id="endDate" class="Wdate" 
         onFocus="WdatePicker({isShowClear:false,isShowToday:false,isShowOK:false,readOnly:true,minDate:'#F{$dp.$D(\'starDate\')}',maxDate:'2030-10-01'})"//>
       </div>  
-      <div class="col-md-4 vForm-item">  
+      <div class="col-md-3 vForm-item">  
         <label for="chargeFstate">状态:</label>  
         <select id="chargeFstate" editable='false' name='chargeFstate' class="easyui-combobox"  style="width:120px;height:28px;">  
           <option value="">全部</option>  

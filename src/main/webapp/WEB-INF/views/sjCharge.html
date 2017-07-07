@@ -16,7 +16,7 @@
   <form id="ff" class='row vForm'>  
     <div class="col-md-4 vForm-item">  
       <label for="searchName">轿运车号:</label>  
-      <input class="easyui-validatebox" name="transportTool"/>
+      <input class="easyui-validatebox" name="searchName"/>
       <span>
         <a id="search" href="#" class="easyui-linkbutton" data-options="iconCls:'icon-search'">查询</a>  
       </span>     
@@ -33,52 +33,40 @@
     <form id="editForm" class='row vForm'>  
       <input type="hidden" name="chargeId"/>
       <div class="col-md-2 vForm-item form-label">  
-        <label for="kiloPrice">单价:</label>   
+        <label for="serviceRate">劳务费率:</label>   
       </div>  
       <div class="col-md-4 vForm-item">  
-        <input  data-options="required:true" class="easyui-validatebox" type="text" name="kiloPrice" />  
+        <input  class="easyui-validatebox" type="text" name="serviceRate" />  
       </div> 
       <div class="col-md-2 vForm-item form-label">  
         <label for="kiloMeters">公里数:</label>   
       </div>  
       <div class="col-md-4 vForm-item">  
         <input class="easyui-validatebox" data-options="required:true" type="text" name="kiloMeters" />  
-      </div> 
-      <div class="col-md-2 vForm-item form-label">  
-        <label for="kiloMeters">油耗系数:</label>   
-      </div>  
-      <div class="col-md-4 vForm-item">  
-        <input class="easyui-validatebox" data-options="required:true" type="text" name="kiloMeters" />  
       </div>
       <div class="col-md-2 vForm-item form-label">  
-        <label for="oilCost1">油耗1:</label>   
+        <label for="oilCost">实际油耗:</label>   
       </div>  
       <div class="col-md-4 vForm-item">  
-        <input class="easyui-validatebox" data-options="required:true" type="text" name="oilCost1" />  
+        <input class="easyui-validatebox" data-options="required:true" type="text" name="oilCost" />  
+      </div>
+      <div class="col-md-2 vForm-item form-label">  
+        <label for="oilRatio">计划油耗系数:</label>   
+      </div>  
+      <div class="col-md-4 vForm-item">  
+        <input class="easyui-validatebox" data-options="required:true" type="text" name="oilRatio" />  
       </div> 
       <div class="col-md-2 vForm-item form-label">  
-        <label for="oilCost2">油耗2:</label>   
+        <label for="oilPrice">燃油单价:</label>   
       </div>  
       <div class="col-md-4 vForm-item">  
-        <input class="easyui-validatebox" data-options="required:true" type="text" name="oilCost2" />  
+        <input class="easyui-validatebox" data-options="required:true" type="text" name="oilPrice" />  
       </div> 
       <div class="col-md-2 vForm-item form-label">  
-        <label for="oilCost3">油耗3:</label>   
+        <label for="otherSubsidy">其他补贴:</label>   
       </div>  
       <div class="col-md-4 vForm-item">  
-        <input class="easyui-validatebox" data-options="required:true" type="text" name="oilCost3" />  
-      </div> 
-      <div class="col-md-2 vForm-item form-label">  
-        <label for="oilCost4">油耗4:</label>   
-      </div>  
-      <div class="col-md-4 vForm-item">  
-        <input class="easyui-validatebox" data-options="required:true" type="text" name="oilCost4" />  
-      </div> 
-      <div class="col-md-2 vForm-item form-label">  
-        <label for="oilSubsidy">油耗补贴:</label>   
-      </div>  
-      <div class="col-md-4 vForm-item">  
-        <input class="easyui-validatebox" data-options="required:true" type="text" name="oilSubsidy" />  
+        <input class="easyui-validatebox"  type="text" name="otherSubsidy" />  
       </div> 
     </form>  
   </div>

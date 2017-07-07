@@ -1043,39 +1043,41 @@ var $grid = __WEBPACK_IMPORTED_MODULE_5_jQuery___default()('#sjChargeGrid'),
 //表格初始化
 __WEBPACK_IMPORTED_MODULE_0__component_table__["a" /* table */].init($grid, {
   toolbar: [{
-    text: '新增',
-    iconCls: 'icon-add',
-    handler: function handler() {
-      __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__utils_common__["c" /* resetFormData */])($form);
-      __WEBPACK_IMPORTED_MODULE_1__component_window__["a" /* modalWindow */].setTitle($dialog, '新增').open($dialog);
-    }
-  }, '-', {
     text: '编辑',
     iconCls: 'icon-edit',
     handler: function handler() {
       __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3__actions_grid__["a" /* gridEdit */])($grid, function (rows) {
-        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__utils_common__["d" /* setFormData */])($form, rows[0]);
+        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__utils_common__["d" /* setFormData */])($form, rows[0], function () {
+          if (rows[0].chargeAmount === 0) {
+            __WEBPACK_IMPORTED_MODULE_5_jQuery___default()('input[name=oilRatio]').val('0.27');
+            __WEBPACK_IMPORTED_MODULE_5_jQuery___default()('input[name=serviceRate]').val('0.5');
+          } else {
+            __WEBPACK_IMPORTED_MODULE_5_jQuery___default()('input[name=oilRatio]').val('0.31');
+            __WEBPACK_IMPORTED_MODULE_5_jQuery___default()('input[name=serviceRate]').val('1');
+          }
+        });
         __WEBPACK_IMPORTED_MODULE_1__component_window__["a" /* modalWindow */].open($dialog);
       });
     }
   }],
   title: '司机结费',
-  url: '../charge/searchChargeList?chargeType=03',
+  // url: '../charge/searchChargeList?chargeType=03',
+  url: '../../lib/mock/tyfCharge.json',
   height: __WEBPACK_IMPORTED_MODULE_5_jQuery___default()(window).height() - 65,
-  columns: [[{ field: 'id', checkbox: true }, { field: 'name1', title: '发运日期', width: 100 }, { field: 'transportTool', title: '轿运车号', width: 100 }, { field: 'name3', title: '车次', width: 100 }, { field: 'mainDrive', title: '主驾', width: 100 }, { field: 'coPilot', title: '副驾', width: 100 }, { field: 'locationFrom', title: '起运地', width: 100 }, { field: 'locationTo', title: '目的地', width: 100 }, { field: 'kiloPrice', title: '单价/公里', width: 100 }, { field: 'chargeAmount', title: '数量', width: 100 }, { field: 'kiloMeters', title: '公里数', width: 100 }, { field: 'oilCost1', title: '油耗1', width: 100 }, { field: 'oilCost2', title: '油耗2', width: 100 }, { field: 'oilCost3', title: '油耗3', width: 100 }, { field: 'oilCost4', title: '油耗4', width: 100 }, { field: 'oilSubsidy', title: '油耗补贴', width: 100 }, { field: 'name16', title: '结费金额', width: 100 }, { field: 'name17', title: '修改人', width: 100 }, { field: 'modifyDate', title: '修改时间', width: 100 }]]
+  resizeHandle: 'both',
+  columns: [[{ field: 'id', checkbox: true }, { field: 'name1', title: '发运日期', width: 100 }, { field: 'transportTool', title: '轿运车号', width: 100 }, { field: 'name3', title: '车次', width: 100 }, { field: 'mainDrive', title: '主驾', width: 100 }, { field: 'coPilot', title: '副驾', width: 100 }, { field: 'locationFrom', title: '起运地', width: 100 }, { field: 'locationTo', title: '目的地', width: 100 }, { field: 'kiloPrice', title: '单价/公里', width: 100 }, { field: 'chargeAmount', title: '数量', width: 100 }, { field: 'kiloMeters', title: '公里数', width: 100 }, { field: 'serviceRate', title: '劳务费率', width: 100 }, { field: 'oilCost2', title: '实际油耗', width: 100 }, { field: 'oilRatio', title: '计划油耗系数', width: 100 }, { field: 'oilPrice', title: '燃油单价', width: 100 }, { field: 'oilSubsidy', title: '油耗补贴', width: 100 }, { field: 'totalAmount', title: '结费金额', width: 100 }, { field: 'modifyUserName', title: '修改人', width: 100 }, { field: 'modifyDate', title: '修改时间', width: 100 }]]
 });
 
 //编辑window初始化
 __WEBPACK_IMPORTED_MODULE_1__component_window__["a" /* modalWindow */].init($dialog, { title: '编辑' }, function (text) {
   var postData = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__utils_common__["a" /* getFormData */])($form);
-  //===== 校验 =======
+  postData.totalAmount = (Number(postData.serviceRate) * Number(postData.kiloMeters) + (Number(postData.oilRatio) * Number(postData.kiloMeters) - postData.oilCost) * Number(postData.oilPrice) + Number(postData.otherSubsidy)).toFixed(2);
+  console.log(postData, '司机结费数据');
   //===== 校验 =======
   var isValid = $form.form('validate');
-  console.log(isValid);
   if (isValid) {
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__utils_common__["b" /* ajaxPost */])({ url: '../charge/insertDriveAccount', data: postData }, function (data) {
       //===== 校验结束 =====
-      console.log('编辑一条记录', postData);
       if (data) {
         //新增成功,关闭窗口
         __WEBPACK_IMPORTED_MODULE_1__component_window__["a" /* modalWindow */].close($dialog);
