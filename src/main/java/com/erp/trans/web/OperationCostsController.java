@@ -51,9 +51,9 @@ public class OperationCostsController {
 			@RequestParam(value = "salaryMonth", required = false) String salaryMonth,
 			@RequestParam(value = "page", required = false) Integer page,
 			@RequestParam(value = "pagesize", required = false) Integer pagesize, HttpServletRequest request) {
-		Pager<Map<String, Object>> pager = new Pager<Map<String, Object>>(true);
-		pager.setPageSize(pagesize == null ? 15 : pagesize);
-		pager.setPageNum(page == null ? 1 : page);
+		Pager<Map<String, Object>> pager = new Pager<Map<String, Object>>(false);
+//		pager.setPageSize(pagesize == null ? 15 : pagesize);
+//		pager.setPageNum(page == null ? 1 : page);
 		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");// 年-月-日格式化
 		// 当前登录用户的机构
 		String orgId = (String) request.getSession().getAttribute(LoginUser.SESSION_USER_ORGID);
@@ -115,9 +115,9 @@ public class OperationCostsController {
 			@RequestParam(value = "officeSpaceName", required = false) String officeSpaceName,
 			@RequestParam(value = "page", required = false) Integer page,
 			@RequestParam(value = "pagesize", required = false) Integer pagesize, HttpServletRequest request) {
-		Pager<Map<String, Object>> pager = new Pager<Map<String, Object>>(true);
-		pager.setPageSize(pagesize == null ? 15 : pagesize);
-		pager.setPageNum(page == null ? 1 : page);
+		Pager<Map<String, Object>> pager = new Pager<Map<String, Object>>(false);
+//		pager.setPageSize(pagesize == null ? 15 : pagesize);
+//		pager.setPageNum(page == null ? 1 : page);
 		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");// 年-月-日格式化
 		// 当前登录用户的机构
 		String orgId = (String) request.getSession().getAttribute(LoginUser.SESSION_USER_ORGID);
@@ -156,6 +156,7 @@ public class OperationCostsController {
 		}else{
 			officeSpaceFee.setModifyUserid(userId);
 			officeSpaceFee.setModifyDate(new Date());
+			officeSpaceFee.setOrgId(orgId);
 			operationCostsService.updateInfoCover(officeSpaceFee);
 		}
 	}
@@ -185,9 +186,9 @@ public class OperationCostsController {
 			@RequestParam(value = "travelers", required = false) String travelers,
 			@RequestParam(value = "page", required = false) Integer page,
 			@RequestParam(value = "pagesize", required = false) Integer pagesize, HttpServletRequest request) {
-		Pager<Map<String, Object>> pager = new Pager<Map<String, Object>>(true);
-		pager.setPageSize(pagesize == null ? 15 : pagesize);
-		pager.setPageNum(page == null ? 1 : page);
+		Pager<Map<String, Object>> pager = new Pager<Map<String, Object>>(false);
+//		pager.setPageSize(pagesize == null ? 15 : pagesize);
+//		pager.setPageNum(page == null ? 1 : page);
 		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");// 年-月-日格式化
 		// 当前登录用户的机构
 		String orgId = (String) request.getSession().getAttribute(LoginUser.SESSION_USER_ORGID);
@@ -226,6 +227,7 @@ public class OperationCostsController {
 		}else{
 			travelAllowance.setModifyUserid(userId);
 			travelAllowance.setModifyDate(new Date());
+			travelAllowance.setOrgId(orgId);
 			operationCostsService.updateInfoCover(travelAllowance);
 		}
 	}
@@ -256,9 +258,9 @@ public class OperationCostsController {
 			@RequestParam(value = "endDate", required = false) String endDate,
 			@RequestParam(value = "page", required = false) Integer page,
 			@RequestParam(value = "pagesize", required = false) Integer pagesize, HttpServletRequest request) {
-		Pager<Map<String, Object>> pager = new Pager<Map<String, Object>>(true);
-		pager.setPageSize(pagesize == null ? 15 : pagesize);
-		pager.setPageNum(page == null ? 1 : page);
+		Pager<Map<String, Object>> pager = new Pager<Map<String, Object>>(false);
+//		pager.setPageSize(pagesize == null ? 15 : pagesize);
+//		pager.setPageNum(page == null ? 1 : page);
 		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");// 年-月-日格式化
 		// 当前登录用户的机构
 		String orgId = (String) request.getSession().getAttribute(LoginUser.SESSION_USER_ORGID);
@@ -298,6 +300,7 @@ public class OperationCostsController {
 		}else{
 			taxInfo.setModifyUserid(userId);
 			taxInfo.setModifyDate(new Date());
+			taxInfo.setOrgId(orgId);
 			operationCostsService.updateInfoCover(taxInfo);
 		}
 	}
@@ -328,9 +331,9 @@ public class OperationCostsController {
 			@RequestParam(value = "endDate", required = false) String endDate,
 			@RequestParam(value = "page", required = false) Integer page,
 			@RequestParam(value = "pagesize", required = false) Integer pagesize, HttpServletRequest request) {
-		Pager<Map<String, Object>> pager = new Pager<Map<String, Object>>(true);
-		pager.setPageSize(pagesize == null ? 15 : pagesize);
-		pager.setPageNum(page == null ? 1 : page);
+		Pager<Map<String, Object>> pager = new Pager<Map<String, Object>>(false);
+//		pager.setPageSize(pagesize == null ? 15 : pagesize);
+//		pager.setPageNum(page == null ? 1 : page);
 		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");// 年-月-日格式化
 		// 当前登录用户的机构
 		String orgId = (String) request.getSession().getAttribute(LoginUser.SESSION_USER_ORGID);
@@ -370,6 +373,7 @@ public class OperationCostsController {
 		}else{
 			vehicleDepreciation.setModifyUserid(userId);
 			vehicleDepreciation.setModifyDate(new Date());
+			vehicleDepreciation.setOrgId(orgId);
 			operationCostsService.updateInfoCover(vehicleDepreciation);
 		}
 	}
@@ -400,9 +404,9 @@ public class OperationCostsController {
 			@RequestParam(value = "endDate", required = false) String endDate,
 			@RequestParam(value = "page", required = false) Integer page,
 			@RequestParam(value = "pagesize", required = false) Integer pagesize, HttpServletRequest request) {
-		Pager<Map<String, Object>> pager = new Pager<Map<String, Object>>(true);
-		pager.setPageSize(pagesize == null ? 15 : pagesize);
-		pager.setPageNum(page == null ? 1 : page);
+		Pager<Map<String, Object>> pager = new Pager<Map<String, Object>>(false);
+//		pager.setPageSize(pagesize == null ? 15 : pagesize);
+//		pager.setPageNum(page == null ? 1 : page);
 		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");// 年-月-日格式化
 		// 当前登录用户的机构
 		String orgId = (String) request.getSession().getAttribute(LoginUser.SESSION_USER_ORGID);
@@ -442,6 +446,7 @@ public class OperationCostsController {
 		}else{
 			insurance.setModifyUserid(userId);
 			insurance.setModifyDate(new Date());
+			insurance.setOrgId(orgId);
 			operationCostsService.updateInfoCover(insurance);
 		}
 	}

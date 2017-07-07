@@ -115,6 +115,16 @@
   			select distinct consign_id from tb_consign_detail
   		)
   </delete>
+  <select id="filterExistConsignNos" resultType="string">
+  		SELECT distinct cnos.cno
+		FROM (
+			<foreach collection="consignNos" item="consignNo" index="index" open=" " close=" " separator="UNION">
+				select #{consignNos[${index}], jdbcType=VARCHAR} cno FROM dual
+	    	</foreach>
+		  ) cnos
+		left JOIN tb_consign on tb_consign.consign_no=cnos.cno
+		WHERE tb_consign.consign_no is  not null
+   </select>
   <insert id="insert" parameterType="com.erp.trans.entity.Consign" >
     insert into tb_consign (CONSIGN_ID, CONSIGN_NO, CAMOUNT, 
       LOCATION_TO, RECEIVE_ORG_ID, RECEIVE_ORG_NAME, 

@@ -41,7 +41,9 @@
       c.LOCATION_FROM "locationFrom",r.CARRIER_NAME "carrierName",r.TRANSPORT_TOOL "transportTool",
       ci.FREIGHT_RATES "freightRates",ci.ADVANCES "advances",ci.PREPAID_OIL_CARD "prepaidOilCard",
       ci.QUALITY_LOSS "qualityLoss",ci.SUBSIDY "subsidy",ci.REVERSE_CHARGE "reverseCharge",ci.MIS_COSTS "misCosts",
-      ci.GPS_PAYMENT "gpsPayment",ci.CHARGE_AMOUNT "chargeAmount",ci.MODIFY_USER_NAME "modifyUserName",ci.MODIFY_DATE "modifyDate",
+      ci.GPS_PAYMENT "gpsPayment",ci.CHARGE_AMOUNT "chargeAmount",
+      ci.MODIFY_USER_NAME "modifyUserName",
+      date_format(ci.MODIFY_DATE,'%Y-%m-%d') "modifyDate",
       ci.KILO_PRICE "kiloPrice",ci.KILOMETERS "kilometers",ci.OIL_COST1 "oilCost1",ci.OIL_COST2 "oilCost2",
       ci.OIL_COST3 "oilCost3",ci.OIL_COST4 "oilCost4",ci.OIL_SUBSIDY "oilSubsidy"
       

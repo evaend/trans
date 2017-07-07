@@ -6,7 +6,7 @@
     <result column="DESPATCH_PLAN_ID" property="despatchPlanId" jdbcType="VARCHAR" />
   </resultMap>
   <select id="isWithCarrier" resultType="string">
-		SELECT cnos.cno withCarrierNos
+		SELECT distinct cnos.cno withCarrierNos
 		FROM (
 			<foreach collection="consignNos" item="consignNo" index="index" open=" " close=" " separator="UNION">
 				select #{consignNos[${index}], jdbcType=VARCHAR} cno FROM dual

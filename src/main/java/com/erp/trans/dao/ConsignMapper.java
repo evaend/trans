@@ -3,6 +3,8 @@ package com.erp.trans.dao;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.ibatis.annotations.Param;
+
 import com.erp.trans.common.entity.Pager;
 import com.erp.trans.entity.Consign;
 import com.erp.trans.web.dto.ConsignDto;
@@ -16,7 +18,9 @@ public interface ConsignMapper {
 
 	List<Map<String, Object>> findConsignList(Pager<Map<String, Object>> pager);
 
-	void updateConsign(List<Consign> consigns);
+	void updateConsign(@Param("consigns")List<Consign> consigns);
 
 	void clearNoUseConsign();
+
+	String[] filterExistConsignNos(@Param("consignNos")Object[] consignNos);
 }

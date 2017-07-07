@@ -222,4 +222,10 @@ public class TransManagementServiceImpl  extends BaseService implements TransMan
 		this.insertInfo(consignDetail);
 	}
 
+	@Override
+	public String[] filterExistConsignNos(Object[] array) {
+		// TODO Auto-generated method stub
+		return consignMapper.filterExistConsignNos(array);
+	}
+
 }

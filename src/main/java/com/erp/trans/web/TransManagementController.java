@@ -4,14 +4,17 @@ import java.math.BigDecimal;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
+import java.util.Arrays;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.apache.commons.lang.ArrayUtils;
 import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -35,7 +38,6 @@ import com.erp.trans.entity.DespatchPlan;
 import com.erp.trans.entity.UserInfo;
 import com.erp.trans.service.TransManagementService;
 import com.erp.trans.web.dto.ConsignDto;
-
 /**
  * 运输管理Controller
  * 
@@ -301,19 +303,40 @@ public class TransManagementController {
 //			InputStream consignExcelFile = new FileInputStream(file);
 			final StringBuffer msg = new StringBuffer();
 			List<Consign> consignList = new ArrayList<Consign>();
+			final Set<String> consignNos = new HashSet<String>();
 			List<ConsignDto> entityList = ExcelUtils.readExcel(
 					consignExcelFile.getInputStream(),1, ConsignDto.class, 
 					new EntityHandler<ConsignDto>(){
 						@Override
 						public ConsignDto process(String sheetName, int rownum, final ConsignDto entity) {
 						//这里可以验证每行导入的数据的格式和正确性，目前没有做限制	
-					    return entity;
+							entity.setSheetName(sheetName);//表格名称
+							entity.setRownum(rownum);//行号（从0开始）
+							//运单号
+							if(StringUtils.trimToNull(entity.getConsignNo())!=null){
+								consignNos.add(entity.getConsignNo().trim());
+							}
+							//TASK ed 其他:数据格式校验
+//							String error = validMaterial(entity);
+//							if(StringUtils.isNotEmpty(error)){
+//								msg.append("[").append(sheetName).append("]-[第").append(rownum+1).append("行]");
+//								msg.append(error);
+//								msg.append("<br/>");
+//							}	
+							return entity;
 					}},
 					new String[]{"rownum","consignNo", "chassisNo", "carBrand", "carModel", "locationFrom","locationTo","consignOrgName","receiveOrgName","amount"}
 					);
 
 		//TASK 可以做一些校验。
-		
+		String[] filterNos = transManagementService.filterExistConsignNos( consignNos.toArray());
+		if(ArrayUtils.isNotEmpty(filterNos)){
+			msg.append("[运单号检查] - ").append(Arrays.toString(filterNos)).append("，运单号重复，请检查<br/>");
+		}
+		String message = msg.toString();
+		if(StringUtils.isNotEmpty(message)){
+			throw new ValidationException("<b>数据检查不通过，请检查数据:</b><p>" + message);
+		}
 		Assert.notEmpty(entityList, "列表:没有发现运单，请检查文档");
 		//TASK Excel表格 => 导入excel中的运单
 		transManagementService.importConsigns(entityList, (UserInfo)session.getAttribute(LoginUser.SESSION_USER_INFO));

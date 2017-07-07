@@ -2,13 +2,17 @@ package com.erp.trans.entity;
 
 import java.util.Date;
 
+import com.erp.trans.common.adapter.CustomDateSerializer;
 import com.erp.trans.common.annotation.BaseSql;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 @BaseSql(tableName="tb_tax_info", resultName="com.erp.trans.dao.TaxInfoMapper.BaseResultMap")
 public class TaxInfo {
     private String taxId;
-
+    
+    @JsonSerialize(using = CustomDateSerializer.class)
     private Date taxDate;
 
+    @JsonSerialize(using = CustomDateSerializer.class)
     private Date modifyDate;
 
     private String modifyUserid;

@@ -2,7 +2,9 @@ package com.erp.trans.entity;
 
 import java.util.Date;
 
+import com.erp.trans.common.adapter.CustomDateSerializer;
 import com.erp.trans.common.annotation.BaseSql;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 @BaseSql(tableName="tb_insurance", resultName="com.erp.trans.dao.InsuranceMapper.BaseResultMap")
 public class Insurance {
@@ -14,6 +16,7 @@ public class Insurance {
 
     private String insuranceCompany;
 
+    @JsonSerialize(using = CustomDateSerializer.class)
     private Date modifyDate;
 
     private String modifyUserid;

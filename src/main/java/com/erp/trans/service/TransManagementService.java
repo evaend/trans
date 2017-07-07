@@ -34,5 +34,7 @@ public interface TransManagementService extends IBaseService {
 
 	public void insertConsignDto(ConsignDto consigndto) throws ValidationException;
 
+	public String[] filterExistConsignNos(Object[] array);
+
 	
 }
