@@ -21,11 +21,14 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.Assert;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.erp.trans.common.adapter.CustomDateTransfer;
 import com.erp.trans.common.constant.CustomConst.ConsignFstate;
 import com.erp.trans.common.constant.CustomConst.LoginUser;
 import com.erp.trans.common.entity.Pager;
@@ -345,7 +348,10 @@ public class TransManagementController {
 		BigDecimal.valueOf((System.currentTimeMillis() - startTime)/1000d).setScale(3));
 		}
 		
-	
+		@InitBinder
+		protected void initBinder(WebDataBinder binder) {
+			binder.registerCustomEditor(Date.class, new CustomDateTransfer("yyyy-MM-dd", true));
+		}
 			
 			
 }

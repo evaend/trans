@@ -26,8 +26,8 @@
 				<if test="conditiions.startDate != null and conditiions.startDate != ''">
 				and <![CDATA[ date_format(i.MODIFY_DATE,'%Y-%m-%d') >= #{conditiions.startDate,jdbcType=VARCHAR} ]]>
 			</if>
-			<if test="conditiions.createDateEnd != null and conditiions.createDateEnd != ''">
-				and <![CDATA[ date_format(i.MODIFY_DATE,'%Y-%m-%d') <=  #{conditiions.createDateEnd,jdbcType=VARCHAR} ]]>
+			<if test="conditiions.endDate != null and conditiions.endDate != ''">
+				and <![CDATA[ date_format(i.MODIFY_DATE,'%Y-%m-%d') <=  #{conditiions.endDate,jdbcType=VARCHAR} ]]>
 			</if>
 			</if>
 		</where> 

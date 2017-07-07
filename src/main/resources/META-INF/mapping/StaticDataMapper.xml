@@ -43,12 +43,14 @@
 		<where>
 			<if test="conditiions.type !=null and conditiions.type =='brand'">
 				<if test="conditiions.searchParams !=null and conditiions.searchParams !=''">
-				    and car.brand_name REGEXP #{conditiions.searchParams, jdbcType=VARCHAR}				
+				    and ((car.brand_name REGEXP #{conditiions.searchParams, jdbcType=VARCHAR})	
+				    or (car.BRAND_FIRST_LETTER REGEXP #{conditiions.searchParams, jdbcType=VARCHAR}))			
 				</if>
 			</if>
 			<if test="conditiions.type !=null and conditiions.type =='model'">
 				<if test="conditiions.searchParams !=null and conditiions.searchParams !=''">
-				    and car.series_name REGEXP #{conditiions.searchParams, jdbcType=VARCHAR}
+				    and ((car.series_name REGEXP #{conditiions.searchParams, jdbcType=VARCHAR})
+				     or (car.SERIES_FIRST_LETTER REGEXP #{conditiions.searchParams, jdbcType=VARCHAR}))
 				</if>
 				<if test="conditiions.pid !=null and conditiions.pid !=''">
 				    and car.brand_id = #{conditiions.pid, jdbcType=VARCHAR}
