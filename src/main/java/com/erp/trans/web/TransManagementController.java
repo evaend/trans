@@ -290,6 +290,7 @@ public class TransManagementController {
 	/**
 	 * 导入运单excel
 	 * */
+	@ResponseBody
 	@RequestMapping("/importConsign")
 	public void importConsign( 
 		 	@RequestParam(value="consignFile", required=false)MultipartFile consignExcelFile, 
