@@ -47,7 +47,8 @@
     </select>
   <!--[对应下拉框] 查询系统中在某个机构的某个承运商的所有轿运车  -->
   <select id="searchRecordsForSelectByOrg" resultType="hashMap" parameterType="com.erp.trans.common.entity.Pager">
-		select distinct r.record_id "id",r.TRANSPORT_TOOL "text"
+		select distinct r.record_id "id",r.TRANSPORT_TOOL "text",
+		r.MAIN_DRIVE "mainDrive",r.MAIN_DRIVE_PHONE "mainDrivePhone"
 		from td_record_info r
 		<where>
 		    r.org_id = #{conditiions.orgId, jdbcType=VARCHAR}
