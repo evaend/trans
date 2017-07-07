@@ -573,7 +573,11 @@ public class BaseSqlInterceptor implements Interceptor {
 					fields.append(sym + rm.getColumn() + " = ");
 					Object value = values.get(rm.getProperty());
 					if(value == null){
-						fields.append("''");
+						if(rm.getColumn().endsWith("_DATE")){
+							fields.append("null");
+						}else{
+							fields.append("''");
+						}
 					}else{
 						if(value instanceof Date){
 							String dateString = DateUtils.DateToStr((Date)value, "yyyy-MM-dd HH:mm:ss");

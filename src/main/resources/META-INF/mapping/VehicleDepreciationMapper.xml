@@ -31,7 +31,7 @@
 			</if>
 			</if>
 		</where> 
-		order by cd.MODIFY_DATE desc
+		order by vd.MODIFY_DATE desc
     </select>
   <insert id="insert" parameterType="com.erp.trans.entity.VehicleDepreciation" >
     insert into tb_vehicle_depreciation (VEHICLE_DEPRECIATION_ID, TRANSPORT_TOOL_NO, 

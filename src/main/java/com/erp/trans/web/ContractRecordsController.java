@@ -101,6 +101,9 @@ public class ContractRecordsController {
 		String userName = (String) request.getSession().getAttribute(LoginUser.SESSION_USERNAME);
 		// 操作人机构
 		String orgId = (String) request.getSession().getAttribute(LoginUser.SESSION_USER_ORGID);
+		if(StringUtils.isBlank(contract.getContractType())){
+			throw new ValidationException("请确定合同类型");
+		}
 		if(StringUtils.isBlank(contract.getContractId())){
 			contract.setContractId(IdentifieUtil.getGuId());
 			contract.setOrgId(orgId);
@@ -112,6 +115,7 @@ public class ContractRecordsController {
 			contract.setModifyUserId(userId);
 			contract.setModifyUserName(userName);
 			contract.setModifyDate(new Date());
+			contract.setOrgId(orgId);
 			contractRecordsService.updateInfoCover(contract);
 		}
 	}
@@ -203,6 +207,7 @@ public class ContractRecordsController {
 		}else{
 			recordInfo.setModifyUserId(userId);
 			recordInfo.setModifyDate(new Date());
+			recordInfo.setOrgId(orgId);
 			contractRecordsService.updateInfoCover(recordInfo);
 		}
 	}

@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.erp.trans.dao.DespatchPlanMapper" >
   <resultMap id="BaseResultMap" type="com.erp.trans.entity.DespatchPlan" >
-    <result column="DESPATCH_PLAN_ID" property="despatchPlanId" jdbcType="VARCHAR" />
+    <id column="DESPATCH_PLAN_ID" property="despatchPlanId" jdbcType="VARCHAR" />
     <result column="MOUNT" property="mount" jdbcType="INTEGER" />
     <result column="RECORD_ID" property="recordId" jdbcType="VARCHAR" />
     <result column="MODIFY_DATE" property="modifyDate" jdbcType="TIMESTAMP" />

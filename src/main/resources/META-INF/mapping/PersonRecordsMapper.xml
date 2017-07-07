@@ -16,21 +16,23 @@
     <result column="MODIFY_USERID" property="modifyUserid" jdbcType="VARCHAR" />
     <result column="P_EMERGENCY" property="pEmergency" jdbcType="VARCHAR" />
     <result column="ORG_ID" property="orgId" jdbcType="VARCHAR" />
-    <result column="DEPARMENT_ID" property="deparmentId" jdbcType="VARCHAR" />
+    <result column="DEPARTMENT_ID" property="departmentId" jdbcType="VARCHAR" />
     <result column="P_PHONE" property="pPhone" jdbcType="VARCHAR" />
   </resultMap>
    <sql id="Base_Column_List">
     pr.person_records_id "personRecordsId",pr.P_NAME "pName",
-    pr.P_GENDER "pGender",pr.P_BIRTHDATE "pBirthdate",pr.P_IDNO "pIdno",pr.P_PHONE "pPhone",
+    pr.P_GENDER "pGender",
+    date_format(pr.P_BIRTHDATE,'%Y-%m-%d') "pBirthdate",pr.P_IDNO "pIdno",pr.P_PHONE "pPhone",
     pr.P_HOME_ADDRESS "pHomeAddress",pr.P_EMERGENCY "pEmergency",
     pr.P_EMERGENCY_PHONE "pEmergencyPhone",
-    pr.P_BANK_CARD "pBankCard",pr.REMARK "remark",od.DEPARTMENT_NAME "departmentName"
+    pr.P_BANK_CARD "pBankCard",pr.REMARK "remark",od.DEPARTMENT_NAME "departmentName",
+   date_format(pr.MODIFY_DATE,'%Y-%m-%d')  "modifyDate"
   </sql>
   <!-- 查询人事档案信息 -->
   <select id="searchPersonRecords" resultType="HashMap" parameterType="com.erp.trans.common.entity.Pager">
 		select <include refid="Base_Column_List"></include>
 		from td_person_records pr
-		left join td_org_department  od on pr.DEPARMENT_ID = od.DEPARMENT_ID
+		left join td_org_department  od on pr.DEPARTMENT_ID = od.DEPARTMENT_ID
 		<where>
 			<if test="conditiions !=null">
 				<if test="conditiions.orgId != null and conditiions.orgId != '0' and conditiions.orgId != '-1'">

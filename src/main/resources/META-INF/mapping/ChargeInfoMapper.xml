@@ -24,10 +24,10 @@
     <result column="CHARGE_FSTATE" property="chargeFstate" jdbcType="VARCHAR" />
     <result column="KILO_PRICE" property="kiloPrice" jdbcType="VARCHAR" />
     <result column="KILOMETERS" property="kilometers" jdbcType="VARCHAR" />
-    <result column="OIL_COST1" property="oilCost1" jdbcType="VARCHAR" />
-    <result column="OIL_COST2" property="oilCost2" jdbcType="VARCHAR" />
-    <result column="OIL_COST3" property="oilCost3" jdbcType="VARCHAR" />
-    <result column="OIL_COST4" property="oilCost4" jdbcType="VARCHAR" />
+    <result column="OIL_COST" property="oilCost" jdbcType="VARCHAR" />
+    <result column="SERVICE_RATE" property="serviceRate" jdbcType="VARCHAR" />
+    <result column="OIL_RATIO" property="oilRatio" jdbcType="VARCHAR" />
+    <result column="OIL_PRICE" property="oilPrice" jdbcType="VARCHAR" />
     <result column="OIL_SUBSIDY" property="oilSubsidy" jdbcType="VARCHAR" />
     
   </resultMap>
@@ -44,8 +44,8 @@
       ci.GPS_PAYMENT "gpsPayment",ci.CHARGE_AMOUNT "chargeAmount",
       ci.MODIFY_USER_NAME "modifyUserName",
       date_format(ci.MODIFY_DATE,'%Y-%m-%d') "modifyDate",
-      ci.KILO_PRICE "kiloPrice",ci.KILOMETERS "kilometers",ci.OIL_COST1 "oilCost1",ci.OIL_COST2 "oilCost2",
-      ci.OIL_COST3 "oilCost3",ci.OIL_COST4 "oilCost4",ci.OIL_SUBSIDY "oilSubsidy"
+      ci.KILO_PRICE "kiloPrice",ci.KILOMETERS "kilometers",ci.OIL_COST "oilCost",ci.SERVICE_RATE "serviceRate",
+      ci.OIL_RATIO "oilRatio",ci.OIL_PRICE "oilPrice",ci.OIL_SUBSIDY "oilSubsidy"
       
   </sql>
    <select id="searchChargeList" resultType="hashMap"

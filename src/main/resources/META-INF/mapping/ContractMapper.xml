@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.erp.trans.dao.ContractMapper" >
   <resultMap id="BaseResultMap" type="com.erp.trans.entity.Contract" >
-    <result column="CONTRACT_ID" property="contractId" jdbcType="VARCHAR" />
+    <id column="CONTRACT_ID" property="contractId" jdbcType="VARCHAR" />
     <result column="CONTRACT_TYPE" property="contractType" jdbcType="VARCHAR" />
     <result column="CONSIGN_ORG_ID" property="consignOrgId" jdbcType="VARCHAR" />
     <result column="CONSIGN_ORG_NAME" property="consignOrgName" jdbcType="VARCHAR" />
@@ -44,10 +44,10 @@
 				and c.ORG_ID = #{conditiions.orgId,jdbcType=VARCHAR}
 			</if>
 			<if test="conditiions.locationFrom != null and conditiions.locationFrom != ''">
-				and  c.location_from = #{conditiions.locationFrom,jdbcType=VARCHAR})
+				and  c.location_from = #{conditiions.locationFrom,jdbcType=VARCHAR}
 			</if>
 			<if test="conditiions.locationTo != null and conditiions.locationTo != ''">
-				and  c.location_to = #{conditiions.locationTo,jdbcType=VARCHAR})
+				and  c.location_to = #{conditiions.locationTo,jdbcType=VARCHAR}
 			</if>
 			<if test="conditiions.carrierName != null and conditiions.carrierName != ''">
 				and  <![CDATA[   c.carrier_name REGEXP #{conditiions.carrierName,jdbcType=VARCHAR} ]]>

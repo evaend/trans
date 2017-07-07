@@ -28,7 +28,8 @@
   <sql id="Base_Column_List" >
     RECORD_ID, ORG_ID, RECORD_TYPE, TRANSPORT_TOOL, TRAILER_NO, LOAD_AMOUNT, CARRIER_ID, 
     CARRIER_NAME, CARRIER_TYPE, MAIN_DRIVE, MAIN_DRIVE_PHONE, CO_PILOT, CO_PILOT_PHONE, 
-    RECORD_START, RECORD_END, MODIFY_DATE, MODIFY_USER_ID
+    RECORD_START, RECORD_END, MODIFY_DATE, MODIFY_USER_ID,REGISTER_DATE,INSURANCE_DATE,REPAYMENT_DAY,
+    REPAYMENT_AMOUNT
   </sql>
    <!--[对应下拉框] 查询系统中在某个机构的轿运车档案信息  -->
   <select id="searchCarriersForSelectByOrg" resultType="hashMap" parameterType="com.erp.trans.common.entity.Pager">
@@ -63,10 +64,10 @@
     <select id="searchRecordInfo" resultMap="BaseResultMap"
 		parameterType="com.erp.trans.common.entity.Pager">
 		select <include refid="Base_Column_List"></include>
-		from tb_record_info r
+		from td_record_info r
 		<where>
 			<if test="conditiions.orgId != null and conditiions.orgId != '0' and conditiions.orgId != '-1'">
-				and r.ORG_ID = #{conditiions.orgId,jdbcType=varchar}
+				and r.ORG_ID = #{conditiions.orgId,jdbcType=VARCHAR}
 			</if>
 			<if test="conditiions.trailerNo != null and conditiions.trailerNo != ''">
 				and  <![CDATA[   r.trailer_no REGEXP #{conditiions.trailerNo,jdbcType=VARCHAR} ]]>

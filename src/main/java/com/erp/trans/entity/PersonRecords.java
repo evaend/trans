@@ -2,7 +2,9 @@ package com.erp.trans.entity;
 
 import java.util.Date;
 
+import com.erp.trans.common.adapter.CustomDateSerializer;
 import com.erp.trans.common.annotation.BaseSql;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 @BaseSql(tableName="td_person_records", resultName="com.erp.trans.dao.PersonRecordsMapper.BaseResultMap")
 public class PersonRecords {
@@ -12,6 +14,7 @@ public class PersonRecords {
 
     private String pGender;
 
+    @JsonSerialize(using = CustomDateSerializer.class)
     private Date pBirthdate;
 
     private String pIdno;
@@ -34,7 +37,7 @@ public class PersonRecords {
     
     private String pEmergency;
     
-    private String deparmentId;
+    private String departmentId;
     
     private String pPhone;
 
@@ -150,12 +153,12 @@ public class PersonRecords {
 		this.pEmergency = pEmergency;
 	}
 
-	public String getDeparmentId() {
-		return deparmentId;
+	public String getDepartmentId() {
+		return departmentId;
 	}
 
-	public void setDeparmentId(String deparmentId) {
-		this.deparmentId = deparmentId;
+	public void setDepartmentId(String departmentId) {
+		this.departmentId = departmentId;
 	}
 
 	public String getpPhone() {

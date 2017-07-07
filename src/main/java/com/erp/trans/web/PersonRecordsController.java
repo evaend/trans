@@ -90,6 +90,7 @@ public class PersonRecordsController {
 		}else{
 			personRecords.setModifyUserid(userId);
 			personRecords.setModifyDate(new Date());
+			personRecords.setOrgId(orgId);
 			personRecordsService.updateInfoCover(personRecords);
 		}
 	}

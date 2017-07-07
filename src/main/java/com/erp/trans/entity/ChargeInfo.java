@@ -54,10 +54,10 @@ public class ChargeInfo {
     
     private String kiloPrice;
     private String kilometers;
-    private String oilCost1;
-    private String oilCost2;
-    private String oilCost3;
-    private String oilCost4;
+    private String oilCost;
+    private String serviceRate;
+    private String oilRatio;
+    private String oilPrice;
     private String oilSubsidy;
 
     public String getChargeId() {
@@ -260,36 +260,37 @@ public class ChargeInfo {
 		this.kilometers = kilometers;
 	}
 
-	public String getOilCost1() {
-		return oilCost1;
+	
+	public String getOilCost() {
+		return oilCost;
 	}
 
-	public void setOilCost1(String oilCost1) {
-		this.oilCost1 = oilCost1;
+	public void setOilCost(String oilCost) {
+		this.oilCost = oilCost;
 	}
 
-	public String getOilCost2() {
-		return oilCost2;
+	public String getServiceRate() {
+		return serviceRate;
 	}
 
-	public void setOilCost2(String oilCost2) {
-		this.oilCost2 = oilCost2;
+	public void setServiceRate(String serviceRate) {
+		this.serviceRate = serviceRate;
 	}
 
-	public String getOilCost3() {
-		return oilCost3;
+	public String getOilRatio() {
+		return oilRatio;
 	}
 
-	public void setOilCost3(String oilCost3) {
-		this.oilCost3 = oilCost3;
+	public void setOilRatio(String oilRatio) {
+		this.oilRatio = oilRatio;
 	}
 
-	public String getOilCost4() {
-		return oilCost4;
+	public String getOilPrice() {
+		return oilPrice;
 	}
 
-	public void setOilCost4(String oilCost4) {
-		this.oilCost4 = oilCost4;
+	public void setOilPrice(String oilPrice) {
+		this.oilPrice = oilPrice;
 	}
 
 	public String getOilSubsidy() {
