@@ -422,7 +422,7 @@ var Table = function Table() {
     if (selector && opts) {
       selector.datagrid(__WEBPACK_IMPORTED_MODULE_0_babel_runtime_core_js_object_assign___default()({}, {
         method: 'get',
-        height: $(window).height() - 180,
+        height: $(window).height() + 20,
         collapsible: true,
         striped: true,
         rownumbers: true
@@ -1073,7 +1073,7 @@ __WEBPACK_IMPORTED_MODULE_1__component_window__["a" /* modalWindow */].init($dia
   var isValid = $form.form('validate');
   console.log(isValid);
   if (isValid) {
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__utils_common__["b" /* ajaxPost */])({ url: '../charge/editAccount', data: postData }, function (data) {
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__utils_common__["b" /* ajaxPost */])({ url: '../charge/insertDriveAccount', data: postData }, function (data) {
       //===== 校验结束 =====
       console.log('编辑一条记录', postData);
       if (data) {

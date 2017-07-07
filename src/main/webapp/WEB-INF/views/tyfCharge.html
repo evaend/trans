@@ -15,23 +15,23 @@
   <!-- 查询表单开始 -->
   <form id="ff" class='row vForm'>  
       <div class="col-md-3 vForm-item">  
-        <label for="consignName">托运单位:</label>  
-        <input class="easyui-validatebox" type="text" name="consignName" />  
+        <label for="consignOrgName">托运单位:</label>  
+        <input class="easyui-validatebox" type="text" name="consignOrgName" />  
       </div>  
       <div class="col-md-5 vForm-item">  
-        <label for="startDate">发车日期:</label>  
-        <input type="text" name="name3" id="starDate" class="Wdate"  
+        <label for="dispatchDateStart">发车日期:</label>  
+        <input type="text" name="dispatchDateStart" id="starDate" class="Wdate"  
         onFocus="WdatePicker({isShowClear:false,isShowToday:false,isShowOK:false,readOnly:true,maxDate:'#F{$dp.$D(\'endDate\')||\'2030-10-01\'}'})"/>  
         至
-        <input type="text" name="name4" id="endDate" class="Wdate" 
+        <input type="text" name="dispatchDateEnd" id="endDate" class="Wdate" 
         onFocus="WdatePicker({isShowClear:false,isShowToday:false,isShowOK:false,readOnly:true,minDate:'#F{$dp.$D(\'starDate\')}',maxDate:'2030-10-01'})"//>
       </div>  
       <div class="col-md-4 vForm-item">  
-        <label for="fstate">状态:</label>  
-        <select id="fstate" editable='false' name='fstate' class="easyui-combobox" name="fstate" style="width:120px;height:28px;">  
-          <option value="0">全部</option>  
-          <option value="1">已对账</option>  
-          <option value="2">未对账</option>   
+        <label for="chargeFstate">状态:</label>  
+        <select id="chargeFstate" editable='false' name='chargeFstate' class="easyui-combobox"  style="width:120px;height:28px;">  
+          <option value="">全部</option>  
+          <option value="01">已对账</option>  
+          <option value="00">未对账</option>   
         </select>  
         <span>
           <a id="search" href="#" class="easyui-linkbutton" data-options="iconCls:'icon-search'">查询</a>  
