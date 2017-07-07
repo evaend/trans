@@ -1106,7 +1106,7 @@ __WEBPACK_IMPORTED_MODULE_1__component_table__["a" /* table */].init($grid, {
     handler: function handler() {
       __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4__actions_grid__["a" /* gridEdit */])($grid, function (rows) {
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3__utils_common__["b" /* setFormData */])($form, rows[0], function () {
-          __WEBPACK_IMPORTED_MODULE_6_jQuery___default()('#sl').combobox('setValue', rows[0].name5);
+          __WEBPACK_IMPORTED_MODULE_6_jQuery___default()('#sl').combobox('setValue', rows[0].taxRate);
         });
         __WEBPACK_IMPORTED_MODULE_2__component_window__["a" /* modalWindow */].setTitle($dialog, '编辑').open($dialog);
       });
@@ -1120,7 +1120,6 @@ __WEBPACK_IMPORTED_MODULE_1__component_table__["a" /* table */].init($grid, {
         rows.map(function (item, index) {
           return taxIds.push(item.taxId);
         });
-        console.log(taxIds)
         // 后台交互
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3__utils_common__["c" /* ajaxPost */])({ url: '../operationCosts/deleteTaxInfo', data: { taxIds: taxIds } }, function (data) {
           console.log('删除数据', taxIds);

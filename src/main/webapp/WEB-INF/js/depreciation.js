@@ -1097,13 +1097,13 @@ __WEBPACK_IMPORTED_MODULE_0__component_table__["a" /* table */].init($grid, {
     text: '删除',
     iconCls: 'icon-remove',
     handler: function handler() {
-      var vehicleDepreciationId = [];
+      var vehicleDepreciationIds = [];
       rows.map(function (item, index) {
         return insuranceIds.push(item.vehicleDepreciationId);
       });
       // 后台交互
-      __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__utils_common__["c" /* ajaxPost */])({ url: '../operationCosts/deleteInsurances', data: { vehicleDepreciationId: vehicleDepreciationId } }, function (data) {
-        console.log('删除数据', insuranceIds);
+      __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__utils_common__["c" /* ajaxPost */])({ url: '../operationCosts/deleteInsurances', data: { vehicleDepreciationIds: vehicleDepreciationIds } }, function (data) {
+        console.log('删除数据', vehicleDepreciationIds);
         // 刷新表格
         __WEBPACK_IMPORTED_MODULE_0__component_table__["a" /* table */].reload($grid);
       });
