@@ -53,10 +53,10 @@
   <div id="waybillDialog">
     <form id="waybillFf" class='row vForm'>  
       <div class="col-md-2 vForm-item form-label">  
-        <label for="consignFsate">状态:</label>   
+        <label for="fstate">状态:</label>   
       </div>  
       <div class="col-md-4 vForm-item">  
-        <select id="consignFsateEdit" editable='false' name='consignFsate' class="easyui-combobox" style="width:200px;height:28px;">  
+        <select id="fstate" editable='false' name='consignFsate' class="easyui-combobox" style="width:200px;height:28px;">  
           <option value="0">请选择</option>  
           <option value="01">已返单</option>  
           <option value="00">未返单</option>   
@@ -64,10 +64,10 @@
         </select>  
       </div> 
       <div class="col-md-2 vForm-item  form-label">
-        <label for="">返单时间<label>
+        <label for="returnDate">返单时间<label>
       </div>
        <div class="col-md-4 vForm-item">  
-        <input type="text" name="fandanDate" class="Wdate"  
+        <input type="text" name="returnDate" class="Wdate"  
         onFocus="WdatePicker({isShowClear:false,isShowToday:false,isShowOK:false,readOnly:true,maxDate:'\'2030-10-01\'}'})"/>
       </div> 
       <div class="col-md-2 vForm-item form-label">  

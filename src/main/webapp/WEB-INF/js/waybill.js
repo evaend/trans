@@ -143,10 +143,10 @@ if(typeof __e == 'number')__e = core; // eslint-disable-line no-undef
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function($) {/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return ajaxPost; });
+/* WEBPACK VAR INJECTION */(function($) {/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return ajaxPost; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return getFormData; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return setFormData; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return resetFormData; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return setFormData; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return resetFormData; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_extends__ = __webpack_require__(18);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_extends___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_extends__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_babel_runtime_core_js_object_assign__ = __webpack_require__(1);
@@ -447,7 +447,7 @@ var Table = function Table() {
       return selector.datagrid('deleteRow', selector.datagrid('getRowIndex', item));
     });
     if (url) {
-      __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__utils_common__["b" /* ajaxPost */])({
+      __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__utils_common__["d" /* ajaxPost */])({
         url: url,
         method: 'get'
       }, function (data) {
@@ -1007,32 +1007,31 @@ __WEBPACK_IMPORTED_MODULE_0__component_table__["a" /* table */].init(__WEBPACK_I
       if (len === 0) {
         __WEBPACK_IMPORTED_MODULE_4_jQuery___default.a.messager.alert('提示', '至少选择一项', 'info');
       } else {
-        //setFormData($('#waybillFf'), selectd[0])
         __WEBPACK_IMPORTED_MODULE_1__component_window__["a" /* modalWindow */].open(__WEBPACK_IMPORTED_MODULE_4_jQuery___default()('#waybillDialog'));
       }
     }
   }],
   title: '运单表',
   url: '../trans/findConsignList',
-  columns: [[{ field: 'consignDetailId', checkbox: true }, { field: 'consignNo', title: '制单日期', width: 100 }, { field: 'consignNo', title: '发运日期', width: 100 }, { field: 'consignNo', title: '运单号', width: 100 }, { field: 'camount', title: '数量', width: 100, align: 'right' }, { field: 'consignFsate', title: '状态', width: 100 }, { field: 'locationFrom', title: '起运地', width: 100 }, { field: 'locationTo', title: '目的地', width: 100 }, { field: 'consignOrgName', title: '托运单位', width: 100 }, { field: 'receiveOrgName', title: '收车单位', width: 100 }, { field: 'carrierName', title: '承运商', width: 100 }, { field: 'name9', title: '是否带单', width: 100 }, { field: 'name10', title: '返单时间', width: 100 }, { field: 'exceptionReason', title: '备注', width: 100 }, { field: 'modifyUser', title: '修改人', width: 100 }, { field: 'modifyDate', title: '修改时间', width: 100 }]]
+  columns: [[{ field: 'consignDetailId', checkbox: true }, { field: 'consignNo', title: '制单日期', width: 100 }, { field: 'consignNo', title: '发运日期', width: 100 }, { field: 'consignNo', title: '运单号', width: 100 }, { field: 'camount', title: '数量', width: 100, align: 'right' }, { field: 'consignFsate', title: '状态', width: 100 }, { field: 'locationFrom', title: '起运地', width: 100 }, { field: 'locationTo', title: '目的地', width: 100 }, { field: 'consignOrgName', title: '托运单位', width: 100 }, { field: 'receiveOrgName', title: '收车单位', width: 100 }, { field: 'carrierName', title: '承运商', width: 100 }, { field: 'name9', title: '是否带单', width: 100 }, { field: 'returnDate', title: '返单时间', width: 100 }, { field: 'exceptionReason', title: '备注', width: 100 }, { field: 'modifyUser', title: '修改人', width: 100 }, { field: 'modifyDate', title: '修改时间', width: 100 }]]
 });
 
 __WEBPACK_IMPORTED_MODULE_1__component_window__["a" /* modalWindow */].init(__WEBPACK_IMPORTED_MODULE_4_jQuery___default()('#waybillDialog'), { title: '批量修改' }, function () {
   var postData = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__utils_common__["a" /* getFormData */])(__WEBPACK_IMPORTED_MODULE_4_jQuery___default()('#waybillFf'));
-  //===== 校验 =======
-  //===== 校验结束 =====
-  if (isValid) {
-    ajaxPost({ url: '../trans/updateConsignFstate', data: postData }, function (data) {
-      //if(data){
-      console.log('新增一条记录', postData);
-      //批量编辑,关闭窗口
-      __WEBPACK_IMPORTED_MODULE_1__component_window__["a" /* modalWindow */].close(__WEBPACK_IMPORTED_MODULE_4_jQuery___default()('#waybillDialog'));
-      __WEBPACK_IMPORTED_MODULE_3__component_message__["a" /* message */].alert({
-        msg: '批量修改成功'
-      });
-      //}
+  var selectd = __WEBPACK_IMPORTED_MODULE_4_jQuery___default()('#waybillGrid').datagrid('getSelections');
+  var opts = [];
+  selectd.map(function (item, index) {
+    opts.push(item.consignId);
+  });
+  postData.consignIds = opts;
+  console.log(postData)
+  __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__utils_common__["d" /* ajaxPost */])({ url: '../trans/updateConsignFstate', data: postData }, function (data) {
+    //批量编辑,关闭窗口
+    __WEBPACK_IMPORTED_MODULE_1__component_window__["a" /* modalWindow */].close(__WEBPACK_IMPORTED_MODULE_4_jQuery___default()('#waybillDialog'));
+    __WEBPACK_IMPORTED_MODULE_3__component_message__["a" /* message */].alert({
+      msg: '批量修改成功'
     });
-  }
+  });
   //表格刷新
   __WEBPACK_IMPORTED_MODULE_0__component_table__["a" /* table */].reload(__WEBPACK_IMPORTED_MODULE_4_jQuery___default()('#waybillGrid'));
 });

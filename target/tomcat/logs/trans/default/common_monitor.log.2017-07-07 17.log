@@ -1,0 +1,261 @@
+2017-07-07 17:41:30,948 INFO  main 669 [pool.DruidDataSource] - {dataSource-1} inited
+2017-07-07 17:41:33,561 DEBUG main 42  [util.SystemConfig] - 加载Properties配置文件database.properties
+2017-07-07 17:41:33,563 DEBUG main 42  [util.SystemConfig] - 加载Properties配置文件environment.properties
+2017-07-07 17:41:33,569 DEBUG main 42  [util.SystemConfig] - 加载Properties配置文件system.properties
+2017-07-07 17:41:42,257 DEBUG http-8902-1 122 [web.BaseControllerSupport] - ┋requestURI=/trans/views/login.html┋/trans
+2017-07-07 17:41:44,058 DEBUG http-8902-1 122 [web.BaseControllerSupport] - ┋requestURI=/trans/views/login.html┋/trans
+2017-07-07 17:41:52,329 DEBUG http-8902-5 122 [web.BaseControllerSupport] - ┋requestURI=/trans/views/login.html┋/trans
+2017-07-07 17:41:52,362 DEBUG http-8902-5 122 [web.BaseControllerSupport] - ┋requestURI=/trans/lib/bootstrap.css┋/trans
+2017-07-07 17:41:52,372 DEBUG http-8902-4 122 [web.BaseControllerSupport] - ┋requestURI=/trans/lib/normalize.css┋/trans
+2017-07-07 17:41:52,378 DEBUG http-8902-2 122 [web.BaseControllerSupport] - ┋requestURI=/trans/lib/jquery-3.2.1.min.js┋/trans
+2017-07-07 17:41:52,381 DEBUG http-8902-1 122 [web.BaseControllerSupport] - ┋requestURI=/trans/lib/easyui/jquery.easyui.min.js┋/trans
+2017-07-07 17:41:53,719 DEBUG http-8902-6 122 [web.BaseControllerSupport] - ┋requestURI=/trans/login/userLogin┋/trans
+2017-07-07 17:41:54,498 DEBUG http-8902-6 139 [BaseMapper.searchList] - ==>  Preparing: select * from ts_user_info where USER_NO = 'gas' 
+2017-07-07 17:41:54,617 DEBUG http-8902-6 139 [BaseMapper.searchList] - ==> Parameters: 
+2017-07-07 17:41:54,671 DEBUG http-8902-6 139 [BaseMapper.searchList] - <==      Total: 1
+2017-07-07 17:41:54,730 DEBUG http-8902-6 139 [UserInfoMapper.findOrgFstateByOrgId] - ==>  Preparing: SELECT FSTATE FROM td_org_info where ORG_ID = ? 
+2017-07-07 17:41:54,734 DEBUG http-8902-6 139 [UserInfoMapper.findOrgFstateByOrgId] - ==> Parameters: 5(String)
+2017-07-07 17:41:54,755 DEBUG http-8902-6 139 [UserInfoMapper.findOrgFstateByOrgId] - <==      Total: 1
+2017-07-07 17:41:54,757 DEBUG http-8902-6 139 [UserInfoMapper.findUserInfoById] - ==>  Preparing: SELECT u.USER_ID, u.USER_NO, u.USER_NAME, u.PWD,u.FSTATE, u.MODIFY_DATE, u.CREATE_DATE, u.USER_LEVEL, u.MOBILE_PHONE, u.E_MAIL, u.ORG_ID , o.ORG_NAME FROM ts_user_info u LEFT JOIN td_org_info o on u.ORG_ID=o.ORG_ID where u.USER_ID = ? 
+2017-07-07 17:41:54,761 DEBUG http-8902-6 139 [UserInfoMapper.findUserInfoById] - ==> Parameters: 501(String)
+2017-07-07 17:41:54,787 DEBUG http-8902-6 139 [UserInfoMapper.findUserInfoById] - <==      Total: 1
+2017-07-07 17:41:54,892 DEBUG http-8902-6 122 [web.BaseControllerSupport] - ┋requestURI=/trans/views/index.html┋/trans
+2017-07-07 17:41:54,927 DEBUG http-8902-2 122 [web.BaseControllerSupport] - ┋requestURI=/trans/lib/easyui/themes/icon.css┋/trans
+2017-07-07 17:41:54,945 DEBUG http-8902-6 122 [web.BaseControllerSupport] - ┋requestURI=/trans/lib/easyui/themes/metro/easyui.css┋/trans
+2017-07-07 17:41:55,072 DEBUG http-8902-6 122 [web.BaseControllerSupport] - ┋requestURI=/trans/lib/easyui/themes/metro/images/tabs_icons.png┋/trans
+2017-07-07 17:41:55,097 DEBUG http-8902-6 122 [web.BaseControllerSupport] - ┋requestURI=/trans/lib/easyui/themes/metro/images/blank.gif┋/trans
+2017-07-07 17:41:55,097 DEBUG http-8902-2 122 [web.BaseControllerSupport] - ┋requestURI=/trans/lib/easyui/themes/metro/images/panel_tools.png┋/trans
+2017-07-07 17:41:55,113 DEBUG http-8902-2 122 [web.BaseControllerSupport] - ┋requestURI=/trans/lib/easyui/themes/metro/images/accordion_arrows.png┋/trans
+2017-07-07 17:41:55,286 DEBUG http-8902-6 122 [web.BaseControllerSupport] - ┋requestURI=/trans/lib/easyui/themes/metro/images/layout_arrows.png┋/trans
+2017-07-07 17:41:58,638 DEBUG http-8902-2 122 [web.BaseControllerSupport] - ┋requestURI=/trans/views/plan.html┋/trans
+2017-07-07 17:41:58,686 DEBUG http-8902-2 122 [web.BaseControllerSupport] - ┋requestURI=/trans/lib/easyui/themes/material/easyui.css┋/trans
+2017-07-07 17:41:58,689 DEBUG http-8902-5 122 [web.BaseControllerSupport] - ┋requestURI=/trans/lib/ajaxfileupload.js┋/trans
+2017-07-07 17:41:58,693 DEBUG http-8902-3 122 [web.BaseControllerSupport] - ┋requestURI=/trans/lib/My97DatePicker/WdatePicker.js┋/trans
+2017-07-07 17:41:58,689 DEBUG http-8902-4 122 [web.BaseControllerSupport] - ┋requestURI=/trans/lib/easyui/easyui-lang-zh_CN.js┋/trans
+2017-07-07 17:41:58,819 DEBUG http-8902-5 122 [web.BaseControllerSupport] - ┋requestURI=/trans/lib/My97DatePicker/skin/WdatePicker.css┋/trans
+2017-07-07 17:41:58,851 DEBUG http-8902-5 122 [web.BaseControllerSupport] - ┋requestURI=/trans/lib/easyui/themes/material/images/combo_arrow.png┋/trans
+2017-07-07 17:41:58,871 DEBUG http-8902-5 122 [web.BaseControllerSupport] - ┋requestURI=/trans/staticData/searchLocationsForSelect┋/trans
+2017-07-07 17:41:58,917 DEBUG http-8902-5 139 [StaticDataMapper.searchLocationsForSelect] - ==>  Preparing: select s.static_code "id",s.static_name "text" from td_static_data s WHERE s.static_class = '市代码' order by s.fqun 
+2017-07-07 17:41:58,918 DEBUG http-8902-3 122 [web.BaseControllerSupport] - ┋requestURI=/trans/staticData/searchLocationsForSelect┋/trans
+2017-07-07 17:41:58,920 DEBUG http-8902-5 139 [StaticDataMapper.searchLocationsForSelect] - ==> Parameters: 
+2017-07-07 17:41:58,937 DEBUG http-8902-4 122 [web.BaseControllerSupport] - ┋requestURI=/trans/staticData/searchLocationsForSelect┋/trans
+2017-07-07 17:41:58,959 DEBUG http-8902-2 122 [web.BaseControllerSupport] - ┋requestURI=/trans/staticData/searchLocationsForSelect┋/trans
+2017-07-07 17:41:58,994 DEBUG http-8902-5 139 [StaticDataMapper.searchLocationsForSelect] - <==      Total: 345
+2017-07-07 17:41:58,998 DEBUG http-8902-3 139 [StaticDataMapper.searchLocationsForSelect] - ==>  Preparing: select s.static_code "id",s.static_name "text" from td_static_data s WHERE s.static_class = '市代码' order by s.fqun 
+2017-07-07 17:41:59,000 DEBUG http-8902-3 139 [StaticDataMapper.searchLocationsForSelect] - ==> Parameters: 
+2017-07-07 17:41:59,045 DEBUG http-8902-6 122 [web.BaseControllerSupport] - ┋requestURI=/trans/staticData/carFindForSelect┋/trans
+2017-07-07 17:41:59,056 DEBUG http-8902-3 139 [StaticDataMapper.searchLocationsForSelect] - <==      Total: 345
+2017-07-07 17:41:59,059 DEBUG http-8902-4 139 [StaticDataMapper.searchLocationsForSelect] - ==>  Preparing: select s.static_code "id",s.static_name "text" from td_static_data s WHERE s.static_class = '市代码' order by s.fqun 
+2017-07-07 17:41:59,060 DEBUG http-8902-4 139 [StaticDataMapper.searchLocationsForSelect] - ==> Parameters: 
+2017-07-07 17:41:59,099 DEBUG http-8902-4 139 [StaticDataMapper.searchLocationsForSelect] - <==      Total: 345
+2017-07-07 17:41:59,102 DEBUG http-8902-2 139 [StaticDataMapper.searchLocationsForSelect] - ==>  Preparing: select s.static_code "id",s.static_name "text" from td_static_data s WHERE s.static_class = '市代码' order by s.fqun 
+2017-07-07 17:41:59,103 DEBUG http-8902-2 139 [StaticDataMapper.searchLocationsForSelect] - ==> Parameters: 
+2017-07-07 17:41:59,144 DEBUG http-8902-2 139 [StaticDataMapper.searchLocationsForSelect] - <==      Total: 345
+2017-07-07 17:41:59,147 DEBUG http-8902-6 139 [StaticDataMapper.carFindForSelect] - ==>  Preparing: select car.brand_id "id",car.brand_name "text" from td_brand car order by car.BRAND_FIRST_LETTER 
+2017-07-07 17:41:59,149 DEBUG http-8902-6 139 [StaticDataMapper.carFindForSelect] - ==> Parameters: 
+2017-07-07 17:41:59,172 DEBUG http-8902-2 122 [web.BaseControllerSupport] - ┋requestURI=/trans/lib/easyui/themes/material/images/blank.gif┋/trans
+2017-07-07 17:41:59,182 DEBUG http-8902-6 139 [StaticDataMapper.carFindForSelect] - <==      Total: 212
+2017-07-07 17:41:59,184 DEBUG http-8902-2 122 [web.BaseControllerSupport] - ┋requestURI=/trans/lib/easyui/themes/material/images/panel_tools.png┋/trans
+2017-07-07 17:41:59,247 DEBUG http-8902-2 122 [web.BaseControllerSupport] - ┋requestURI=/trans/lib/easyui/themes/icons/edit_remove.png┋/trans
+2017-07-07 17:41:59,247 DEBUG http-8902-6 122 [web.BaseControllerSupport] - ┋requestURI=/trans/lib/easyui/themes/icons/edit_add.png┋/trans
+2017-07-07 17:41:59,279 DEBUG http-8902-2 122 [web.BaseControllerSupport] - ┋requestURI=/trans/lib/easyui/themes/material/images/loading.gif┋/trans
+2017-07-07 17:41:59,281 DEBUG http-8902-6 122 [web.BaseControllerSupport] - ┋requestURI=/trans/trans/searchDispatchInfo┋/trans
+2017-07-07 17:41:59,319 DEBUG http-8902-6 139 [DespatchPlanMapper.searchDispatchInfo] - ==>  Preparing: select cd.CONSIGN_DETAIL_ID "consignDetailId", c.CONSIGN_NO "consignNo", cd.CAR_BRAND "carBrand", cd.CAR_MODEL "carModel", cd.AMOUNT "amount", cd.CHASSIS_NO "chassisNo", date_format(cd.DESPATCH_DATE,'%Y-%m-%d') "despatchDate",c.LOCATION_TO "locationTo", c.RECEIVE_ORG_NAME "receiveOrgName", c.CONSIGN_ORG_NAME "consignOrgName", c.LOCATION_FROM "locationFrom",r.CARRIER_NAME "carrierName",r.TRANSPORT_TOOL "transportTool", date_format(c.create_date,'%Y-%m-%d %T') "createDate", u.USER_NAME "modifyUser" from tb_consign_detail cd left join tb_consign c on cd.consign_id = c.consign_id left join tb_despatch_plan dp on cd.despatch_plan_id = dp.despatch_plan_id left join td_record_info r on dp.record_id = r.record_id left join ts_user_info u on u.user_id = cd.MODIFY_USER_ID WHERE c.ORG_ID = ? order by date_format(cd.MODIFY_DATE,'%Y-%m-%d %T') desc 
+2017-07-07 17:41:59,325 DEBUG http-8902-6 139 [DespatchPlanMapper.searchDispatchInfo] - ==> Parameters: 5(String)
+2017-07-07 17:41:59,384 DEBUG http-8902-6 139 [DespatchPlanMapper.searchDispatchInfo] - <==      Total: 87
+2017-07-07 17:41:59,414 DEBUG http-8902-6 122 [web.BaseControllerSupport] - ┋requestURI=/trans/lib/easyui/themes/icons/filesave.png┋/trans
+2017-07-07 17:41:59,426 DEBUG http-8902-6 122 [web.BaseControllerSupport] - ┋requestURI=/trans/lib/easyui/themes/icons/cancel.png┋/trans
+2017-07-07 17:41:59,482 DEBUG http-8902-6 122 [web.BaseControllerSupport] - ┋requestURI=/trans/contractRecords/searchCarriersForSelectByOrg┋/trans
+2017-07-07 17:41:59,508 DEBUG http-8902-6 139 [RecordInfoMapper.searchCarriersForSelectByOrg] - ==>  Preparing: select distinct r.carrier_id "id",r.carrier_name "text" from td_record_info r WHERE r.org_id = ? order by r.CARRIER_NAME 
+2017-07-07 17:41:59,509 DEBUG http-8902-6 139 [RecordInfoMapper.searchCarriersForSelectByOrg] - ==> Parameters: 5(String)
+2017-07-07 17:41:59,532 DEBUG http-8902-6 139 [RecordInfoMapper.searchCarriersForSelectByOrg] - <==      Total: 1
+2017-07-07 17:41:59,584 DEBUG http-8902-6 122 [web.BaseControllerSupport] - ┋requestURI=/trans/lib/My97DatePicker/skin/datePicker.gif┋/trans
+2017-07-07 17:41:59,842 DEBUG http-8902-6 122 [web.BaseControllerSupport] - ┋requestURI=/trans/lib/easyui/themes/icons/search.png┋/trans
+2017-07-07 17:41:59,870 DEBUG http-8902-6 122 [web.BaseControllerSupport] - ┋requestURI=/trans/lib/easyui/themes/icons/ok.png┋/trans
+2017-07-07 17:42:00,005 DEBUG http-8902-6 122 [web.BaseControllerSupport] - ┋requestURI=/trans/trans/searchDispatchInfo┋/trans
+2017-07-07 17:42:00,007 DEBUG http-8902-6 139 [DespatchPlanMapper.searchDispatchInfo] - ==>  Preparing: select cd.CONSIGN_DETAIL_ID "consignDetailId", c.CONSIGN_NO "consignNo", cd.CAR_BRAND "carBrand", cd.CAR_MODEL "carModel", cd.AMOUNT "amount", cd.CHASSIS_NO "chassisNo", date_format(cd.DESPATCH_DATE,'%Y-%m-%d') "despatchDate",c.LOCATION_TO "locationTo", c.RECEIVE_ORG_NAME "receiveOrgName", c.CONSIGN_ORG_NAME "consignOrgName", c.LOCATION_FROM "locationFrom",r.CARRIER_NAME "carrierName",r.TRANSPORT_TOOL "transportTool", date_format(c.create_date,'%Y-%m-%d %T') "createDate", u.USER_NAME "modifyUser" from tb_consign_detail cd left join tb_consign c on cd.consign_id = c.consign_id left join tb_despatch_plan dp on cd.despatch_plan_id = dp.despatch_plan_id left join td_record_info r on dp.record_id = r.record_id left join ts_user_info u on u.user_id = cd.MODIFY_USER_ID WHERE c.ORG_ID = ? order by date_format(cd.MODIFY_DATE,'%Y-%m-%d %T') desc 
+2017-07-07 17:42:00,009 DEBUG http-8902-6 139 [DespatchPlanMapper.searchDispatchInfo] - ==> Parameters: 5(String)
+2017-07-07 17:42:00,063 DEBUG http-8902-6 139 [DespatchPlanMapper.searchDispatchInfo] - <==      Total: 87
+2017-07-07 17:42:11,834 DEBUG http-8902-6 122 [web.BaseControllerSupport] - ┋requestURI=/trans/lib/easyui/themes/material/images/messager_icons.png┋/trans
+2017-07-07 17:42:13,001 DEBUG http-8902-6 122 [web.BaseControllerSupport] - ┋requestURI=/trans/trans/searchDispatchInfo┋/trans
+2017-07-07 17:42:13,004 DEBUG http-8902-6 139 [DespatchPlanMapper.searchDispatchInfo] - ==>  Preparing: select cd.CONSIGN_DETAIL_ID "consignDetailId", c.CONSIGN_NO "consignNo", cd.CAR_BRAND "carBrand", cd.CAR_MODEL "carModel", cd.AMOUNT "amount", cd.CHASSIS_NO "chassisNo", date_format(cd.DESPATCH_DATE,'%Y-%m-%d') "despatchDate",c.LOCATION_TO "locationTo", c.RECEIVE_ORG_NAME "receiveOrgName", c.CONSIGN_ORG_NAME "consignOrgName", c.LOCATION_FROM "locationFrom",r.CARRIER_NAME "carrierName",r.TRANSPORT_TOOL "transportTool", date_format(c.create_date,'%Y-%m-%d %T') "createDate", u.USER_NAME "modifyUser" from tb_consign_detail cd left join tb_consign c on cd.consign_id = c.consign_id left join tb_despatch_plan dp on cd.despatch_plan_id = dp.despatch_plan_id left join td_record_info r on dp.record_id = r.record_id left join ts_user_info u on u.user_id = cd.MODIFY_USER_ID WHERE c.ORG_ID = ? order by date_format(cd.MODIFY_DATE,'%Y-%m-%d %T') desc 
+2017-07-07 17:42:13,007 DEBUG http-8902-6 139 [DespatchPlanMapper.searchDispatchInfo] - ==> Parameters: 5(String)
+2017-07-07 17:42:13,094 DEBUG http-8902-6 139 [DespatchPlanMapper.searchDispatchInfo] - <==      Total: 87
+2017-07-07 17:42:17,777 DEBUG http-8902-6 122 [web.BaseControllerSupport] - ┋requestURI=/trans/trans/searchDispatchInfo┋/trans
+2017-07-07 17:42:17,781 DEBUG http-8902-6 139 [DespatchPlanMapper.searchDispatchInfo] - ==>  Preparing: select cd.CONSIGN_DETAIL_ID "consignDetailId", c.CONSIGN_NO "consignNo", cd.CAR_BRAND "carBrand", cd.CAR_MODEL "carModel", cd.AMOUNT "amount", cd.CHASSIS_NO "chassisNo", date_format(cd.DESPATCH_DATE,'%Y-%m-%d') "despatchDate",c.LOCATION_TO "locationTo", c.RECEIVE_ORG_NAME "receiveOrgName", c.CONSIGN_ORG_NAME "consignOrgName", c.LOCATION_FROM "locationFrom",r.CARRIER_NAME "carrierName",r.TRANSPORT_TOOL "transportTool", date_format(c.create_date,'%Y-%m-%d %T') "createDate", u.USER_NAME "modifyUser" from tb_consign_detail cd left join tb_consign c on cd.consign_id = c.consign_id left join tb_despatch_plan dp on cd.despatch_plan_id = dp.despatch_plan_id left join td_record_info r on dp.record_id = r.record_id left join ts_user_info u on u.user_id = cd.MODIFY_USER_ID WHERE c.ORG_ID = ? order by date_format(cd.MODIFY_DATE,'%Y-%m-%d %T') desc 
+2017-07-07 17:42:17,790 DEBUG http-8902-6 139 [DespatchPlanMapper.searchDispatchInfo] - ==> Parameters: 5(String)
+2017-07-07 17:42:17,892 DEBUG http-8902-6 139 [DespatchPlanMapper.searchDispatchInfo] - <==      Total: 87
+2017-07-07 17:42:25,189 DEBUG http-8902-6 122 [web.BaseControllerSupport] - ┋requestURI=/trans/trans/searchDispatchInfo┋/trans
+2017-07-07 17:42:25,191 DEBUG http-8902-6 139 [DespatchPlanMapper.searchDispatchInfo] - ==>  Preparing: select cd.CONSIGN_DETAIL_ID "consignDetailId", c.CONSIGN_NO "consignNo", cd.CAR_BRAND "carBrand", cd.CAR_MODEL "carModel", cd.AMOUNT "amount", cd.CHASSIS_NO "chassisNo", date_format(cd.DESPATCH_DATE,'%Y-%m-%d') "despatchDate",c.LOCATION_TO "locationTo", c.RECEIVE_ORG_NAME "receiveOrgName", c.CONSIGN_ORG_NAME "consignOrgName", c.LOCATION_FROM "locationFrom",r.CARRIER_NAME "carrierName",r.TRANSPORT_TOOL "transportTool", date_format(c.create_date,'%Y-%m-%d %T') "createDate", u.USER_NAME "modifyUser" from tb_consign_detail cd left join tb_consign c on cd.consign_id = c.consign_id left join tb_despatch_plan dp on cd.despatch_plan_id = dp.despatch_plan_id left join td_record_info r on dp.record_id = r.record_id left join ts_user_info u on u.user_id = cd.MODIFY_USER_ID WHERE c.ORG_ID = ? order by date_format(cd.MODIFY_DATE,'%Y-%m-%d %T') desc 
+2017-07-07 17:42:25,193 DEBUG http-8902-6 139 [DespatchPlanMapper.searchDispatchInfo] - ==> Parameters: 5(String)
+2017-07-07 17:42:25,247 DEBUG http-8902-6 139 [DespatchPlanMapper.searchDispatchInfo] - <==      Total: 87
+2017-07-07 17:42:31,871 DEBUG http-8902-6 122 [web.BaseControllerSupport] - ┋requestURI=/trans/trans/searchDispatchInfo┋/trans
+2017-07-07 17:42:31,873 DEBUG http-8902-6 139 [DespatchPlanMapper.searchDispatchInfo] - ==>  Preparing: select cd.CONSIGN_DETAIL_ID "consignDetailId", c.CONSIGN_NO "consignNo", cd.CAR_BRAND "carBrand", cd.CAR_MODEL "carModel", cd.AMOUNT "amount", cd.CHASSIS_NO "chassisNo", date_format(cd.DESPATCH_DATE,'%Y-%m-%d') "despatchDate",c.LOCATION_TO "locationTo", c.RECEIVE_ORG_NAME "receiveOrgName", c.CONSIGN_ORG_NAME "consignOrgName", c.LOCATION_FROM "locationFrom",r.CARRIER_NAME "carrierName",r.TRANSPORT_TOOL "transportTool", date_format(c.create_date,'%Y-%m-%d %T') "createDate", u.USER_NAME "modifyUser" from tb_consign_detail cd left join tb_consign c on cd.consign_id = c.consign_id left join tb_despatch_plan dp on cd.despatch_plan_id = dp.despatch_plan_id left join td_record_info r on dp.record_id = r.record_id left join ts_user_info u on u.user_id = cd.MODIFY_USER_ID WHERE c.ORG_ID = ? order by date_format(cd.MODIFY_DATE,'%Y-%m-%d %T') desc 
+2017-07-07 17:42:31,875 DEBUG http-8902-6 139 [DespatchPlanMapper.searchDispatchInfo] - ==> Parameters: 5(String)
+2017-07-07 17:42:31,926 DEBUG http-8902-6 139 [DespatchPlanMapper.searchDispatchInfo] - <==      Total: 87
+2017-07-07 17:42:36,343 DEBUG http-8902-6 122 [web.BaseControllerSupport] - ┋requestURI=/trans/lib/bootstrap.css.map┋/trans
+2017-07-07 17:42:46,703 DEBUG http-8902-6 122 [web.BaseControllerSupport] - ┋requestURI=/trans/trans/searchDispatchInfo┋/trans
+2017-07-07 17:42:46,707 DEBUG http-8902-6 139 [DespatchPlanMapper.searchDispatchInfo] - ==>  Preparing: select cd.CONSIGN_DETAIL_ID "consignDetailId", c.CONSIGN_NO "consignNo", cd.CAR_BRAND "carBrand", cd.CAR_MODEL "carModel", cd.AMOUNT "amount", cd.CHASSIS_NO "chassisNo", date_format(cd.DESPATCH_DATE,'%Y-%m-%d') "despatchDate",c.LOCATION_TO "locationTo", c.RECEIVE_ORG_NAME "receiveOrgName", c.CONSIGN_ORG_NAME "consignOrgName", c.LOCATION_FROM "locationFrom",r.CARRIER_NAME "carrierName",r.TRANSPORT_TOOL "transportTool", date_format(c.create_date,'%Y-%m-%d %T') "createDate", u.USER_NAME "modifyUser" from tb_consign_detail cd left join tb_consign c on cd.consign_id = c.consign_id left join tb_despatch_plan dp on cd.despatch_plan_id = dp.despatch_plan_id left join td_record_info r on dp.record_id = r.record_id left join ts_user_info u on u.user_id = cd.MODIFY_USER_ID WHERE c.ORG_ID = ? order by date_format(cd.MODIFY_DATE,'%Y-%m-%d %T') desc 
+2017-07-07 17:42:46,712 DEBUG http-8902-6 139 [DespatchPlanMapper.searchDispatchInfo] - ==> Parameters: 5(String)
+2017-07-07 17:42:46,791 DEBUG http-8902-6 139 [DespatchPlanMapper.searchDispatchInfo] - <==      Total: 87
+2017-07-07 17:43:01,529 DEBUG http-8902-6 122 [web.BaseControllerSupport] - ┋requestURI=/trans/trans/searchDispatchInfo┋/trans
+2017-07-07 17:43:01,532 DEBUG http-8902-6 139 [DespatchPlanMapper.searchDispatchInfo] - ==>  Preparing: select cd.CONSIGN_DETAIL_ID "consignDetailId", c.CONSIGN_NO "consignNo", cd.CAR_BRAND "carBrand", cd.CAR_MODEL "carModel", cd.AMOUNT "amount", cd.CHASSIS_NO "chassisNo", date_format(cd.DESPATCH_DATE,'%Y-%m-%d') "despatchDate",c.LOCATION_TO "locationTo", c.RECEIVE_ORG_NAME "receiveOrgName", c.CONSIGN_ORG_NAME "consignOrgName", c.LOCATION_FROM "locationFrom",r.CARRIER_NAME "carrierName",r.TRANSPORT_TOOL "transportTool", date_format(c.create_date,'%Y-%m-%d %T') "createDate", u.USER_NAME "modifyUser" from tb_consign_detail cd left join tb_consign c on cd.consign_id = c.consign_id left join tb_despatch_plan dp on cd.despatch_plan_id = dp.despatch_plan_id left join td_record_info r on dp.record_id = r.record_id left join ts_user_info u on u.user_id = cd.MODIFY_USER_ID WHERE c.ORG_ID = ? order by date_format(cd.MODIFY_DATE,'%Y-%m-%d %T') desc 
+2017-07-07 17:43:01,534 DEBUG http-8902-6 139 [DespatchPlanMapper.searchDispatchInfo] - ==> Parameters: 5(String)
+2017-07-07 17:43:01,585 DEBUG http-8902-6 139 [DespatchPlanMapper.searchDispatchInfo] - <==      Total: 87
+2017-07-07 17:45:24,105 DEBUG http-8902-6 122 [web.BaseControllerSupport] - ┋requestURI=/trans/trans/importConsign┋/trans
+2017-07-07 17:45:25,586 DEBUG http-8902-6 139 [ConsignMapper.filterExistConsignNos] - ==>  Preparing: SELECT distinct cnos.cno FROM ( select ? cno FROM dual ) cnos left JOIN tb_consign on tb_consign.consign_no=cnos.cno WHERE tb_consign.consign_no is not null 
+2017-07-07 17:45:25,590 DEBUG http-8902-6 139 [ConsignMapper.filterExistConsignNos] - ==> Parameters: YQDZ20170425(String)
+2017-07-07 17:45:25,620 DEBUG http-8902-6 139 [ConsignMapper.filterExistConsignNos] - <==      Total: 1
+2017-07-07 17:45:25,632 ERROR http-8902-6 66  [interceptor.ResResultBindingInterceptor] - 请求处理出现异常
+com.erp.trans.common.exception.ValidationException: <b>数据检查不通过，请检查数据:</b><p>[运单号检查] - [YQDZ20170425]，运单号重复，请检查<br/>
+	at com.erp.trans.web.TransManagementController.importConsign(TransManagementController.java:339)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:497)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invoke(InvocableHandlerMethod.java:215)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:132)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:104)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandleMethod(RequestMappingHandlerAdapter.java:781)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:721)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:83)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:943)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:877)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:966)
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:868)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:710)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:842)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:803)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:290)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:206)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:88)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:235)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:206)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:233)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:175)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:128)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:102)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:109)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:286)
+	at org.apache.coyote.http11.Http11Processor.process(Http11Processor.java:844)
+	at org.apache.coyote.http11.Http11Protocol$Http11ConnectionHandler.process(Http11Protocol.java:583)
+	at org.apache.tomcat.util.net.JIoEndpoint$Worker.run(JIoEndpoint.java:447)
+	at java.lang.Thread.run(Thread.java:745)
+2017-07-07 17:45:25,641 DEBUG http-8902-6 34  [util.JSONUtils] - JSONUtils工具类初始化完成
+2017-07-07 17:45:25,668 DEBUG http-8902-6 222 [web.BaseControllerSupport] - ■[ResponseBody]：{"interfaceUri":"/trans/trans/importConsign","status":false,"result":null,"exception":"com.erp.trans.common.exception.ValidationException","msg":"<b>数据检查不通过，请检查数据:</b><p>[运单号检查] - [YQDZ20170425]，运单号重复，请检查<br/>","timestamp":"2017-07-07 17:45:24","during":1534}
+2017-07-07 17:46:24,428 DEBUG http-8902-6 122 [web.BaseControllerSupport] - ┋requestURI=/trans/lib/bootstrap.css.map┋/trans
+2017-07-07 17:46:43,113 DEBUG http-8902-6 122 [web.BaseControllerSupport] - ┋requestURI=/trans/views/tyfCharge.html┋/trans
+2017-07-07 17:46:43,447 DEBUG http-8902-6 122 [web.BaseControllerSupport] - ┋requestURI=/trans/lib/easyui/themes/icons/pencil.png┋/trans
+2017-07-07 17:46:43,489 DEBUG http-8902-6 122 [web.BaseControllerSupport] - ┋requestURI=/trans/charge/searchChargeList┋/trans
+2017-07-07 17:46:43,563 DEBUG http-8902-6 139 [ChargeInfoMapper.searchChargeList] - ==>  Preparing: select ci.CHARGE_ID "chargeId", c.CONSIGN_NO "consignNo", cd.CAR_BRAND "carBrand", cd.CAR_MODEL "carModel", cd.AMOUNT "amount", cd.CHASSIS_NO "chassisNo", date_format(cd.DESPATCH_DATE,'%Y-%m-%d') "despatchDate",c.LOCATION_TO "locationTo", c.RECEIVE_ORG_NAME "receiveOrgName", c.CONSIGN_ORG_NAME "consignOrgName", dp.main_drive "mainDrive", dp.MAIN_DRIVE_PHONE "mainDrivePhone",r.CO_PILOT "coPilot", c.LOCATION_FROM "locationFrom",r.CARRIER_NAME "carrierName",r.TRANSPORT_TOOL "transportTool", ci.FREIGHT_RATES "freightRates",ci.ADVANCES "advances",ci.PREPAID_OIL_CARD "prepaidOilCard", ci.QUALITY_LOSS "qualityLoss",ci.SUBSIDY "subsidy",ci.REVERSE_CHARGE "reverseCharge",ci.MIS_COSTS "misCosts", ci.GPS_PAYMENT "gpsPayment",ci.CHARGE_AMOUNT "chargeAmount", ci.MODIFY_USER_NAME "modifyUserName", date_format(ci.MODIFY_DATE,'%Y-%m-%d') "modifyDate", ci.KILO_PRICE "kiloPrice",ci.KILOMETERS "kilometers",ci.OIL_COST "oilCost",ci.SERVICE_RATE "serviceRate", ci.OIL_RATIO "oilRatio",ci.OIL_PRICE "oilPrice",ci.OIL_SUBSIDY "oilSubsidy" from tb_charge_info ci left join tb_consign_detail cd on cd.consign_detail_id = ci.consign_detail_id left join tb_consign c on cd.consign_id = c.consign_id left join tb_despatch_plan dp on cd.despatch_plan_id = dp.despatch_plan_id left join td_record_info r on dp.record_id = r.record_id WHERE c.ORG_ID = ? and ci.charge_type = ? order by date_format(cd.DESPATCH_DATE,'%Y-%m-%d %T') desc 
+2017-07-07 17:46:43,566 DEBUG http-8902-6 139 [ChargeInfoMapper.searchChargeList] - ==> Parameters: 5(String), 01(String)
+2017-07-07 17:46:43,588 DEBUG http-8902-6 139 [ChargeInfoMapper.searchChargeList] - <==      Total: 0
+2017-07-07 17:46:43,678 DEBUG http-8902-6 122 [web.BaseControllerSupport] - ┋requestURI=/trans/lib/easyui/themes/icons/print.png┋/trans
+2017-07-07 17:46:43,763 DEBUG http-8902-6 122 [web.BaseControllerSupport] - ┋requestURI=/trans/charge/searchChargeList┋/trans
+2017-07-07 17:46:43,766 DEBUG http-8902-6 139 [ChargeInfoMapper.searchChargeList] - ==>  Preparing: select ci.CHARGE_ID "chargeId", c.CONSIGN_NO "consignNo", cd.CAR_BRAND "carBrand", cd.CAR_MODEL "carModel", cd.AMOUNT "amount", cd.CHASSIS_NO "chassisNo", date_format(cd.DESPATCH_DATE,'%Y-%m-%d') "despatchDate",c.LOCATION_TO "locationTo", c.RECEIVE_ORG_NAME "receiveOrgName", c.CONSIGN_ORG_NAME "consignOrgName", dp.main_drive "mainDrive", dp.MAIN_DRIVE_PHONE "mainDrivePhone",r.CO_PILOT "coPilot", c.LOCATION_FROM "locationFrom",r.CARRIER_NAME "carrierName",r.TRANSPORT_TOOL "transportTool", ci.FREIGHT_RATES "freightRates",ci.ADVANCES "advances",ci.PREPAID_OIL_CARD "prepaidOilCard", ci.QUALITY_LOSS "qualityLoss",ci.SUBSIDY "subsidy",ci.REVERSE_CHARGE "reverseCharge",ci.MIS_COSTS "misCosts", ci.GPS_PAYMENT "gpsPayment",ci.CHARGE_AMOUNT "chargeAmount", ci.MODIFY_USER_NAME "modifyUserName", date_format(ci.MODIFY_DATE,'%Y-%m-%d') "modifyDate", ci.KILO_PRICE "kiloPrice",ci.KILOMETERS "kilometers",ci.OIL_COST "oilCost",ci.SERVICE_RATE "serviceRate", ci.OIL_RATIO "oilRatio",ci.OIL_PRICE "oilPrice",ci.OIL_SUBSIDY "oilSubsidy" from tb_charge_info ci left join tb_consign_detail cd on cd.consign_detail_id = ci.consign_detail_id left join tb_consign c on cd.consign_id = c.consign_id left join tb_despatch_plan dp on cd.despatch_plan_id = dp.despatch_plan_id left join td_record_info r on dp.record_id = r.record_id WHERE c.ORG_ID = ? and ci.charge_type = ? order by date_format(cd.DESPATCH_DATE,'%Y-%m-%d %T') desc 
+2017-07-07 17:46:43,770 DEBUG http-8902-6 139 [ChargeInfoMapper.searchChargeList] - ==> Parameters: 5(String), 01(String)
+2017-07-07 17:46:43,805 DEBUG http-8902-6 139 [ChargeInfoMapper.searchChargeList] - <==      Total: 0
+2017-07-07 17:46:53,135 DEBUG http-8902-6 122 [web.BaseControllerSupport] - ┋requestURI=/trans/views/cysCharge.html┋/trans
+2017-07-07 17:46:53,312 DEBUG http-8902-6 122 [web.BaseControllerSupport] - ┋requestURI=/trans/charge/searchChargeList┋/trans
+2017-07-07 17:46:53,314 DEBUG http-8902-6 139 [ChargeInfoMapper.searchChargeList] - ==>  Preparing: select ci.CHARGE_ID "chargeId", c.CONSIGN_NO "consignNo", cd.CAR_BRAND "carBrand", cd.CAR_MODEL "carModel", cd.AMOUNT "amount", cd.CHASSIS_NO "chassisNo", date_format(cd.DESPATCH_DATE,'%Y-%m-%d') "despatchDate",c.LOCATION_TO "locationTo", c.RECEIVE_ORG_NAME "receiveOrgName", c.CONSIGN_ORG_NAME "consignOrgName", dp.main_drive "mainDrive", dp.MAIN_DRIVE_PHONE "mainDrivePhone",r.CO_PILOT "coPilot", c.LOCATION_FROM "locationFrom",r.CARRIER_NAME "carrierName",r.TRANSPORT_TOOL "transportTool", ci.FREIGHT_RATES "freightRates",ci.ADVANCES "advances",ci.PREPAID_OIL_CARD "prepaidOilCard", ci.QUALITY_LOSS "qualityLoss",ci.SUBSIDY "subsidy",ci.REVERSE_CHARGE "reverseCharge",ci.MIS_COSTS "misCosts", ci.GPS_PAYMENT "gpsPayment",ci.CHARGE_AMOUNT "chargeAmount", ci.MODIFY_USER_NAME "modifyUserName", date_format(ci.MODIFY_DATE,'%Y-%m-%d') "modifyDate", ci.KILO_PRICE "kiloPrice",ci.KILOMETERS "kilometers",ci.OIL_COST "oilCost",ci.SERVICE_RATE "serviceRate", ci.OIL_RATIO "oilRatio",ci.OIL_PRICE "oilPrice",ci.OIL_SUBSIDY "oilSubsidy" from tb_charge_info ci left join tb_consign_detail cd on cd.consign_detail_id = ci.consign_detail_id left join tb_consign c on cd.consign_id = c.consign_id left join tb_despatch_plan dp on cd.despatch_plan_id = dp.despatch_plan_id left join td_record_info r on dp.record_id = r.record_id WHERE c.ORG_ID = ? and ci.charge_type = ? order by date_format(cd.DESPATCH_DATE,'%Y-%m-%d %T') desc 
+2017-07-07 17:46:53,317 DEBUG http-8902-6 139 [ChargeInfoMapper.searchChargeList] - ==> Parameters: 5(String), 02(String)
+2017-07-07 17:46:53,340 DEBUG http-8902-6 139 [ChargeInfoMapper.searchChargeList] - <==      Total: 0
+2017-07-07 17:46:53,465 DEBUG http-8902-6 122 [web.BaseControllerSupport] - ┋requestURI=/trans/charge/searchChargeList┋/trans
+2017-07-07 17:46:53,467 DEBUG http-8902-6 139 [ChargeInfoMapper.searchChargeList] - ==>  Preparing: select ci.CHARGE_ID "chargeId", c.CONSIGN_NO "consignNo", cd.CAR_BRAND "carBrand", cd.CAR_MODEL "carModel", cd.AMOUNT "amount", cd.CHASSIS_NO "chassisNo", date_format(cd.DESPATCH_DATE,'%Y-%m-%d') "despatchDate",c.LOCATION_TO "locationTo", c.RECEIVE_ORG_NAME "receiveOrgName", c.CONSIGN_ORG_NAME "consignOrgName", dp.main_drive "mainDrive", dp.MAIN_DRIVE_PHONE "mainDrivePhone",r.CO_PILOT "coPilot", c.LOCATION_FROM "locationFrom",r.CARRIER_NAME "carrierName",r.TRANSPORT_TOOL "transportTool", ci.FREIGHT_RATES "freightRates",ci.ADVANCES "advances",ci.PREPAID_OIL_CARD "prepaidOilCard", ci.QUALITY_LOSS "qualityLoss",ci.SUBSIDY "subsidy",ci.REVERSE_CHARGE "reverseCharge",ci.MIS_COSTS "misCosts", ci.GPS_PAYMENT "gpsPayment",ci.CHARGE_AMOUNT "chargeAmount", ci.MODIFY_USER_NAME "modifyUserName", date_format(ci.MODIFY_DATE,'%Y-%m-%d') "modifyDate", ci.KILO_PRICE "kiloPrice",ci.KILOMETERS "kilometers",ci.OIL_COST "oilCost",ci.SERVICE_RATE "serviceRate", ci.OIL_RATIO "oilRatio",ci.OIL_PRICE "oilPrice",ci.OIL_SUBSIDY "oilSubsidy" from tb_charge_info ci left join tb_consign_detail cd on cd.consign_detail_id = ci.consign_detail_id left join tb_consign c on cd.consign_id = c.consign_id left join tb_despatch_plan dp on cd.despatch_plan_id = dp.despatch_plan_id left join td_record_info r on dp.record_id = r.record_id WHERE c.ORG_ID = ? and ci.charge_type = ? order by date_format(cd.DESPATCH_DATE,'%Y-%m-%d %T') desc 
+2017-07-07 17:46:53,470 DEBUG http-8902-6 139 [ChargeInfoMapper.searchChargeList] - ==> Parameters: 5(String), 02(String)
+2017-07-07 17:46:53,497 DEBUG http-8902-6 139 [ChargeInfoMapper.searchChargeList] - <==      Total: 0
+2017-07-07 17:47:01,888 DEBUG http-8902-6 122 [web.BaseControllerSupport] - ┋requestURI=/trans/lib/bootstrap.css.map┋/trans
+2017-07-07 17:47:23,958 DEBUG http-8902-6 122 [web.BaseControllerSupport] - ┋requestURI=/trans/views/index.html┋/trans
+2017-07-07 17:47:27,193 DEBUG http-8902-6 122 [web.BaseControllerSupport] - ┋requestURI=/trans/lib/bootstrap.css.map┋/trans
+2017-07-07 17:47:27,343 DEBUG http-8902-6 122 [web.BaseControllerSupport] - ┋requestURI=/trans/charge/searchChargeList┋/trans
+2017-07-07 17:47:27,346 DEBUG http-8902-6 139 [ChargeInfoMapper.searchChargeList] - ==>  Preparing: select ci.CHARGE_ID "chargeId", c.CONSIGN_NO "consignNo", cd.CAR_BRAND "carBrand", cd.CAR_MODEL "carModel", cd.AMOUNT "amount", cd.CHASSIS_NO "chassisNo", date_format(cd.DESPATCH_DATE,'%Y-%m-%d') "despatchDate",c.LOCATION_TO "locationTo", c.RECEIVE_ORG_NAME "receiveOrgName", c.CONSIGN_ORG_NAME "consignOrgName", dp.main_drive "mainDrive", dp.MAIN_DRIVE_PHONE "mainDrivePhone",r.CO_PILOT "coPilot", c.LOCATION_FROM "locationFrom",r.CARRIER_NAME "carrierName",r.TRANSPORT_TOOL "transportTool", ci.FREIGHT_RATES "freightRates",ci.ADVANCES "advances",ci.PREPAID_OIL_CARD "prepaidOilCard", ci.QUALITY_LOSS "qualityLoss",ci.SUBSIDY "subsidy",ci.REVERSE_CHARGE "reverseCharge",ci.MIS_COSTS "misCosts", ci.GPS_PAYMENT "gpsPayment",ci.CHARGE_AMOUNT "chargeAmount", ci.MODIFY_USER_NAME "modifyUserName", date_format(ci.MODIFY_DATE,'%Y-%m-%d') "modifyDate", ci.KILO_PRICE "kiloPrice",ci.KILOMETERS "kilometers",ci.OIL_COST "oilCost",ci.SERVICE_RATE "serviceRate", ci.OIL_RATIO "oilRatio",ci.OIL_PRICE "oilPrice",ci.OIL_SUBSIDY "oilSubsidy" from tb_charge_info ci left join tb_consign_detail cd on cd.consign_detail_id = ci.consign_detail_id left join tb_consign c on cd.consign_id = c.consign_id left join tb_despatch_plan dp on cd.despatch_plan_id = dp.despatch_plan_id left join td_record_info r on dp.record_id = r.record_id WHERE c.ORG_ID = ? and ci.charge_type = ? order by date_format(cd.DESPATCH_DATE,'%Y-%m-%d %T') desc 
+2017-07-07 17:47:27,348 DEBUG http-8902-6 139 [ChargeInfoMapper.searchChargeList] - ==> Parameters: 5(String), 01(String)
+2017-07-07 17:47:27,371 DEBUG http-8902-6 139 [ChargeInfoMapper.searchChargeList] - <==      Total: 0
+2017-07-07 17:47:27,599 DEBUG http-8902-6 122 [web.BaseControllerSupport] - ┋requestURI=/trans/charge/searchChargeList┋/trans
+2017-07-07 17:47:27,602 DEBUG http-8902-6 139 [ChargeInfoMapper.searchChargeList] - ==>  Preparing: select ci.CHARGE_ID "chargeId", c.CONSIGN_NO "consignNo", cd.CAR_BRAND "carBrand", cd.CAR_MODEL "carModel", cd.AMOUNT "amount", cd.CHASSIS_NO "chassisNo", date_format(cd.DESPATCH_DATE,'%Y-%m-%d') "despatchDate",c.LOCATION_TO "locationTo", c.RECEIVE_ORG_NAME "receiveOrgName", c.CONSIGN_ORG_NAME "consignOrgName", dp.main_drive "mainDrive", dp.MAIN_DRIVE_PHONE "mainDrivePhone",r.CO_PILOT "coPilot", c.LOCATION_FROM "locationFrom",r.CARRIER_NAME "carrierName",r.TRANSPORT_TOOL "transportTool", ci.FREIGHT_RATES "freightRates",ci.ADVANCES "advances",ci.PREPAID_OIL_CARD "prepaidOilCard", ci.QUALITY_LOSS "qualityLoss",ci.SUBSIDY "subsidy",ci.REVERSE_CHARGE "reverseCharge",ci.MIS_COSTS "misCosts", ci.GPS_PAYMENT "gpsPayment",ci.CHARGE_AMOUNT "chargeAmount", ci.MODIFY_USER_NAME "modifyUserName", date_format(ci.MODIFY_DATE,'%Y-%m-%d') "modifyDate", ci.KILO_PRICE "kiloPrice",ci.KILOMETERS "kilometers",ci.OIL_COST "oilCost",ci.SERVICE_RATE "serviceRate", ci.OIL_RATIO "oilRatio",ci.OIL_PRICE "oilPrice",ci.OIL_SUBSIDY "oilSubsidy" from tb_charge_info ci left join tb_consign_detail cd on cd.consign_detail_id = ci.consign_detail_id left join tb_consign c on cd.consign_id = c.consign_id left join tb_despatch_plan dp on cd.despatch_plan_id = dp.despatch_plan_id left join td_record_info r on dp.record_id = r.record_id WHERE c.ORG_ID = ? and ci.charge_type = ? order by date_format(cd.DESPATCH_DATE,'%Y-%m-%d %T') desc 
+2017-07-07 17:47:27,606 DEBUG http-8902-6 139 [ChargeInfoMapper.searchChargeList] - ==> Parameters: 5(String), 01(String)
+2017-07-07 17:47:27,630 DEBUG http-8902-6 139 [ChargeInfoMapper.searchChargeList] - <==      Total: 0
+2017-07-07 17:47:29,953 DEBUG http-8902-6 122 [web.BaseControllerSupport] - ┋requestURI=/trans/views/login.html┋/trans
+2017-07-07 17:47:30,226 DEBUG http-8902-6 122 [web.BaseControllerSupport] - ┋requestURI=/trans/lib/bootstrap.css.map┋/trans
+2017-07-07 17:47:36,600 DEBUG http-8902-6 122 [web.BaseControllerSupport] - ┋requestURI=/trans/views/login.html┋/trans
+2017-07-07 17:47:36,641 DEBUG http-8902-4 122 [web.BaseControllerSupport] - ┋requestURI=/trans/lib/normalize.css┋/trans
+2017-07-07 17:47:36,645 DEBUG http-8902-6 122 [web.BaseControllerSupport] - ┋requestURI=/trans/lib/bootstrap.css┋/trans
+2017-07-07 17:47:36,643 DEBUG http-8902-3 122 [web.BaseControllerSupport] - ┋requestURI=/trans/lib/jquery-3.2.1.min.js┋/trans
+2017-07-07 17:47:36,660 DEBUG http-8902-2 122 [web.BaseControllerSupport] - ┋requestURI=/trans/lib/easyui/jquery.easyui.min.js┋/trans
+2017-07-07 17:47:36,921 DEBUG http-8902-2 122 [web.BaseControllerSupport] - ┋requestURI=/trans/lib/bootstrap.css.map┋/trans
+2017-07-07 17:47:38,436 DEBUG http-8902-6 122 [web.BaseControllerSupport] - ┋requestURI=/trans/login/userLogin┋/trans
+2017-07-07 17:47:38,439 DEBUG http-8902-6 139 [BaseMapper.searchList] - ==>  Preparing: select * from ts_user_info where USER_NO = 'gas' 
+2017-07-07 17:47:38,443 DEBUG http-8902-6 139 [BaseMapper.searchList] - ==> Parameters: 
+2017-07-07 17:47:38,468 DEBUG http-8902-6 139 [BaseMapper.searchList] - <==      Total: 1
+2017-07-07 17:47:38,471 DEBUG http-8902-6 139 [UserInfoMapper.findOrgFstateByOrgId] - ==>  Preparing: SELECT FSTATE FROM td_org_info where ORG_ID = ? 
+2017-07-07 17:47:38,472 DEBUG http-8902-6 139 [UserInfoMapper.findOrgFstateByOrgId] - ==> Parameters: 5(String)
+2017-07-07 17:47:38,493 DEBUG http-8902-6 139 [UserInfoMapper.findOrgFstateByOrgId] - <==      Total: 1
+2017-07-07 17:47:38,495 DEBUG http-8902-6 139 [UserInfoMapper.findUserInfoById] - ==>  Preparing: SELECT u.USER_ID, u.USER_NO, u.USER_NAME, u.PWD,u.FSTATE, u.MODIFY_DATE, u.CREATE_DATE, u.USER_LEVEL, u.MOBILE_PHONE, u.E_MAIL, u.ORG_ID , o.ORG_NAME FROM ts_user_info u LEFT JOIN td_org_info o on u.ORG_ID=o.ORG_ID where u.USER_ID = ? 
+2017-07-07 17:47:38,496 DEBUG http-8902-6 139 [UserInfoMapper.findUserInfoById] - ==> Parameters: 501(String)
+2017-07-07 17:47:38,518 DEBUG http-8902-6 139 [UserInfoMapper.findUserInfoById] - <==      Total: 1
+2017-07-07 17:47:38,535 DEBUG http-8902-6 122 [web.BaseControllerSupport] - ┋requestURI=/trans/views/index.html┋/trans
+2017-07-07 17:47:38,569 DEBUG http-8902-6 122 [web.BaseControllerSupport] - ┋requestURI=/trans/lib/easyui/themes/metro/easyui.css┋/trans
+2017-07-07 17:47:38,572 DEBUG http-8902-3 122 [web.BaseControllerSupport] - ┋requestURI=/trans/lib/easyui/themes/icon.css┋/trans
+2017-07-07 17:47:38,740 DEBUG http-8902-6 122 [web.BaseControllerSupport] - ┋requestURI=/trans/lib/easyui/themes/metro/images/tabs_icons.png┋/trans
+2017-07-07 17:47:38,757 DEBUG http-8902-6 122 [web.BaseControllerSupport] - ┋requestURI=/trans/lib/easyui/themes/metro/images/blank.gif┋/trans
+2017-07-07 17:47:38,757 DEBUG http-8902-3 122 [web.BaseControllerSupport] - ┋requestURI=/trans/lib/easyui/themes/metro/images/panel_tools.png┋/trans
+2017-07-07 17:47:38,773 DEBUG http-8902-6 122 [web.BaseControllerSupport] - ┋requestURI=/trans/lib/easyui/themes/metro/images/accordion_arrows.png┋/trans
+2017-07-07 17:47:38,994 DEBUG http-8902-6 122 [web.BaseControllerSupport] - ┋requestURI=/trans/lib/easyui/themes/metro/images/layout_arrows.png┋/trans
+2017-07-07 17:47:41,881 DEBUG http-8902-3 122 [web.BaseControllerSupport] - ┋requestURI=/trans/views/waybill.html┋/trans
+2017-07-07 17:47:41,938 DEBUG http-8902-3 122 [web.BaseControllerSupport] - ┋requestURI=/trans/lib/easyui/themes/material/easyui.css┋/trans
+2017-07-07 17:47:41,942 DEBUG http-8902-4 122 [web.BaseControllerSupport] - ┋requestURI=/trans/lib/easyui/easyui-lang-zh_CN.js┋/trans
+2017-07-07 17:47:41,943 DEBUG http-8902-1 122 [web.BaseControllerSupport] - ┋requestURI=/trans/lib/My97DatePicker/WdatePicker.js┋/trans
+2017-07-07 17:47:42,075 DEBUG http-8902-1 122 [web.BaseControllerSupport] - ┋requestURI=/trans/lib/My97DatePicker/skin/WdatePicker.css┋/trans
+2017-07-07 17:47:42,124 DEBUG http-8902-1 122 [web.BaseControllerSupport] - ┋requestURI=/trans/lib/easyui/themes/material/images/blank.gif┋/trans
+2017-07-07 17:47:42,124 DEBUG http-8902-4 122 [web.BaseControllerSupport] - ┋requestURI=/trans/lib/easyui/themes/material/images/panel_tools.png┋/trans
+2017-07-07 17:47:42,188 DEBUG http-8902-1 122 [web.BaseControllerSupport] - ┋requestURI=/trans/lib/easyui/themes/icons/pencil.png┋/trans
+2017-07-07 17:47:42,188 DEBUG http-8902-4 122 [web.BaseControllerSupport] - ┋requestURI=/trans/lib/bootstrap.css.map┋/trans
+2017-07-07 17:47:42,215 DEBUG http-8902-1 122 [web.BaseControllerSupport] - ┋requestURI=/trans/lib/easyui/themes/material/images/loading.gif┋/trans
+2017-07-07 17:47:42,227 DEBUG http-8902-1 122 [web.BaseControllerSupport] - ┋requestURI=/trans/trans/findConsignList┋/trans
+2017-07-07 17:47:42,242 DEBUG http-8902-1 139 [ConsignMapper.findConsignList] - ==>  Preparing: select c.CONSIGN_ID "consignId", c.CONSIGN_NO "consignNo", c.CAMOUNT "camount", c.LOCATION_TO "locationTo", c.RECEIVE_ORG_ID "receiveOrgId", c.RECEIVE_ORG_NAME "receiveOrgName", c.CONSIGN_FSATE "consignFsate", c.CONSIGN_ORG_ID "consignOrgId", c.CONSIGN_ORG_NAME "consignOrgName", r.carrier_name "carrierName", c.LOCATION_FROM "locationFrom", date_format(c.MODIFY_DATE,'%Y-%m-%d %T') "modifyDate", u.USER_NAME "modifyUser" from tb_consign c left join ts_user_info u on u.user_id = c.MODIFY_USER_ID left join ( select cd.consign_id,dc.consign_no,r.carrier_name from tb_consign_detail cd,tb_despatch_plan dp,td_record_info r,tb_desplan_conno dc where cd.despatch_plan_id = dp.despatch_plan_id and dp.record_id = r.record_id and dp.despatch_plan_id = dc.despatch_plan_id ) r on r.consign_id = c.consign_id WHERE c.ORG_ID = ? order by date_format(c.MODIFY_DATE,'%Y-%m-%d %T') desc 
+2017-07-07 17:47:42,244 DEBUG http-8902-1 139 [ConsignMapper.findConsignList] - ==> Parameters: 5(String)
+2017-07-07 17:47:42,273 DEBUG http-8902-1 139 [ConsignMapper.findConsignList] - <==      Total: 19
+2017-07-07 17:47:42,274 DEBUG http-8902-4 122 [web.BaseControllerSupport] - ┋requestURI=/trans/lib/easyui/themes/icons/filesave.png┋/trans
+2017-07-07 17:47:42,285 DEBUG http-8902-4 122 [web.BaseControllerSupport] - ┋requestURI=/trans/lib/easyui/themes/icons/cancel.png┋/trans
+2017-07-07 17:47:42,407 DEBUG http-8902-4 122 [web.BaseControllerSupport] - ┋requestURI=/trans/lib/My97DatePicker/skin/datePicker.gif┋/trans
+2017-07-07 17:47:42,488 DEBUG http-8902-4 122 [web.BaseControllerSupport] - ┋requestURI=/trans/lib/easyui/themes/icons/search.png┋/trans
+2017-07-07 17:47:42,531 DEBUG http-8902-4 122 [web.BaseControllerSupport] - ┋requestURI=/trans/lib/easyui/themes/material/images/combo_arrow.png┋/trans
+2017-07-07 17:47:42,607 DEBUG http-8902-4 122 [web.BaseControllerSupport] - ┋requestURI=/trans/trans/findConsignList┋/trans
+2017-07-07 17:47:42,610 DEBUG http-8902-4 139 [ConsignMapper.findConsignList] - ==>  Preparing: select c.CONSIGN_ID "consignId", c.CONSIGN_NO "consignNo", c.CAMOUNT "camount", c.LOCATION_TO "locationTo", c.RECEIVE_ORG_ID "receiveOrgId", c.RECEIVE_ORG_NAME "receiveOrgName", c.CONSIGN_FSATE "consignFsate", c.CONSIGN_ORG_ID "consignOrgId", c.CONSIGN_ORG_NAME "consignOrgName", r.carrier_name "carrierName", c.LOCATION_FROM "locationFrom", date_format(c.MODIFY_DATE,'%Y-%m-%d %T') "modifyDate", u.USER_NAME "modifyUser" from tb_consign c left join ts_user_info u on u.user_id = c.MODIFY_USER_ID left join ( select cd.consign_id,dc.consign_no,r.carrier_name from tb_consign_detail cd,tb_despatch_plan dp,td_record_info r,tb_desplan_conno dc where cd.despatch_plan_id = dp.despatch_plan_id and dp.record_id = r.record_id and dp.despatch_plan_id = dc.despatch_plan_id ) r on r.consign_id = c.consign_id WHERE c.ORG_ID = ? order by date_format(c.MODIFY_DATE,'%Y-%m-%d %T') desc 
+2017-07-07 17:47:42,611 DEBUG http-8902-4 139 [ConsignMapper.findConsignList] - ==> Parameters: 5(String)
+2017-07-07 17:47:42,636 DEBUG http-8902-4 139 [ConsignMapper.findConsignList] - <==      Total: 19
+2017-07-07 17:48:12,849 DEBUG http-8902-1 122 [web.BaseControllerSupport] - ┋requestURI=/trans/views/officePlace.html┋/trans
+2017-07-07 17:48:13,028 DEBUG http-8902-1 122 [web.BaseControllerSupport] - ┋requestURI=/trans/lib/bootstrap.css.map┋/trans
+2017-07-07 17:48:13,175 DEBUG http-8902-1 122 [web.BaseControllerSupport] - ┋requestURI=/trans/lib/easyui/themes/icons/edit_add.png┋/trans
+2017-07-07 17:48:13,177 DEBUG http-8902-5 122 [web.BaseControllerSupport] - ┋requestURI=/trans/lib/easyui/themes/icons/edit_remove.png┋/trans
+2017-07-07 17:48:13,202 DEBUG http-8902-5 122 [web.BaseControllerSupport] - ┋requestURI=/trans/operationCosts/searchOfficeSpaceFee┋/trans
+2017-07-07 17:48:13,218 DEBUG http-8902-5 139 [OfficeSpaceFeeMapper.searchOfficeSpaceFee] - ==>  Preparing: select OFFICE_SPACE_ID,OFFICE_SPACE_NAME,MONTH_RENT,LEASE,MODIFY_DATE,MODIFY_USERID,ORG_ID from tb_office_space_fee os WHERE os.ORG_ID = ? order by os.MODIFY_DATE desc 
+2017-07-07 17:48:13,219 DEBUG http-8902-5 139 [OfficeSpaceFeeMapper.searchOfficeSpaceFee] - ==> Parameters: 5(String)
+2017-07-07 17:48:13,241 DEBUG http-8902-5 139 [OfficeSpaceFeeMapper.searchOfficeSpaceFee] - <==      Total: 1
+2017-07-07 17:48:13,398 DEBUG http-8902-5 122 [web.BaseControllerSupport] - ┋requestURI=/trans/operationCosts/searchOfficeSpaceFee┋/trans
+2017-07-07 17:48:13,400 DEBUG http-8902-5 139 [OfficeSpaceFeeMapper.searchOfficeSpaceFee] - ==>  Preparing: select OFFICE_SPACE_ID,OFFICE_SPACE_NAME,MONTH_RENT,LEASE,MODIFY_DATE,MODIFY_USERID,ORG_ID from tb_office_space_fee os WHERE os.ORG_ID = ? order by os.MODIFY_DATE desc 
+2017-07-07 17:48:13,402 DEBUG http-8902-5 139 [OfficeSpaceFeeMapper.searchOfficeSpaceFee] - ==> Parameters: 5(String)
+2017-07-07 17:48:13,423 DEBUG http-8902-5 139 [OfficeSpaceFeeMapper.searchOfficeSpaceFee] - <==      Total: 1
+2017-07-07 17:48:20,530 DEBUG http-8902-1 122 [web.BaseControllerSupport] - ┋requestURI=/trans/operationCosts/addUpdateOfficeSpaceFee┋/trans
+2017-07-07 17:48:20,564 DEBUG http-8902-1 139 [BaseMapper.insertInfo] - ==>  Preparing: insert into tb_office_space_fee ( OFFICE_SPACE_ID, OFFICE_SPACE_NAME, MONTH_RENT, MODIFY_DATE, MODIFY_USERID, ORG_ID ) values ( 'CFBD8F2F71B84595BCE1234010D814B1', '1', 1300, str_to_date('2017-07-07 17:48:20', '%Y-%m-%d %T'), '501', '5' ) 
+2017-07-07 17:48:20,575 DEBUG http-8902-1 139 [BaseMapper.insertInfo] - ==> Parameters: 
+2017-07-07 17:48:20,636 DEBUG http-8902-1 139 [BaseMapper.insertInfo] - <==    Updates: 1
+2017-07-07 17:48:20,642 DEBUG http-8902-1 222 [web.BaseControllerSupport] - ■[ResponseBody]：{"interfaceUri":"/trans/operationCosts/addUpdateOfficeSpaceFee","status":true,"result":null,"exception":null,"msg":null,"timestamp":"2017-07-07 17:48:20","during":107}
+2017-07-07 17:48:20,688 DEBUG http-8902-1 122 [web.BaseControllerSupport] - ┋requestURI=/trans/operationCosts/searchOfficeSpaceFee┋/trans
+2017-07-07 17:48:20,691 DEBUG http-8902-1 139 [OfficeSpaceFeeMapper.searchOfficeSpaceFee] - ==>  Preparing: select OFFICE_SPACE_ID,OFFICE_SPACE_NAME,MONTH_RENT,LEASE,MODIFY_DATE,MODIFY_USERID,ORG_ID from tb_office_space_fee os WHERE os.ORG_ID = ? order by os.MODIFY_DATE desc 
+2017-07-07 17:48:20,692 DEBUG http-8902-1 139 [OfficeSpaceFeeMapper.searchOfficeSpaceFee] - ==> Parameters: 5(String)
+2017-07-07 17:48:20,717 DEBUG http-8902-1 139 [OfficeSpaceFeeMapper.searchOfficeSpaceFee] - <==      Total: 2
+2017-07-07 17:48:48,804 DEBUG http-8902-1 122 [web.BaseControllerSupport] - ┋requestURI=/trans/operationCosts/addUpdateOfficeSpaceFee┋/trans
+2017-07-07 17:48:48,807 DEBUG http-8902-1 139 [BaseMapper.updateInfoCover] - ==>  Preparing: update tb_office_space_fee set OFFICE_SPACE_ID = 'CFBD8F2F71B84595BCE1234010D814B1', OFFICE_SPACE_NAME = '沌口库场', MONTH_RENT = 1300, LEASE = '', MODIFY_DATE = str_to_date('2017-07-07 17:48:48', '%Y-%m-%d %T'), MODIFY_USERID = '501', ORG_ID = '5' where OFFICE_SPACE_ID = 'CFBD8F2F71B84595BCE1234010D814B1' 
+2017-07-07 17:48:48,813 DEBUG http-8902-1 139 [BaseMapper.updateInfoCover] - ==> Parameters: 
+2017-07-07 17:48:48,882 DEBUG http-8902-1 139 [BaseMapper.updateInfoCover] - <==    Updates: 1
+2017-07-07 17:48:48,883 DEBUG http-8902-1 222 [web.BaseControllerSupport] - ■[ResponseBody]：{"interfaceUri":"/trans/operationCosts/addUpdateOfficeSpaceFee","status":true,"result":null,"exception":null,"msg":null,"timestamp":"2017-07-07 17:48:48","during":78}
+2017-07-07 17:48:48,920 DEBUG http-8902-1 122 [web.BaseControllerSupport] - ┋requestURI=/trans/operationCosts/searchOfficeSpaceFee┋/trans
+2017-07-07 17:48:48,922 DEBUG http-8902-1 139 [OfficeSpaceFeeMapper.searchOfficeSpaceFee] - ==>  Preparing: select OFFICE_SPACE_ID,OFFICE_SPACE_NAME,MONTH_RENT,LEASE,MODIFY_DATE,MODIFY_USERID,ORG_ID from tb_office_space_fee os WHERE os.ORG_ID = ? order by os.MODIFY_DATE desc 
+2017-07-07 17:48:48,923 DEBUG http-8902-1 139 [OfficeSpaceFeeMapper.searchOfficeSpaceFee] - ==> Parameters: 5(String)
+2017-07-07 17:48:48,947 DEBUG http-8902-1 139 [OfficeSpaceFeeMapper.searchOfficeSpaceFee] - <==      Total: 2
+2017-07-07 17:49:16,501 DEBUG http-8902-1 122 [web.BaseControllerSupport] - ┋requestURI=/trans/lib/My97DatePicker/lang/zh-cn.js┋/trans
+2017-07-07 17:49:16,502 DEBUG http-8902-3 122 [web.BaseControllerSupport] - ┋requestURI=/trans/lib/My97DatePicker/skin/default/datepicker.css┋/trans
+2017-07-07 17:49:16,509 DEBUG http-8902-5 122 [web.BaseControllerSupport] - ┋requestURI=/trans/lib/My97DatePicker/calendar.js┋/trans
+2017-07-07 17:49:16,624 DEBUG http-8902-5 122 [web.BaseControllerSupport] - ┋requestURI=/trans/lib/My97DatePicker/skin/default/img.gif┋/trans
