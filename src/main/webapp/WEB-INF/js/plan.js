@@ -1315,13 +1315,15 @@ __WEBPACK_IMPORTED_MODULE_7_jQuery___default()('#make').on('click', function () 
   });
   var opts = [];
   selectd.map(function (item, index) {
-    var consignNo = item.consignNo;
-    if (opts.indexOf(consignNo) === -1) {
-      opts.push({ id: item.consignNo, text: item.consignNo });
-    }
+    opts.push(item.consignNo);
   });
+  var data = [];
+  __WEBPACK_IMPORTED_MODULE_7_jQuery___default.a.unique(opts.sort()).map(function (item, index) {
+    return data.push({ text: item, id: item });
+  });
+  console.log(data);
   __WEBPACK_IMPORTED_MODULE_7_jQuery___default()('#consignNos').combobox({
-    data: opts,
+    data: data,
     width: 200,
     height: 28,
     valueField: 'id',
@@ -1353,9 +1355,6 @@ __WEBPACK_IMPORTED_MODULE_7_jQuery___default()('#import').on('change', function 
       url: '../trans/importConsign',
       secureuri: false,
       fileElementId: 'import',
-      beforeSend: function beforeSend() {
-        console.log('开始上传');
-      },
       success: function success(data) {
         console.log(data);
       }
