@@ -49,9 +49,9 @@ public class PersonRecordsController {
 			@RequestParam(value = "pName", required = false) String pName,
 			@RequestParam(value = "page", required = false) Integer page,
 			@RequestParam(value = "pagesize", required = false) Integer pagesize, HttpServletRequest request) {
-		Pager<Map<String, Object>> pager = new Pager<Map<String, Object>>(true);
-		pager.setPageSize(pagesize == null ? 15 : pagesize);
-		pager.setPageNum(page == null ? 1 : page);
+		Pager<Map<String, Object>> pager = new Pager<Map<String, Object>>(false);
+//		pager.setPageSize(pagesize == null ? 15 : pagesize);
+//		pager.setPageNum(page == null ? 1 : page);
 		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");// 年-月-日格式化
 		// 当前登录用户的机构
 		String orgId = (String) request.getSession().getAttribute(LoginUser.SESSION_USER_ORGID);
@@ -100,7 +100,7 @@ public class PersonRecordsController {
 	 */
 	@ResponseBody
 	@RequestMapping(value = "deletePersonRecords")
-	public void deleteContract(String[] personRecordsIds,
+	public void deleteContract(@RequestParam(value="personRecordsIds[]")String[] personRecordsIds,
 			HttpServletRequest request) throws ValidationException {
 		if(personRecordsIds == null){
 			throw new ValidationException("请选择人事档案删除");

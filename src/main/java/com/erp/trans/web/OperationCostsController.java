@@ -95,7 +95,7 @@ public class OperationCostsController {
 	 */
 	@ResponseBody
 	@RequestMapping(value = "deletePersonSalary")
-	public void deletePersonSalary(String[] salaryIds,
+	public void deletePersonSalary(@RequestParam(value="salaryIds[]")String[] salaryIds,
 			HttpServletRequest request) throws ValidationException {
 		if(salaryIds == null){
 			throw new ValidationException("请选择人员工资删除");
@@ -167,7 +167,7 @@ public class OperationCostsController {
 	 */
 	@ResponseBody
 	@RequestMapping(value = "deleteOfficeSpaceFee")
-	public void deleteOfficeSpaceFee(String[]  officeSpaceFeeIds,
+	public void deleteOfficeSpaceFee(@RequestParam(value="officeSpaceFeeIds[]")String[]  officeSpaceFeeIds,
 			HttpServletRequest request) throws ValidationException {
 		if(officeSpaceFeeIds == null){
 			throw new ValidationException("请选择办公场地费用记录删除");
@@ -238,7 +238,7 @@ public class OperationCostsController {
 	 */
 	@ResponseBody
 	@RequestMapping(value = "deleteTravelAllowance")
-	public void deleteTravelAllowance(String[] travelAllowanceIds,
+	public void deleteTravelAllowance(@RequestParam(value="travelAllowanceIds[]")String[] travelAllowanceIds,
 			HttpServletRequest request) throws ValidationException {
 		if(travelAllowanceIds == null){
 			throw new ValidationException("请选择差旅招待记录删除");
@@ -311,7 +311,7 @@ public class OperationCostsController {
 	 */
 	@ResponseBody
 	@RequestMapping(value = "deleteTaxInfo")
-	public void deleteTaxInfos(String[] taxIds,
+	public void deleteTaxInfos(@RequestParam(value="taxIds[]")String[] taxIds,
 			HttpServletRequest request) throws ValidationException {
 		if(taxIds == null){
 			throw new ValidationException("请选择税收录删除");
@@ -384,7 +384,7 @@ public class OperationCostsController {
 	 */
 	@ResponseBody
 	@RequestMapping(value = "deleteVehicleDepreciations")
-	public void deleteVehicleDepreciations(String[] vehicleDepreciationIds,
+	public void deleteVehicleDepreciations(@RequestParam(value="vehicleDepreciationIds[]")String[] vehicleDepreciationIds,
 			HttpServletRequest request) throws ValidationException {
 		if(vehicleDepreciationIds == null){
 			throw new ValidationException("请选择车辆折旧记录删除");
@@ -457,7 +457,7 @@ public class OperationCostsController {
 	 */
 	@ResponseBody
 	@RequestMapping(value = "deleteInsurances")
-	public void deleteInsurances(String[] insuranceIds,
+	public void deleteInsurances(@RequestParam(value="insuranceIds[]")String[] insuranceIds,
 			HttpServletRequest request) throws ValidationException {
 		if(insuranceIds == null){
 			throw new ValidationException("请选择保险记录删除");

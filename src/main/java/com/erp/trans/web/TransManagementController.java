@@ -65,9 +65,9 @@ public class TransManagementController {
 			@RequestParam(value = "consignFstate", required = false) String consignFstate,
 			@RequestParam(value = "page", required = false) Integer page,
 			@RequestParam(value = "pagesize", required = false) Integer pagesize, HttpServletRequest request) {
-		Pager<Map<String, Object>> pager = new Pager<Map<String, Object>>(true);
-		pager.setPageSize(pagesize == null ? 15 : pagesize);
-		pager.setPageNum(page == null ? 1 : page);
+		Pager<Map<String, Object>> pager = new Pager<Map<String, Object>>(false);
+//		pager.setPageSize(pagesize == null ? 15 : pagesize);
+//		pager.setPageNum(page == null ? 1 : page);
 		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");// 年-月-日格式化
 		// 当前登录用户的机构
 		String orgId = (String) request.getSession().getAttribute(LoginUser.SESSION_USER_ORGID);
@@ -156,7 +156,7 @@ public class TransManagementController {
 	@ResponseBody
 	@RequestMapping(value = "isWithCarrier")
 	public void isWithCarrier(
-			@RequestParam(value = "consignNos", required = false) String[] consignNos,
+			@RequestParam(value = "consignNos[]", required = false) String[] consignNos,
 			HttpServletRequest request) throws ValidationException {
 		transManagementService.isWithCarrier(consignNos);		
 	}
@@ -166,11 +166,11 @@ public class TransManagementController {
 	 */
 	@ResponseBody
 	@RequestMapping(value = "makePlan")
-	public void makePlan(@RequestParam(value = "consignDetailIds", required = false) String[] consignDetailIds,
+	public void makePlan(@RequestParam(value = "consignDetailIds[]", required = false) String[] consignDetailIds,
 			@RequestParam(value = "recordId", required = false) String recordId,
 			@RequestParam(value = "mainDrive", required = false) String mainDrive,
 			@RequestParam(value = "mainDrivePhone", required = false) String mainDrivePhone,
-			@RequestParam(value = "consignNos", required = false) String[] consignNos,
+			@RequestParam(value = "consignNos[]", required = false) String[] consignNos,
 			HttpServletRequest request) throws ValidationException {
         if(consignDetailIds == null || consignDetailIds.length == 0){
         	throw new ValidationException("请选择运单明细");
@@ -245,7 +245,7 @@ public class TransManagementController {
 	 */
 	@ResponseBody
 	@RequestMapping(value = "updateConsignFstate")
-	public void updateConsignFstate(String[] consignIds,
+	public void updateConsignFstate(@RequestParam(value="consignIds[]")String[] consignIds,
 			String fstate,String exceptionReason,
 			String returnDate,
 			HttpServletRequest request) throws ValidationException, ParseException {
@@ -279,7 +279,7 @@ public class TransManagementController {
 	 */
 	@ResponseBody
 	@RequestMapping(value = "deleteConsignDetail")
-	public void deleteConsignDetail(String[] consignDetailIds,
+	public void deleteConsignDetail(@RequestParam(value="consignDetailIds[]")String[] consignDetailIds,
 			HttpServletRequest request) throws ValidationException {
 		// 操作人id
 		String userId = (String) request.getSession().getAttribute(LoginUser.SESSION_USERID);
