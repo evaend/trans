@@ -23,7 +23,7 @@
     s.SALARY_MONTH "salaryMonth",s.BASE_PAY "basePay",s.POSITION_SALARY "positionSalary",s.EVALUATION_REWARD "evaluationReward",
     s.TRAFFIC_COMMUNICATIONS "trafficCommunications",s.SENIORITY_PAY "seniorityPay",
     s.PAY_RETRO "payRetro",
-    s.PAY_DEDU "payDedu",s.actualPay "remark",pr.P_NAME "pName"
+    s.PAY_DEDU "payDedu",s.ACTUAL_PAY "actualPay",pr.P_NAME "pName"
   </sql>
   <!-- 查询人员工资信息 -->
   <select id="searchPersonSalary" resultType="HashMap" parameterType="com.erp.trans.common.entity.Pager">

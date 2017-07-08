@@ -47,7 +47,7 @@
 			<if test="conditiions.locationTo != null and conditiions.locationTo != ''">
 				and  c.LOCATION_TO = #{conditiions.locationTo,jdbcType=VARCHAR}
 			</if>
-			<if test="conditiions.dispatchFstate != null and conditiions.dispatchFstate != '' and conditiions.dispatchFstate != 0">
+			<if test="conditiions.dispatchFstate != null and conditiions.dispatchFstate != ''">
 				and cd.DESPATCH_FSTATE = #{conditiions.dispatchFstate,jdbcType=VARCHAR}
 			</if>
 			<if test="conditiions.createDateStart != null and conditiions.createDateStart != ''">
@@ -57,7 +57,7 @@
 				and <![CDATA[ date_format(c.create_date,'%Y-%m-%d') <=  #{conditiions.createDateEnd,jdbcType=VARCHAR} ]]>
 			</if>
 		</where>
-		order by date_format(cd.MODIFY_DATE,'%Y-%m-%d %T') desc
+		order by cd.MODIFY_DATE desc
 	</select>
   <insert id="insert" parameterType="com.erp.trans.entity.DespatchPlan" >
     insert into TB_DESPATCH_PLAN (DESPATCH_PLAN_ID, MOUNT, RECORD_ID, 

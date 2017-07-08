@@ -14,4 +14,6 @@ public interface PersonRecordsMapper {
 	List<Map<String, Object>> searchPersonRecords(Pager<Map<String, Object>> pager);
 
 	void batchCreateSalaryMonth();
+
+	List<Map<String, Object>> searchOrgDepartmentForSelect(Pager pager);
 }

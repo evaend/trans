@@ -26,7 +26,11 @@
        c.LOCATION_TO "locationTo",  c.RECEIVE_ORG_ID "receiveOrgId",  c.RECEIVE_ORG_NAME "receiveOrgName", 
        c.CONSIGN_FSATE "consignFsate",  c.CONSIGN_ORG_ID "consignOrgId",  c.CONSIGN_ORG_NAME "consignOrgName", 
        r.carrier_name "carrierName",
-       c.LOCATION_FROM "locationFrom",  date_format(c.MODIFY_DATE,'%Y-%m-%d %T') "modifyDate", 
+       c.LOCATION_FROM "locationFrom",  
+       date_format(c.RETURN_DATE,'%Y-%m-%d %T') "returnDate",
+       c.EXCEPTION_REASON "exceptionReason",
+       date_format(c.CREATE_DATE,'%Y-%m-%d %T') "createDate",
+       date_format(c.MODIFY_DATE,'%Y-%m-%d %T') "modifyDate", 
       u.USER_NAME "modifyUser"
   </sql>
    <insert id="importConsigns" >

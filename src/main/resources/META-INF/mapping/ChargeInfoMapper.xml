@@ -35,6 +35,7 @@
   	  ci.CHARGE_ID "chargeId",
   	  c.CONSIGN_NO "consignNo", cd.CAR_BRAND "carBrand", cd.CAR_MODEL "carModel", 
       cd.AMOUNT "amount", cd.CHASSIS_NO "chassisNo", 
+      date_format(c.CREATE_DATE,'%Y-%m-%d %T') "createDate",
       date_format(cd.DESPATCH_DATE,'%Y-%m-%d') "despatchDate",c.LOCATION_TO "locationTo", c.RECEIVE_ORG_NAME "receiveOrgName", 
       c.CONSIGN_ORG_NAME "consignOrgName", dp.main_drive "mainDrive",
       dp.MAIN_DRIVE_PHONE "mainDrivePhone",r.CO_PILOT "coPilot",

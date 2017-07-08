@@ -44,14 +44,31 @@
 			</if>
 		</where> 
 		order by pr.MODIFY_DATE desc
-    </select>
+    </select> 
    <insert id="batchCreateSalaryMonth">
-   insert into tb_salary ( SALARY_ID,SALARY_YEAR,
-    SALARY_MONTH,MODIFY_DATE )
-    select replace(uuid(),'-',''),year(date_add(NOW(), interval -1 MONTH)),
-    month(date_add(NOW(), interval -1 MONTH)),now()
+   insert into tb_salary ( SALARY_ID,PERSON_RECORDS_ID,SALARY_YEAR,
+    SALARY_MONTH,MODIFY_DATE,ORG_ID )
+    select replace(uuid(),'-',''),PERSON_RECORDS_ID,year(date_add(NOW(), interval -1 MONTH)),
+    month(date_add(NOW(), interval -1 MONTH)),now(),org_id
     from td_person_records  
-   </insert>
+   </insert>  
+  <!--[对应下拉框] 查询机构的所有部门  -->
+  <select id="searchOrgDepartmentForSelect" resultType="hashMap" parameterType="com.erp.trans.common.entity.Pager">
+		select od.department_id "id",od.department_name "text"
+		from td_org_department od 
+		<where>
+			<if test="conditiions !=null">
+				<if test="conditiions.orgId != null and conditiions.orgId != '0' and conditiions.orgId != '-1'">
+					and od.ORG_ID = #{conditiions.orgId,jdbcType=VARCHAR}
+				</if>
+				<if test="conditiions.searchParams !=null and conditiions.searchParams !=''">
+				    and ((od.department_name REGEXP #{conditiions.searchParams, jdbcType=VARCHAR})
+				    	or (od.department_fqun REGEXP #{conditiions.searchParams, jdbcType=VARCHAR}))
+				</if>
+			</if>
+		</where> 
+		order by od.department_fqun
+    </select>
   <insert id="insert" parameterType="com.erp.trans.entity.PersonRecords" >
     insert into TD_PERSON_RECORDS (PERSON_RECORDS_ID, P_NAME, P_GENDER, 
       P_BIRTHDATE, P_IDNO, P_HOME_ADDRESS, 

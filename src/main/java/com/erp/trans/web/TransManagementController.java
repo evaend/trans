@@ -65,7 +65,7 @@ public class TransManagementController {
 			@RequestParam(value = "carrierName", required = false) String carrierName,
 			@RequestParam(value = "dispatchDateStart", required = false) String dispatchDateStart,
 			@RequestParam(value = "dispatchDateEnd", required = false) String dispatchDateEnd,
-			@RequestParam(value = "consignFstate", required = false) String consignFstate,
+			@RequestParam(value = "consignFsate", required = false) String consignFstate,
 			@RequestParam(value = "page", required = false) Integer page,
 			@RequestParam(value = "pagesize", required = false) Integer pagesize, HttpServletRequest request) {
 		Pager<Map<String, Object>> pager = new Pager<Map<String, Object>>(false);

@@ -119,4 +119,7 @@
 			advice-ref="transactionAdvice" />
 	</aop:config>	
 	
+	<!-- spring 管理servlet过滤器 -->
+	<bean id="filterServlet" class="com.erp.trans.common.util.FilterServlet"/>
+	
 </beans>

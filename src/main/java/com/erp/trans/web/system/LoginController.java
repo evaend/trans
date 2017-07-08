@@ -2,12 +2,9 @@
 package com.erp.trans.web.system;
 
 import java.util.HashMap;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
-import java.util.Queue;
 
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -19,12 +16,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.erp.trans.common.constant.CustomConst.LoginUser;
 import com.erp.trans.common.exception.ValidationException;
-import com.erp.trans.common.util.BaseUtils;
 import com.erp.trans.common.util.LocalAssertUtils;
-import com.erp.trans.common.util.SHAUtil;
 import com.erp.trans.entity.UserInfo;
 import com.erp.trans.service.impl.system.UserServiceImpl;
 
@@ -42,6 +38,11 @@ public class LoginController {
 	@Autowired
 	UserServiceImpl userService;
 
+	@RequestMapping("/login")
+	public ModelAndView index() {
+		ModelAndView mav = new ModelAndView("/login");
+		return mav;
+	}
 	/**
 	 * @author taoyou 验证验证码
 	 * @throws ValidationException

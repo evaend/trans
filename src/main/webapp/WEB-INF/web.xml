@@ -68,7 +68,7 @@
 	</listener>
 
 	<!-- servlet过滤器 spring注入方式 -->
-	<!-- <filter>
+	<filter>
 		<filter-name>filterServlet</filter-name>
 		<filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
 		<init-param>
@@ -79,7 +79,7 @@
 	<filter-mapping>
 		<filter-name>filterServlet</filter-name>
 		<url-pattern>/*</url-pattern>
-	</filter-mapping> -->
+	</filter-mapping>
 
 
 	<!-- 验证码 -->
@@ -113,6 +113,6 @@
 	</error-page>
 
 	<welcome-file-list>
-		<welcome-file>/WEB-INF/views/login.jsp</welcome-file>
+		<welcome-file>/WEB-INF/views/login.html</welcome-file>
 	</welcome-file-list>
 </web-app>

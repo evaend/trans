@@ -23,4 +23,10 @@ public class PersonRecordsServiceImpl extends BaseService implements PersonRecor
 		return personRecordsMapper.searchPersonRecords(pager);
 	}
 
+	@Override
+	public List<Map<String, Object>> searchOrgDepartmentForSelect(Pager pager) {
+		// TODO Auto-generated method stub
+		return personRecordsMapper.searchOrgDepartmentForSelect(pager);
+	}
+
 }

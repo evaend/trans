@@ -9,7 +9,9 @@
 		SELECT distinct cnos.cno withCarrierNos
 		FROM (
 			<foreach collection="consignNos" item="consignNo" index="index" open=" " close=" " separator="UNION">
-				select #{consignNos[${index}], jdbcType=VARCHAR} cno FROM dual
+				<if test="consignNo != null and consignNo != '' ">
+					select #{consignNos[${index}], jdbcType=VARCHAR} cno FROM dual
+				</if>
 	    	</foreach>
 		  ) cnos
 		left JOIN tb_desplan_conno on tb_desplan_conno.consign_no=cnos.cno
@@ -28,7 +30,9 @@
 		SELECT cnos.*
 		FROM (
 			<foreach collection="consignNos" item="consignNo" index="index" open=" " close=" " separator="UNION">
-				select #{consignNo, jdbcType=VARCHAR} cno,#{despatchPlanId, jdbcType=VARCHAR} FROM dual
+				<if test="consignNo != null and consignNo != '' ">
+					select #{consignNo, jdbcType=VARCHAR} cno,#{despatchPlanId, jdbcType=VARCHAR} FROM dual
+	    		</if>
 	    	</foreach>
 		  ) cnos
 	</insert>

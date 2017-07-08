@@ -61,11 +61,12 @@ public class ContractRecordsController {
 		String orgId = (String) request.getSession().getAttribute(LoginUser.SESSION_USER_ORGID);
 		if (StringUtils.isNotBlank(contractStart)) {
 			pager.addQueryParam("contractStart", contractStart);
-		} else {
-			Calendar cal = Calendar.getInstance();
-			cal.add(Calendar.YEAR, -1);
-			pager.addQueryParam("contractStart", formatter.format(cal.getTime()));// 默认上一年开始
-		}
+		} 
+//		else {
+//			Calendar cal = Calendar.getInstance();
+//			cal.add(Calendar.YEAR, -1);
+//			pager.addQueryParam("contractStart", formatter.format(cal.getTime()));// 默认上一年开始
+//		}
 
 		if (StringUtils.isNotBlank(contractEnd)) {
 			pager.addQueryParam("contractEnd", contractEnd);
@@ -158,11 +159,12 @@ public class ContractRecordsController {
 		String orgId = (String) request.getSession().getAttribute(LoginUser.SESSION_USER_ORGID);
 		if (StringUtils.isNotBlank(recordStart)) {
 			pager.addQueryParam("recordStart", recordStart);
-		} else {
-			Calendar cal = Calendar.getInstance();
-			cal.add(Calendar.YEAR, -2);
-			pager.addQueryParam("recordStart", formatter.format(cal.getTime()));// 默认上一年开始
-		}
+		} 
+//		else {
+//			Calendar cal = Calendar.getInstance();
+//			cal.add(Calendar.YEAR, -2);
+//			pager.addQueryParam("recordStart", formatter.format(cal.getTime()));// 默认上一年开始
+//		}
 
 		if (StringUtils.isNotBlank(recordEnd)) {
 			pager.addQueryParam("recordEnd", recordEnd);

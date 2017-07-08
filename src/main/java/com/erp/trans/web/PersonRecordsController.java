@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.erp.trans.common.adapter.CustomDateTransfer;
+import com.erp.trans.common.constant.CustomConst;
 import com.erp.trans.common.constant.CustomConst.LoginUser;
 import com.erp.trans.common.entity.Pager;
 import com.erp.trans.common.exception.ValidationException;
@@ -109,6 +110,23 @@ public class PersonRecordsController {
 		for(String personRecordsId:personRecordsIds){
 			personRecordsService.deleteInfoById(PersonRecords.class,personRecordsId);
 		}
+	}
+	
+	/**
+	 * 【基础数据】查询某机构的所有部门
+	 * @param q
+	 */
+	@ResponseBody
+	@RequestMapping(value = "/searchOrgDepartmentForSelect")
+	public List<Map<String,Object>> searchOrgDepartmentForSelect(String q, HttpSession session) {
+		Pager pager = new Pager(false);
+		
+		String orgId = (String) session.getAttribute(LoginUser.SESSION_USER_ORGID);
+
+		pager.addQueryParam("searchParams", q);
+		pager.addQueryParam("orgId", orgId);
+
+		return personRecordsService.searchOrgDepartmentForSelect(pager);
 	}
 	
 	@InitBinder

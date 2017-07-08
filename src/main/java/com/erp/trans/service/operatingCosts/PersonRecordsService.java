@@ -10,4 +10,6 @@ public interface PersonRecordsService extends IBaseService{
 
 	List<Map<String, Object>> searchPersonRecords(Pager<Map<String, Object>> pager);
 
+	List<Map<String, Object>> searchOrgDepartmentForSelect(Pager pager);
+
 }

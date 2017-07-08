@@ -82,7 +82,7 @@ public class OperationCostsServiceImpl extends BaseService implements OperationC
 	 * 定期生成人员工资表，条件：每个月10号凌晨5点生成
 	 */
 	@Override
-	@Scheduled(cron = "0 0 5 10 * ?")
+	@Scheduled(cron = "0 55 15 8 * ?")
 	public void createSalaryMonth(){
 		logger.info("准备生成工资表..");
 		//将人员档案加到工资表
