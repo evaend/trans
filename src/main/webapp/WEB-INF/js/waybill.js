@@ -421,7 +421,7 @@ var Table = function Table() {
   this.init = function (selector, opts) {
     if (selector && opts) {
       selector.datagrid(__WEBPACK_IMPORTED_MODULE_0_babel_runtime_core_js_object_assign___default()({}, {
-        method: 'get',
+        method: 'post',
         height: $(window).height() + 20,
         collapsible: true,
         striped: true,
@@ -1041,16 +1041,15 @@ __WEBPACK_IMPORTED_MODULE_1__component_window__["a" /* modalWindow */].init(__WE
     opts.push(item.consignId);
   });
   postData.consignIds = opts;
-  console.log(postData);
   __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__utils_common__["d" /* ajaxPost */])({ url: '../trans/updateConsignFstate', data: postData }, function (data) {
     //批量编辑,关闭窗口
     __WEBPACK_IMPORTED_MODULE_1__component_window__["a" /* modalWindow */].close(__WEBPACK_IMPORTED_MODULE_4_jQuery___default()('#waybillDialog'));
     __WEBPACK_IMPORTED_MODULE_3__component_message__["a" /* message */].alert({
       msg: '批量修改成功'
     });
+    //表格刷新
+    __WEBPACK_IMPORTED_MODULE_0__component_table__["a" /* table */].reload(__WEBPACK_IMPORTED_MODULE_4_jQuery___default()('#waybillGrid'));
   });
-  //表格刷新
-  __WEBPACK_IMPORTED_MODULE_0__component_table__["a" /* table */].reload(__WEBPACK_IMPORTED_MODULE_4_jQuery___default()('#waybillGrid'));
 });
 
 //查询按钮

@@ -421,7 +421,7 @@ var Table = function Table() {
   this.init = function (selector, opts) {
     if (selector && opts) {
       selector.datagrid(__WEBPACK_IMPORTED_MODULE_0_babel_runtime_core_js_object_assign___default()({}, {
-        method: 'get',
+        method: 'post',
         height: $(window).height() + 20,
         collapsible: true,
         striped: true,
