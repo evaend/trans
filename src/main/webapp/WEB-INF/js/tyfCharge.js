@@ -1084,7 +1084,6 @@ __WEBPACK_IMPORTED_MODULE_1__component_window__["a" /* modalWindow */].init($dia
 //查询
 __WEBPACK_IMPORTED_MODULE_5_jQuery___default()('#search').on('click', function () {
   var postData = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__utils_common__["a" /* getFormData */])(__WEBPACK_IMPORTED_MODULE_5_jQuery___default()('#ff'));
-  postData.chargeType = '01';
   console.log(postData);
   __WEBPACK_IMPORTED_MODULE_5_jQuery___default()('#export').attr('href', '../charge/exportChargeInfoList?chargeType=01&consignOrgName=' + postData.consignOrgName + '&dispatchDateStart=' + postData.dispatchDateStart + '&dispatchDateEnd=' + postData.dispatchDateEnd + '&chargeFstate=' + postData.chargeFstate);
   //刷新表格
