@@ -43,8 +43,18 @@
         <label for="pGender">性别:</label>   
       </div>  
       <div class="col-md-4 vForm-item">  
-        <input class="easyui-validatebox" type="text" name="pGender" data-options="required:true"/>  
+        <select id="pGender"  editable='false' name='pGender' class="easyui-combobox"  style="width:200px;height:28px">  
+          <option value="男">男</option>  
+          <option value="女">女</option>   
+        </select>  
+      </div> 
+      <div class="col-md-2 vForm-item form-label">  
+        <label for="departmentId">部门:</label>   
       </div>  
+      <div class="col-md-4 vForm-item">  
+        <select id="departmentId"  editable='false' name='departmentId' class="easyui-combobox">  
+        </select> 
+      </div> 
       <div class="col-md-2 vForm-item form-label">  
         <label for="pPhone">电话号码:</label>  
       </div>  
