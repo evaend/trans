@@ -421,7 +421,7 @@ var Table = function Table() {
   this.init = function (selector, opts) {
     if (selector && opts) {
       selector.datagrid(__WEBPACK_IMPORTED_MODULE_0_babel_runtime_core_js_object_assign___default()({}, {
-        method: 'get',
+        method: 'post',
         height: $(window).height() + 20,
         collapsible: true,
         striped: true,
@@ -1057,7 +1057,7 @@ __WEBPACK_IMPORTED_MODULE_0__component_table__["a" /* table */].init($grid, {
   title: '托运方结费',
   url: '../charge/searchChargeList?chargeType=01',
   height: __WEBPACK_IMPORTED_MODULE_5_jQuery___default()(window).height() - 95,
-  columns: [[{ field: 'chargeId', checkbox: true }, { field: 'dispatchDate', title: '发运日期', width: 120 }, { field: 'consignNo', title: '运单号', width: 200 }, { field: 'chassisNo', title: '底盘号', width: 200 }, { field: 'locationFrom', title: '起运地', width: 100 }, { field: 'locationTo', title: '目的地', width: 100 }, { field: 'carBrand', title: '品牌', width: 100 }, { field: 'carModel', title: '车型', width: 100 }, { field: 'amount', title: '数量', width: 100, align: 'right' }, { field: 'consignOrgName', title: '托运单位', width: 260 }, { field: 'freightRates', title: '运价', width: 260 }, { field: 'freight', title: '运费', width: 100 }, { field: 'subsidy', title: '补贴', width: 100 }, { field: 'qualityLoss', title: '质损费', width: 100 }, { field: 'misCosts', title: '杂项扣费', width: 100 }, { field: 'gpsPayment', title: 'GPS扣款', width: 100 }, { field: 'reverseCharge', title: '倒板费', width: 100 }, { field: 'advances', title: '预付款', width: 100 }, { field: 'prepaidOilCard', title: '预付油卡', width: 100 }, { field: 'chargeAmount', title: '计费金额', width: 100 }, { field: 'modifyUserName', title: '修改人', width: 120 }, { field: 'modifyDate', title: '修改时间', width: 120 }]]
+  columns: [[{ field: 'chargeId', checkbox: true }, { field: 'dispatchDate', title: '发运日期', width: 120 }, { field: 'consignNo', title: '运单号', width: 200 }, { field: 'chassisNo', title: '底盘号', width: 200 }, { field: 'locationFrom', title: '起运地', width: 100 }, { field: 'locationTo', title: '目的地', width: 100 }, { field: 'carBrand', title: '品牌', width: 100 }, { field: 'carModel', title: '车型', width: 100 }, { field: 'amount', title: '数量', width: 100, align: 'right' }, { field: 'consignOrgName', title: '托运单位', width: 260 }, { field: 'freightRates', title: '运价', width: 260 }, { field: 'freight', title: '运费', width: 100 }, { field: 'subsidy', title: '补贴', width: 100 }, { field: 'qualityLoss', title: '质损费', width: 100 }, { field: 'misCosts', title: '杂项扣费', width: 100 }, { field: 'gpsPayment', title: 'GPS扣款', width: 100 }, { field: 'reverseCharge', title: '倒板费', width: 100 }, { field: 'advances', title: '预付款', width: 100 }, { field: 'prepaidOilCard', title: '预付油卡', width: 100 }, { field: 'chargeAmount', title: '结费金额', width: 100 }, { field: 'modifyUserName', title: '修改人', width: 120 }, { field: 'modifyDate', title: '修改时间', width: 120 }]]
 });
 
 //编辑window初始化

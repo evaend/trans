@@ -421,7 +421,7 @@ var Table = function Table() {
   this.init = function (selector, opts) {
     if (selector && opts) {
       selector.datagrid(__WEBPACK_IMPORTED_MODULE_0_babel_runtime_core_js_object_assign___default()({}, {
-        method: 'get',
+        method: 'post',
         height: $(window).height() + 20,
         collapsible: true,
         striped: true,
@@ -1279,17 +1279,13 @@ __WEBPACK_IMPORTED_MODULE_1__component_window__["a" /* modalWindow */].init($bbD
   //===== 校验结束 =====
   if (isValid) {
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4__utils_common__["d" /* ajaxPost */])({ url: '../trans/makePlan', data: postData }, function (data) {
-      //if(data){
-      console.log('新增一条记录', postData);
-      //新增成功,关闭窗口
       __WEBPACK_IMPORTED_MODULE_1__component_window__["a" /* modalWindow */].close($bbDialog);
       __WEBPACK_IMPORTED_MODULE_5__component_message__["a" /* message */].alert({
         msg: '\u7F16\u677F\u6210\u529F'
       });
-      //}
+      __WEBPACK_IMPORTED_MODULE_0__component_table__["a" /* table */].reload($grid);
     });
   }
-  __WEBPACK_IMPORTED_MODULE_0__component_table__["a" /* table */].reload($grid);
 });
 
 __WEBPACK_IMPORTED_MODULE_7_jQuery___default()('#carrierName').combobox({
