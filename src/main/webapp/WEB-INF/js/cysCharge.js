@@ -452,7 +452,7 @@ exports.f = __webpack_require__(7);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return getFormData; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return setFormData; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return resetFormData; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "e", function() { return jsonNull; });
+/* unused harmony export jsonNull */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_typeof__ = __webpack_require__(50);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_typeof___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_typeof__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_babel_runtime_core_js_json_stringify__ = __webpack_require__(47);
@@ -1926,14 +1926,17 @@ __WEBPACK_IMPORTED_MODULE_0__component_table__["a" /* table */].init($grid, {
   title: '承运商结费',
   url: '../charge/searchChargeList?chargeType=02',
   height: __WEBPACK_IMPORTED_MODULE_5_jQuery___default()(window).height() - 95,
-  columns: [[{ field: 'chargeId', checkbox: true }, { field: 'createDate', title: '制单日期', width: 150 }, { field: 'despatchDate', title: '发运日期', width: 120 }, { field: 'consignNo', title: '运单号', width: 200 }, { field: 'chassisNo', title: '底盘号', width: 200 }, { field: 'locationFrom', title: '起运地', width: 100 }, { field: 'locationTo', title: '目的地', width: 100 }, { field: 'carBrand', title: '品牌', width: 100 }, { field: 'carModel', title: '车型', width: 100 }, { field: 'amount', title: '数量', width: 70, align: 'right' }, { field: 'carrierName', title: '承运商', width: 260 }, { field: 'transportTool', title: '轿运车', width: 150 }, { field: 'mainDrive', title: '主驾', width: 100 }, { field: 'coPilot', title: '副驾', width: 100 }, { field: 'freightRates', title: '运价', width: 100 }, { field: 'freight', title: '运费', width: 100 }, { field: 'subsidy', title: '补贴', width: 100 }, { field: 'qualityLoss', title: '质损费', width: 100 }, { field: 'misCosts', title: '杂项扣费', width: 100 }, { field: 'gpsPayment', title: 'GPS扣款', width: 100 }, { field: 'reverseCharge', title: '倒板费', width: 100 }, { field: 'advances', title: '预付款', width: 100 }, { field: 'prepaidOilCard', title: '预付油卡', width: 100 }, { field: 'chargeAmount', title: '结费金额', width: 100 }, { field: 'modifyUserName', title: '修改人', width: 120 }, { field: 'modifyDate', title: '修改时间', width: 120 }]]
+  columns: [[{ field: 'chargeId', checkbox: true }, { field: 'createDate', title: '制单日期', width: 150 }, { field: 'despatchDate', title: '发运日期', width: 120 }, { field: 'consignNo', title: '运单号', width: 200 }, { field: 'chassisNo', title: '底盘号', width: 200 }, { field: 'locationFrom', title: '起运地', width: 100 }, { field: 'locationTo', title: '目的地', width: 100 }, { field: 'carBrand', title: '品牌', width: 100 }, { field: 'carModel', title: '车型', width: 100 }, { field: 'amount', title: '数量', width: 70, align: 'right' }, { field: 'carrierName', title: '承运商', width: 260 }, { field: 'transportTool', title: '轿运车', width: 150 }, { field: 'mainDrive', title: '主驾', width: 100 }, { field: 'coPilot', title: '副驾', width: 100 }, { field: 'freightRates', title: '运价', width: 100 }, { field: 'freight', title: '运费', width: 100, formatter: function formatter(value, row) {
+      return (row.freightRates * row.amount).toFixed(2);
+    } }, { field: 'subsidy', title: '补贴', width: 100 }, { field: 'qualityLoss', title: '质损费', width: 100 }, { field: 'misCosts', title: '杂项扣费', width: 100 }, { field: 'gpsPayment', title: 'GPS扣款', width: 100 }, { field: 'reverseCharge', title: '倒板费', width: 100 }, { field: 'advances', title: '预付款', width: 100 }, { field: 'prepaidOilCard', title: '预付油卡', width: 100 }, { field: 'chargeAmount', title: '结费金额', width: 100 }, { field: 'modifyUserName', title: '修改人', width: 120 }, { field: 'modifyDate', title: '修改时间', width: 120 }]]
 });
 
 //编辑window初始化
 __WEBPACK_IMPORTED_MODULE_1__component_window__["a" /* modalWindow */].init(__WEBPACK_IMPORTED_MODULE_5_jQuery___default()('#editWin'), { title: '编辑' }, function (text) {
-  var selectd = jsonNull(__WEBPACK_IMPORTED_MODULE_5_jQuery___default()('#cysChargeGrid').datagrid('getSelections'), 0);
+  var selectds = jsonNull(__WEBPACK_IMPORTED_MODULE_5_jQuery___default()('#cysChargeGrid').datagrid('getSelections'), 0);
   var postData = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__utils_common__["a" /* getFormData */])($form);
-  postData.chargeAmount = (Number(selectd.freightRates) + Number(selectd.subsidy) + Number(selectd.reverseCharge) - Number(selectd.misCosts) - Number(selectd.gpsPayment) - Number(selectd.advances) - Number(selectd.prepaidOilCard) * Number(selectd.amount)).toFixed(2);
+  var selectd = selectds[0];
+  postData.chargeAmount = (Number(selectd.freightRates) * Number(selectd.amount) + Number(selectd.subsidy) + Number(selectd.reverseCharge) - Number(selectd.qualityLoss) - Number(selectd.misCosts) - Number(selectd.gpsPayment) - Number(selectd.advances) - Number(selectd.prepaidOilCard)).toFixed(2);
   //===== 校验 =======
   var isValid = $form.form('validate');
   if (isValid) {

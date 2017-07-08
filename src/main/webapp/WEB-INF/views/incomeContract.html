@@ -58,31 +58,31 @@
         <label for="consignOrgId">托运单位:</label>   
       </div>  
       <div class="col-md-4 vForm-item">  
-        <input class="easyui-validatebox" id="consignOrgId" type="text" name="consignOrgId" data-options="required:true"/>  
+        <input class="easyui-validatebox" id="consignOrgId" type="text" name="consignOrgId" />  
       </div> 
       <div class="col-md-2 vForm-item form-label">  
         <label for="locationFrom">起运地:</label>   
       </div>  
       <div class="col-md-4 vForm-item">  
-        <input id="locationFrom" name="locationFrom" style="width:200px;height:28px" data-options="required:true">  
+        <input id="locationFrom" name="locationFrom" style="width:200px;height:28px">  
       </div>  
       <div class="col-md-2 vForm-item form-label">  
         <label for="locationTo">目的地:</label>  
       </div> 
       <div class="col-md-4 vForm-item">  
-        <input id="locationTo" name="locationTo" style="width:200px;height:28px" data-options="required:true">  
+        <input id="locationTo" name="locationTo" style="width:200px;height:28px">  
       </div>   
       <div class="col-md-2 vForm-item form-label">  
         <label for="carBrand">品牌:</label>  
       </div>  
       <div class="col-md-4 vForm-item">  
-        <input type="text" name="carBrand" id="carBrand" data-options="required:true"/>  
+        <input type="text" name="carBrand" id="carBrand" />  
       </div>  
       <div class="col-md-2 vForm-item form-label">  
         <label for="carModel">车型:</label>   
       </div>  
       <div class="col-md-4 vForm-item">   
-        <input  type="text" name="carModel" id="carModel" data-options="required:true"/>  
+        <input  type="text" name="carModel" id="carModel"/>  
       </div>  
       <div class="col-md-2 vForm-item form-label">  
         <label for="freightRates">运价:</label>    
@@ -101,14 +101,14 @@
       </div>  
       <div class="col-md-4 vForm-item">  
          <input type="text" name="contractStart" id="contractStart" class="Wdate" 
-        onFocus="WdatePicker({isShowClear:false,isShowToday:false,isShowOK:false,readOnly:true,maxDate:'#F{$dp.$D(\'endDate\')||\'2030-10-01\'}'})"/>  
+        onFocus="WdatePicker({isShowClear:false,isShowToday:false,isShowOK:false,readOnly:true,maxDate:'#F{$dp.$D(\'contractEnd\')||\'2030-10-01\'}'})"/>  
       </div>  
       <div class="col-md-2 vForm-item form-label">  
         <label for="contractStart">合同结束日期:</label>    
       </div>  
       <div class="col-md-4 vForm-item">  
          <input type="text" name="contractEnd" id="contractEnd" class="Wdate" 
-        onFocus="WdatePicker({isShowClear:false,isShowToday:false,isShowOK:false,readOnly:true,minDate:'#F{$dp.$D(\'starDate\')}',maxDate:'2030-10-01'})"//>
+        onFocus="WdatePicker({isShowClear:false,isShowToday:false,isShowOK:false,readOnly:true,minDate:'#F{$dp.$D(\'contractStart\')}',maxDate:'2030-10-01'})"//>
       </div>    
     </form>  
   </div>
