@@ -80,11 +80,13 @@ public class OperationCostsController {
 			HttpServletRequest request) throws ValidationException {
 		// 操作人id
 		String userId = (String) request.getSession().getAttribute(LoginUser.SESSION_USERID);
+		String orgId = (String) request.getSession().getAttribute(LoginUser.SESSION_USER_ORGID);
 		if(salary == null || StringUtils.isBlank(salary.getSalaryId())){
 			throw new ValidationException("请选择一跳记录编辑");
 		}
 		salary.setModifyUserid(userId);
 		salary.setModifyDate(new Date());
+		salary.setOrgId(orgId);
 		operationCostsService.updateInfoCover(salary);
 	
 	}
