@@ -331,6 +331,7 @@ public class OperationCostsController {
 	public Pager<Map<String, Object>> searchVehicleDep(
 			@RequestParam(value = "startDate", required = false) String startDate,
 			@RequestParam(value = "endDate", required = false) String endDate,
+			@RequestParam(value = "transportToolNo", required = false) String transportToolNo,
 			@RequestParam(value = "page", required = false) Integer page,
 			@RequestParam(value = "pagesize", required = false) Integer pagesize, HttpServletRequest request) {
 		Pager<Map<String, Object>> pager = new Pager<Map<String, Object>>(false);
@@ -344,6 +345,7 @@ public class OperationCostsController {
 		pager.addQueryParam("orgId", orgId);// 当前登录机构
 		pager.addQueryParam("startDate", startDate);//开始日期
 		pager.addQueryParam("endDate", endDate);//结束日期
+		pager.addQueryParam("transportToolNo", transportToolNo);//交通工具查询
 
 		List<Map<String, Object>> vehicleDpList = operationCostsService.searchVehicleDep(pager);
 		pager.setRows(vehicleDpList);
