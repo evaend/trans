@@ -29,12 +29,13 @@
     <result column="OIL_RATIO" property="oilRatio" jdbcType="VARCHAR" />
     <result column="OIL_PRICE" property="oilPrice" jdbcType="VARCHAR" />
     <result column="OIL_SUBSIDY" property="oilSubsidy" jdbcType="VARCHAR" />
-    
+    <result column="SOURCE_CHARGE_ID" property="sourceChargeId" jdbcType="VARCHAR" />
   </resultMap>
    <sql id="Charge_Return_List">
   	  ci.CHARGE_ID "chargeId",
   	  c.CONSIGN_NO "consignNo", cd.CAR_BRAND "carBrand", cd.CAR_MODEL "carModel", 
-      cd.AMOUNT "amount", cd.CHASSIS_NO "chassisNo", 
+      case when ci.SOURCE_CHARGE_ID is null then cd.AMOUNT
+      else '0' end  "amount", cd.CHASSIS_NO "chassisNo", 
       date_format(c.CREATE_DATE,'%Y-%m-%d %T') "createDate",
       date_format(cd.DESPATCH_DATE,'%Y-%m-%d') "despatchDate",c.LOCATION_TO "locationTo", c.RECEIVE_ORG_NAME "receiveOrgName", 
       c.CONSIGN_ORG_NAME "consignOrgName", dp.main_drive "mainDrive",

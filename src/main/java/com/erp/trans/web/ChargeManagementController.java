@@ -23,6 +23,7 @@ import com.erp.trans.common.entity.Pager;
 import com.erp.trans.common.exception.ValidationException;
 import com.erp.trans.common.util.DateUtils;
 import com.erp.trans.common.util.ExportUtil;
+import com.erp.trans.common.util.IdentifieUtil;
 import com.erp.trans.common.util.LocalAssertUtils;
 import com.erp.trans.entity.ChargeInfo;
 import com.erp.trans.service.ChargeManagementService;
@@ -145,16 +146,22 @@ public class ChargeManagementController {
 	 */
 	@ResponseBody
 	@RequestMapping(value = "insertDriveAccount")
-	public void insertDriveAccount(ChargeInfo chargeInfo,
+	public void insertDriveAccount(String chargeId,
 			HttpServletRequest request) throws ValidationException {
 		// 操作人id
 		String userId = (String) request.getSession().getAttribute(LoginUser.SESSION_USERID);
 		// 操作人name
 		String userName = (String) request.getSession().getAttribute(LoginUser.SESSION_USERNAME);
-		
+		LocalAssertUtils.notBlank(chargeId, "请选择需要新增的记录");
+		ChargeInfo chargeInfo = chargeManagementService.find(ChargeInfo.class, chargeId);
+
+		chargeInfo.setChargeId(IdentifieUtil.getGuId());
 		chargeInfo.setModifyUserId(userId);
 		chargeInfo.setModifyUserName(userName);
 		chargeInfo.setModifyDate(new Date());
+		chargeInfo.setChargeFstate(CustomConst.ChargeFstate.UNBALANCE);
+		chargeInfo.setSourceChargeId(chargeId);
+		chargeInfo.setChargeAmount("0");
 		chargeInfo.setKiloPrice("0");
 		chargeInfo.setKilometers("0");
 		

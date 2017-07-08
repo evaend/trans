@@ -59,6 +59,8 @@ public class ChargeInfo {
     private String oilRatio;
     private String oilPrice;
     private String oilSubsidy;
+    
+    private String sourceChargeId;
 
     public String getChargeId() {
         return chargeId;
@@ -299,6 +301,14 @@ public class ChargeInfo {
 
 	public void setOilSubsidy(String oilSubsidy) {
 		this.oilSubsidy = oilSubsidy;
+	}
+
+	public String getSourceChargeId() {
+		return sourceChargeId;
+	}
+
+	public void setSourceChargeId(String sourceChargeId) {
+		this.sourceChargeId = sourceChargeId;
 	}
 	
 }
