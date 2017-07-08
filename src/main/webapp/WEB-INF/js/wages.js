@@ -143,10 +143,10 @@ if(typeof __e == 'number')__e = core; // eslint-disable-line no-undef
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function($) {/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return ajaxPost; });
+/* WEBPACK VAR INJECTION */(function($) {/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return ajaxPost; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return getFormData; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return setFormData; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return resetFormData; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return setFormData; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return resetFormData; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_extends__ = __webpack_require__(18);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_extends___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_extends__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_babel_runtime_core_js_object_assign__ = __webpack_require__(1);
@@ -447,7 +447,7 @@ var Table = function Table() {
       return selector.datagrid('deleteRow', selector.datagrid('getRowIndex', item));
     });
     if (url) {
-      __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__utils_common__["b" /* ajaxPost */])({
+      __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__utils_common__["d" /* ajaxPost */])({
         url: url,
         method: 'get'
       }, function (data) {
@@ -1050,7 +1050,7 @@ __WEBPACK_IMPORTED_MODULE_0__component_table__["a" /* table */].init($grid, {
     iconCls: 'icon-edit',
     handler: function handler() {
       __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4__actions_grid__["a" /* gridEdit */])($grid, function (rows) {
-        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__utils_common__["d" /* setFormData */])($form, rows[0]);
+        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__utils_common__["c" /* setFormData */])($form, rows[0]);
         __WEBPACK_IMPORTED_MODULE_1__component_window__["a" /* modalWindow */].setTitle($dialog, '编辑').open($dialog);
       });
     }
@@ -1065,7 +1065,7 @@ __WEBPACK_IMPORTED_MODULE_0__component_table__["a" /* table */].init($grid, {
           opts.push(item.salaryId);
         });
         // 后台交互
-        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__utils_common__["b" /* ajaxPost */])({ url: '../operationCosts/deletePersonSalary', data: { salaryIds: opts } }, function (data) {
+        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__utils_common__["d" /* ajaxPost */])({ url: '../operationCosts/deletePersonSalary', data: { salaryIds: opts } }, function (data) {
           // 刷新表格
           __WEBPACK_IMPORTED_MODULE_0__component_table__["a" /* table */].reload($grid);
           __WEBPACK_IMPORTED_MODULE_3__component_message__["a" /* message */].alert({ msg: '删除成功!' });
@@ -1074,6 +1074,7 @@ __WEBPACK_IMPORTED_MODULE_0__component_table__["a" /* table */].init($grid, {
     } }],
   title: '人员工资表',
   url: '../operationCosts/searchPersonSalary',
+  height: __WEBPACK_IMPORTED_MODULE_5_jQuery___default()(window).height() - 65,
   columns: [[{ field: 'id', checkbox: true }, { field: 'pName', title: '月份', width: 100 }, { field: 'pName', title: '姓名', width: 100 }, { field: 'basePay', title: '底薪', width: 100 }, { field: 'positionSalary', title: '岗位工资', width: 100 }, { field: 'evaluationReward', title: '综合考评奖励', width: 100 }, { field: 'trafficCommunications', title: '交通通讯保障', width: 100 }, { field: 'seniorityPay', title: '工龄工资', width: 100, textAlign: 'right' }, { field: 'payRetro', title: '补发', width: 100, textAlign: 'right' }, { field: 'buckleUp', title: '补扣', width: 100, textAlign: 'right' }, { field: 'name6', title: '实发工资', width: 100, textAlign: 'right' }]]
 });
 
@@ -1085,7 +1086,7 @@ __WEBPACK_IMPORTED_MODULE_1__component_window__["a" /* modalWindow */].init($dia
   var isValid = $form.form('validate');
   console.log(isValid);
   if (isValid) {
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__utils_common__["b" /* ajaxPost */])({ url: '../operationCosts/updatePersonSalary', data: postData }, function (data) {
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__utils_common__["d" /* ajaxPost */])({ url: '../operationCosts/updatePersonSalary', data: postData }, function (data) {
       //===== 校验结束 =====
       console.log('编辑一条记录', postData);
       //新增成功,关闭窗口

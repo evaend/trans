@@ -1013,7 +1013,24 @@ __WEBPACK_IMPORTED_MODULE_0__component_table__["a" /* table */].init(__WEBPACK_I
   }],
   title: '运单表',
   url: '../trans/findConsignList',
-  columns: [[{ field: 'consignDetailId', checkbox: true }, { field: 'consignNo', title: '制单日期', width: 100 }, { field: 'consignNo', title: '发运日期', width: 100 }, { field: 'consignNo', title: '运单号', width: 100 }, { field: 'camount', title: '数量', width: 100, align: 'right' }, { field: 'consignFsate', title: '状态', width: 100 }, { field: 'locationFrom', title: '起运地', width: 100 }, { field: 'locationTo', title: '目的地', width: 100 }, { field: 'consignOrgName', title: '托运单位', width: 100 }, { field: 'receiveOrgName', title: '收车单位', width: 100 }, { field: 'carrierName', title: '承运商', width: 100 }, { field: 'name9', title: '是否带单', width: 100 }, { field: 'returnDate', title: '返单时间', width: 100 }, { field: 'exceptionReason', title: '备注', width: 100 }, { field: 'modifyUser', title: '修改人', width: 100 }, { field: 'modifyDate', title: '修改时间', width: 100 }]]
+  height: __WEBPACK_IMPORTED_MODULE_4_jQuery___default()(window).height() - 95,
+  columns: [[{ field: 'consignDetailId', checkbox: true }, { field: 'consignNo', title: '制单日期', width: 150 }, { field: 'consignNo', title: '运单号', width: 200 }, { field: 'camount', title: '数量', width: 70, align: 'right' }, { field: 'consignFsate', title: '状态', width: 70, formatter: function formatter(value) {
+      if (value === "01") {
+        return "已返单";
+      } else if (value === "02") {
+        return "异常单";
+      } else if (value === "00") {
+        return "未返单";
+      } else {
+        return "";
+      }
+    },
+    styler: function styler(value, row, index) {
+      if (value === "00") {
+        return 'color:#e60012';
+      }
+    }
+  }, { field: 'locationFrom', title: '起运地', width: 100 }, { field: 'locationTo', title: '目的地', width: 100 }, { field: 'consignOrgName', title: '托运单位', width: 260 }, { field: 'receiveOrgName', title: '收车单位', width: 260 }, { field: 'carrierName', title: '承运商', width: 260 }, { field: 'name9', title: '是否带单', width: 60 }, { field: 'returnDate', title: '返单时间', width: 120 }, { field: 'exceptionReason', title: '备注', width: 120 }, { field: 'modifyUser', title: '修改人', width: 120 }, { field: 'modifyDate', title: '修改时间', width: 120 }]]
 });
 
 __WEBPACK_IMPORTED_MODULE_1__component_window__["a" /* modalWindow */].init(__WEBPACK_IMPORTED_MODULE_4_jQuery___default()('#waybillDialog'), { title: '批量修改' }, function () {
@@ -1024,7 +1041,7 @@ __WEBPACK_IMPORTED_MODULE_1__component_window__["a" /* modalWindow */].init(__WE
     opts.push(item.consignId);
   });
   postData.consignIds = opts;
-  console.log(postData)
+  console.log(postData);
   __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__utils_common__["d" /* ajaxPost */])({ url: '../trans/updateConsignFstate', data: postData }, function (data) {
     //批量编辑,关闭窗口
     __WEBPACK_IMPORTED_MODULE_1__component_window__["a" /* modalWindow */].close(__WEBPACK_IMPORTED_MODULE_4_jQuery___default()('#waybillDialog'));

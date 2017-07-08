@@ -143,10 +143,10 @@ if(typeof __e == 'number')__e = core; // eslint-disable-line no-undef
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function($) {/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return ajaxPost; });
+/* WEBPACK VAR INJECTION */(function($) {/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return ajaxPost; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return getFormData; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return setFormData; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return resetFormData; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return setFormData; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return resetFormData; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_extends__ = __webpack_require__(18);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_extends___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_extends__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_babel_runtime_core_js_object_assign__ = __webpack_require__(1);
@@ -447,7 +447,7 @@ var Table = function Table() {
       return selector.datagrid('deleteRow', selector.datagrid('getRowIndex', item));
     });
     if (url) {
-      __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__utils_common__["b" /* ajaxPost */])({
+      __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__utils_common__["d" /* ajaxPost */])({
         url: url,
         method: 'get'
       }, function (data) {
@@ -1034,7 +1034,7 @@ __WEBPACK_IMPORTED_MODULE_0__component_table__["a" /* table */].init($grid, {
     text: '新增',
     iconCls: 'icon-add',
     handler: function handler() {
-      __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__utils_common__["c" /* resetFormData */])($form, function () {
+      __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__utils_common__["b" /* resetFormData */])($form, function () {
         __WEBPACK_IMPORTED_MODULE_5_jQuery___default()('#travelType').combobox('setValue', '');
       });
       __WEBPACK_IMPORTED_MODULE_1__component_window__["a" /* modalWindow */].setTitle($dialog, '新增').open($dialog);
@@ -1044,7 +1044,7 @@ __WEBPACK_IMPORTED_MODULE_0__component_table__["a" /* table */].init($grid, {
     iconCls: 'icon-edit',
     handler: function handler() {
       __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4__actions_grid__["a" /* gridEdit */])($grid, function (rows) {
-        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__utils_common__["d" /* setFormData */])($form, rows[0], function () {
+        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__utils_common__["c" /* setFormData */])($form, rows[0], function () {
           __WEBPACK_IMPORTED_MODULE_5_jQuery___default()('#travelType').combobox('setValue', rows[0].name2); //
         });
         __WEBPACK_IMPORTED_MODULE_1__component_window__["a" /* modalWindow */].setTitle($dialog, '编辑').open($dialog);
@@ -1062,17 +1062,18 @@ __WEBPACK_IMPORTED_MODULE_0__component_table__["a" /* table */].init($grid, {
         });
         // 刷新表格
         // 后台交互
-        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__utils_common__["b" /* ajaxPost */])({ url: '../operationCosts/deleteTravelAllowance', data: { travelAllowanceIds: opts } }, function (data) {
+        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__utils_common__["d" /* ajaxPost */])({ url: '../operationCosts/deleteTravelAllowance', data: { travelAllowanceIds: opts } }, function (data) {
           // 刷新表格
-          __WEBPACK_IMPORTED_MODULE_0__component_table__["a" /* table */].reload($grid);
           __WEBPACK_IMPORTED_MODULE_3__component_message__["a" /* message */].alert({ msg: '删除成功!' });
+          __WEBPACK_IMPORTED_MODULE_0__component_table__["a" /* table */].reload($grid);
         });
       });
     }
   }],
   title: '差旅招待表',
   url: '../operationCosts/searchTravelAllowance',
-  columns: [[{ field: 'travelAllowanceId', checkbox: true }, { field: 'travelDate', title: '日期', width: 100 }, { field: 'travelType', title: '类型', width: 100 }, { field: 'travelers', title: '人员', width: 100 }, { field: 'travelAmount', title: '金额', width: 100 }, { field: 'reimbursePerson', title: '报销人', width: 100 }, { field: 'remark', title: '备注', width: 200 }]]
+  height: __WEBPACK_IMPORTED_MODULE_5_jQuery___default()(window).height() - 65,
+  columns: [[{ field: 'travelAllowanceId', checkbox: true }, { field: 'travelDate', title: '日期', width: 120 }, { field: 'travelType', title: '类型', width: 70 }, { field: 'travelers', title: '人员', width: 100 }, { field: 'travelAmount', title: '金额', width: 100 }, { field: 'reimbursePerson', title: '报销人', width: 100 }, { field: 'remark', title: '备注', width: 200 }]]
 });
 
 //查询按钮
@@ -1089,7 +1090,7 @@ __WEBPACK_IMPORTED_MODULE_1__component_window__["a" /* modalWindow */].init($dia
   console.log('新增一条记录', postData);
   var isValid = $form.form('validate');
   if (isValid) {
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__utils_common__["b" /* ajaxPost */])({ url: '../operationCosts/addUpdateTravelAllowance', data: postData }, function (data) {
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__utils_common__["d" /* ajaxPost */])({ url: '../operationCosts/addUpdateTravelAllowance', data: postData }, function (data) {
       //===== 校验结束 =====
       console.log('一条记录', postData);
       //新增成功,关闭窗口
@@ -1103,14 +1104,13 @@ __WEBPACK_IMPORTED_MODULE_1__component_window__["a" /* modalWindow */].init($dia
   }
 });
 
-//查询按钮
+//查询
 __WEBPACK_IMPORTED_MODULE_5_jQuery___default()('#search').on('click', function () {
   var postData = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__utils_common__["a" /* getFormData */])(__WEBPACK_IMPORTED_MODULE_5_jQuery___default()('#ff'));
-  console.log(postData);
+  console.log(postData, '111');
   //刷新表格
   __WEBPACK_IMPORTED_MODULE_0__component_table__["a" /* table */].load($grid, postData);
 });
-console.log(Math.round(new Date() / 1000));
 
 /***/ })
 /******/ ]);

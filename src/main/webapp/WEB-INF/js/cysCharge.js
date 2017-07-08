@@ -143,10 +143,10 @@ if(typeof __e == 'number')__e = core; // eslint-disable-line no-undef
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function($) {/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return ajaxPost; });
+/* WEBPACK VAR INJECTION */(function($) {/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return ajaxPost; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return getFormData; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return setFormData; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return resetFormData; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return setFormData; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return resetFormData; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_extends__ = __webpack_require__(18);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_extends___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_extends__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_babel_runtime_core_js_object_assign__ = __webpack_require__(1);
@@ -447,7 +447,7 @@ var Table = function Table() {
       return selector.datagrid('deleteRow', selector.datagrid('getRowIndex', item));
     });
     if (url) {
-      __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__utils_common__["b" /* ajaxPost */])({
+      __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__utils_common__["d" /* ajaxPost */])({
         url: url,
         method: 'get'
       }, function (data) {
@@ -1037,7 +1037,7 @@ __WEBPACK_IMPORTED_MODULE_0__component_table__["a" /* table */].init($grid, {
     iconCls: 'icon-edit',
     handler: function handler() {
       __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3__actions_grid__["a" /* gridEdit */])($grid, function (rows) {
-        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__utils_common__["d" /* setFormData */])($form, rows[0]);
+        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__utils_common__["c" /* setFormData */])($form, rows[0]);
         __WEBPACK_IMPORTED_MODULE_1__component_window__["a" /* modalWindow */].open($dialog);
       });
     }
@@ -1045,7 +1045,7 @@ __WEBPACK_IMPORTED_MODULE_0__component_table__["a" /* table */].init($grid, {
   title: '承运商结费',
   url: '../charge/searchChargeList?chargeType=02',
   height: __WEBPACK_IMPORTED_MODULE_5_jQuery___default()(window).height() - 95,
-  columns: [[{ field: 'chargeId', checkbox: true }, { field: 'createDate', title: '制单日期', width: 100 }, { field: 'dispatchDate', title: '发运日期', width: 100 }, { field: 'consignNo', title: '运单号', width: 100 }, { field: 'chassisNo', title: '底盘号', width: 100 }, { field: 'locationFrom', title: '起运地', width: 100 }, { field: 'locationTo', title: '目的地', width: 100 }, { field: 'carBrand', title: '品牌', width: 100 }, { field: 'carModel', title: '车型', width: 100 }, { field: 'amount', title: '数量', width: 100, align: 'right' }, { field: 'carrierName', title: '承运商', width: 100 }, { field: 'transportTool', title: '轿运车', width: 100 }, { field: 'mainDrive', title: '主驾', width: 100 }, { field: 'coPilot', title: '副驾', width: 100 }, { field: 'freightRates', title: '运价', width: 100 }, { field: 'freight', title: '运费', width: 100 }, { field: 'subsidy', title: '补贴', width: 100 }, { field: 'qualityLoss', title: '质损费', width: 100 }, { field: 'misCosts', title: '杂项扣费', width: 100 }, { field: 'gpsPayment', title: 'GPS扣款', width: 100 }, { field: 'reverseCharge', title: '倒板费', width: 100 }, { field: 'advances', title: '预付款', width: 100 }, { field: 'prepaidOilCard', title: '预付油卡', width: 100 }, { field: 'chargeAmount', title: '结费金额', width: 100 }, { field: 'modifyUserName', title: '修改人', width: 100 }, { field: 'modifyDate', title: '修改时间', width: 100 }]]
+  columns: [[{ field: 'chargeId', checkbox: true }, { field: 'createDate', title: '制单日期', width: 150 }, { field: 'despatchDate', title: '发运日期', width: 120 }, { field: 'consignNo', title: '运单号', width: 200 }, { field: 'chassisNo', title: '底盘号', width: 200 }, { field: 'locationFrom', title: '起运地', width: 100 }, { field: 'locationTo', title: '目的地', width: 100 }, { field: 'carBrand', title: '品牌', width: 100 }, { field: 'carModel', title: '车型', width: 100 }, { field: 'amount', title: '数量', width: 70, align: 'right' }, { field: 'carrierName', title: '承运商', width: 260 }, { field: 'transportTool', title: '轿运车', width: 150 }, { field: 'mainDrive', title: '主驾', width: 100 }, { field: 'coPilot', title: '副驾', width: 100 }, { field: 'freightRates', title: '运价', width: 100 }, { field: 'freight', title: '运费', width: 100 }, { field: 'subsidy', title: '补贴', width: 100 }, { field: 'qualityLoss', title: '质损费', width: 100 }, { field: 'misCosts', title: '杂项扣费', width: 100 }, { field: 'gpsPayment', title: 'GPS扣款', width: 100 }, { field: 'reverseCharge', title: '倒板费', width: 100 }, { field: 'advances', title: '预付款', width: 100 }, { field: 'prepaidOilCard', title: '预付油卡', width: 100 }, { field: 'chargeAmount', title: '结费金额', width: 100 }, { field: 'modifyUserName', title: '修改人', width: 120 }, { field: 'modifyDate', title: '修改时间', width: 120 }]]
 });
 
 //编辑window初始化
@@ -1055,7 +1055,7 @@ __WEBPACK_IMPORTED_MODULE_1__component_window__["a" /* modalWindow */].init(__WE
   var isValid = $form.form('validate');
   console.log(isValid);
   if (isValid) {
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__utils_common__["b" /* ajaxPost */])({ url: '../charge/editAccount', data: postData }, function (data) {
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__utils_common__["d" /* ajaxPost */])({ url: '../charge/editAccount', data: postData }, function (data) {
       //新增成功,关闭窗口
       __WEBPACK_IMPORTED_MODULE_1__component_window__["a" /* modalWindow */].close($dialog);
       __WEBPACK_IMPORTED_MODULE_4__component_message__["a" /* message */].alert({
@@ -1071,7 +1071,6 @@ __WEBPACK_IMPORTED_MODULE_1__component_window__["a" /* modalWindow */].init(__WE
 __WEBPACK_IMPORTED_MODULE_5_jQuery___default()('#search').on('click', function () {
   var postData = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__utils_common__["a" /* getFormData */])(__WEBPACK_IMPORTED_MODULE_5_jQuery___default()('#ff'));
   postData.chargeType = '02';
-  console.log(postData);
   __WEBPACK_IMPORTED_MODULE_5_jQuery___default()('#export').attr('href', '../charge/exportChargeInfoList?chargeType=02&carrierName=' + postData.carrierName + '&dispatchDateStart=' + postData.dispatchDateStart + '&dispatchDateEnd=' + postData.dispatchDateEnd + '&transportTool=' + postData.transportTool);
   //刷新表格
   __WEBPACK_IMPORTED_MODULE_0__component_table__["a" /* table */].load($grid, postData);
@@ -1092,7 +1091,7 @@ __WEBPACK_IMPORTED_MODULE_5_jQuery___default()('#check').on('click', function ()
           opts.push(item.chargeId);
         });
         console.log('编辑一条记录', opts);
-        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__utils_common__["b" /* ajaxPost */])({ url: '../charge/balanceOfAccount', data: { chargeIds: opts } }, function (data) {
+        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__utils_common__["d" /* ajaxPost */])({ url: '../charge/balanceOfAccount', data: { chargeIds: opts } }, function (data) {
           //表格刷新
           __WEBPACK_IMPORTED_MODULE_4__component_message__["a" /* message */].alert({
             msg: '\u5BF9\u8D26\u6210\u529F'

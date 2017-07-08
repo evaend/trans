@@ -1,0 +1,733 @@
+2017-07-08 14:54:40,195 INFO  main 669 [pool.DruidDataSource] - {dataSource-1} inited
+2017-07-08 14:54:42,296 DEBUG main 42  [util.SystemConfig] - 加载Properties配置文件database.properties
+2017-07-08 14:54:42,297 DEBUG main 42  [util.SystemConfig] - 加载Properties配置文件environment.properties
+2017-07-08 14:54:42,298 DEBUG main 42  [util.SystemConfig] - 加载Properties配置文件system.properties
+2017-07-08 14:54:46,204 DEBUG http-8902-1 122 [web.BaseControllerSupport] - ┋requestURI=/trans/views/login.html┋/trans
+2017-07-08 14:54:46,240 DEBUG http-8902-4 122 [web.BaseControllerSupport] - ┋requestURI=/trans/lib/jquery-3.2.1.min.js┋/trans
+2017-07-08 14:54:46,243 DEBUG http-8902-5 122 [web.BaseControllerSupport] - ┋requestURI=/trans/lib/easyui/jquery.easyui.min.js┋/trans
+2017-07-08 14:54:46,262 DEBUG http-8902-1 122 [web.BaseControllerSupport] - ┋requestURI=/trans/lib/bootstrap.css┋/trans
+2017-07-08 14:54:46,269 DEBUG http-8902-2 122 [web.BaseControllerSupport] - ┋requestURI=/trans/lib/normalize.css┋/trans
+2017-07-08 14:54:47,803 DEBUG http-8902-2 122 [web.BaseControllerSupport] - ┋requestURI=/trans/login/userLogin┋/trans
+2017-07-08 14:54:48,518 DEBUG http-8902-2 139 [BaseMapper.searchList] - ==>  Preparing: select * from ts_user_info where USER_NO = 'gas' 
+2017-07-08 14:54:48,935 DEBUG http-8902-2 139 [BaseMapper.searchList] - ==> Parameters: 
+2017-07-08 14:54:48,989 DEBUG http-8902-2 139 [BaseMapper.searchList] - <==      Total: 1
+2017-07-08 14:54:49,057 DEBUG http-8902-2 139 [UserInfoMapper.findOrgFstateByOrgId] - ==>  Preparing: SELECT FSTATE FROM td_org_info where ORG_ID = ? 
+2017-07-08 14:54:49,060 DEBUG http-8902-2 139 [UserInfoMapper.findOrgFstateByOrgId] - ==> Parameters: 5(String)
+2017-07-08 14:54:49,083 DEBUG http-8902-2 139 [UserInfoMapper.findOrgFstateByOrgId] - <==      Total: 1
+2017-07-08 14:54:49,086 DEBUG http-8902-2 139 [UserInfoMapper.findUserInfoById] - ==>  Preparing: SELECT u.USER_ID, u.USER_NO, u.USER_NAME, u.PWD,u.FSTATE, u.MODIFY_DATE, u.CREATE_DATE, u.USER_LEVEL, u.MOBILE_PHONE, u.E_MAIL, u.ORG_ID , o.ORG_NAME FROM ts_user_info u LEFT JOIN td_org_info o on u.ORG_ID=o.ORG_ID where u.USER_ID = ? 
+2017-07-08 14:54:49,092 DEBUG http-8902-2 139 [UserInfoMapper.findUserInfoById] - ==> Parameters: 501(String)
+2017-07-08 14:54:49,117 DEBUG http-8902-2 139 [UserInfoMapper.findUserInfoById] - <==      Total: 1
+2017-07-08 14:54:49,216 DEBUG http-8902-2 122 [web.BaseControllerSupport] - ┋requestURI=/trans/views/index.html┋/trans
+2017-07-08 14:54:49,238 DEBUG http-8902-5 122 [web.BaseControllerSupport] - ┋requestURI=/trans/lib/easyui/themes/icon.css┋/trans
+2017-07-08 14:54:49,269 DEBUG http-8902-2 122 [web.BaseControllerSupport] - ┋requestURI=/trans/lib/easyui/themes/metro/easyui.css┋/trans
+2017-07-08 14:54:49,392 DEBUG http-8902-2 122 [web.BaseControllerSupport] - ┋requestURI=/trans/lib/easyui/themes/metro/images/tabs_icons.png┋/trans
+2017-07-08 14:54:49,411 DEBUG http-8902-5 122 [web.BaseControllerSupport] - ┋requestURI=/trans/lib/easyui/themes/metro/images/panel_tools.png┋/trans
+2017-07-08 14:54:49,414 DEBUG http-8902-2 122 [web.BaseControllerSupport] - ┋requestURI=/trans/lib/easyui/themes/metro/images/blank.gif┋/trans
+2017-07-08 14:54:49,422 DEBUG http-8902-2 122 [web.BaseControllerSupport] - ┋requestURI=/trans/lib/easyui/themes/metro/images/accordion_arrows.png┋/trans
+2017-07-08 14:54:49,553 DEBUG http-8902-2 122 [web.BaseControllerSupport] - ┋requestURI=/trans/lib/easyui/themes/metro/images/layout_arrows.png┋/trans
+2017-07-08 14:54:51,853 DEBUG http-8902-5 122 [web.BaseControllerSupport] - ┋requestURI=/trans/views/waybill.html┋/trans
+2017-07-08 14:54:51,893 DEBUG http-8902-5 122 [web.BaseControllerSupport] - ┋requestURI=/trans/lib/easyui/themes/material/easyui.css┋/trans
+2017-07-08 14:54:51,895 DEBUG http-8902-3 122 [web.BaseControllerSupport] - ┋requestURI=/trans/lib/easyui/easyui-lang-zh_CN.js┋/trans
+2017-07-08 14:54:51,895 DEBUG http-8902-6 122 [web.BaseControllerSupport] - ┋requestURI=/trans/lib/My97DatePicker/WdatePicker.js┋/trans
+2017-07-08 14:54:51,983 DEBUG http-8902-5 122 [web.BaseControllerSupport] - ┋requestURI=/trans/lib/My97DatePicker/skin/WdatePicker.css┋/trans
+2017-07-08 14:54:52,020 DEBUG http-8902-5 122 [web.BaseControllerSupport] - ┋requestURI=/trans/lib/easyui/themes/material/images/blank.gif┋/trans
+2017-07-08 14:54:52,020 DEBUG http-8902-6 122 [web.BaseControllerSupport] - ┋requestURI=/trans/lib/easyui/themes/material/images/panel_tools.png┋/trans
+2017-07-08 14:54:52,069 DEBUG http-8902-6 122 [web.BaseControllerSupport] - ┋requestURI=/trans/lib/easyui/themes/icons/pencil.png┋/trans
+2017-07-08 14:54:52,094 DEBUG http-8902-6 122 [web.BaseControllerSupport] - ┋requestURI=/trans/lib/easyui/themes/material/images/loading.gif┋/trans
+2017-07-08 14:54:52,105 DEBUG http-8902-6 122 [web.BaseControllerSupport] - ┋requestURI=/trans/trans/findConsignList┋/trans
+2017-07-08 14:54:52,163 DEBUG http-8902-6 139 [ConsignMapper.findConsignList] - ==>  Preparing: select c.CONSIGN_ID "consignId", c.CONSIGN_NO "consignNo", c.CAMOUNT "camount", c.LOCATION_TO "locationTo", c.RECEIVE_ORG_ID "receiveOrgId", c.RECEIVE_ORG_NAME "receiveOrgName", c.CONSIGN_FSATE "consignFsate", c.CONSIGN_ORG_ID "consignOrgId", c.CONSIGN_ORG_NAME "consignOrgName", r.carrier_name "carrierName", c.LOCATION_FROM "locationFrom", date_format(c.MODIFY_DATE,'%Y-%m-%d %T') "modifyDate", u.USER_NAME "modifyUser" from tb_consign c left join ts_user_info u on u.user_id = c.MODIFY_USER_ID left join ( select cd.consign_id,dc.consign_no,r.carrier_name from tb_consign_detail cd,tb_despatch_plan dp,td_record_info r,tb_desplan_conno dc where cd.despatch_plan_id = dp.despatch_plan_id and dp.record_id = r.record_id and dp.despatch_plan_id = dc.despatch_plan_id ) r on r.consign_id = c.consign_id WHERE c.ORG_ID = ? order by date_format(c.MODIFY_DATE,'%Y-%m-%d %T') desc 
+2017-07-08 14:54:52,164 DEBUG http-8902-4 122 [web.BaseControllerSupport] - ┋requestURI=/trans/lib/easyui/themes/icons/cancel.png┋/trans
+2017-07-08 14:54:52,164 DEBUG http-8902-5 122 [web.BaseControllerSupport] - ┋requestURI=/trans/lib/easyui/themes/icons/filesave.png┋/trans
+2017-07-08 14:54:52,170 DEBUG http-8902-6 139 [ConsignMapper.findConsignList] - ==> Parameters: 5(String)
+2017-07-08 14:54:52,203 DEBUG http-8902-5 122 [web.BaseControllerSupport] - ┋requestURI=/trans/lib/My97DatePicker/skin/datePicker.gif┋/trans
+2017-07-08 14:54:52,220 DEBUG http-8902-6 139 [ConsignMapper.findConsignList] - <==      Total: 22
+2017-07-08 14:54:52,284 DEBUG http-8902-6 122 [web.BaseControllerSupport] - ┋requestURI=/trans/lib/easyui/themes/icons/search.png┋/trans
+2017-07-08 14:54:52,310 DEBUG http-8902-6 122 [web.BaseControllerSupport] - ┋requestURI=/trans/lib/easyui/themes/material/images/combo_arrow.png┋/trans
+2017-07-08 14:54:52,367 DEBUG http-8902-6 122 [web.BaseControllerSupport] - ┋requestURI=/trans/trans/findConsignList┋/trans
+2017-07-08 14:54:52,370 DEBUG http-8902-6 139 [ConsignMapper.findConsignList] - ==>  Preparing: select c.CONSIGN_ID "consignId", c.CONSIGN_NO "consignNo", c.CAMOUNT "camount", c.LOCATION_TO "locationTo", c.RECEIVE_ORG_ID "receiveOrgId", c.RECEIVE_ORG_NAME "receiveOrgName", c.CONSIGN_FSATE "consignFsate", c.CONSIGN_ORG_ID "consignOrgId", c.CONSIGN_ORG_NAME "consignOrgName", r.carrier_name "carrierName", c.LOCATION_FROM "locationFrom", date_format(c.MODIFY_DATE,'%Y-%m-%d %T') "modifyDate", u.USER_NAME "modifyUser" from tb_consign c left join ts_user_info u on u.user_id = c.MODIFY_USER_ID left join ( select cd.consign_id,dc.consign_no,r.carrier_name from tb_consign_detail cd,tb_despatch_plan dp,td_record_info r,tb_desplan_conno dc where cd.despatch_plan_id = dp.despatch_plan_id and dp.record_id = r.record_id and dp.despatch_plan_id = dc.despatch_plan_id ) r on r.consign_id = c.consign_id WHERE c.ORG_ID = ? order by date_format(c.MODIFY_DATE,'%Y-%m-%d %T') desc 
+2017-07-08 14:54:52,373 DEBUG http-8902-6 139 [ConsignMapper.findConsignList] - ==> Parameters: 5(String)
+2017-07-08 14:54:52,415 DEBUG http-8902-6 139 [ConsignMapper.findConsignList] - <==      Total: 22
+2017-07-08 14:55:15,145 DEBUG http-8902-5 122 [web.BaseControllerSupport] - ┋requestURI=/trans/views/index.html┋/trans
+2017-07-08 14:55:17,990 DEBUG http-8902-4 122 [web.BaseControllerSupport] - ┋requestURI=/trans/views/waybill.html┋/trans
+2017-07-08 14:55:18,146 DEBUG http-8902-4 122 [web.BaseControllerSupport] - ┋requestURI=/trans/trans/findConsignList┋/trans
+2017-07-08 14:55:18,149 DEBUG http-8902-4 139 [ConsignMapper.findConsignList] - ==>  Preparing: select c.CONSIGN_ID "consignId", c.CONSIGN_NO "consignNo", c.CAMOUNT "camount", c.LOCATION_TO "locationTo", c.RECEIVE_ORG_ID "receiveOrgId", c.RECEIVE_ORG_NAME "receiveOrgName", c.CONSIGN_FSATE "consignFsate", c.CONSIGN_ORG_ID "consignOrgId", c.CONSIGN_ORG_NAME "consignOrgName", r.carrier_name "carrierName", c.LOCATION_FROM "locationFrom", date_format(c.MODIFY_DATE,'%Y-%m-%d %T') "modifyDate", u.USER_NAME "modifyUser" from tb_consign c left join ts_user_info u on u.user_id = c.MODIFY_USER_ID left join ( select cd.consign_id,dc.consign_no,r.carrier_name from tb_consign_detail cd,tb_despatch_plan dp,td_record_info r,tb_desplan_conno dc where cd.despatch_plan_id = dp.despatch_plan_id and dp.record_id = r.record_id and dp.despatch_plan_id = dc.despatch_plan_id ) r on r.consign_id = c.consign_id WHERE c.ORG_ID = ? order by date_format(c.MODIFY_DATE,'%Y-%m-%d %T') desc 
+2017-07-08 14:55:18,153 DEBUG http-8902-4 139 [ConsignMapper.findConsignList] - ==> Parameters: 5(String)
+2017-07-08 14:55:18,186 DEBUG http-8902-4 139 [ConsignMapper.findConsignList] - <==      Total: 22
+2017-07-08 14:55:18,312 DEBUG http-8902-4 122 [web.BaseControllerSupport] - ┋requestURI=/trans/trans/findConsignList┋/trans
+2017-07-08 14:55:18,315 DEBUG http-8902-4 139 [ConsignMapper.findConsignList] - ==>  Preparing: select c.CONSIGN_ID "consignId", c.CONSIGN_NO "consignNo", c.CAMOUNT "camount", c.LOCATION_TO "locationTo", c.RECEIVE_ORG_ID "receiveOrgId", c.RECEIVE_ORG_NAME "receiveOrgName", c.CONSIGN_FSATE "consignFsate", c.CONSIGN_ORG_ID "consignOrgId", c.CONSIGN_ORG_NAME "consignOrgName", r.carrier_name "carrierName", c.LOCATION_FROM "locationFrom", date_format(c.MODIFY_DATE,'%Y-%m-%d %T') "modifyDate", u.USER_NAME "modifyUser" from tb_consign c left join ts_user_info u on u.user_id = c.MODIFY_USER_ID left join ( select cd.consign_id,dc.consign_no,r.carrier_name from tb_consign_detail cd,tb_despatch_plan dp,td_record_info r,tb_desplan_conno dc where cd.despatch_plan_id = dp.despatch_plan_id and dp.record_id = r.record_id and dp.despatch_plan_id = dc.despatch_plan_id ) r on r.consign_id = c.consign_id WHERE c.ORG_ID = ? order by date_format(c.MODIFY_DATE,'%Y-%m-%d %T') desc 
+2017-07-08 14:55:18,317 DEBUG http-8902-4 139 [ConsignMapper.findConsignList] - ==> Parameters: 5(String)
+2017-07-08 14:55:18,347 DEBUG http-8902-4 139 [ConsignMapper.findConsignList] - <==      Total: 22
+2017-07-08 14:55:33,745 DEBUG http-8902-3 122 [web.BaseControllerSupport] - ┋requestURI=/trans/lib/My97DatePicker/lang/zh-cn.js┋/trans
+2017-07-08 14:55:33,746 DEBUG http-8902-4 122 [web.BaseControllerSupport] - ┋requestURI=/trans/lib/My97DatePicker/calendar.js┋/trans
+2017-07-08 14:55:33,745 DEBUG http-8902-2 122 [web.BaseControllerSupport] - ┋requestURI=/trans/lib/My97DatePicker/skin/default/datepicker.css┋/trans
+2017-07-08 14:55:33,846 DEBUG http-8902-2 122 [web.BaseControllerSupport] - ┋requestURI=/trans/lib/My97DatePicker/skin/default/img.gif┋/trans
+2017-07-08 14:55:38,218 DEBUG http-8902-2 122 [web.BaseControllerSupport] - ┋requestURI=/trans/trans/findConsignList┋/trans
+2017-07-08 14:55:38,224 DEBUG http-8902-2 139 [ConsignMapper.findConsignList] - ==>  Preparing: select c.CONSIGN_ID "consignId", c.CONSIGN_NO "consignNo", c.CAMOUNT "camount", c.LOCATION_TO "locationTo", c.RECEIVE_ORG_ID "receiveOrgId", c.RECEIVE_ORG_NAME "receiveOrgName", c.CONSIGN_FSATE "consignFsate", c.CONSIGN_ORG_ID "consignOrgId", c.CONSIGN_ORG_NAME "consignOrgName", r.carrier_name "carrierName", c.LOCATION_FROM "locationFrom", date_format(c.MODIFY_DATE,'%Y-%m-%d %T') "modifyDate", u.USER_NAME "modifyUser" from tb_consign c left join ts_user_info u on u.user_id = c.MODIFY_USER_ID left join ( select cd.consign_id,dc.consign_no,r.carrier_name from tb_consign_detail cd,tb_despatch_plan dp,td_record_info r,tb_desplan_conno dc where cd.despatch_plan_id = dp.despatch_plan_id and dp.record_id = r.record_id and dp.despatch_plan_id = dc.despatch_plan_id ) r on r.consign_id = c.consign_id WHERE c.ORG_ID = ? and exists (select 0 from tb_consign_detail cd where cd.consign_id = c.consign_id and date_format(cd.DISPATCH_DATE,'%Y-%m-%d') >= ? ) and exists (select 0 from tb_consign_detail cd where cd.consign_id = c.consign_id and date_format(cd.DISPATCH_DATE,'%Y-%m-%d') <= ? ) order by date_format(c.MODIFY_DATE,'%Y-%m-%d %T') desc 
+2017-07-08 14:55:38,231 DEBUG http-8902-2 139 [ConsignMapper.findConsignList] - ==> Parameters: 5(String), 2017-07-02(String), 2017-07-19(String)
+2017-07-08 14:55:38,353 DEBUG http-8902-2 865 [datasource.DataSourceTransactionManager] - Should roll back transaction but cannot - no transaction available
+2017-07-08 14:55:38,354 DEBUG http-8902-2 865 [datasource.DataSourceTransactionManager] - Should roll back transaction but cannot - no transaction available
+2017-07-08 14:55:38,364 ERROR http-8902-2 66  [interceptor.ResResultBindingInterceptor] - 请求处理出现异常
+org.springframework.jdbc.BadSqlGrammarException: 
+### Error querying database.  Cause: com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Unknown column 'cd.DISPATCH_DATE' in 'where clause'
+### The error may exist in file [/Users/gaofengjiao/work/online/learning/trans/target/classes/META-INF/mapping/ConsignMapper.xml]
+### The error may involve com.erp.trans.dao.ConsignMapper.findConsignList-Inline
+### The error occurred while setting parameters
+### SQL: select           c.CONSIGN_ID "consignId",  c.CONSIGN_NO "consignNo",  c.CAMOUNT "camount",         c.LOCATION_TO "locationTo",  c.RECEIVE_ORG_ID "receiveOrgId",  c.RECEIVE_ORG_NAME "receiveOrgName",         c.CONSIGN_FSATE "consignFsate",  c.CONSIGN_ORG_ID "consignOrgId",  c.CONSIGN_ORG_NAME "consignOrgName",         r.carrier_name "carrierName",        c.LOCATION_FROM "locationFrom",  date_format(c.MODIFY_DATE,'%Y-%m-%d %T') "modifyDate",        u.USER_NAME "modifyUser"       from tb_consign c   left join ts_user_info u on u.user_id = c.MODIFY_USER_ID   left join (    select cd.consign_id,dc.consign_no,r.carrier_name    from tb_consign_detail cd,tb_despatch_plan dp,td_record_info r,tb_desplan_conno dc    where cd.despatch_plan_id = dp.despatch_plan_id    and dp.record_id = r.record_id    and dp.despatch_plan_id = dc.despatch_plan_id   ) r on r.consign_id = c.consign_id    WHERE  c.ORG_ID = ?                         and exists (select 0 from tb_consign_detail cd where cd.consign_id = c.consign_id and  date_format(cd.DISPATCH_DATE,'%Y-%m-%d') >= ? )             and exists (select 0 from tb_consign_detail cd where cd.consign_id = c.consign_id and  date_format(cd.DISPATCH_DATE,'%Y-%m-%d') <=  ? )    order by date_format(c.MODIFY_DATE,'%Y-%m-%d %T') desc
+### Cause: com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Unknown column 'cd.DISPATCH_DATE' in 'where clause'
+; bad SQL grammar []; nested exception is com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Unknown column 'cd.DISPATCH_DATE' in 'where clause'
+	at org.springframework.jdbc.support.SQLErrorCodeSQLExceptionTranslator.doTranslate(SQLErrorCodeSQLExceptionTranslator.java:231)
+	at org.springframework.jdbc.support.AbstractFallbackSQLExceptionTranslator.translate(AbstractFallbackSQLExceptionTranslator.java:73)
+	at org.mybatis.spring.MyBatisExceptionTranslator.translateExceptionIfPossible(MyBatisExceptionTranslator.java:73)
+	at org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:371)
+	at com.sun.proxy.$Proxy35.selectList(Unknown Source)
+	at org.mybatis.spring.SqlSessionTemplate.selectList(SqlSessionTemplate.java:198)
+	at org.apache.ibatis.binding.MapperMethod.executeForMany(MapperMethod.java:119)
+	at org.apache.ibatis.binding.MapperMethod.execute(MapperMethod.java:63)
+	at org.apache.ibatis.binding.MapperProxy.invoke(MapperProxy.java:52)
+	at com.sun.proxy.$Proxy65.findConsignList(Unknown Source)
+	at com.erp.trans.service.impl.TransManagementServiceImpl.findConsignList(TransManagementServiceImpl.java:125)
+	at com.erp.trans.service.impl.TransManagementServiceImpl$$FastClassBySpringCGLIB$$e5c27021.invoke(<generated>)
+	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:204)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:717)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:157)
+	at org.springframework.transaction.interceptor.TransactionInterceptor$1.proceedWithInvocation(TransactionInterceptor.java:98)
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:266)
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:95)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179)
+	at org.springframework.transaction.interceptor.TransactionInterceptor$1.proceedWithInvocation(TransactionInterceptor.java:98)
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:266)
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:95)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179)
+	at org.springframework.aop.interceptor.ExposeInvocationInterceptor.invoke(ExposeInvocationInterceptor.java:92)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179)
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:653)
+	at com.erp.trans.service.impl.TransManagementServiceImpl$$EnhancerBySpringCGLIB$$13abd6f1.findConsignList(<generated>)
+	at com.erp.trans.web.TransManagementController.findConsignList(TransManagementController.java:98)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:497)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invoke(InvocableHandlerMethod.java:215)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:132)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:104)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandleMethod(RequestMappingHandlerAdapter.java:781)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:721)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:83)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:943)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:877)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:966)
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:857)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:690)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:842)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:803)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:290)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:206)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:88)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:235)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:206)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:233)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:175)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:128)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:102)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:109)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:286)
+	at org.apache.coyote.http11.Http11Processor.process(Http11Processor.java:844)
+	at org.apache.coyote.http11.Http11Protocol$Http11ConnectionHandler.process(Http11Protocol.java:583)
+	at org.apache.tomcat.util.net.JIoEndpoint$Worker.run(JIoEndpoint.java:447)
+	at java.lang.Thread.run(Thread.java:745)
+Caused by: com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Unknown column 'cd.DISPATCH_DATE' in 'where clause'
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:422)
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:377)
+	at com.mysql.jdbc.Util.getInstance(Util.java:360)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:978)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3887)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3823)
+	at com.mysql.jdbc.MysqlIO.sendCommand(MysqlIO.java:2435)
+	at com.mysql.jdbc.MysqlIO.sqlQueryDirect(MysqlIO.java:2582)
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2530)
+	at com.mysql.jdbc.PreparedStatement.executeInternal(PreparedStatement.java:1907)
+	at com.mysql.jdbc.PreparedStatement.execute(PreparedStatement.java:1199)
+	at com.alibaba.druid.filter.FilterChainImpl.preparedStatement_execute(FilterChainImpl.java:2931)
+	at com.alibaba.druid.filter.FilterEventAdapter.preparedStatement_execute(FilterEventAdapter.java:440)
+	at com.alibaba.druid.filter.FilterChainImpl.preparedStatement_execute(FilterChainImpl.java:2929)
+	at com.alibaba.druid.proxy.jdbc.PreparedStatementProxyImpl.execute(PreparedStatementProxyImpl.java:118)
+	at com.alibaba.druid.pool.DruidPooledPreparedStatement.execute(DruidPooledPreparedStatement.java:493)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:497)
+	at org.apache.ibatis.logging.jdbc.PreparedStatementLogger.invoke(PreparedStatementLogger.java:62)
+	at com.sun.proxy.$Proxy76.execute(Unknown Source)
+	at org.apache.ibatis.executor.statement.PreparedStatementHandler.query(PreparedStatementHandler.java:59)
+	at org.apache.ibatis.executor.statement.RoutingStatementHandler.query(RoutingStatementHandler.java:73)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:497)
+	at org.apache.ibatis.plugin.Plugin.invoke(Plugin.java:62)
+	at com.sun.proxy.$Proxy73.query(Unknown Source)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:497)
+	at org.apache.ibatis.plugin.Plugin.invoke(Plugin.java:62)
+	at com.sun.proxy.$Proxy73.query(Unknown Source)
+	at org.apache.ibatis.executor.SimpleExecutor.doQuery(SimpleExecutor.java:60)
+	at org.apache.ibatis.executor.BaseExecutor.queryFromDatabase(BaseExecutor.java:267)
+	at org.apache.ibatis.executor.BaseExecutor.query(BaseExecutor.java:137)
+	at org.apache.ibatis.executor.CachingExecutor.query(CachingExecutor.java:96)
+	at org.apache.ibatis.executor.CachingExecutor.query(CachingExecutor.java:77)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:108)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:102)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:497)
+	at org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:358)
+	... 57 more
+2017-07-08 14:55:38,384 DEBUG http-8902-2 34  [util.JSONUtils] - JSONUtils工具类初始化完成
+2017-07-08 14:55:38,418 DEBUG http-8902-2 222 [web.BaseControllerSupport] - ■[ResponseBody]：{"interfaceUri":"/trans/trans/findConsignList","status":false,"result":null,"exception":"com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException","msg":"Unknown column 'cd.DISPATCH_DATE' in 'where clause'","timestamp":"2017-07-08 14:55:38","during":164}
+2017-07-08 14:55:45,618 DEBUG http-8902-2 122 [web.BaseControllerSupport] - ┋requestURI=/trans/trans/findConsignList┋/trans
+2017-07-08 14:55:45,621 DEBUG http-8902-2 139 [ConsignMapper.findConsignList] - ==>  Preparing: select c.CONSIGN_ID "consignId", c.CONSIGN_NO "consignNo", c.CAMOUNT "camount", c.LOCATION_TO "locationTo", c.RECEIVE_ORG_ID "receiveOrgId", c.RECEIVE_ORG_NAME "receiveOrgName", c.CONSIGN_FSATE "consignFsate", c.CONSIGN_ORG_ID "consignOrgId", c.CONSIGN_ORG_NAME "consignOrgName", r.carrier_name "carrierName", c.LOCATION_FROM "locationFrom", date_format(c.MODIFY_DATE,'%Y-%m-%d %T') "modifyDate", u.USER_NAME "modifyUser" from tb_consign c left join ts_user_info u on u.user_id = c.MODIFY_USER_ID left join ( select cd.consign_id,dc.consign_no,r.carrier_name from tb_consign_detail cd,tb_despatch_plan dp,td_record_info r,tb_desplan_conno dc where cd.despatch_plan_id = dp.despatch_plan_id and dp.record_id = r.record_id and dp.despatch_plan_id = dc.despatch_plan_id ) r on r.consign_id = c.consign_id WHERE c.ORG_ID = ? and exists (select 0 from tb_consign_detail cd where cd.consign_id = c.consign_id and date_format(cd.DISPATCH_DATE,'%Y-%m-%d') >= ? ) and exists (select 0 from tb_consign_detail cd where cd.consign_id = c.consign_id and date_format(cd.DISPATCH_DATE,'%Y-%m-%d') <= ? ) order by date_format(c.MODIFY_DATE,'%Y-%m-%d %T') desc 
+2017-07-08 14:55:45,623 DEBUG http-8902-2 139 [ConsignMapper.findConsignList] - ==> Parameters: 5(String), 2017-07-02(String), 2017-07-19(String)
+2017-07-08 14:55:45,650 DEBUG http-8902-2 865 [datasource.DataSourceTransactionManager] - Should roll back transaction but cannot - no transaction available
+2017-07-08 14:55:45,651 DEBUG http-8902-2 865 [datasource.DataSourceTransactionManager] - Should roll back transaction but cannot - no transaction available
+2017-07-08 14:55:45,651 ERROR http-8902-2 66  [interceptor.ResResultBindingInterceptor] - 请求处理出现异常
+org.springframework.jdbc.BadSqlGrammarException: 
+### Error querying database.  Cause: com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Unknown column 'cd.DISPATCH_DATE' in 'where clause'
+### The error may exist in file [/Users/gaofengjiao/work/online/learning/trans/target/classes/META-INF/mapping/ConsignMapper.xml]
+### The error may involve com.erp.trans.dao.ConsignMapper.findConsignList-Inline
+### The error occurred while setting parameters
+### SQL: select           c.CONSIGN_ID "consignId",  c.CONSIGN_NO "consignNo",  c.CAMOUNT "camount",         c.LOCATION_TO "locationTo",  c.RECEIVE_ORG_ID "receiveOrgId",  c.RECEIVE_ORG_NAME "receiveOrgName",         c.CONSIGN_FSATE "consignFsate",  c.CONSIGN_ORG_ID "consignOrgId",  c.CONSIGN_ORG_NAME "consignOrgName",         r.carrier_name "carrierName",        c.LOCATION_FROM "locationFrom",  date_format(c.MODIFY_DATE,'%Y-%m-%d %T') "modifyDate",        u.USER_NAME "modifyUser"       from tb_consign c   left join ts_user_info u on u.user_id = c.MODIFY_USER_ID   left join (    select cd.consign_id,dc.consign_no,r.carrier_name    from tb_consign_detail cd,tb_despatch_plan dp,td_record_info r,tb_desplan_conno dc    where cd.despatch_plan_id = dp.despatch_plan_id    and dp.record_id = r.record_id    and dp.despatch_plan_id = dc.despatch_plan_id   ) r on r.consign_id = c.consign_id    WHERE  c.ORG_ID = ?                         and exists (select 0 from tb_consign_detail cd where cd.consign_id = c.consign_id and  date_format(cd.DISPATCH_DATE,'%Y-%m-%d') >= ? )             and exists (select 0 from tb_consign_detail cd where cd.consign_id = c.consign_id and  date_format(cd.DISPATCH_DATE,'%Y-%m-%d') <=  ? )    order by date_format(c.MODIFY_DATE,'%Y-%m-%d %T') desc
+### Cause: com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Unknown column 'cd.DISPATCH_DATE' in 'where clause'
+; bad SQL grammar []; nested exception is com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Unknown column 'cd.DISPATCH_DATE' in 'where clause'
+	at org.springframework.jdbc.support.SQLErrorCodeSQLExceptionTranslator.doTranslate(SQLErrorCodeSQLExceptionTranslator.java:231)
+	at org.springframework.jdbc.support.AbstractFallbackSQLExceptionTranslator.translate(AbstractFallbackSQLExceptionTranslator.java:73)
+	at org.mybatis.spring.MyBatisExceptionTranslator.translateExceptionIfPossible(MyBatisExceptionTranslator.java:73)
+	at org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:371)
+	at com.sun.proxy.$Proxy35.selectList(Unknown Source)
+	at org.mybatis.spring.SqlSessionTemplate.selectList(SqlSessionTemplate.java:198)
+	at org.apache.ibatis.binding.MapperMethod.executeForMany(MapperMethod.java:119)
+	at org.apache.ibatis.binding.MapperMethod.execute(MapperMethod.java:63)
+	at org.apache.ibatis.binding.MapperProxy.invoke(MapperProxy.java:52)
+	at com.sun.proxy.$Proxy65.findConsignList(Unknown Source)
+	at com.erp.trans.service.impl.TransManagementServiceImpl.findConsignList(TransManagementServiceImpl.java:125)
+	at com.erp.trans.service.impl.TransManagementServiceImpl$$FastClassBySpringCGLIB$$e5c27021.invoke(<generated>)
+	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:204)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:717)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:157)
+	at org.springframework.transaction.interceptor.TransactionInterceptor$1.proceedWithInvocation(TransactionInterceptor.java:98)
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:266)
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:95)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179)
+	at org.springframework.transaction.interceptor.TransactionInterceptor$1.proceedWithInvocation(TransactionInterceptor.java:98)
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:266)
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:95)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179)
+	at org.springframework.aop.interceptor.ExposeInvocationInterceptor.invoke(ExposeInvocationInterceptor.java:92)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179)
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:653)
+	at com.erp.trans.service.impl.TransManagementServiceImpl$$EnhancerBySpringCGLIB$$13abd6f1.findConsignList(<generated>)
+	at com.erp.trans.web.TransManagementController.findConsignList(TransManagementController.java:98)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:497)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invoke(InvocableHandlerMethod.java:215)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:132)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:104)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandleMethod(RequestMappingHandlerAdapter.java:781)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:721)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:83)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:943)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:877)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:966)
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:857)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:690)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:842)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:803)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:290)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:206)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:88)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:235)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:206)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:233)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:175)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:128)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:102)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:109)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:286)
+	at org.apache.coyote.http11.Http11Processor.process(Http11Processor.java:844)
+	at org.apache.coyote.http11.Http11Protocol$Http11ConnectionHandler.process(Http11Protocol.java:583)
+	at org.apache.tomcat.util.net.JIoEndpoint$Worker.run(JIoEndpoint.java:447)
+	at java.lang.Thread.run(Thread.java:745)
+Caused by: com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Unknown column 'cd.DISPATCH_DATE' in 'where clause'
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:422)
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:377)
+	at com.mysql.jdbc.Util.getInstance(Util.java:360)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:978)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3887)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3823)
+	at com.mysql.jdbc.MysqlIO.sendCommand(MysqlIO.java:2435)
+	at com.mysql.jdbc.MysqlIO.sqlQueryDirect(MysqlIO.java:2582)
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2530)
+	at com.mysql.jdbc.PreparedStatement.executeInternal(PreparedStatement.java:1907)
+	at com.mysql.jdbc.PreparedStatement.execute(PreparedStatement.java:1199)
+	at com.alibaba.druid.filter.FilterChainImpl.preparedStatement_execute(FilterChainImpl.java:2931)
+	at com.alibaba.druid.filter.FilterEventAdapter.preparedStatement_execute(FilterEventAdapter.java:440)
+	at com.alibaba.druid.filter.FilterChainImpl.preparedStatement_execute(FilterChainImpl.java:2929)
+	at com.alibaba.druid.proxy.jdbc.PreparedStatementProxyImpl.execute(PreparedStatementProxyImpl.java:118)
+	at com.alibaba.druid.pool.DruidPooledPreparedStatement.execute(DruidPooledPreparedStatement.java:493)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:497)
+	at org.apache.ibatis.logging.jdbc.PreparedStatementLogger.invoke(PreparedStatementLogger.java:62)
+	at com.sun.proxy.$Proxy76.execute(Unknown Source)
+	at org.apache.ibatis.executor.statement.PreparedStatementHandler.query(PreparedStatementHandler.java:59)
+	at org.apache.ibatis.executor.statement.RoutingStatementHandler.query(RoutingStatementHandler.java:73)
+	at sun.reflect.GeneratedMethodAccessor53.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:497)
+	at org.apache.ibatis.plugin.Plugin.invoke(Plugin.java:62)
+	at com.sun.proxy.$Proxy73.query(Unknown Source)
+	at sun.reflect.GeneratedMethodAccessor53.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:497)
+	at org.apache.ibatis.plugin.Plugin.invoke(Plugin.java:62)
+	at com.sun.proxy.$Proxy73.query(Unknown Source)
+	at org.apache.ibatis.executor.SimpleExecutor.doQuery(SimpleExecutor.java:60)
+	at org.apache.ibatis.executor.BaseExecutor.queryFromDatabase(BaseExecutor.java:267)
+	at org.apache.ibatis.executor.BaseExecutor.query(BaseExecutor.java:137)
+	at org.apache.ibatis.executor.CachingExecutor.query(CachingExecutor.java:96)
+	at org.apache.ibatis.executor.CachingExecutor.query(CachingExecutor.java:77)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:108)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:102)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:497)
+	at org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:358)
+	... 57 more
+2017-07-08 14:55:45,669 DEBUG http-8902-2 222 [web.BaseControllerSupport] - ■[ResponseBody]：{"interfaceUri":"/trans/trans/findConsignList","status":false,"result":null,"exception":"com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException","msg":"Unknown column 'cd.DISPATCH_DATE' in 'where clause'","timestamp":"2017-07-08 14:55:45","during":51}
+2017-07-08 14:55:46,992 DEBUG http-8902-2 122 [web.BaseControllerSupport] - ┋requestURI=/trans/trans/findConsignList┋/trans
+2017-07-08 14:55:46,995 DEBUG http-8902-2 139 [ConsignMapper.findConsignList] - ==>  Preparing: select c.CONSIGN_ID "consignId", c.CONSIGN_NO "consignNo", c.CAMOUNT "camount", c.LOCATION_TO "locationTo", c.RECEIVE_ORG_ID "receiveOrgId", c.RECEIVE_ORG_NAME "receiveOrgName", c.CONSIGN_FSATE "consignFsate", c.CONSIGN_ORG_ID "consignOrgId", c.CONSIGN_ORG_NAME "consignOrgName", r.carrier_name "carrierName", c.LOCATION_FROM "locationFrom", date_format(c.MODIFY_DATE,'%Y-%m-%d %T') "modifyDate", u.USER_NAME "modifyUser" from tb_consign c left join ts_user_info u on u.user_id = c.MODIFY_USER_ID left join ( select cd.consign_id,dc.consign_no,r.carrier_name from tb_consign_detail cd,tb_despatch_plan dp,td_record_info r,tb_desplan_conno dc where cd.despatch_plan_id = dp.despatch_plan_id and dp.record_id = r.record_id and dp.despatch_plan_id = dc.despatch_plan_id ) r on r.consign_id = c.consign_id WHERE c.ORG_ID = ? and exists (select 0 from tb_consign_detail cd where cd.consign_id = c.consign_id and date_format(cd.DISPATCH_DATE,'%Y-%m-%d') >= ? ) and exists (select 0 from tb_consign_detail cd where cd.consign_id = c.consign_id and date_format(cd.DISPATCH_DATE,'%Y-%m-%d') <= ? ) order by date_format(c.MODIFY_DATE,'%Y-%m-%d %T') desc 
+2017-07-08 14:55:46,997 DEBUG http-8902-2 139 [ConsignMapper.findConsignList] - ==> Parameters: 5(String), 2017-07-02(String), 2017-07-19(String)
+2017-07-08 14:55:47,026 DEBUG http-8902-2 865 [datasource.DataSourceTransactionManager] - Should roll back transaction but cannot - no transaction available
+2017-07-08 14:55:47,027 DEBUG http-8902-2 865 [datasource.DataSourceTransactionManager] - Should roll back transaction but cannot - no transaction available
+2017-07-08 14:55:47,027 ERROR http-8902-2 66  [interceptor.ResResultBindingInterceptor] - 请求处理出现异常
+org.springframework.jdbc.BadSqlGrammarException: 
+### Error querying database.  Cause: com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Unknown column 'cd.DISPATCH_DATE' in 'where clause'
+### The error may exist in file [/Users/gaofengjiao/work/online/learning/trans/target/classes/META-INF/mapping/ConsignMapper.xml]
+### The error may involve com.erp.trans.dao.ConsignMapper.findConsignList-Inline
+### The error occurred while setting parameters
+### SQL: select           c.CONSIGN_ID "consignId",  c.CONSIGN_NO "consignNo",  c.CAMOUNT "camount",         c.LOCATION_TO "locationTo",  c.RECEIVE_ORG_ID "receiveOrgId",  c.RECEIVE_ORG_NAME "receiveOrgName",         c.CONSIGN_FSATE "consignFsate",  c.CONSIGN_ORG_ID "consignOrgId",  c.CONSIGN_ORG_NAME "consignOrgName",         r.carrier_name "carrierName",        c.LOCATION_FROM "locationFrom",  date_format(c.MODIFY_DATE,'%Y-%m-%d %T') "modifyDate",        u.USER_NAME "modifyUser"       from tb_consign c   left join ts_user_info u on u.user_id = c.MODIFY_USER_ID   left join (    select cd.consign_id,dc.consign_no,r.carrier_name    from tb_consign_detail cd,tb_despatch_plan dp,td_record_info r,tb_desplan_conno dc    where cd.despatch_plan_id = dp.despatch_plan_id    and dp.record_id = r.record_id    and dp.despatch_plan_id = dc.despatch_plan_id   ) r on r.consign_id = c.consign_id    WHERE  c.ORG_ID = ?                         and exists (select 0 from tb_consign_detail cd where cd.consign_id = c.consign_id and  date_format(cd.DISPATCH_DATE,'%Y-%m-%d') >= ? )             and exists (select 0 from tb_consign_detail cd where cd.consign_id = c.consign_id and  date_format(cd.DISPATCH_DATE,'%Y-%m-%d') <=  ? )    order by date_format(c.MODIFY_DATE,'%Y-%m-%d %T') desc
+### Cause: com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Unknown column 'cd.DISPATCH_DATE' in 'where clause'
+; bad SQL grammar []; nested exception is com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Unknown column 'cd.DISPATCH_DATE' in 'where clause'
+	at org.springframework.jdbc.support.SQLErrorCodeSQLExceptionTranslator.doTranslate(SQLErrorCodeSQLExceptionTranslator.java:231)
+	at org.springframework.jdbc.support.AbstractFallbackSQLExceptionTranslator.translate(AbstractFallbackSQLExceptionTranslator.java:73)
+	at org.mybatis.spring.MyBatisExceptionTranslator.translateExceptionIfPossible(MyBatisExceptionTranslator.java:73)
+	at org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:371)
+	at com.sun.proxy.$Proxy35.selectList(Unknown Source)
+	at org.mybatis.spring.SqlSessionTemplate.selectList(SqlSessionTemplate.java:198)
+	at org.apache.ibatis.binding.MapperMethod.executeForMany(MapperMethod.java:119)
+	at org.apache.ibatis.binding.MapperMethod.execute(MapperMethod.java:63)
+	at org.apache.ibatis.binding.MapperProxy.invoke(MapperProxy.java:52)
+	at com.sun.proxy.$Proxy65.findConsignList(Unknown Source)
+	at com.erp.trans.service.impl.TransManagementServiceImpl.findConsignList(TransManagementServiceImpl.java:125)
+	at com.erp.trans.service.impl.TransManagementServiceImpl$$FastClassBySpringCGLIB$$e5c27021.invoke(<generated>)
+	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:204)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:717)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:157)
+	at org.springframework.transaction.interceptor.TransactionInterceptor$1.proceedWithInvocation(TransactionInterceptor.java:98)
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:266)
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:95)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179)
+	at org.springframework.transaction.interceptor.TransactionInterceptor$1.proceedWithInvocation(TransactionInterceptor.java:98)
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:266)
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:95)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179)
+	at org.springframework.aop.interceptor.ExposeInvocationInterceptor.invoke(ExposeInvocationInterceptor.java:92)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179)
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:653)
+	at com.erp.trans.service.impl.TransManagementServiceImpl$$EnhancerBySpringCGLIB$$13abd6f1.findConsignList(<generated>)
+	at com.erp.trans.web.TransManagementController.findConsignList(TransManagementController.java:98)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:497)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invoke(InvocableHandlerMethod.java:215)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:132)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:104)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandleMethod(RequestMappingHandlerAdapter.java:781)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:721)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:83)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:943)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:877)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:966)
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:857)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:690)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:842)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:803)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:290)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:206)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:88)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:235)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:206)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:233)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:175)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:128)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:102)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:109)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:286)
+	at org.apache.coyote.http11.Http11Processor.process(Http11Processor.java:844)
+	at org.apache.coyote.http11.Http11Protocol$Http11ConnectionHandler.process(Http11Protocol.java:583)
+	at org.apache.tomcat.util.net.JIoEndpoint$Worker.run(JIoEndpoint.java:447)
+	at java.lang.Thread.run(Thread.java:745)
+Caused by: com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Unknown column 'cd.DISPATCH_DATE' in 'where clause'
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:422)
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:377)
+	at com.mysql.jdbc.Util.getInstance(Util.java:360)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:978)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3887)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3823)
+	at com.mysql.jdbc.MysqlIO.sendCommand(MysqlIO.java:2435)
+	at com.mysql.jdbc.MysqlIO.sqlQueryDirect(MysqlIO.java:2582)
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2530)
+	at com.mysql.jdbc.PreparedStatement.executeInternal(PreparedStatement.java:1907)
+	at com.mysql.jdbc.PreparedStatement.execute(PreparedStatement.java:1199)
+	at com.alibaba.druid.filter.FilterChainImpl.preparedStatement_execute(FilterChainImpl.java:2931)
+	at com.alibaba.druid.filter.FilterEventAdapter.preparedStatement_execute(FilterEventAdapter.java:440)
+	at com.alibaba.druid.filter.FilterChainImpl.preparedStatement_execute(FilterChainImpl.java:2929)
+	at com.alibaba.druid.proxy.jdbc.PreparedStatementProxyImpl.execute(PreparedStatementProxyImpl.java:118)
+	at com.alibaba.druid.pool.DruidPooledPreparedStatement.execute(DruidPooledPreparedStatement.java:493)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:497)
+	at org.apache.ibatis.logging.jdbc.PreparedStatementLogger.invoke(PreparedStatementLogger.java:62)
+	at com.sun.proxy.$Proxy76.execute(Unknown Source)
+	at org.apache.ibatis.executor.statement.PreparedStatementHandler.query(PreparedStatementHandler.java:59)
+	at org.apache.ibatis.executor.statement.RoutingStatementHandler.query(RoutingStatementHandler.java:73)
+	at sun.reflect.GeneratedMethodAccessor53.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:497)
+	at org.apache.ibatis.plugin.Plugin.invoke(Plugin.java:62)
+	at com.sun.proxy.$Proxy73.query(Unknown Source)
+	at sun.reflect.GeneratedMethodAccessor53.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:497)
+	at org.apache.ibatis.plugin.Plugin.invoke(Plugin.java:62)
+	at com.sun.proxy.$Proxy73.query(Unknown Source)
+	at org.apache.ibatis.executor.SimpleExecutor.doQuery(SimpleExecutor.java:60)
+	at org.apache.ibatis.executor.BaseExecutor.queryFromDatabase(BaseExecutor.java:267)
+	at org.apache.ibatis.executor.BaseExecutor.query(BaseExecutor.java:137)
+	at org.apache.ibatis.executor.CachingExecutor.query(CachingExecutor.java:96)
+	at org.apache.ibatis.executor.CachingExecutor.query(CachingExecutor.java:77)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:108)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:102)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:497)
+	at org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:358)
+	... 57 more
+2017-07-08 14:55:47,052 DEBUG http-8902-2 222 [web.BaseControllerSupport] - ■[ResponseBody]：{"interfaceUri":"/trans/trans/findConsignList","status":false,"result":null,"exception":"com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException","msg":"Unknown column 'cd.DISPATCH_DATE' in 'where clause'","timestamp":"2017-07-08 14:55:46","during":59}
+2017-07-08 14:55:51,999 DEBUG http-8902-2 122 [web.BaseControllerSupport] - ┋requestURI=/trans/lib/bootstrap.css.map┋/trans
+2017-07-08 14:55:56,047 DEBUG http-8902-2 122 [web.BaseControllerSupport] - ┋requestURI=/trans/trans/findConsignList┋/trans
+2017-07-08 14:55:56,051 DEBUG http-8902-2 139 [ConsignMapper.findConsignList] - ==>  Preparing: select c.CONSIGN_ID "consignId", c.CONSIGN_NO "consignNo", c.CAMOUNT "camount", c.LOCATION_TO "locationTo", c.RECEIVE_ORG_ID "receiveOrgId", c.RECEIVE_ORG_NAME "receiveOrgName", c.CONSIGN_FSATE "consignFsate", c.CONSIGN_ORG_ID "consignOrgId", c.CONSIGN_ORG_NAME "consignOrgName", r.carrier_name "carrierName", c.LOCATION_FROM "locationFrom", date_format(c.MODIFY_DATE,'%Y-%m-%d %T') "modifyDate", u.USER_NAME "modifyUser" from tb_consign c left join ts_user_info u on u.user_id = c.MODIFY_USER_ID left join ( select cd.consign_id,dc.consign_no,r.carrier_name from tb_consign_detail cd,tb_despatch_plan dp,td_record_info r,tb_desplan_conno dc where cd.despatch_plan_id = dp.despatch_plan_id and dp.record_id = r.record_id and dp.despatch_plan_id = dc.despatch_plan_id ) r on r.consign_id = c.consign_id WHERE c.ORG_ID = ? and exists (select 0 from tb_consign_detail cd where cd.consign_id = c.consign_id and date_format(cd.DISPATCH_DATE,'%Y-%m-%d') >= ? ) and exists (select 0 from tb_consign_detail cd where cd.consign_id = c.consign_id and date_format(cd.DISPATCH_DATE,'%Y-%m-%d') <= ? ) order by date_format(c.MODIFY_DATE,'%Y-%m-%d %T') desc 
+2017-07-08 14:55:56,056 DEBUG http-8902-2 139 [ConsignMapper.findConsignList] - ==> Parameters: 5(String), 2017-07-02(String), 2017-07-19(String)
+2017-07-08 14:55:56,106 DEBUG http-8902-2 865 [datasource.DataSourceTransactionManager] - Should roll back transaction but cannot - no transaction available
+2017-07-08 14:55:56,106 DEBUG http-8902-2 865 [datasource.DataSourceTransactionManager] - Should roll back transaction but cannot - no transaction available
+2017-07-08 14:55:56,107 ERROR http-8902-2 66  [interceptor.ResResultBindingInterceptor] - 请求处理出现异常
+org.springframework.jdbc.BadSqlGrammarException: 
+### Error querying database.  Cause: com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Unknown column 'cd.DISPATCH_DATE' in 'where clause'
+### The error may exist in file [/Users/gaofengjiao/work/online/learning/trans/target/classes/META-INF/mapping/ConsignMapper.xml]
+### The error may involve com.erp.trans.dao.ConsignMapper.findConsignList-Inline
+### The error occurred while setting parameters
+### SQL: select           c.CONSIGN_ID "consignId",  c.CONSIGN_NO "consignNo",  c.CAMOUNT "camount",         c.LOCATION_TO "locationTo",  c.RECEIVE_ORG_ID "receiveOrgId",  c.RECEIVE_ORG_NAME "receiveOrgName",         c.CONSIGN_FSATE "consignFsate",  c.CONSIGN_ORG_ID "consignOrgId",  c.CONSIGN_ORG_NAME "consignOrgName",         r.carrier_name "carrierName",        c.LOCATION_FROM "locationFrom",  date_format(c.MODIFY_DATE,'%Y-%m-%d %T') "modifyDate",        u.USER_NAME "modifyUser"       from tb_consign c   left join ts_user_info u on u.user_id = c.MODIFY_USER_ID   left join (    select cd.consign_id,dc.consign_no,r.carrier_name    from tb_consign_detail cd,tb_despatch_plan dp,td_record_info r,tb_desplan_conno dc    where cd.despatch_plan_id = dp.despatch_plan_id    and dp.record_id = r.record_id    and dp.despatch_plan_id = dc.despatch_plan_id   ) r on r.consign_id = c.consign_id    WHERE  c.ORG_ID = ?                         and exists (select 0 from tb_consign_detail cd where cd.consign_id = c.consign_id and  date_format(cd.DISPATCH_DATE,'%Y-%m-%d') >= ? )             and exists (select 0 from tb_consign_detail cd where cd.consign_id = c.consign_id and  date_format(cd.DISPATCH_DATE,'%Y-%m-%d') <=  ? )    order by date_format(c.MODIFY_DATE,'%Y-%m-%d %T') desc
+### Cause: com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Unknown column 'cd.DISPATCH_DATE' in 'where clause'
+; bad SQL grammar []; nested exception is com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Unknown column 'cd.DISPATCH_DATE' in 'where clause'
+	at org.springframework.jdbc.support.SQLErrorCodeSQLExceptionTranslator.doTranslate(SQLErrorCodeSQLExceptionTranslator.java:231)
+	at org.springframework.jdbc.support.AbstractFallbackSQLExceptionTranslator.translate(AbstractFallbackSQLExceptionTranslator.java:73)
+	at org.mybatis.spring.MyBatisExceptionTranslator.translateExceptionIfPossible(MyBatisExceptionTranslator.java:73)
+	at org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:371)
+	at com.sun.proxy.$Proxy35.selectList(Unknown Source)
+	at org.mybatis.spring.SqlSessionTemplate.selectList(SqlSessionTemplate.java:198)
+	at org.apache.ibatis.binding.MapperMethod.executeForMany(MapperMethod.java:119)
+	at org.apache.ibatis.binding.MapperMethod.execute(MapperMethod.java:63)
+	at org.apache.ibatis.binding.MapperProxy.invoke(MapperProxy.java:52)
+	at com.sun.proxy.$Proxy65.findConsignList(Unknown Source)
+	at com.erp.trans.service.impl.TransManagementServiceImpl.findConsignList(TransManagementServiceImpl.java:125)
+	at com.erp.trans.service.impl.TransManagementServiceImpl$$FastClassBySpringCGLIB$$e5c27021.invoke(<generated>)
+	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:204)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:717)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:157)
+	at org.springframework.transaction.interceptor.TransactionInterceptor$1.proceedWithInvocation(TransactionInterceptor.java:98)
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:266)
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:95)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179)
+	at org.springframework.transaction.interceptor.TransactionInterceptor$1.proceedWithInvocation(TransactionInterceptor.java:98)
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:266)
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:95)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179)
+	at org.springframework.aop.interceptor.ExposeInvocationInterceptor.invoke(ExposeInvocationInterceptor.java:92)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179)
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:653)
+	at com.erp.trans.service.impl.TransManagementServiceImpl$$EnhancerBySpringCGLIB$$13abd6f1.findConsignList(<generated>)
+	at com.erp.trans.web.TransManagementController.findConsignList(TransManagementController.java:98)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:497)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invoke(InvocableHandlerMethod.java:215)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:132)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:104)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandleMethod(RequestMappingHandlerAdapter.java:781)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:721)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:83)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:943)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:877)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:966)
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:857)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:690)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:842)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:803)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:290)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:206)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:88)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:235)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:206)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:233)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:175)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:128)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:102)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:109)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:286)
+	at org.apache.coyote.http11.Http11Processor.process(Http11Processor.java:844)
+	at org.apache.coyote.http11.Http11Protocol$Http11ConnectionHandler.process(Http11Protocol.java:583)
+	at org.apache.tomcat.util.net.JIoEndpoint$Worker.run(JIoEndpoint.java:447)
+	at java.lang.Thread.run(Thread.java:745)
+Caused by: com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Unknown column 'cd.DISPATCH_DATE' in 'where clause'
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:422)
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:377)
+	at com.mysql.jdbc.Util.getInstance(Util.java:360)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:978)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3887)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3823)
+	at com.mysql.jdbc.MysqlIO.sendCommand(MysqlIO.java:2435)
+	at com.mysql.jdbc.MysqlIO.sqlQueryDirect(MysqlIO.java:2582)
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2530)
+	at com.mysql.jdbc.PreparedStatement.executeInternal(PreparedStatement.java:1907)
+	at com.mysql.jdbc.PreparedStatement.execute(PreparedStatement.java:1199)
+	at com.alibaba.druid.filter.FilterChainImpl.preparedStatement_execute(FilterChainImpl.java:2931)
+	at com.alibaba.druid.filter.FilterEventAdapter.preparedStatement_execute(FilterEventAdapter.java:440)
+	at com.alibaba.druid.filter.FilterChainImpl.preparedStatement_execute(FilterChainImpl.java:2929)
+	at com.alibaba.druid.proxy.jdbc.PreparedStatementProxyImpl.execute(PreparedStatementProxyImpl.java:118)
+	at com.alibaba.druid.pool.DruidPooledPreparedStatement.execute(DruidPooledPreparedStatement.java:493)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:497)
+	at org.apache.ibatis.logging.jdbc.PreparedStatementLogger.invoke(PreparedStatementLogger.java:62)
+	at com.sun.proxy.$Proxy76.execute(Unknown Source)
+	at org.apache.ibatis.executor.statement.PreparedStatementHandler.query(PreparedStatementHandler.java:59)
+	at org.apache.ibatis.executor.statement.RoutingStatementHandler.query(RoutingStatementHandler.java:73)
+	at sun.reflect.GeneratedMethodAccessor53.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:497)
+	at org.apache.ibatis.plugin.Plugin.invoke(Plugin.java:62)
+	at com.sun.proxy.$Proxy73.query(Unknown Source)
+	at sun.reflect.GeneratedMethodAccessor53.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:497)
+	at org.apache.ibatis.plugin.Plugin.invoke(Plugin.java:62)
+	at com.sun.proxy.$Proxy73.query(Unknown Source)
+	at org.apache.ibatis.executor.SimpleExecutor.doQuery(SimpleExecutor.java:60)
+	at org.apache.ibatis.executor.BaseExecutor.queryFromDatabase(BaseExecutor.java:267)
+	at org.apache.ibatis.executor.BaseExecutor.query(BaseExecutor.java:137)
+	at org.apache.ibatis.executor.CachingExecutor.query(CachingExecutor.java:96)
+	at org.apache.ibatis.executor.CachingExecutor.query(CachingExecutor.java:77)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:108)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:102)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:497)
+	at org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:358)
+	... 57 more
+2017-07-08 14:55:56,110 DEBUG http-8902-2 222 [web.BaseControllerSupport] - ■[ResponseBody]：{"interfaceUri":"/trans/trans/findConsignList","status":false,"result":null,"exception":"com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException","msg":"Unknown column 'cd.DISPATCH_DATE' in 'where clause'","timestamp":"2017-07-08 14:55:56","during":61}
+2017-07-08 14:56:49,822 DEBUG http-8902-2 122 [web.BaseControllerSupport] - ┋requestURI=/trans/views/plan.html┋/trans
+2017-07-08 14:56:49,866 DEBUG http-8902-2 122 [web.BaseControllerSupport] - ┋requestURI=/trans/lib/ajaxfileupload.js┋/trans
+2017-07-08 14:56:49,965 DEBUG http-8902-4 122 [web.BaseControllerSupport] - ┋requestURI=/trans/staticData/searchLocationsForSelect┋/trans
+2017-07-08 14:56:49,981 DEBUG http-8902-2 122 [web.BaseControllerSupport] - ┋requestURI=/trans/staticData/searchLocationsForSelect┋/trans
+2017-07-08 14:56:49,983 DEBUG http-8902-2 139 [StaticDataMapper.searchLocationsForSelect] - ==>  Preparing: select s.static_code "id",s.static_name "text" from td_static_data s WHERE s.static_class = '市代码' order by s.fqun 
+2017-07-08 14:56:49,984 DEBUG http-8902-2 139 [StaticDataMapper.searchLocationsForSelect] - ==> Parameters: 
+2017-07-08 14:56:49,992 DEBUG http-8902-3 122 [web.BaseControllerSupport] - ┋requestURI=/trans/staticData/searchLocationsForSelect┋/trans
+2017-07-08 14:56:50,002 DEBUG http-8902-1 122 [web.BaseControllerSupport] - ┋requestURI=/trans/staticData/searchLocationsForSelect┋/trans
+2017-07-08 14:56:50,012 DEBUG http-8902-6 122 [web.BaseControllerSupport] - ┋requestURI=/trans/staticData/carFindForSelect┋/trans
+2017-07-08 14:56:50,032 DEBUG http-8902-2 139 [StaticDataMapper.searchLocationsForSelect] - <==      Total: 345
+2017-07-08 14:56:50,036 DEBUG http-8902-4 139 [StaticDataMapper.searchLocationsForSelect] - ==>  Preparing: select s.static_code "id",s.static_name "text" from td_static_data s WHERE s.static_class = '市代码' order by s.fqun 
+2017-07-08 14:56:50,040 DEBUG http-8902-4 139 [StaticDataMapper.searchLocationsForSelect] - ==> Parameters: 
+2017-07-08 14:56:50,075 DEBUG http-8902-4 139 [StaticDataMapper.searchLocationsForSelect] - <==      Total: 345
+2017-07-08 14:56:50,075 DEBUG http-8902-2 122 [web.BaseControllerSupport] - ┋requestURI=/trans/lib/easyui/themes/icons/edit_add.png┋/trans
+2017-07-08 14:56:50,077 DEBUG http-8902-3 139 [StaticDataMapper.searchLocationsForSelect] - ==>  Preparing: select s.static_code "id",s.static_name "text" from td_static_data s WHERE s.static_class = '市代码' order by s.fqun 
+2017-07-08 14:56:50,078 DEBUG http-8902-3 139 [StaticDataMapper.searchLocationsForSelect] - ==> Parameters: 
+2017-07-08 14:56:50,078 DEBUG http-8902-5 122 [web.BaseControllerSupport] - ┋requestURI=/trans/lib/easyui/themes/icons/edit_remove.png┋/trans
+2017-07-08 14:56:50,101 DEBUG http-8902-5 122 [web.BaseControllerSupport] - ┋requestURI=/trans/trans/searchDispatchInfo┋/trans
+2017-07-08 14:56:50,107 DEBUG http-8902-3 139 [StaticDataMapper.searchLocationsForSelect] - <==      Total: 345
+2017-07-08 14:56:50,109 DEBUG http-8902-1 139 [StaticDataMapper.searchLocationsForSelect] - ==>  Preparing: select s.static_code "id",s.static_name "text" from td_static_data s WHERE s.static_class = '市代码' order by s.fqun 
+2017-07-08 14:56:50,110 DEBUG http-8902-1 139 [StaticDataMapper.searchLocationsForSelect] - ==> Parameters: 
+2017-07-08 14:56:50,141 DEBUG http-8902-1 139 [StaticDataMapper.searchLocationsForSelect] - <==      Total: 345
+2017-07-08 14:56:50,143 DEBUG http-8902-6 139 [StaticDataMapper.carFindForSelect] - ==>  Preparing: select car.brand_id "id",car.brand_name "text" from td_brand car order by car.BRAND_FIRST_LETTER 
+2017-07-08 14:56:50,145 DEBUG http-8902-6 139 [StaticDataMapper.carFindForSelect] - ==> Parameters: 
+2017-07-08 14:56:50,175 DEBUG http-8902-6 139 [StaticDataMapper.carFindForSelect] - <==      Total: 212
+2017-07-08 14:56:50,177 DEBUG http-8902-5 139 [DespatchPlanMapper.searchDispatchInfo] - ==>  Preparing: select cd.CONSIGN_DETAIL_ID "consignDetailId", c.CONSIGN_NO "consignNo", cd.CAR_BRAND "carBrand", cd.CAR_MODEL "carModel", cd.AMOUNT "amount", cd.CHASSIS_NO "chassisNo", date_format(cd.DESPATCH_DATE,'%Y-%m-%d') "despatchDate",c.LOCATION_TO "locationTo", c.RECEIVE_ORG_NAME "receiveOrgName", c.CONSIGN_ORG_NAME "consignOrgName", c.LOCATION_FROM "locationFrom",r.CARRIER_NAME "carrierName",r.TRANSPORT_TOOL "transportTool", date_format(c.create_date,'%Y-%m-%d %T') "createDate", u.USER_NAME "modifyUser" from tb_consign_detail cd left join tb_consign c on cd.consign_id = c.consign_id left join tb_despatch_plan dp on cd.despatch_plan_id = dp.despatch_plan_id left join td_record_info r on dp.record_id = r.record_id left join ts_user_info u on u.user_id = cd.MODIFY_USER_ID WHERE c.ORG_ID = ? order by date_format(cd.MODIFY_DATE,'%Y-%m-%d %T') desc 
+2017-07-08 14:56:50,179 DEBUG http-8902-5 139 [DespatchPlanMapper.searchDispatchInfo] - ==> Parameters: 5(String)
+2017-07-08 14:56:50,200 DEBUG http-8902-6 122 [web.BaseControllerSupport] - ┋requestURI=/trans/contractRecords/searchCarriersForSelectByOrg┋/trans
+2017-07-08 14:56:50,235 DEBUG http-8902-5 139 [DespatchPlanMapper.searchDispatchInfo] - <==      Total: 86
+2017-07-08 14:56:50,237 DEBUG http-8902-6 139 [RecordInfoMapper.searchCarriersForSelectByOrg] - ==>  Preparing: select distinct r.carrier_id "id",r.carrier_name "text" from td_record_info r WHERE r.org_id = ? order by r.CARRIER_NAME 
+2017-07-08 14:56:50,239 DEBUG http-8902-6 139 [RecordInfoMapper.searchCarriersForSelectByOrg] - ==> Parameters: 5(String)
+2017-07-08 14:56:50,265 DEBUG http-8902-6 139 [RecordInfoMapper.searchCarriersForSelectByOrg] - <==      Total: 2
+2017-07-08 14:56:50,351 DEBUG http-8902-6 122 [web.BaseControllerSupport] - ┋requestURI=/trans/lib/easyui/themes/icons/ok.png┋/trans
+2017-07-08 14:56:50,405 DEBUG http-8902-6 122 [web.BaseControllerSupport] - ┋requestURI=/trans/trans/searchDispatchInfo┋/trans
+2017-07-08 14:56:50,407 DEBUG http-8902-6 139 [DespatchPlanMapper.searchDispatchInfo] - ==>  Preparing: select cd.CONSIGN_DETAIL_ID "consignDetailId", c.CONSIGN_NO "consignNo", cd.CAR_BRAND "carBrand", cd.CAR_MODEL "carModel", cd.AMOUNT "amount", cd.CHASSIS_NO "chassisNo", date_format(cd.DESPATCH_DATE,'%Y-%m-%d') "despatchDate",c.LOCATION_TO "locationTo", c.RECEIVE_ORG_NAME "receiveOrgName", c.CONSIGN_ORG_NAME "consignOrgName", c.LOCATION_FROM "locationFrom",r.CARRIER_NAME "carrierName",r.TRANSPORT_TOOL "transportTool", date_format(c.create_date,'%Y-%m-%d %T') "createDate", u.USER_NAME "modifyUser" from tb_consign_detail cd left join tb_consign c on cd.consign_id = c.consign_id left join tb_despatch_plan dp on cd.despatch_plan_id = dp.despatch_plan_id left join td_record_info r on dp.record_id = r.record_id left join ts_user_info u on u.user_id = cd.MODIFY_USER_ID WHERE c.ORG_ID = ? order by date_format(cd.MODIFY_DATE,'%Y-%m-%d %T') desc 
+2017-07-08 14:56:50,410 DEBUG http-8902-6 139 [DespatchPlanMapper.searchDispatchInfo] - ==> Parameters: 5(String)
+2017-07-08 14:56:50,462 DEBUG http-8902-6 139 [DespatchPlanMapper.searchDispatchInfo] - <==      Total: 86
+2017-07-08 14:56:52,612 DEBUG http-8902-5 122 [web.BaseControllerSupport] - ┋requestURI=/trans/views/waybill.html┋/trans
+2017-07-08 14:56:52,712 DEBUG http-8902-5 122 [web.BaseControllerSupport] - ┋requestURI=/trans/trans/findConsignList┋/trans
+2017-07-08 14:56:52,714 DEBUG http-8902-5 139 [ConsignMapper.findConsignList] - ==>  Preparing: select c.CONSIGN_ID "consignId", c.CONSIGN_NO "consignNo", c.CAMOUNT "camount", c.LOCATION_TO "locationTo", c.RECEIVE_ORG_ID "receiveOrgId", c.RECEIVE_ORG_NAME "receiveOrgName", c.CONSIGN_FSATE "consignFsate", c.CONSIGN_ORG_ID "consignOrgId", c.CONSIGN_ORG_NAME "consignOrgName", r.carrier_name "carrierName", c.LOCATION_FROM "locationFrom", date_format(c.MODIFY_DATE,'%Y-%m-%d %T') "modifyDate", u.USER_NAME "modifyUser" from tb_consign c left join ts_user_info u on u.user_id = c.MODIFY_USER_ID left join ( select cd.consign_id,dc.consign_no,r.carrier_name from tb_consign_detail cd,tb_despatch_plan dp,td_record_info r,tb_desplan_conno dc where cd.despatch_plan_id = dp.despatch_plan_id and dp.record_id = r.record_id and dp.despatch_plan_id = dc.despatch_plan_id ) r on r.consign_id = c.consign_id WHERE c.ORG_ID = ? order by date_format(c.MODIFY_DATE,'%Y-%m-%d %T') desc 
+2017-07-08 14:56:52,717 DEBUG http-8902-5 139 [ConsignMapper.findConsignList] - ==> Parameters: 5(String)
+2017-07-08 14:56:52,772 DEBUG http-8902-5 139 [ConsignMapper.findConsignList] - <==      Total: 22
+2017-07-08 14:56:52,816 DEBUG http-8902-5 122 [web.BaseControllerSupport] - ┋requestURI=/trans/trans/findConsignList┋/trans
+2017-07-08 14:56:52,819 DEBUG http-8902-5 139 [ConsignMapper.findConsignList] - ==>  Preparing: select c.CONSIGN_ID "consignId", c.CONSIGN_NO "consignNo", c.CAMOUNT "camount", c.LOCATION_TO "locationTo", c.RECEIVE_ORG_ID "receiveOrgId", c.RECEIVE_ORG_NAME "receiveOrgName", c.CONSIGN_FSATE "consignFsate", c.CONSIGN_ORG_ID "consignOrgId", c.CONSIGN_ORG_NAME "consignOrgName", r.carrier_name "carrierName", c.LOCATION_FROM "locationFrom", date_format(c.MODIFY_DATE,'%Y-%m-%d %T') "modifyDate", u.USER_NAME "modifyUser" from tb_consign c left join ts_user_info u on u.user_id = c.MODIFY_USER_ID left join ( select cd.consign_id,dc.consign_no,r.carrier_name from tb_consign_detail cd,tb_despatch_plan dp,td_record_info r,tb_desplan_conno dc where cd.despatch_plan_id = dp.despatch_plan_id and dp.record_id = r.record_id and dp.despatch_plan_id = dc.despatch_plan_id ) r on r.consign_id = c.consign_id WHERE c.ORG_ID = ? order by date_format(c.MODIFY_DATE,'%Y-%m-%d %T') desc 
+2017-07-08 14:56:52,820 DEBUG http-8902-5 139 [ConsignMapper.findConsignList] - ==> Parameters: 5(String)
+2017-07-08 14:56:52,848 DEBUG http-8902-5 139 [ConsignMapper.findConsignList] - <==      Total: 22
+2017-07-08 14:56:58,261 DEBUG http-8902-5 122 [web.BaseControllerSupport] - ┋requestURI=/trans/trans/findConsignList┋/trans
+2017-07-08 14:56:58,263 DEBUG http-8902-5 139 [ConsignMapper.findConsignList] - ==>  Preparing: select c.CONSIGN_ID "consignId", c.CONSIGN_NO "consignNo", c.CAMOUNT "camount", c.LOCATION_TO "locationTo", c.RECEIVE_ORG_ID "receiveOrgId", c.RECEIVE_ORG_NAME "receiveOrgName", c.CONSIGN_FSATE "consignFsate", c.CONSIGN_ORG_ID "consignOrgId", c.CONSIGN_ORG_NAME "consignOrgName", r.carrier_name "carrierName", c.LOCATION_FROM "locationFrom", date_format(c.MODIFY_DATE,'%Y-%m-%d %T') "modifyDate", u.USER_NAME "modifyUser" from tb_consign c left join ts_user_info u on u.user_id = c.MODIFY_USER_ID left join ( select cd.consign_id,dc.consign_no,r.carrier_name from tb_consign_detail cd,tb_despatch_plan dp,td_record_info r,tb_desplan_conno dc where cd.despatch_plan_id = dp.despatch_plan_id and dp.record_id = r.record_id and dp.despatch_plan_id = dc.despatch_plan_id ) r on r.consign_id = c.consign_id WHERE c.ORG_ID = ? order by date_format(c.MODIFY_DATE,'%Y-%m-%d %T') desc 
+2017-07-08 14:56:58,265 DEBUG http-8902-5 139 [ConsignMapper.findConsignList] - ==> Parameters: 5(String)
+2017-07-08 14:56:58,293 DEBUG http-8902-5 139 [ConsignMapper.findConsignList] - <==      Total: 22
+2017-07-08 14:57:05,307 DEBUG http-8902-5 122 [web.BaseControllerSupport] - ┋requestURI=/trans/lib/bootstrap.css.map┋/trans
+2017-07-08 14:57:08,457 DEBUG http-8902-5 122 [web.BaseControllerSupport] - ┋requestURI=/trans/trans/findConsignList┋/trans
+2017-07-08 14:57:08,461 DEBUG http-8902-5 139 [ConsignMapper.findConsignList] - ==>  Preparing: select c.CONSIGN_ID "consignId", c.CONSIGN_NO "consignNo", c.CAMOUNT "camount", c.LOCATION_TO "locationTo", c.RECEIVE_ORG_ID "receiveOrgId", c.RECEIVE_ORG_NAME "receiveOrgName", c.CONSIGN_FSATE "consignFsate", c.CONSIGN_ORG_ID "consignOrgId", c.CONSIGN_ORG_NAME "consignOrgName", r.carrier_name "carrierName", c.LOCATION_FROM "locationFrom", date_format(c.MODIFY_DATE,'%Y-%m-%d %T') "modifyDate", u.USER_NAME "modifyUser" from tb_consign c left join ts_user_info u on u.user_id = c.MODIFY_USER_ID left join ( select cd.consign_id,dc.consign_no,r.carrier_name from tb_consign_detail cd,tb_despatch_plan dp,td_record_info r,tb_desplan_conno dc where cd.despatch_plan_id = dp.despatch_plan_id and dp.record_id = r.record_id and dp.despatch_plan_id = dc.despatch_plan_id ) r on r.consign_id = c.consign_id WHERE c.ORG_ID = ? order by date_format(c.MODIFY_DATE,'%Y-%m-%d %T') desc 
+2017-07-08 14:57:08,463 DEBUG http-8902-5 139 [ConsignMapper.findConsignList] - ==> Parameters: 5(String)
+2017-07-08 14:57:08,491 DEBUG http-8902-5 139 [ConsignMapper.findConsignList] - <==      Total: 22
+2017-07-08 14:57:56,704 DEBUG http-8902-5 122 [web.BaseControllerSupport] - ┋requestURI=/trans/lib/bootstrap.css.map┋/trans
+2017-07-08 14:57:59,550 DEBUG http-8902-5 122 [web.BaseControllerSupport] - ┋requestURI=/trans/trans/findConsignList┋/trans
+2017-07-08 14:57:59,556 DEBUG http-8902-5 139 [ConsignMapper.findConsignList] - ==>  Preparing: select c.CONSIGN_ID "consignId", c.CONSIGN_NO "consignNo", c.CAMOUNT "camount", c.LOCATION_TO "locationTo", c.RECEIVE_ORG_ID "receiveOrgId", c.RECEIVE_ORG_NAME "receiveOrgName", c.CONSIGN_FSATE "consignFsate", c.CONSIGN_ORG_ID "consignOrgId", c.CONSIGN_ORG_NAME "consignOrgName", r.carrier_name "carrierName", c.LOCATION_FROM "locationFrom", date_format(c.MODIFY_DATE,'%Y-%m-%d %T') "modifyDate", u.USER_NAME "modifyUser" from tb_consign c left join ts_user_info u on u.user_id = c.MODIFY_USER_ID left join ( select cd.consign_id,dc.consign_no,r.carrier_name from tb_consign_detail cd,tb_despatch_plan dp,td_record_info r,tb_desplan_conno dc where cd.despatch_plan_id = dp.despatch_plan_id and dp.record_id = r.record_id and dp.despatch_plan_id = dc.despatch_plan_id ) r on r.consign_id = c.consign_id WHERE c.ORG_ID = ? order by date_format(c.MODIFY_DATE,'%Y-%m-%d %T') desc 
+2017-07-08 14:57:59,558 DEBUG http-8902-5 139 [ConsignMapper.findConsignList] - ==> Parameters: 5(String)
+2017-07-08 14:57:59,585 DEBUG http-8902-5 139 [ConsignMapper.findConsignList] - <==      Total: 22
+2017-07-08 14:58:47,723 DEBUG http-8902-5 122 [web.BaseControllerSupport] - ┋requestURI=/trans/views/waybill.html┋/trans
+2017-07-08 14:58:47,883 DEBUG http-8902-5 122 [web.BaseControllerSupport] - ┋requestURI=/trans/trans/findConsignList┋/trans
+2017-07-08 14:58:47,885 DEBUG http-8902-5 139 [ConsignMapper.findConsignList] - ==>  Preparing: select c.CONSIGN_ID "consignId", c.CONSIGN_NO "consignNo", c.CAMOUNT "camount", c.LOCATION_TO "locationTo", c.RECEIVE_ORG_ID "receiveOrgId", c.RECEIVE_ORG_NAME "receiveOrgName", c.CONSIGN_FSATE "consignFsate", c.CONSIGN_ORG_ID "consignOrgId", c.CONSIGN_ORG_NAME "consignOrgName", r.carrier_name "carrierName", c.LOCATION_FROM "locationFrom", date_format(c.MODIFY_DATE,'%Y-%m-%d %T') "modifyDate", u.USER_NAME "modifyUser" from tb_consign c left join ts_user_info u on u.user_id = c.MODIFY_USER_ID left join ( select cd.consign_id,dc.consign_no,r.carrier_name from tb_consign_detail cd,tb_despatch_plan dp,td_record_info r,tb_desplan_conno dc where cd.despatch_plan_id = dp.despatch_plan_id and dp.record_id = r.record_id and dp.despatch_plan_id = dc.despatch_plan_id ) r on r.consign_id = c.consign_id WHERE c.ORG_ID = ? order by date_format(c.MODIFY_DATE,'%Y-%m-%d %T') desc 
+2017-07-08 14:58:47,890 DEBUG http-8902-5 139 [ConsignMapper.findConsignList] - ==> Parameters: 5(String)
+2017-07-08 14:58:47,916 DEBUG http-8902-5 139 [ConsignMapper.findConsignList] - <==      Total: 22
+2017-07-08 14:58:48,049 DEBUG http-8902-5 122 [web.BaseControllerSupport] - ┋requestURI=/trans/trans/findConsignList┋/trans
+2017-07-08 14:58:48,052 DEBUG http-8902-5 139 [ConsignMapper.findConsignList] - ==>  Preparing: select c.CONSIGN_ID "consignId", c.CONSIGN_NO "consignNo", c.CAMOUNT "camount", c.LOCATION_TO "locationTo", c.RECEIVE_ORG_ID "receiveOrgId", c.RECEIVE_ORG_NAME "receiveOrgName", c.CONSIGN_FSATE "consignFsate", c.CONSIGN_ORG_ID "consignOrgId", c.CONSIGN_ORG_NAME "consignOrgName", r.carrier_name "carrierName", c.LOCATION_FROM "locationFrom", date_format(c.MODIFY_DATE,'%Y-%m-%d %T') "modifyDate", u.USER_NAME "modifyUser" from tb_consign c left join ts_user_info u on u.user_id = c.MODIFY_USER_ID left join ( select cd.consign_id,dc.consign_no,r.carrier_name from tb_consign_detail cd,tb_despatch_plan dp,td_record_info r,tb_desplan_conno dc where cd.despatch_plan_id = dp.despatch_plan_id and dp.record_id = r.record_id and dp.despatch_plan_id = dc.despatch_plan_id ) r on r.consign_id = c.consign_id WHERE c.ORG_ID = ? order by date_format(c.MODIFY_DATE,'%Y-%m-%d %T') desc 
+2017-07-08 14:58:48,053 DEBUG http-8902-5 139 [ConsignMapper.findConsignList] - ==> Parameters: 5(String)
+2017-07-08 14:58:48,082 DEBUG http-8902-5 139 [ConsignMapper.findConsignList] - <==      Total: 22
+2017-07-08 14:58:58,437 DEBUG http-8902-5 122 [web.BaseControllerSupport] - ┋requestURI=/trans/trans/updateConsignFstate┋/trans
+2017-07-08 14:58:58,442 DEBUG http-8902-3 122 [web.BaseControllerSupport] - ┋requestURI=/trans/trans/findConsignList┋/trans
+2017-07-08 14:58:58,447 DEBUG http-8902-3 139 [ConsignMapper.findConsignList] - ==>  Preparing: select c.CONSIGN_ID "consignId", c.CONSIGN_NO "consignNo", c.CAMOUNT "camount", c.LOCATION_TO "locationTo", c.RECEIVE_ORG_ID "receiveOrgId", c.RECEIVE_ORG_NAME "receiveOrgName", c.CONSIGN_FSATE "consignFsate", c.CONSIGN_ORG_ID "consignOrgId", c.CONSIGN_ORG_NAME "consignOrgName", r.carrier_name "carrierName", c.LOCATION_FROM "locationFrom", date_format(c.MODIFY_DATE,'%Y-%m-%d %T') "modifyDate", u.USER_NAME "modifyUser" from tb_consign c left join ts_user_info u on u.user_id = c.MODIFY_USER_ID left join ( select cd.consign_id,dc.consign_no,r.carrier_name from tb_consign_detail cd,tb_despatch_plan dp,td_record_info r,tb_desplan_conno dc where cd.despatch_plan_id = dp.despatch_plan_id and dp.record_id = r.record_id and dp.despatch_plan_id = dc.despatch_plan_id ) r on r.consign_id = c.consign_id WHERE c.ORG_ID = ? order by date_format(c.MODIFY_DATE,'%Y-%m-%d %T') desc 
+2017-07-08 14:58:58,447 DEBUG http-8902-5 367 [datasource.DataSourceTransactionManager] - Creating new transaction with name [com.erp.trans.service.impl.TransManagementServiceImpl.updateConsign]: PROPAGATION_REQUIRED,ISOLATION_DEFAULT,-java.lang.Exception
+2017-07-08 14:58:58,448 DEBUG http-8902-3 139 [ConsignMapper.findConsignList] - ==> Parameters: 5(String)
+2017-07-08 14:58:58,478 DEBUG http-8902-3 139 [ConsignMapper.findConsignList] - <==      Total: 22
+2017-07-08 14:58:58,482 DEBUG http-8902-5 206 [datasource.DataSourceTransactionManager] - Acquired Connection [com.alibaba.druid.proxy.jdbc.ConnectionProxyImpl@4d0f8d7e] for JDBC transaction
+2017-07-08 14:58:58,506 DEBUG http-8902-5 223 [datasource.DataSourceTransactionManager] - Switching JDBC Connection [com.alibaba.druid.proxy.jdbc.ConnectionProxyImpl@4d0f8d7e] to manual commit
+2017-07-08 14:58:58,531 DEBUG http-8902-5 472 [datasource.DataSourceTransactionManager] - Participating in existing transaction
+2017-07-08 14:58:58,535 DEBUG http-8902-5 139 [ConsignMapper.updateConsign] - ==>  Preparing: update tb_consign set consign_fsate= case consign_id when ? then ? when ? then ? end , EXCEPTION_REASON= case consign_id when ? then ? when ? then ? end , RETURN_DATE= case consign_id when ? then ? when ? then ? end ,MODIFY_USER_ID= case consign_id when ? then ? when ? then ? end ,MODIFY_DATE= case consign_id when ? then ? when ? then ? end where consign_id in ( ? , ? ) 
+2017-07-08 14:58:58,545 DEBUG http-8902-5 139 [ConsignMapper.updateConsign] - ==> Parameters: 1C8B614263E7421D9C68FF871C575A70(String), null, F9B46371C441429C9A897E8AB2EDDE17(String), null, 1C8B614263E7421D9C68FF871C575A70(String), 123(String), F9B46371C441429C9A897E8AB2EDDE17(String), 123(String), 1C8B614263E7421D9C68FF871C575A70(String), 2017-07-11 00:00:00.0(Timestamp), F9B46371C441429C9A897E8AB2EDDE17(String), 2017-07-11 00:00:00.0(Timestamp), 1C8B614263E7421D9C68FF871C575A70(String), 501(String), F9B46371C441429C9A897E8AB2EDDE17(String), 501(String), 1C8B614263E7421D9C68FF871C575A70(String), 2017-07-08 14:58:58.446(Timestamp), F9B46371C441429C9A897E8AB2EDDE17(String), 2017-07-08 14:58:58.446(Timestamp), 1C8B614263E7421D9C68FF871C575A70(String), F9B46371C441429C9A897E8AB2EDDE17(String)
+2017-07-08 14:58:58,597 DEBUG http-8902-5 139 [ConsignMapper.updateConsign] - <==    Updates: 2
+2017-07-08 14:58:58,598 DEBUG http-8902-5 755 [datasource.DataSourceTransactionManager] - Initiating transaction commit
+2017-07-08 14:58:58,598 DEBUG http-8902-5 266 [datasource.DataSourceTransactionManager] - Committing JDBC transaction on Connection [com.alibaba.druid.proxy.jdbc.ConnectionProxyImpl@4d0f8d7e]
+2017-07-08 14:58:58,721 DEBUG http-8902-5 324 [datasource.DataSourceTransactionManager] - Releasing JDBC Connection [com.alibaba.druid.proxy.jdbc.ConnectionProxyImpl@4d0f8d7e] after transaction
+2017-07-08 14:58:58,722 DEBUG http-8902-5 222 [web.BaseControllerSupport] - ■[ResponseBody]：{"interfaceUri":"/trans/trans/updateConsignFstate","status":true,"result":null,"exception":null,"msg":null,"timestamp":"2017-07-08 14:58:58","during":284}
+2017-07-08 14:59:02,727 DEBUG http-8902-5 122 [web.BaseControllerSupport] - ┋requestURI=/trans/staticData/searchLocationsForSelect┋/trans
+2017-07-08 14:59:02,730 DEBUG http-8902-5 139 [StaticDataMapper.searchLocationsForSelect] - ==>  Preparing: select s.static_code "id",s.static_name "text" from td_static_data s WHERE s.static_class = '市代码' order by s.fqun 
+2017-07-08 14:59:02,732 DEBUG http-8902-5 139 [StaticDataMapper.searchLocationsForSelect] - ==> Parameters: 
+2017-07-08 14:59:02,745 DEBUG http-8902-3 122 [web.BaseControllerSupport] - ┋requestURI=/trans/staticData/searchLocationsForSelect┋/trans
+2017-07-08 14:59:02,748 DEBUG http-8902-3 139 [StaticDataMapper.searchLocationsForSelect] - ==>  Preparing: select s.static_code "id",s.static_name "text" from td_static_data s WHERE s.static_class = '市代码' order by s.fqun 
+2017-07-08 14:59:02,749 DEBUG http-8902-3 139 [StaticDataMapper.searchLocationsForSelect] - ==> Parameters: 
+2017-07-08 14:59:02,762 DEBUG http-8902-5 139 [StaticDataMapper.searchLocationsForSelect] - <==      Total: 345
+2017-07-08 14:59:02,773 DEBUG http-8902-2 122 [web.BaseControllerSupport] - ┋requestURI=/trans/staticData/searchLocationsForSelect┋/trans
+2017-07-08 14:59:02,776 DEBUG http-8902-2 139 [StaticDataMapper.searchLocationsForSelect] - ==>  Preparing: select s.static_code "id",s.static_name "text" from td_static_data s WHERE s.static_class = '市代码' order by s.fqun 
+2017-07-08 14:59:02,777 DEBUG http-8902-2 139 [StaticDataMapper.searchLocationsForSelect] - ==> Parameters: 
+2017-07-08 14:59:02,786 DEBUG http-8902-3 139 [StaticDataMapper.searchLocationsForSelect] - <==      Total: 345
+2017-07-08 14:59:02,809 DEBUG http-8902-2 139 [StaticDataMapper.searchLocationsForSelect] - <==      Total: 345
+2017-07-08 14:59:02,820 DEBUG http-8902-3 122 [web.BaseControllerSupport] - ┋requestURI=/trans/staticData/searchLocationsForSelect┋/trans
+2017-07-08 14:59:02,822 DEBUG http-8902-3 139 [StaticDataMapper.searchLocationsForSelect] - ==>  Preparing: select s.static_code "id",s.static_name "text" from td_static_data s WHERE s.static_class = '市代码' order by s.fqun 
+2017-07-08 14:59:02,823 DEBUG http-8902-3 139 [StaticDataMapper.searchLocationsForSelect] - ==> Parameters: 
+2017-07-08 14:59:02,828 DEBUG http-8902-2 122 [web.BaseControllerSupport] - ┋requestURI=/trans/staticData/carFindForSelect┋/trans
+2017-07-08 14:59:02,830 DEBUG http-8902-2 139 [StaticDataMapper.carFindForSelect] - ==>  Preparing: select car.brand_id "id",car.brand_name "text" from td_brand car order by car.BRAND_FIRST_LETTER 
+2017-07-08 14:59:02,831 DEBUG http-8902-2 139 [StaticDataMapper.carFindForSelect] - ==> Parameters: 
+2017-07-08 14:59:02,854 DEBUG http-8902-3 139 [StaticDataMapper.searchLocationsForSelect] - <==      Total: 345
+2017-07-08 14:59:02,857 DEBUG http-8902-2 139 [StaticDataMapper.carFindForSelect] - <==      Total: 212
+2017-07-08 14:59:02,922 DEBUG http-8902-2 122 [web.BaseControllerSupport] - ┋requestURI=/trans/trans/searchDispatchInfo┋/trans
+2017-07-08 14:59:02,924 DEBUG http-8902-2 139 [DespatchPlanMapper.searchDispatchInfo] - ==>  Preparing: select cd.CONSIGN_DETAIL_ID "consignDetailId", c.CONSIGN_NO "consignNo", cd.CAR_BRAND "carBrand", cd.CAR_MODEL "carModel", cd.AMOUNT "amount", cd.CHASSIS_NO "chassisNo", date_format(cd.DESPATCH_DATE,'%Y-%m-%d') "despatchDate",c.LOCATION_TO "locationTo", c.RECEIVE_ORG_NAME "receiveOrgName", c.CONSIGN_ORG_NAME "consignOrgName", c.LOCATION_FROM "locationFrom",r.CARRIER_NAME "carrierName",r.TRANSPORT_TOOL "transportTool", date_format(c.create_date,'%Y-%m-%d %T') "createDate", u.USER_NAME "modifyUser" from tb_consign_detail cd left join tb_consign c on cd.consign_id = c.consign_id left join tb_despatch_plan dp on cd.despatch_plan_id = dp.despatch_plan_id left join td_record_info r on dp.record_id = r.record_id left join ts_user_info u on u.user_id = cd.MODIFY_USER_ID WHERE c.ORG_ID = ? order by date_format(cd.MODIFY_DATE,'%Y-%m-%d %T') desc 
+2017-07-08 14:59:02,925 DEBUG http-8902-2 139 [DespatchPlanMapper.searchDispatchInfo] - ==> Parameters: 5(String)
+2017-07-08 14:59:02,977 DEBUG http-8902-2 139 [DespatchPlanMapper.searchDispatchInfo] - <==      Total: 86
+2017-07-08 14:59:02,992 DEBUG http-8902-2 122 [web.BaseControllerSupport] - ┋requestURI=/trans/contractRecords/searchCarriersForSelectByOrg┋/trans
+2017-07-08 14:59:02,994 DEBUG http-8902-2 139 [RecordInfoMapper.searchCarriersForSelectByOrg] - ==>  Preparing: select distinct r.carrier_id "id",r.carrier_name "text" from td_record_info r WHERE r.org_id = ? order by r.CARRIER_NAME 
+2017-07-08 14:59:02,996 DEBUG http-8902-2 139 [RecordInfoMapper.searchCarriersForSelectByOrg] - ==> Parameters: 5(String)
+2017-07-08 14:59:03,022 DEBUG http-8902-2 139 [RecordInfoMapper.searchCarriersForSelectByOrg] - <==      Total: 2
+2017-07-08 14:59:03,295 DEBUG http-8902-2 122 [web.BaseControllerSupport] - ┋requestURI=/trans/trans/searchDispatchInfo┋/trans
+2017-07-08 14:59:03,296 DEBUG http-8902-2 139 [DespatchPlanMapper.searchDispatchInfo] - ==>  Preparing: select cd.CONSIGN_DETAIL_ID "consignDetailId", c.CONSIGN_NO "consignNo", cd.CAR_BRAND "carBrand", cd.CAR_MODEL "carModel", cd.AMOUNT "amount", cd.CHASSIS_NO "chassisNo", date_format(cd.DESPATCH_DATE,'%Y-%m-%d') "despatchDate",c.LOCATION_TO "locationTo", c.RECEIVE_ORG_NAME "receiveOrgName", c.CONSIGN_ORG_NAME "consignOrgName", c.LOCATION_FROM "locationFrom",r.CARRIER_NAME "carrierName",r.TRANSPORT_TOOL "transportTool", date_format(c.create_date,'%Y-%m-%d %T') "createDate", u.USER_NAME "modifyUser" from tb_consign_detail cd left join tb_consign c on cd.consign_id = c.consign_id left join tb_despatch_plan dp on cd.despatch_plan_id = dp.despatch_plan_id left join td_record_info r on dp.record_id = r.record_id left join ts_user_info u on u.user_id = cd.MODIFY_USER_ID WHERE c.ORG_ID = ? order by date_format(cd.MODIFY_DATE,'%Y-%m-%d %T') desc 
+2017-07-08 14:59:03,298 DEBUG http-8902-2 139 [DespatchPlanMapper.searchDispatchInfo] - ==> Parameters: 5(String)
+2017-07-08 14:59:03,349 DEBUG http-8902-2 139 [DespatchPlanMapper.searchDispatchInfo] - <==      Total: 86
+2017-07-08 14:59:03,791 DEBUG http-8902-3 122 [web.BaseControllerSupport] - ┋requestURI=/trans/trans/findConsignList┋/trans
+2017-07-08 14:59:03,793 DEBUG http-8902-3 139 [ConsignMapper.findConsignList] - ==>  Preparing: select c.CONSIGN_ID "consignId", c.CONSIGN_NO "consignNo", c.CAMOUNT "camount", c.LOCATION_TO "locationTo", c.RECEIVE_ORG_ID "receiveOrgId", c.RECEIVE_ORG_NAME "receiveOrgName", c.CONSIGN_FSATE "consignFsate", c.CONSIGN_ORG_ID "consignOrgId", c.CONSIGN_ORG_NAME "consignOrgName", r.carrier_name "carrierName", c.LOCATION_FROM "locationFrom", date_format(c.MODIFY_DATE,'%Y-%m-%d %T') "modifyDate", u.USER_NAME "modifyUser" from tb_consign c left join ts_user_info u on u.user_id = c.MODIFY_USER_ID left join ( select cd.consign_id,dc.consign_no,r.carrier_name from tb_consign_detail cd,tb_despatch_plan dp,td_record_info r,tb_desplan_conno dc where cd.despatch_plan_id = dp.despatch_plan_id and dp.record_id = r.record_id and dp.despatch_plan_id = dc.despatch_plan_id ) r on r.consign_id = c.consign_id WHERE c.ORG_ID = ? order by date_format(c.MODIFY_DATE,'%Y-%m-%d %T') desc 
+2017-07-08 14:59:03,795 DEBUG http-8902-3 139 [ConsignMapper.findConsignList] - ==> Parameters: 5(String)
+2017-07-08 14:59:03,823 DEBUG http-8902-3 139 [ConsignMapper.findConsignList] - <==      Total: 22
+2017-07-08 14:59:03,941 DEBUG http-8902-3 122 [web.BaseControllerSupport] - ┋requestURI=/trans/trans/findConsignList┋/trans
+2017-07-08 14:59:03,943 DEBUG http-8902-3 139 [ConsignMapper.findConsignList] - ==>  Preparing: select c.CONSIGN_ID "consignId", c.CONSIGN_NO "consignNo", c.CAMOUNT "camount", c.LOCATION_TO "locationTo", c.RECEIVE_ORG_ID "receiveOrgId", c.RECEIVE_ORG_NAME "receiveOrgName", c.CONSIGN_FSATE "consignFsate", c.CONSIGN_ORG_ID "consignOrgId", c.CONSIGN_ORG_NAME "consignOrgName", r.carrier_name "carrierName", c.LOCATION_FROM "locationFrom", date_format(c.MODIFY_DATE,'%Y-%m-%d %T') "modifyDate", u.USER_NAME "modifyUser" from tb_consign c left join ts_user_info u on u.user_id = c.MODIFY_USER_ID left join ( select cd.consign_id,dc.consign_no,r.carrier_name from tb_consign_detail cd,tb_despatch_plan dp,td_record_info r,tb_desplan_conno dc where cd.despatch_plan_id = dp.despatch_plan_id and dp.record_id = r.record_id and dp.despatch_plan_id = dc.despatch_plan_id ) r on r.consign_id = c.consign_id WHERE c.ORG_ID = ? order by date_format(c.MODIFY_DATE,'%Y-%m-%d %T') desc 
+2017-07-08 14:59:03,945 DEBUG http-8902-3 139 [ConsignMapper.findConsignList] - ==> Parameters: 5(String)
+2017-07-08 14:59:03,972 DEBUG http-8902-3 139 [ConsignMapper.findConsignList] - <==      Total: 22
+2017-07-08 14:59:14,745 DEBUG http-8902-5 122 [web.BaseControllerSupport] - ┋requestURI=/trans/lib/bootstrap.css.map┋/trans
+2017-07-08 14:59:25,831 DEBUG http-8902-5 122 [web.BaseControllerSupport] - ┋requestURI=/trans/trans/updateConsignFstate┋/trans
+2017-07-08 14:59:25,834 DEBUG http-8902-5 367 [datasource.DataSourceTransactionManager] - Creating new transaction with name [com.erp.trans.service.impl.TransManagementServiceImpl.updateConsign]: PROPAGATION_REQUIRED,ISOLATION_DEFAULT,-java.lang.Exception
+2017-07-08 14:59:25,835 DEBUG http-8902-5 206 [datasource.DataSourceTransactionManager] - Acquired Connection [com.alibaba.druid.proxy.jdbc.ConnectionProxyImpl@4f3c2330] for JDBC transaction
+2017-07-08 14:59:25,836 DEBUG http-8902-5 223 [datasource.DataSourceTransactionManager] - Switching JDBC Connection [com.alibaba.druid.proxy.jdbc.ConnectionProxyImpl@4f3c2330] to manual commit
+2017-07-08 14:59:25,837 DEBUG http-8902-3 122 [web.BaseControllerSupport] - ┋requestURI=/trans/trans/findConsignList┋/trans
+2017-07-08 14:59:25,839 DEBUG http-8902-3 139 [ConsignMapper.findConsignList] - ==>  Preparing: select c.CONSIGN_ID "consignId", c.CONSIGN_NO "consignNo", c.CAMOUNT "camount", c.LOCATION_TO "locationTo", c.RECEIVE_ORG_ID "receiveOrgId", c.RECEIVE_ORG_NAME "receiveOrgName", c.CONSIGN_FSATE "consignFsate", c.CONSIGN_ORG_ID "consignOrgId", c.CONSIGN_ORG_NAME "consignOrgName", r.carrier_name "carrierName", c.LOCATION_FROM "locationFrom", date_format(c.MODIFY_DATE,'%Y-%m-%d %T') "modifyDate", u.USER_NAME "modifyUser" from tb_consign c left join ts_user_info u on u.user_id = c.MODIFY_USER_ID left join ( select cd.consign_id,dc.consign_no,r.carrier_name from tb_consign_detail cd,tb_despatch_plan dp,td_record_info r,tb_desplan_conno dc where cd.despatch_plan_id = dp.despatch_plan_id and dp.record_id = r.record_id and dp.despatch_plan_id = dc.despatch_plan_id ) r on r.consign_id = c.consign_id WHERE c.ORG_ID = ? order by date_format(c.MODIFY_DATE,'%Y-%m-%d %T') desc 
+2017-07-08 14:59:25,841 DEBUG http-8902-3 139 [ConsignMapper.findConsignList] - ==> Parameters: 5(String)
+2017-07-08 14:59:25,860 DEBUG http-8902-5 472 [datasource.DataSourceTransactionManager] - Participating in existing transaction
+2017-07-08 14:59:25,862 DEBUG http-8902-5 139 [ConsignMapper.updateConsign] - ==>  Preparing: update tb_consign set consign_fsate= case consign_id when ? then ? end , EXCEPTION_REASON= case consign_id when ? then ? end , RETURN_DATE= case consign_id when ? then ? end ,MODIFY_USER_ID= case consign_id when ? then ? end ,MODIFY_DATE= case consign_id when ? then ? end where consign_id in ( ? ) 
+2017-07-08 14:59:25,868 DEBUG http-8902-5 139 [ConsignMapper.updateConsign] - ==> Parameters: 1C8B614263E7421D9C68FF871C575A70(String), null, 1C8B614263E7421D9C68FF871C575A70(String), 123(String), 1C8B614263E7421D9C68FF871C575A70(String), 2017-07-12 00:00:00.0(Timestamp), 1C8B614263E7421D9C68FF871C575A70(String), 501(String), 1C8B614263E7421D9C68FF871C575A70(String), 2017-07-08 14:59:25.834(Timestamp), 1C8B614263E7421D9C68FF871C575A70(String)
+2017-07-08 14:59:25,873 DEBUG http-8902-3 139 [ConsignMapper.findConsignList] - <==      Total: 22
+2017-07-08 14:59:25,915 DEBUG http-8902-5 139 [ConsignMapper.updateConsign] - <==    Updates: 1
+2017-07-08 14:59:25,915 DEBUG http-8902-5 755 [datasource.DataSourceTransactionManager] - Initiating transaction commit
+2017-07-08 14:59:25,916 DEBUG http-8902-5 266 [datasource.DataSourceTransactionManager] - Committing JDBC transaction on Connection [com.alibaba.druid.proxy.jdbc.ConnectionProxyImpl@4f3c2330]
+2017-07-08 14:59:26,004 DEBUG http-8902-5 324 [datasource.DataSourceTransactionManager] - Releasing JDBC Connection [com.alibaba.druid.proxy.jdbc.ConnectionProxyImpl@4f3c2330] after transaction
+2017-07-08 14:59:26,005 DEBUG http-8902-5 222 [web.BaseControllerSupport] - ■[ResponseBody]：{"interfaceUri":"/trans/trans/updateConsignFstate","status":true,"result":null,"exception":null,"msg":null,"timestamp":"2017-07-08 14:59:25","during":171}
+2017-07-08 14:59:59,657 DEBUG http-8902-5 122 [web.BaseControllerSupport] - ┋requestURI=/trans/trans/updateConsignFstate┋/trans
+2017-07-08 14:59:59,659 DEBUG http-8902-5 367 [datasource.DataSourceTransactionManager] - Creating new transaction with name [com.erp.trans.service.impl.TransManagementServiceImpl.updateConsign]: PROPAGATION_REQUIRED,ISOLATION_DEFAULT,-java.lang.Exception
+2017-07-08 14:59:59,659 DEBUG http-8902-5 206 [datasource.DataSourceTransactionManager] - Acquired Connection [com.alibaba.druid.proxy.jdbc.ConnectionProxyImpl@4f3c2330] for JDBC transaction
+2017-07-08 14:59:59,660 DEBUG http-8902-5 223 [datasource.DataSourceTransactionManager] - Switching JDBC Connection [com.alibaba.druid.proxy.jdbc.ConnectionProxyImpl@4f3c2330] to manual commit
+2017-07-08 14:59:59,661 DEBUG http-8902-3 122 [web.BaseControllerSupport] - ┋requestURI=/trans/trans/findConsignList┋/trans
+2017-07-08 14:59:59,663 DEBUG http-8902-3 139 [ConsignMapper.findConsignList] - ==>  Preparing: select c.CONSIGN_ID "consignId", c.CONSIGN_NO "consignNo", c.CAMOUNT "camount", c.LOCATION_TO "locationTo", c.RECEIVE_ORG_ID "receiveOrgId", c.RECEIVE_ORG_NAME "receiveOrgName", c.CONSIGN_FSATE "consignFsate", c.CONSIGN_ORG_ID "consignOrgId", c.CONSIGN_ORG_NAME "consignOrgName", r.carrier_name "carrierName", c.LOCATION_FROM "locationFrom", date_format(c.MODIFY_DATE,'%Y-%m-%d %T') "modifyDate", u.USER_NAME "modifyUser" from tb_consign c left join ts_user_info u on u.user_id = c.MODIFY_USER_ID left join ( select cd.consign_id,dc.consign_no,r.carrier_name from tb_consign_detail cd,tb_despatch_plan dp,td_record_info r,tb_desplan_conno dc where cd.despatch_plan_id = dp.despatch_plan_id and dp.record_id = r.record_id and dp.despatch_plan_id = dc.despatch_plan_id ) r on r.consign_id = c.consign_id WHERE c.ORG_ID = ? order by date_format(c.MODIFY_DATE,'%Y-%m-%d %T') desc 
+2017-07-08 14:59:59,665 DEBUG http-8902-3 139 [ConsignMapper.findConsignList] - ==> Parameters: 5(String)
+2017-07-08 14:59:59,684 DEBUG http-8902-5 472 [datasource.DataSourceTransactionManager] - Participating in existing transaction
+2017-07-08 14:59:59,686 DEBUG http-8902-5 139 [ConsignMapper.updateConsign] - ==>  Preparing: update tb_consign set consign_fsate= case consign_id when ? then ? end , EXCEPTION_REASON= case consign_id when ? then ? end , RETURN_DATE= case consign_id when ? then ? end ,MODIFY_USER_ID= case consign_id when ? then ? end ,MODIFY_DATE= case consign_id when ? then ? end where consign_id in ( ? ) 
+2017-07-08 14:59:59,688 DEBUG http-8902-5 139 [ConsignMapper.updateConsign] - ==> Parameters: 1C8B614263E7421D9C68FF871C575A70(String), null, 1C8B614263E7421D9C68FF871C575A70(String), 123(String), 1C8B614263E7421D9C68FF871C575A70(String), 2017-07-12 00:00:00.0(Timestamp), 1C8B614263E7421D9C68FF871C575A70(String), 501(String), 1C8B614263E7421D9C68FF871C575A70(String), 2017-07-08 14:59:59.658(Timestamp), 1C8B614263E7421D9C68FF871C575A70(String)
+2017-07-08 14:59:59,696 DEBUG http-8902-3 139 [ConsignMapper.findConsignList] - <==      Total: 22
+2017-07-08 14:59:59,739 DEBUG http-8902-5 139 [ConsignMapper.updateConsign] - <==    Updates: 1
+2017-07-08 14:59:59,740 DEBUG http-8902-5 755 [datasource.DataSourceTransactionManager] - Initiating transaction commit
+2017-07-08 14:59:59,741 DEBUG http-8902-5 266 [datasource.DataSourceTransactionManager] - Committing JDBC transaction on Connection [com.alibaba.druid.proxy.jdbc.ConnectionProxyImpl@4f3c2330]
+2017-07-08 14:59:59,831 DEBUG http-8902-5 324 [datasource.DataSourceTransactionManager] - Releasing JDBC Connection [com.alibaba.druid.proxy.jdbc.ConnectionProxyImpl@4f3c2330] after transaction
+2017-07-08 14:59:59,832 DEBUG http-8902-5 222 [web.BaseControllerSupport] - ■[ResponseBody]：{"interfaceUri":"/trans/trans/updateConsignFstate","status":true,"result":null,"exception":null,"msg":null,"timestamp":"2017-07-08 14:59:59","during":175}
