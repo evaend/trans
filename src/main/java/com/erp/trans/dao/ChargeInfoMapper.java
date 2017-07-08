@@ -22,5 +22,5 @@ public interface ChargeInfoMapper {
 
 	void batchProfitInsertByCDetails(@Param("consignDetailIds")String[] consignDetailIds,@Param("despatchPlan")DespatchPlan despatchPlan);
 
-	void updateChargeInfo(List<ChargeInfo> chargeInfos);
+	void updateChargeInfo(@Param("chargeInfos")List<ChargeInfo> chargeInfos);
 }

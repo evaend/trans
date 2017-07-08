@@ -24,6 +24,8 @@ public class FilterServlet implements Filter {
 	private Logger logger = LoggerFactory.getLogger(getClass());
 	
 	private String[] uriRegexExpress = {
+			"/lib/[^\\s]*",
+			 "/js/login.js",
 			"/login/userLogin" // 用户登录
 	};
 	
@@ -43,7 +45,7 @@ public class FilterServlet implements Filter {
 			logger.trace("请求参数 : " + JSONUtils.toJson(request.getParameterMap()));
 		}
 		
-		if(!requestURI.matches("[^\\s]+\\.(jpg|jpeg|png|bmp|gif|js|html|css|ico|svg|woff|woff2|map|rar)")){
+		if(!requestURI.matches("[^\\s]+\\.(jpg|jpeg|png|bmp|gif|html|css|ico|svg|woff|woff2|map|rar)")){
 			//放过的请求
 			for (String regex: uriRegexExpress) {
 				String compareRegex = contextPath + regex;

@@ -44,7 +44,7 @@
       ci.QUALITY_LOSS "qualityLoss",ci.SUBSIDY "subsidy",ci.REVERSE_CHARGE "reverseCharge",ci.MIS_COSTS "misCosts",
       ci.GPS_PAYMENT "gpsPayment",ci.CHARGE_AMOUNT "chargeAmount",
       ci.MODIFY_USER_NAME "modifyUserName",
-      date_format(ci.MODIFY_DATE,'%Y-%m-%d') "modifyDate",
+      date_format(ci.MODIFY_DATE,'%Y-%m-%d %T') "modifyDate",
       ci.KILO_PRICE "kiloPrice",ci.KILOMETERS "kilometers",ci.OIL_COST "oilCost",ci.SERVICE_RATE "serviceRate",
       ci.OIL_RATIO "oilRatio",ci.OIL_PRICE "oilPrice",ci.OIL_SUBSIDY "oilSubsidy"
       
@@ -84,7 +84,7 @@
 				and <![CDATA[ date_format(cd.DESPATCH_DATE,'%Y-%m-%d') <=  #{conditiions.createDateEnd,jdbcType=VARCHAR} ]]>
 			</if>
 		</where>
-		order by date_format(cd.DESPATCH_DATE,'%Y-%m-%d %T') desc
+		order by cd.DESPATCH_DATE,'%Y-%m-%d %T' desc
 	</select>
 	<insert id="batchCostInsertByCDetails">
 		insert into tb_charge_info(charge_id,org_id,charge_type,consign_detail_id,
@@ -163,21 +163,21 @@
 	
 	<update id="updateChargeInfo">
  update tb_charge_info set
-    charge_fsate=
+    charge_fstate=
   <foreach collection="chargeInfos" item="item" index="index" separator=" " open="case charge_id" close="end">
       when #{item.chargeId,jdbcType=VARCHAR} then #{item.chargeFstate,jdbcType=VARCHAR}
   </foreach>
   ,MODIFY_USER_ID=
   <foreach collection="chargeInfos" item="item" index="index" separator=" " open="case charge_id" close="end">
-      when #{item.charge_id,jdbcType=VARCHAR} then #{item.modifyUserId,jdbcType=VARCHAR}
+      when #{item.chargeId,jdbcType=VARCHAR} then #{item.modifyUserId,jdbcType=VARCHAR}
   </foreach>
   ,MODIFY_USER_NAME=
   <foreach collection="chargeInfos" item="item" index="index" separator=" " open="case charge_id" close="end">
-      when #{item.charge_id,jdbcType=VARCHAR} then #{item.modifyUserNAME,jdbcType=VARCHAR}
+      when #{item.chargeId,jdbcType=VARCHAR} then #{item.modifyUserName,jdbcType=VARCHAR}
   </foreach>
   ,MODIFY_DATE=
   <foreach collection="chargeInfos" item="item" index="index" separator=" " open="case charge_id" close="end">
-      when #{item.charge_id,jdbcType=VARCHAR} then #{item.modifyDate,jdbcType=TIMESTAMP}
+      when #{item.chargeId,jdbcType=VARCHAR} then #{item.modifyDate,jdbcType=TIMESTAMP}
   </foreach>
   where charge_id in
   <foreach collection="chargeInfos" index="index" item="item" separator="," open="(" close=")">
