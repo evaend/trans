@@ -16,7 +16,7 @@
     <result column="GPS_PAYMENT" property="gpsPayment" jdbcType="VARCHAR" />
     <result column="CHARGE_AMOUNT" property="chargeAmount" jdbcType="VARCHAR" />
     <result column="DESPATCH_PLAN_ID" property="despatchPlanId" jdbcType="VARCHAR" />
-    <result column="CONSIGN_DETAIL_ID" property="consignId" jdbcType="VARCHAR" />
+    <result column="CONSIGN_DETAIL_ID" property="consignDetailId" jdbcType="VARCHAR" />
     <result column="CONTRACT_ID" property="contractId" jdbcType="VARCHAR" />
     <result column="MODIFY_DATE" property="modifyDate" jdbcType="TIMESTAMP" />
     <result column="MODIFY_USER_ID" property="modifyUserId" jdbcType="VARCHAR" />
@@ -118,13 +118,12 @@
 						and (cd.car_brand = con.car_brand or con.car_brand is null) 
 						and (cd.car_model = con.car_model or con.car_model is null)
 						and cd.DESPATCH_DATE between con.CONTRACT_START and con.CONTRACT_END
-					order by con.modify_date desc
-					limit 0,1
 				) ct on ct.consign_detail_id = cd.consign_detail_id
 				where cd.consign_detail_id in  
 					<foreach collection="consignDetailIds" index="index" open="(" close=")" separator=",">
 						#{consignDetailIds[${index}], jdbcType=VARCHAR}	
-				    </foreach>			
+				    </foreach>
+				group by cd.consign_detail_id						
 			) cc
 	</insert>
 	
@@ -152,13 +151,12 @@
 						and (cd.car_brand = con.car_brand or con.car_brand is null) 
 						and (cd.car_model = con.car_model or con.car_model is null)
 						and cd.DESPATCH_DATE between con.CONTRACT_START and con.CONTRACT_END
-					order by con.modify_date desc
-					limit 0,1
 				) ct on ct.consign_detail_id = cd.consign_detail_id
 				where cd.consign_detail_id in  
 					<foreach collection="consignDetailIds" index="index" open="(" close=")" separator=",">
 						#{consignDetailIds[${index}], jdbcType=VARCHAR}	
-				    </foreach>			
+				    </foreach>	
+				group by cd.consign_detail_id		
 			) cc
 	</insert>
 	

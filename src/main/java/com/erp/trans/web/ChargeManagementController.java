@@ -133,10 +133,13 @@ public class ChargeManagementController {
 		String userId = (String) request.getSession().getAttribute(LoginUser.SESSION_USERID);
 		// 操作人name
 		String userName = (String) request.getSession().getAttribute(LoginUser.SESSION_USERNAME);
-		
+		// 当前登录用户的机构
+		String orgId = (String) request.getSession().getAttribute(LoginUser.SESSION_USER_ORGID);
+
 		chargeInfo.setModifyUserId(userId);
 		chargeInfo.setModifyUserName(userName);
 		chargeInfo.setModifyDate(new Date());
+		chargeInfo.setOrgId(orgId);
 		
 		chargeManagementService.updateInfo(chargeInfo);
 	}
@@ -164,6 +167,11 @@ public class ChargeManagementController {
 		chargeInfo.setChargeAmount("0");
 		chargeInfo.setKiloPrice("0");
 		chargeInfo.setKilometers("0");
+		chargeInfo.setServiceRate("0");
+		chargeInfo.setOilCost("0");
+		chargeInfo.setOilRatio("0");
+		chargeInfo.setOilPrice("0");
+		chargeInfo.setOilSubsidy("0");
 		
 		chargeManagementService.insertInfo(chargeInfo);
 	}
