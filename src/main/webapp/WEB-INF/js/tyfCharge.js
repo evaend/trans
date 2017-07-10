@@ -1940,7 +1940,7 @@ __WEBPACK_IMPORTED_MODULE_0__component_table__["a" /* table */].init($grid, {
   height: __WEBPACK_IMPORTED_MODULE_5_jQuery___default()(window).height() - 95,
   columns: [[{ field: 'chargeId', checkbox: true }, { field: 'dispatchDate', title: '发运日期', width: 120 }, { field: 'consignNo', title: '运单号', width: 200 }, { field: 'chassisNo', title: '底盘号', width: 200 }, { field: 'locationFrom', title: '起运地', width: 100 }, { field: 'locationTo', title: '目的地', width: 100 }, { field: 'carBrand', title: '品牌', width: 100 }, { field: 'carModel', title: '车型', width: 100 }, { field: 'amount', title: '数量', width: 100, align: 'right' }, { field: 'consignOrgName', title: '托运单位', width: 260 }, { field: 'freightRates', title: '运价', width: 100 }, { field: 'freight', title: '运费', width: 100, formatter: function formatter(value, row) {
       return (row.freightRates * row.amount).toFixed(2);
-    } }, { field: 'subsidy', title: '补贴', width: 100 }, { field: 'qualityLoss', title: '质损费', width: 100 }, { field: 'misCosts', title: '杂项扣费', width: 100 }, { field: 'gpsPayment', title: 'GPS扣款', width: 100 }, { field: 'reverseCharge', title: '倒板费', width: 100 }, { field: 'advances', title: '预付款', width: 100 }, { field: 'prepaidOilCard', title: '预付油卡', width: 100 }, { field: 'chargeAmount', title: '结费金额', width: 100 }, { field: 'modifyUserName', title: '修改人', width: 120 }, { field: 'modifyDate', title: '修改时间', width: 120 }]]
+    } }, { field: 'subsidy', title: '补贴', width: 100 }, { field: 'qualityLoss', title: '质损费', width: 100 }, { field: 'misCosts', title: '杂项扣费', width: 100 }, { field: 'gpsPayment', title: 'GPS扣款', width: 100 }, { field: 'reverseCharge', title: '倒板费', width: 100 }, { field: 'advances', title: '预付款', width: 100 }, { field: 'prepaidOilCard', title: '预付油卡', width: 100 }, { field: 'chargeAmount', title: '结费金额', width: 100 }, { field: 'modifyUserName', title: '修改人', width: 120 }, { field: 'modifyDate', title: '修改时间', width: 150 }]]
 });
 
 //编辑window初始化
@@ -1948,7 +1948,7 @@ __WEBPACK_IMPORTED_MODULE_1__component_window__["a" /* modalWindow */].init($dia
   var selectds = __WEBPACK_IMPORTED_MODULE_5_jQuery___default()('#tyfChargeGrid').datagrid('getSelections');
   var postData = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__utils_common__["a" /* getFormData */])($form);
   var selectd = selectds[0];
-  postData.chargeAmount = (Number(selectd.freightRates) * Number(selectd.amount) + Number(selectd.subsidy) + Number(selectd.reverseCharge) - Number(selectd.qualityLoss) - Number(selectd.misCosts) - Number(selectd.gpsPayment) - Number(selectd.advances) - Number(selectd.prepaidOilCard)).toFixed(2);
+  postData.chargeAmount = (Number(selectd.freightRates) * Number(selectd.amount) + Number(postData.subsidy) + Number(postData.reverseCharge) - Number(postData.qualityLoss) - Number(postData.misCosts) - Number(postData.gpsPayment) - Number(postData.advances) - Number(postData.prepaidOilCard)).toFixed(2);
   //===== 校验 =======
   var isValid = $form.form('validate');
   console.log(isValid);
