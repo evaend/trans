@@ -90,7 +90,7 @@
   })
   .fail(function(jqxhr, settings, exception) {
       $.messager.alert('错误提示',  '登录已过期, 请重新登录!');
-          setTimeout(function() {
+      setTimeout(function() {
           window.parent.location.href = 'login.html';
       }, 3000);
   }); 

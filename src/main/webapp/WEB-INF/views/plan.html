@@ -32,12 +32,14 @@
         onFocus="WdatePicker({isShowClear:false,isShowToday:false,isShowOK:false,readOnly:true,minDate:'#F{$dp.$D(\'starDate\')}',maxDate:'2030-10-01'})"//>
       </div>   
       <div class="col-md-3 vForm-item">  
-        <label for="locationFrom">起运地:</label>  
-        <input id="locationFrom" name="locationFrom" style="width:200px;height:28px">  
+        <label for="locationFrom">起运地:</label>
+        <select id="locationFrom" editable='false' name='locationFrom' class="easyui-combobox" style="width:200px;height:28px">
+        </select> 
       </div>  
       <div class="col-md-3 vForm-item">  
         <label for="locationTo">目的地:</label>  
-        <input id="locationTo" name="locationTo" style="width:200px;height:28px">  
+         <select id="locationTo" editable='false' name='locationTo' class="easyui-combobox" style="width:200px;height:28px">
+        </select> 
       </div>  
       <div class="col-md-5 vForm-item">  
         <label for="dispatchFstate">编板状态:</label>  
@@ -71,37 +73,41 @@
         <label for="consignNo">运单号:</label>
       </div>  
       <div class="col-md-4 vForm-item"> 
-        <input data-readonly="true" class="easyui-validatebox" name="consignNo" data-options="required:true,validType:['number','minLength[3]']">  
+        <input  class="easyui-validatebox" name="consignNo" data-options="required:true,validType:['number','minLength[3]']">  
       </div> 
       <div class="col-md-2 vForm-item form-label">  
         <label for="chassisNo">底盘号:</label>   
       </div>  
       <div class="col-md-4 vForm-item"> 
-        <input data-readonly="true" name="chassisNo" data-options="required:true" class="easyui-validatebox">  
+        <input  name="chassisNo" data-options="required:true" class="easyui-validatebox">  
       </div> 
       <div class="col-md-2 vForm-item form-label">  
-        <label for="locationFromCombobox">起运地:</label>   
+        <label for="locationFromAdd">起运地:</label>   
       </div>  
-      <div class="col-md-4 vForm-item"> 
-        <input data-readonly="true" id="locationFromCombobox" name="locationFrom" style="width: 200px;height:28px;" data-options="required:true">  
+      <div class="col-md-4 vForm-item">  
+        <select id="locationFromAdd" editable='false' name='locationFrom' class="easyui-combobox" data-options="required:true" style="width:200px;height:28px">
+        </select> 
       </div> 
       <div class="col-md-2 vForm-item form-label">  
-        <label for="locationToCombobox">目的地:</label>   
+        <label for="locationToAdd">目的地:</label>   
       </div>  
       <div class="col-md-4 vForm-item"> 
-        <input data-readonly="true" id="locationToCombobox" name="locationTo" style="width: 200px;height:28px;" data-options="required:true">  
+        <select id="locationToAdd" editable='false' name='locationTo' class="easyui-combobox" data-options="required:true" style="width:200px;height:28px">
+        </select> 
       </div> 
       <div class="col-md-2 vForm-item form-label">  
         <label for="carBrand">品牌:</label>   
       </div>  
-      <div class="col-md-4 vForm-item"> 
-        <input name="carBrand" id='carBrand' style="width: 200px;height:28px;" data-options="required:true">  
+      <div class="col-md-4 vForm-item">
+        <select id="carBrand" editable='false' name='carBrand' class="easyui-combobox" data-options="required:true" style="width:200px;height:28px">
+        </select> 
       </div> 
       <div class="col-md-2 vForm-item form-label">  
         <label for="carModel">车型:</label>   
       </div>  
-      <div class="col-md-4 vForm-item"> 
-        <input id="carModel" name="carModel" style="width: 200px;height:28px;" data-options="required:true">  
+      <div class="col-md-4 vForm-item">
+        <select id="carModel" editable='false' name='carModel' class="easyui-combobox" data-options="required:true" style="width:200px;height:28px">
+        </select>
       </div> 
       <div class="col-md-2 vForm-item form-label">  
         <label for="consignOrgName">托运单位:</label>   
@@ -132,7 +138,7 @@
       </div>  
       <div class="col-md-4 vForm-item"> 
         <input name="recordId" data-options="required:true"  id="transportTool">  
-      </div> 
+      </div>
       <div class="col-md-2 vForm-item form-label">  
         <label for="mainDrive">主驾:</label>   
       </div>  
@@ -145,6 +151,20 @@
       <div class="col-md-4 vForm-item"> 
         <input  name="mainDrivePhone" data-options="required:true" id="mainDrivePhone" class="easyui-validatebox">  
       </div> 
+      <div id="locationByCarryType">
+      <div class="col-md-2 vForm-item form-label">  
+        <label for="locationFrom">起运地:</label>   
+      </div>  
+      <div class="col-md-4 vForm-item"> 
+        <input name="locationFrom"   id="locationFromEdit">  
+      </div>
+      <div class="col-md-2 vForm-item form-label">  
+        <label for="locationTo">目的地:</label>   
+      </div>  
+      <div class="col-md-4 vForm-item"> 
+        <input name="locationTo"  id="locationToEdit">  
+      </div> 
+      </div>
       <div class="col-md-2 vForm-item form-label">  
         <label for="consignNos">所带运单:</label>   
       </div>  

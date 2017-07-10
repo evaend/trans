@@ -1948,7 +1948,7 @@ __WEBPACK_IMPORTED_MODULE_1__component_window__["a" /* modalWindow */].init($dia
   var selectds = __WEBPACK_IMPORTED_MODULE_5_jQuery___default()('#tyfChargeGrid').datagrid('getSelections');
   var postData = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__utils_common__["a" /* getFormData */])($form);
   var selectd = selectds[0];
-  postData.chargeAmount = (Number(selectd.freightRates) * Number(selectd.amount) + Number(postData.subsidy) + Number(postData.reverseCharge) - Number(postData.qualityLoss) - Number(postData.misCosts) - Number(postData.gpsPayment) - Number(postData.advances) - Number(postData.prepaidOilCard)).toFixed(2);
+  postData.chargeAmount = (Number(selectd.freightRates) * Number(selectd.amount) + Number(postData.subsidy) - Number(postData.reverseCharge) - Number(postData.qualityLoss) - Number(postData.misCosts) - Number(postData.gpsPayment) - Number(postData.advances) - Number(postData.prepaidOilCard)).toFixed(2);
   //===== 校验 =======
   var isValid = $form.form('validate');
   console.log(isValid);

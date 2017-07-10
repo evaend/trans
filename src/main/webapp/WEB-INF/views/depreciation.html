@@ -13,13 +13,13 @@
 </head>
 <body>
   <!-- 查询表单开始 -->
-  <div id="ff" class='row vForm'>  
+  <form id="ff" class='row vForm'>  
     <div class="col-md-6 vForm-item">  
       <label for="transportToolNo">运输工具:</label>  
       <input type="text" name="transportToolNo" />  
       <a id="search" href="#" class="easyui-linkbutton" data-options="iconCls:'icon-search'">查询</a>  
     </div>  
-  </div>
+  </form>
   <!-- 表格开始 -->
   <div style='padding: 0 8px'>
     <table id="depreciationGrid" class="easyui-datagrid"></table>
@@ -36,12 +36,6 @@
       <div class="col-md-4 vForm-item">  
         <input class="easyui-validatebox" type="text" name="transportToolNo" data-options="required:true"/>  
       </div> 
-      <!--<div class="col-md-2 vForm-item form-label">  
-        <label for="transportToolType">类别:</label>   
-      </div>  
-      <div class="col-md-4 vForm-item">  
-        <input id="lb" type="text" name="transportToolType" data-options="required:true"/> 
-      </div>  -->
       <div class="col-md-2 vForm-item form-label">  
         <label for="vehicleAssets">资产总值:</label>   
       </div>  

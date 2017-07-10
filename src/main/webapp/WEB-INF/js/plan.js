@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "/dist";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 100);
+/******/ 	return __webpack_require__(__webpack_require__.s = 101);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -448,16 +448,16 @@ exports.f = __webpack_require__(7);
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function($) {/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return ajaxPost; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return getFormData; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return setFormData; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return resetFormData; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "e", function() { return jsonNull; });
+/* WEBPACK VAR INJECTION */(function($) {/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ajaxPost; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return getFormData; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return setFormData; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return resetFormData; });
+/* unused harmony export jsonNull */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_typeof__ = __webpack_require__(50);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_typeof___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_typeof__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_babel_runtime_core_js_json_stringify__ = __webpack_require__(47);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_babel_runtime_core_js_json_stringify___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_babel_runtime_core_js_json_stringify__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_babel_runtime_helpers_extends__ = __webpack_require__(45);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_babel_runtime_helpers_extends__ = __webpack_require__(46);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_babel_runtime_helpers_extends___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_babel_runtime_helpers_extends__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_babel_runtime_core_js_object_assign__ = __webpack_require__(11);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_babel_runtime_core_js_object_assign___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_babel_runtime_core_js_object_assign__);
@@ -857,7 +857,7 @@ var Table = function Table() {
       return selector.datagrid('deleteRow', selector.datagrid('getRowIndex', item));
     });
     if (url) {
-      __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__utils_common__["d" /* ajaxPost */])({
+      __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__utils_common__["a" /* ajaxPost */])({
         url: url,
         method: 'get'
       }, function (data) {
@@ -958,35 +958,6 @@ var modalWindow = new Window();
 
 /***/ }),
 /* 45 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-exports.__esModule = true;
-
-var _assign = __webpack_require__(11);
-
-var _assign2 = _interopRequireDefault(_assign);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-exports.default = _assign2.default || function (target) {
-  for (var i = 1; i < arguments.length; i++) {
-    var source = arguments[i];
-
-    for (var key in source) {
-      if (Object.prototype.hasOwnProperty.call(source, key)) {
-        target[key] = source[key];
-      }
-    }
-  }
-
-  return target;
-};
-
-/***/ }),
-/* 46 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1026,6 +997,35 @@ var gridEdit = function gridEdit(grid, callback) {
   }
 };
 /* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(1)))
+
+/***/ }),
+/* 46 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+exports.__esModule = true;
+
+var _assign = __webpack_require__(11);
+
+var _assign2 = _interopRequireDefault(_assign);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+exports.default = _assign2.default || function (target) {
+  for (var i = 1; i < arguments.length; i++) {
+    var source = arguments[i];
+
+    for (var key in source) {
+      if (Object.prototype.hasOwnProperty.call(source, key)) {
+        target[key] = source[key];
+      }
+    }
+  }
+
+  return target;
+};
 
 /***/ }),
 /* 47 */
@@ -2047,7 +2047,8 @@ var location = new Location();
 /* 97 */,
 /* 98 */,
 /* 99 */,
-/* 100 */
+/* 100 */,
+/* 101 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2058,7 +2059,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__component_location__ = __webpack_require__(88);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__utils_common__ = __webpack_require__(31);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__component_message__ = __webpack_require__(42);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__actions_grid__ = __webpack_require__(46);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__actions_grid__ = __webpack_require__(45);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_jQuery__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_jQuery___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7_jQuery__);
 
@@ -2075,9 +2076,10 @@ var $grid = __WEBPACK_IMPORTED_MODULE_7_jQuery___default()('#planGrid'),
     $dialog = __WEBPACK_IMPORTED_MODULE_7_jQuery___default()('#planDialog'),
     $bbDialog = __WEBPACK_IMPORTED_MODULE_7_jQuery___default()('#bbDialog'),
     $form = __WEBPACK_IMPORTED_MODULE_7_jQuery___default()('#planFf'),
-    $bbForm = __WEBPACK_IMPORTED_MODULE_7_jQuery___default()('#bbFf');
+    $bbForm = __WEBPACK_IMPORTED_MODULE_7_jQuery___default()('#bbFf'),
+    $locationByCarryType = __WEBPACK_IMPORTED_MODULE_7_jQuery___default()("#locationByCarryType");
 //地址初始化      
-__WEBPACK_IMPORTED_MODULE_3__component_location__["a" /* location */].init([__WEBPACK_IMPORTED_MODULE_7_jQuery___default()('#locationFrom'), __WEBPACK_IMPORTED_MODULE_7_jQuery___default()('#locationTo'), __WEBPACK_IMPORTED_MODULE_7_jQuery___default()('#locationFromCombobox'), __WEBPACK_IMPORTED_MODULE_7_jQuery___default()('#locationToCombobox')]);
+__WEBPACK_IMPORTED_MODULE_3__component_location__["a" /* location */].init([__WEBPACK_IMPORTED_MODULE_7_jQuery___default()('#locationFrom'), __WEBPACK_IMPORTED_MODULE_7_jQuery___default()('#locationTo'), __WEBPACK_IMPORTED_MODULE_7_jQuery___default()('#locationFromAdd'), __WEBPACK_IMPORTED_MODULE_7_jQuery___default()('#locationToAdd'), __WEBPACK_IMPORTED_MODULE_7_jQuery___default()('#locationFromEdit'), __WEBPACK_IMPORTED_MODULE_7_jQuery___default()('#locationToEdit')]);
 //车型品牌初始化
 __WEBPACK_IMPORTED_MODULE_2__component_cascade__["a" /* cascade */].init({
   selectors: [__WEBPACK_IMPORTED_MODULE_7_jQuery___default()('#carBrand'), __WEBPACK_IMPORTED_MODULE_7_jQuery___default()('#carModel')],
@@ -2100,7 +2102,7 @@ __WEBPACK_IMPORTED_MODULE_0__component_table__["a" /* table */].init($grid, {
     text: '新增',
     iconCls: 'icon-add',
     handler: function handler() {
-      __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4__utils_common__["b" /* resetFormData */])($form, function () {
+      __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4__utils_common__["c" /* resetFormData */])($form, function () {
         //$('#cys').combobox('setValue', '').combobox('readonly', false);
       });
       __WEBPACK_IMPORTED_MODULE_1__component_window__["a" /* modalWindow */].setTitle($dialog, '新增').open($dialog);
@@ -2115,7 +2117,7 @@ __WEBPACK_IMPORTED_MODULE_0__component_table__["a" /* table */].init($grid, {
           return consignDetailIds.push(item.consignDetailId);
         });
         // 后台交互
-        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4__utils_common__["d" /* ajaxPost */])({ url: '../trans/deleteConsignDetail', data: { consignDetailIds: consignDetailIds } }, function (data) {
+        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4__utils_common__["a" /* ajaxPost */])({ url: '../trans/deleteConsignDetail', data: { consignDetailIds: consignDetailIds } }, function (data) {
           console.log('删除数据', consignDetailIds);
           // 刷新表格
           __WEBPACK_IMPORTED_MODULE_0__component_table__["a" /* table */].reload($grid);
@@ -2131,18 +2133,18 @@ __WEBPACK_IMPORTED_MODULE_0__component_table__["a" /* table */].init($grid, {
 
 //查询按钮
 __WEBPACK_IMPORTED_MODULE_7_jQuery___default()('#search').on('click', function () {
-  var postData = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4__utils_common__["a" /* getFormData */])(__WEBPACK_IMPORTED_MODULE_7_jQuery___default()('#ff'));
+  var postData = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4__utils_common__["b" /* getFormData */])(__WEBPACK_IMPORTED_MODULE_7_jQuery___default()('#ff'));
   //刷新表格
   __WEBPACK_IMPORTED_MODULE_0__component_table__["a" /* table */].load($grid, postData);
 });
 
 __WEBPACK_IMPORTED_MODULE_1__component_window__["a" /* modalWindow */].init($dialog, { title: '车辆信息' }, function (text) {
-  var postData = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4__utils_common__["a" /* getFormData */])($form);
+  var postData = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4__utils_common__["b" /* getFormData */])($form);
   //===== 校验 =======
   var isValid = $form.form('validate');
   //===== 校验结束 =====
   if (isValid) {
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4__utils_common__["d" /* ajaxPost */])({ url: '../trans/insertConsignDto', data: postData }, function (data) {
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4__utils_common__["a" /* ajaxPost */])({ url: '../trans/insertConsignDto', data: postData }, function (data) {
       //if(data){
       console.log('一条记录', postData);
       //新增成功,关闭窗口
@@ -2162,13 +2164,13 @@ __WEBPACK_IMPORTED_MODULE_1__component_window__["a" /* modalWindow */].init($bbD
   selectd.map(function (item, index) {
     ids.push(item.consignDetailId);
   });
-  var postData = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4__utils_common__["a" /* getFormData */])($bbForm);
+  var postData = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4__utils_common__["b" /* getFormData */])($bbForm);
   postData.consignDetailIds = ids;
   postData.consignNos = __WEBPACK_IMPORTED_MODULE_7_jQuery___default()("#consignNos").combobox('getValues');
   var isValid = $bbForm.form('validate');
   //===== 校验结束 =====
   if (isValid) {
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4__utils_common__["d" /* ajaxPost */])({ url: '../trans/makePlan', data: postData }, function (data) {
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4__utils_common__["a" /* ajaxPost */])({ url: '../trans/makePlan', data: postData }, function (data) {
       __WEBPACK_IMPORTED_MODULE_1__component_window__["a" /* modalWindow */].close($bbDialog);
       __WEBPACK_IMPORTED_MODULE_5__component_message__["a" /* message */].alert({
         msg: '\u7F16\u677F\u6210\u529F'
@@ -2185,6 +2187,12 @@ __WEBPACK_IMPORTED_MODULE_7_jQuery___default()('#carrierName').combobox({
   valueField: 'id',
   textField: 'text',
   onSelect: function onSelect(rec) {
+    if (rec.carrierType === "1") {
+      $locationByCarryType.removeClass("hidden");
+    } else {
+      $locationByCarryType.addClass("hidden");
+    }
+
     __WEBPACK_IMPORTED_MODULE_7_jQuery___default()('#carrierName').combobox('setValue', '');
     __WEBPACK_IMPORTED_MODULE_7_jQuery___default()('#consignNos').combobox('setValue', '');
     var url = '../contractRecords/searchRecordsForSelectByCarrierId?carrierId=' + rec.id;
@@ -2209,7 +2217,7 @@ __WEBPACK_IMPORTED_MODULE_7_jQuery___default()('#make').on('click', function () 
   if (!selectd.length) {
     return __WEBPACK_IMPORTED_MODULE_7_jQuery___default.a.messager.alert('提示', '至少选择一项', 'info');
   }
-  __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4__utils_common__["b" /* resetFormData */])($bbForm, function () {
+  __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4__utils_common__["c" /* resetFormData */])($bbForm, function () {
     __WEBPACK_IMPORTED_MODULE_7_jQuery___default()('#carrierName').combobox('setValue', '');
     __WEBPACK_IMPORTED_MODULE_7_jQuery___default()('#transportTool').combobox('setValue', '');
   });
@@ -2236,7 +2244,7 @@ __WEBPACK_IMPORTED_MODULE_7_jQuery___default()('#make').on('click', function () 
 
 //查询按钮
 __WEBPACK_IMPORTED_MODULE_7_jQuery___default()('#search').on('click', function () {
-  var postData = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4__utils_common__["a" /* getFormData */])(__WEBPACK_IMPORTED_MODULE_7_jQuery___default()('#ff'));
+  var postData = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4__utils_common__["b" /* getFormData */])(__WEBPACK_IMPORTED_MODULE_7_jQuery___default()('#ff'));
   console.log(postData);
   //刷新表格
   __WEBPACK_IMPORTED_MODULE_0__component_table__["a" /* table */].load($grid, postData);
