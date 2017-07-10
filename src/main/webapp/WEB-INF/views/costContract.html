@@ -24,7 +24,7 @@
           <input id="locationToSearch" name="locationTo" style="width:200px;height:28px">  
         </div>
          <div class="col-md-6 vForm-item">  
-          <label for="name3">合同日期:</label>  
+          <label for="contractStart">合同日期:</label>  
           <input type="text" name="contractStart" id="starDate" class="Wdate"  
           onFocus="WdatePicker({isShowClear:false,isShowToday:false,isShowOK:false,readOnly:true,maxDate:'#F{$dp.$D(\'endDate\')||\'2030-10-01\'}'})"/>  
           至
@@ -117,5 +117,18 @@
 <script type="text/javascript" src="../lib/easyui/jquery.easyui.min.js"></script>   
 <script type="text/javascript" src="../lib/easyui/easyui-lang-zh_CN.js"></script>  
 <script type="text/javascript" src="../lib/My97DatePicker/WdatePicker.js"></script> 
-<script type="text/javascript" src="../js/costContract.js"></script></body>
+<!--<script type="text/javascript" src="../js/costContract.js"></script>-->
+<script type="text/javascript">
+  $.getScript("../js/costContract.js", function(data, textStatus, jqxhr) {
+      if (jqxhr.status !== 200) {
+        $.messager.alert('错误提示',  '登录已过期, 请重新登录!');
+        setTimeout(function() {
+          //这里看看是直接跳  还是给个延迟
+          //这里返回登录页面
+          window.parent.location.href = 'login.html';
+        }, 2000);
+      }
+  });  
+</script>
+</body>
 </html>

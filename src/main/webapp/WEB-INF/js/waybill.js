@@ -1911,7 +1911,7 @@ __WEBPACK_IMPORTED_MODULE_0__component_table__["a" /* table */].init(__WEBPACK_I
         return 'color:#e60012';
       }
     }
-  }, { field: 'locationFrom', title: '起运地', width: 100 }, { field: 'locationTo', title: '目的地', width: 100 }, { field: 'consignOrgName', title: '托运单位', width: 260 }, { field: 'receiveOrgName', title: '收车单位', width: 260 }, { field: 'carrierName', title: '承运商', width: 260 }, { field: 'name9', title: '是否带单', width: 60 }, { field: 'returnDate', title: '返单时间', width: 150 }, { field: 'exceptionReason', title: '备注', width: 120 }, { field: 'modifyUser', title: '修改人', width: 120 }, { field: 'modifyDate', title: '修改时间', width: 150 }]]
+  }, { field: 'locationFrom', title: '起运地', width: 100 }, { field: 'locationTo', title: '目的地', width: 100 }, { field: 'consignOrgName', title: '托运单位', width: 260 }, { field: 'receiveOrgName', title: '收车单位', width: 260 }, { field: 'carrierName', title: '承运商', width: 260 }, { field: 'returnDate', title: '返单时间', width: 150 }, { field: 'exceptionReason', title: '备注', width: 120 }, { field: 'modifyUser', title: '修改人', width: 120 }, { field: 'modifyDate', title: '修改时间', width: 150 }]]
 });
 
 __WEBPACK_IMPORTED_MODULE_1__component_window__["a" /* modalWindow */].init(__WEBPACK_IMPORTED_MODULE_4_jQuery___default()('#waybillDialog'), { title: '批量修改' }, function () {

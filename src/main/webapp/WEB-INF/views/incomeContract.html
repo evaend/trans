@@ -118,5 +118,18 @@
 <script type="text/javascript" src="../lib/easyui/jquery.easyui.min.js"></script>   
 <script type="text/javascript" src="../lib/easyui/easyui-lang-zh_CN.js"></script> 
 <script type="text/javascript" src="../lib/My97DatePicker/WdatePicker.js"></script> 
-<script type="text/javascript" src="../js/incomeContract.js"></script></body>
+<!--<script type="text/javascript" src="../js/incomeContract.js"></script>-->
+<script type="text/javascript">
+  $.getScript("../js/incomeContract.js", function(data, textStatus, jqxhr) {
+      if (jqxhr.status !== 200) {
+        $.messager.alert('错误提示',  '登录已过期, 请重新登录!');
+        setTimeout(function() {
+          //这里看看是直接跳  还是给个延迟
+          //这里返回登录页面
+          window.parent.location.href = 'login.html';
+        }, 2000);
+      }
+  });
+</script>
+</body>
 </html>

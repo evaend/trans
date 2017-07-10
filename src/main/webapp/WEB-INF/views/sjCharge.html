@@ -16,11 +16,20 @@
   <form id="ff" class='row vForm'>  
     <div class="col-md-4 vForm-item">  
       <label for="transportTool">轿运车号:</label>  
-      <input class="easyui-validatebox" name="transportTool"/>
-      <span>
-        <a id="search" href="#" class="easyui-linkbutton" data-options="iconCls:'icon-search'">查询</a>  
-      </span>     
+      <input class="easyui-validatebox" name="transportTool"/>   
     </div>  
+    <div class="col-md-6 vForm-item">  
+        <label for="dispatchDateStart">发运日期:</label>  
+          <input type="text" name="dispatchDateStart" id="starDate" class="Wdate"  
+        onFocus="WdatePicker({isShowClear:false,isShowToday:false,isShowOK:false,readOnly:true,maxDate:'#F{$dp.$D(\'endDate\')||\'2030-10-01\'}'})"/>  
+        至
+        <input type="text" name="dispatchDateEnd" id="endDate" class="Wdate" 
+        onFocus="WdatePicker({isShowClear:false,isShowToday:false,isShowOK:false,readOnly:true,minDate:'#F{$dp.$D(\'starDate\')}',maxDate:'2030-10-01'})"//>
+      
+        <span>
+          <a id="search" href="#" class="easyui-linkbutton" data-options="iconCls:'icon-search'">查询</a>  
+        </span> 
+      </div> 
   </form>  
   <!-- 查询表单结束 -->
   <!-- grid开始 -->
@@ -73,6 +82,7 @@
   <!-- 编辑弹出框结束 -->
 <script type="text/javascript" src="../lib/jquery-3.2.1.min.js"></script>
 <script type="text/javascript" src="../lib/easyui/jquery.easyui.min.js"></script>   
-<script type="text/javascript" src="../lib/easyui/easyui-lang-zh_CN.js"></script>    
+<script type="text/javascript" src="../lib/easyui/easyui-lang-zh_CN.js"></script>  
+<script type="text/javascript" src="../lib/My97DatePicker/WdatePicker.js"></script>   
 <script type="text/javascript" src="../js/sjCharge.js"></script></body>
 </html>
