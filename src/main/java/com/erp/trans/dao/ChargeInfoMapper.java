@@ -23,4 +23,12 @@ public interface ChargeInfoMapper {
 	void batchProfitInsertByCDetails(@Param("consignDetailIds")String[] consignDetailIds,@Param("despatchPlan")DespatchPlan despatchPlan);
 
 	void updateChargeInfo(@Param("chargeInfos")List<ChargeInfo> chargeInfos);
+
+	void batchDriveInsertByDesplan(@Param("despatchPlan")DespatchPlan despatchPlan);
+
+	void batchUpdateTamount(@Param("oldPlanIds")String[] oldPlanIds);
+
+	void batchDeleteTamountIs0(@Param("chargeIds")String[] chargeIds);
+
+	String[] selectChargesTamountIs0(@Param("oldPlanIds")String[] oldPlanIds);
 }

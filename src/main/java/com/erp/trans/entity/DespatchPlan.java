@@ -23,6 +23,9 @@ public class DespatchPlan {
     private String mainDrive;
     
     private String mainDrivePhone;
+    
+    private String locationFrom;
+    private String locationTo;
 
     public String getDespatchPlanId() {
         return despatchPlanId;
@@ -95,4 +98,21 @@ public class DespatchPlan {
 	public void setModifyUserName(String modifyUserName) {
 		this.modifyUserName = modifyUserName;
 	}
+
+	public String getLocationFrom() {
+		return locationFrom;
+	}
+
+	public void setLocationFrom(String locationFrom) {
+		this.locationFrom = locationFrom;
+	}
+
+	public String getLocationTo() {
+		return locationTo;
+	}
+
+	public void setLocationTo(String locationTo) {
+		this.locationTo = locationTo;
+	}
+	
 }

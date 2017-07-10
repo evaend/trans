@@ -23,7 +23,7 @@
     <result column="INSURANCE_DATE" property="insuranceDate" jdbcType="TIMESTAMP" />
     <result column="REPAYMENT_DAY" property="repaymentDay" jdbcType="VARCHAR" />
     <result column="REPAYMENT_AMOUNT" property="repaymentAmount" jdbcType="VARCHAR" />
-    
+    <result column="RECORD_CHARGE_TYPE" property="recordChargeType" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
     RECORD_ID, ORG_ID, RECORD_TYPE, TRANSPORT_TOOL, TRAILER_NO, LOAD_AMOUNT, CARRIER_ID, 
@@ -33,7 +33,8 @@
   </sql>
    <!--[对应下拉框] 查询系统中在某个机构的轿运车档案信息  -->
   <select id="searchCarriersForSelectByOrg" resultType="hashMap" parameterType="com.erp.trans.common.entity.Pager">
-		select distinct r.carrier_id "id",r.carrier_name "text"
+		select distinct r.carrier_id "id",r.carrier_name "text",
+		r.carrier_type "carrierType"
 		from td_record_info r
 		<where>
 		    r.org_id = #{conditiions.orgId, jdbcType=VARCHAR}

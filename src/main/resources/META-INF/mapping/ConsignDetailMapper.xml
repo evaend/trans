@@ -45,6 +45,14 @@
 				#{consignDetail, jdbcType=VARCHAR}
 	  </foreach>
   </delete>
+  <select id="searchOldPlanIdsByCDetails" resultType="string">
+  	SELECT distinct cd.DESPATCH_PLAN_ID
+		FROM tb_consign_detail cd
+		WHERE cd.CONSIGN_DETAIL_ID in 
+	      <foreach collection="consignDetailIds" item="consignDetail" index="index" open="(" close=")" separator=",">
+					#{consignDetail, jdbcType=VARCHAR}
+		  </foreach>
+  </select>
   <insert id="insert" parameterType="com.erp.trans.entity.ConsignDetail" >
     insert into tb_consign_detail (CONSIGN_DETAIL_ID, CAR_BRAND, CAR_MODEL, 
       AMOUNT, CHASSIS_NO, MODIFY_USER_ID, 

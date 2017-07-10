@@ -174,6 +174,8 @@ public class TransManagementController {
 			@RequestParam(value = "mainDrive", required = false) String mainDrive,
 			@RequestParam(value = "mainDrivePhone", required = false) String mainDrivePhone,
 			@RequestParam(value = "consignNos[]", required = false) String[] consignNos,
+			@RequestParam(value = "locationFrom", required = false) String locationFrom,
+			@RequestParam(value = "locationTo", required = false) String locationTo,
 			HttpServletRequest request) throws ValidationException {
         if(consignDetailIds == null || consignDetailIds.length == 0){
         	throw new ValidationException("请选择运单明细");
@@ -199,7 +201,8 @@ public class TransManagementController {
 		despatchPlan.setModifyUserId(userId);
 		despatchPlan.setModifyDate(new Date());
 		despatchPlan.setModifyUserName(userName);
-		
+		despatchPlan.setLocationFrom(locationFrom);
+		despatchPlan.setLocationTo(locationTo);
 		transManagementService.savePlan(despatchPlan,consignDetailIds,consignNos);
 		
 	}

@@ -30,14 +30,18 @@
     <result column="OIL_PRICE" property="oilPrice" jdbcType="VARCHAR" />
     <result column="OIL_SUBSIDY" property="oilSubsidy" jdbcType="VARCHAR" />
     <result column="SOURCE_CHARGE_ID" property="sourceChargeId" jdbcType="VARCHAR" />
+    <result column="LOCATION_FROM" property="locationFrom" jdbcType="VARCHAR" />
+    <result column="LOCATION_TO" property="locationTo" jdbcType="VARCHAR" />
+    <result column="TAMOUNT" property="tamount" jdbcType="VARCHAR" />
+    
   </resultMap>
-   <sql id="Charge_Return_List">
+   <sql id="OtherCharge_Return_List">
   	  ci.CHARGE_ID "chargeId",
   	  c.CONSIGN_NO "consignNo", cd.CAR_BRAND "carBrand", cd.CAR_MODEL "carModel", 
-      case when ci.SOURCE_CHARGE_ID is null then cd.AMOUNT
-      else '0' end  "amount", cd.CHASSIS_NO "chassisNo", 
+      cd.AMOUNT "amount", cd.CHASSIS_NO "chassisNo", 
       date_format(c.CREATE_DATE,'%Y-%m-%d %T') "createDate",
-      date_format(cd.DESPATCH_DATE,'%Y-%m-%d') "despatchDate",c.LOCATION_TO "locationTo", c.RECEIVE_ORG_NAME "receiveOrgName", 
+      date_format(cd.DESPATCH_DATE,'%Y-%m-%d') "despatchDate",
+      c.LOCATION_TO "locationTo", c.RECEIVE_ORG_NAME "receiveOrgName", 
       c.CONSIGN_ORG_NAME "consignOrgName", dp.main_drive "mainDrive",
       dp.MAIN_DRIVE_PHONE "mainDrivePhone",r.CO_PILOT "coPilot",
       c.LOCATION_FROM "locationFrom",r.CARRIER_NAME "carrierName",r.TRANSPORT_TOOL "transportTool",
@@ -50,18 +54,51 @@
       ci.OIL_RATIO "oilRatio",ci.OIL_PRICE "oilPrice",ci.OIL_SUBSIDY "oilSubsidy"
       
   </sql>
+   <sql id="DriveCharge_Return_List">
+  	  ci.CHARGE_ID "chargeId",
+      ci.tamount "amount", 
+      dp.main_drive "mainDrive",
+      dp.MAIN_DRIVE_PHONE "mainDrivePhone",r.CO_PILOT "coPilot",
+      ci.LOCATION_FROM "locationFrom",
+      ci.LOCATION_TO "locationTo",
+      date_format(dp.MODIFY_DATE,'%Y-%m-%d %T') "despatchDate",
+      r.CARRIER_NAME "carrierName",r.TRANSPORT_TOOL "transportTool",
+      ci.FREIGHT_RATES "freightRates",ci.ADVANCES "advances",ci.PREPAID_OIL_CARD "prepaidOilCard",
+      ci.QUALITY_LOSS "qualityLoss",ci.SUBSIDY "subsidy",ci.REVERSE_CHARGE "reverseCharge",ci.MIS_COSTS "misCosts",
+      ci.GPS_PAYMENT "gpsPayment",ci.CHARGE_AMOUNT "chargeAmount",
+      ci.MODIFY_USER_NAME "modifyUserName",
+      date_format(ci.MODIFY_DATE,'%Y-%m-%d %T') "modifyDate",
+      ci.KILO_PRICE "kiloPrice",ci.KILOMETERS "kilometers",ci.OIL_COST "oilCost",ci.SERVICE_RATE "serviceRate",
+      ci.OIL_RATIO "oilRatio",ci.OIL_PRICE "oilPrice",ci.OIL_SUBSIDY "oilSubsidy"
+      
+  </sql>
    <select id="searchChargeList" resultType="hashMap"
 		parameterType="com.erp.trans.common.entity.Pager">
 		select
-		<include refid="Charge_Return_List"></include>
+		<choose>
+			<when  test="conditiions.chargeType!= null and conditiions.chargeType == '03'">
+			<include refid="DriveCharge_Return_List"></include>
+			</when>
+			<otherwise>
+			<include refid="OtherCharge_Return_List"></include>
+			</otherwise>
+		</choose>
 		from tb_charge_info ci
-		left join tb_consign_detail cd on cd.consign_detail_id = ci.consign_detail_id
-		left join tb_consign c on cd.consign_id = c.consign_id
-		left join tb_despatch_plan dp on cd.despatch_plan_id = dp.despatch_plan_id
-		left join td_record_info r on dp.record_id = r.record_id
+		<choose>
+			<when  test="conditiions.chargeType!= null and conditiions.chargeType == '03'">
+			left join tb_despatch_plan dp on ci.despatch_plan_id = dp.despatch_plan_id
+			left join td_record_info r on dp.record_id = r.record_id
+			</when>
+		<otherwise>
+			left join tb_consign_detail cd on cd.consign_detail_id = ci.consign_detail_id
+			left join tb_consign c on cd.consign_id = c.consign_id
+			left join tb_despatch_plan dp on cd.despatch_plan_id = dp.despatch_plan_id
+			left join td_record_info r on dp.record_id = r.record_id
+		</otherwise>
+		</choose>	
 		<where>
 			<if test="conditiions.orgId != null and conditiions.orgId != '0' and conditiions.orgId != '-1'">
-				and c.ORG_ID = #{conditiions.orgId,jdbcType=VARCHAR}
+				and ci.ORG_ID = #{conditiions.orgId,jdbcType=VARCHAR}
 			</if>
 			<if test="conditiions.chargeType!= null and conditiions.chargeType != ''">
 				and  ci.charge_type = #{conditiions.chargeType,jdbcType=VARCHAR}
@@ -79,26 +116,33 @@
 				and ci.charge_fstate = #{conditiions.chargeFstate,jdbcType=VARCHAR}
 			</if>
 			<if test="conditiions.dispatchDateStart != null and conditiions.dispatchDateStart != ''">
-				and <![CDATA[ date_format(cd.DESPATCH_DATE,'%Y-%m-%d') >= #{conditiions.dispatchDateStart,jdbcType=VARCHAR} ]]>
+				and <![CDATA[ date_format(dp.MODIFY_DATE,'%Y-%m-%d') >= #{conditiions.dispatchDateStart,jdbcType=VARCHAR} ]]>
 			</if>
 			<if test="conditiions.createDateEnd != null and conditiions.createDateEnd != ''">
-				and <![CDATA[ date_format(cd.DESPATCH_DATE,'%Y-%m-%d') <=  #{conditiions.createDateEnd,jdbcType=VARCHAR} ]]>
+				and <![CDATA[ date_format(dp.MODIFY_DATE,'%Y-%m-%d') <=  #{conditiions.createDateEnd,jdbcType=VARCHAR} ]]>
 			</if>
 		</where>
-		order by cd.DESPATCH_DATE,'%Y-%m-%d %T' desc
+		<if test="conditiions.chargeType!= null and conditiions.chargeType == '03'">
+				order by r.TRANSPORT_TOOL,dp.MODIFY_DATE desc
+		</if>
+		<if test="conditiions.chargeType!= null and conditiions.chargeType == '01'">
+				order by cd.DESPATCH_DATE desc,ci.charge_fstate
+		</if>
+		<if test="conditiions.chargeType!= null and conditiions.chargeType == '02'">
+				order by c.create_date desc,cd.DESPATCH_DATE desc,ci.charge_fstate
+		</if>
 	</select>
 	<insert id="batchCostInsertByCDetails">
 		insert into tb_charge_info(charge_id,org_id,charge_type,consign_detail_id,
 				despatch_plan_id,contract_id,FREIGHT_RATES,charge_fstate,MODIFY_USER_ID,
 				MODIFY_DATE,MODIFY_USER_NAME)
+				
 		select 	cc.charge_id,#{despatchPlan.orgId, jdbcType=VARCHAR},cc.charge_type,
 		cc.consign_detail_id,cc.despatch_plan_id,cc.contract_id,cc.FREIGHT_RATES,
 		'00',#{despatchPlan.modifyUserId, jdbcType=VARCHAR},now(),#{despatchPlan.modifyUserName, jdbcType=VARCHAR}
 		from
 			(SELECT replace(uuid(),'-','') as "charge_id", 
-				case when r.carrier_type = '1' then '03'
-					 when r.carrier_type = '2' then '02'
-				end as "charge_type",
+				'02' as "charge_type",
 				cd.consign_detail_id, 
 				dp.despatch_plan_id,
 				ct.contract_id,
@@ -123,10 +167,22 @@
 					<foreach collection="consignDetailIds" index="index" open="(" close=")" separator=",">
 						#{consignDetailIds[${index}], jdbcType=VARCHAR}	
 				    </foreach>
-				group by cd.consign_detail_id						
+				group by cd.consign_detail_id											
 			) cc
+			
 	</insert>
-	
+	<insert id="batchDriveInsertByDesplan">
+		insert into tb_charge_info(charge_id,org_id,charge_type,
+				despatch_plan_id,charge_fstate,MODIFY_USER_ID,
+				MODIFY_DATE,MODIFY_USER_NAME,location_from,location_to,tamount)				
+		select 	replace(uuid(),'-',''),#{despatchPlan.orgId, jdbcType=VARCHAR},'03',
+		dp.despatch_plan_id,'00',#{despatchPlan.modifyUserId, jdbcType=VARCHAR},now(),#{despatchPlan.modifyUserName, jdbcType=VARCHAR},
+		#{despatchPlan.locationFrom, jdbcType=VARCHAR},#{despatchPlan.locationTo, jdbcType=VARCHAR},SUM(cd.amount)	 
+		from tb_consign_detail cd,tb_despatch_plan dp 
+				where cd.despatch_plan_id = dp.despatch_plan_id 
+				and dp.despatch_plan_id  = #{despatchPlan.despatchPlanId, jdbcType=VARCHAR}
+		group by dp.despatch_plan_id		
+	</insert>
 	<insert id="batchProfitInsertByCDetails">
 	insert into tb_charge_info(charge_id,org_id,charge_type,consign_detail_id,
 				despatch_plan_id,contract_id,FREIGHT_RATES,charge_fstate,MODIFY_USER_ID,
@@ -190,6 +246,37 @@
 				#{consignDetailIds[${index}], jdbcType=VARCHAR}	
 	  </foreach>
    </delete>
+   <update id="batchUpdateTamount">
+   update tb_charge_info ci
+   set tamount = (
+       select sum(cd.amount) from tb_consign_detail cd 
+       where cd.despatch_plan_id = ci.despatch_plan_id
+       group by cd.despatch_plan_id
+   )
+   where ci.charge_type = '03' and ci.SOURCE_CHARGE_ID is null and ci.despatch_plan_id in  
+           <foreach collection="oldPlanIds" item="oldPlanId" index="index" open="(" close=")" separator=",">
+					#{oldPlanId, jdbcType=VARCHAR}
+		  </foreach>  
+   </update>
+   <delete id="batchDeleteTamountIs0">
+   	  delete from tb_charge_info ci
+      where ci.charge_id in  
+           <foreach collection="chargeIds" item="chargeId" index="index" open="(" close=")" separator=",">
+					#{chargeId, jdbcType=VARCHAR}
+		  </foreach>  or ci.SOURCE_CHARGE_ID in 
+		  <foreach collection="chargeIds" item="chargeId" index="index" open="(" close=")" separator=",">
+					#{chargeId, jdbcType=VARCHAR}
+		  </foreach>
+   </delete>
+   <select id="selectChargesTamountIs0" resultType="string">
+   	  select ci.charge_id
+   	  from tb_charge_info ci
+      where (ci.tamount = 0 or ci.tamount is null) and ci.SOURCE_CHARGE_ID is null and ci.charge_type = '03' and ci.despatch_plan_id in  
+           <foreach collection="oldPlanIds" item="oldPlanId" index="index" open="(" close=")" separator=",">
+					#{oldPlanId, jdbcType=VARCHAR}
+		  </foreach>  
+   </select>
+   
   <insert id="insert" parameterType="com.erp.trans.entity.ChargeInfo" >
     insert into TB_CHARGE_INFO (CHARGE_ID, ORG_ID, CHARGE_TYPE, 
       FREIGHT_RATES, FREIGHT, ADVANCES, 

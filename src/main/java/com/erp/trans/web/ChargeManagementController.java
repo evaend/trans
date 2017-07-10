@@ -165,6 +165,7 @@ public class ChargeManagementController {
 		chargeInfo.setChargeFstate(CustomConst.ChargeFstate.UNBALANCE);
 		chargeInfo.setSourceChargeId(chargeId);
 		chargeInfo.setChargeAmount("0");
+		chargeInfo.setTamount("0");
 		chargeInfo.setKiloPrice("0");
 		chargeInfo.setKilometers("0");
 		chargeInfo.setServiceRate("0");

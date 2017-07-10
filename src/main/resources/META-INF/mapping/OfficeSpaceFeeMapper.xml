@@ -9,9 +9,10 @@
     <result column="MODIFY_DATE" jdbcType="TIMESTAMP" property="modifyDate" />
     <result column="MODIFY_USERID" jdbcType="VARCHAR" property="modifyUserid" />
     <result column="ORG_ID" jdbcType="VARCHAR" property="orgId" />
+    <result column="RENT_DATE" jdbcType="TIMESTAMP" property="rentDate" />
   </resultMap>
   <sql id="Base_Column_List">
-   OFFICE_SPACE_ID,OFFICE_SPACE_NAME,MONTH_RENT,LEASE,MODIFY_DATE,MODIFY_USERID,ORG_ID
+   OFFICE_SPACE_ID,OFFICE_SPACE_NAME,MONTH_RENT,LEASE,MODIFY_DATE,MODIFY_USERID,ORG_ID,RENT_DATE
   </sql>
   <!-- 查询办公场地信息 -->
   <select id="searchOfficeSpaceFee" resultMap="BaseResultMap" parameterType="com.erp.trans.common.entity.Pager">

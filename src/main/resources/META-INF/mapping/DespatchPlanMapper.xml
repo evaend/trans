@@ -57,18 +57,32 @@
 				and <![CDATA[ date_format(c.create_date,'%Y-%m-%d') <=  #{conditiions.createDateEnd,jdbcType=VARCHAR} ]]>
 			</if>
 		</where>
-		order by cd.MODIFY_DATE desc
+		order by c.create_date desc,cd.DESPATCH_DATE desc,cd.DESPATCH_FSTATE
 	</select>
   <insert id="insert" parameterType="com.erp.trans.entity.DespatchPlan" >
-    insert into TB_DESPATCH_PLAN (DESPATCH_PLAN_ID, MOUNT, RECORD_ID, 
+    insert into tb_despatch_plan (DESPATCH_PLAN_ID, MOUNT, RECORD_ID, 
        MODIFY_DATE, MODIFY_USER_ID, 
       ORG_ID)
     values (#{despatchPlanId,jdbcType=VARCHAR}, #{mount,jdbcType=INTEGER}, #{recordId,jdbcType=VARCHAR}, 
       #{modifyDate,jdbcType=TIMESTAMP}, #{modifyUserId,jdbcType=VARCHAR}, 
       #{orgId,jdbcType=VARCHAR})
   </insert>
+  <delete id="batchDeleteDesPlanIsNull">
+  	  delete from tb_despatch_plan 
+      where DESPATCH_PLAN_ID in (
+       select c.despatch_plan_id from
+             (select cd.despatch_plan_id,sum(cd.amount) as "amount"
+              from tb_consign_detail cd 
+              where cd.DESPATCH_PLAN_ID in
+               <foreach collection="oldPlanIds" item="oldPlanId" index="index" open="(" close=")" separator=",">
+					#{oldPlanId, jdbcType=VARCHAR}
+		 	 </foreach>  
+		      group by cd.despatch_plan_id
+		      ) c  where c.amount = 0
+      )
+  </delete>
   <insert id="insertSelective" parameterType="com.erp.trans.entity.DespatchPlan" >
-    insert into TB_DESPATCH_PLAN
+    insert into tb_despatch_plan
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="despatchPlanId != null" >
         DESPATCH_PLAN_ID,

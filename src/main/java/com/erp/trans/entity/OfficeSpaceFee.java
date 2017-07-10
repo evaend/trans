@@ -2,7 +2,9 @@ package com.erp.trans.entity;
 
 import java.util.Date;
 
+import com.erp.trans.common.adapter.CustomDateSerializer;
 import com.erp.trans.common.annotation.BaseSql;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 @BaseSql(tableName="tb_office_space_fee", resultName="com.erp.trans.dao.OfficeSpaceFeeMapper.BaseResultMap")
 public class OfficeSpaceFee {
     private String officeSpaceId;
@@ -18,6 +20,9 @@ public class OfficeSpaceFee {
     private String modifyUserid;
 
     private String orgId;
+    
+    @JsonSerialize(using = CustomDateSerializer.class)
+    private Date rentDate;
 
     public String getOfficeSpaceId() {
         return officeSpaceId;
@@ -74,4 +79,13 @@ public class OfficeSpaceFee {
     public void setOrgId(String orgId) {
         this.orgId = orgId == null ? null : orgId.trim();
     }
+
+	public Date getRentDate() {
+		return rentDate;
+	}
+
+	public void setRentDate(Date rentDate) {
+		this.rentDate = rentDate;
+	}
+    
 }

@@ -159,6 +159,19 @@ public class CustomConst {
 	}
 	
 	/**
+	 * 轿运车档案的承运商类型
+	 * 2017年7月10日 下午5:23:15
+	 * @author 陶悠
+	 *
+	 */
+	public static final class CarrierType {
+		/**1、自有*/
+		public static final String OWN = "1";
+		/**2、外协*/
+		public static final String NOTOWN = "2";
+	}
+	
+	/**
 	 *  对账状态
 	 * 2017年7月2日 下午4:11:32
 	 * @author 陶悠

@@ -17,4 +17,6 @@ public interface ConsignDetailMapper {
 	void batchUpdatePlan(@Param("consignDetailIds")String[] consignDetailIds, @Param("despatchPlanId")String despatchPlanId);
 
 	void batchDeleteByIds(@Param("consignDetailIds")String[] consignDetailIds);
+
+	String[] searchOldPlanIdsByCDetails(@Param("consignDetailIds")String[] consignDetailIds);
 }

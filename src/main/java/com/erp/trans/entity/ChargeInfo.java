@@ -61,6 +61,9 @@ public class ChargeInfo {
     private String oilSubsidy;
     
     private String sourceChargeId;
+    private String locationFrom;
+    private String locationTo;
+    private String tamount;
 
     public String getChargeId() {
         return chargeId;
@@ -309,6 +312,30 @@ public class ChargeInfo {
 
 	public void setSourceChargeId(String sourceChargeId) {
 		this.sourceChargeId = sourceChargeId;
+	}
+
+	public String getLocationFrom() {
+		return locationFrom;
+	}
+
+	public void setLocationFrom(String locationFrom) {
+		this.locationFrom = locationFrom;
+	}
+
+	public String getLocationTo() {
+		return locationTo;
+	}
+
+	public void setLocationTo(String locationTo) {
+		this.locationTo = locationTo;
+	}
+
+	public String getTamount() {
+		return tamount;
+	}
+
+	public void setTamount(String tamount) {
+		this.tamount = tamount;
 	}
 	
 }

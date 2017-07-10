@@ -54,6 +54,8 @@ public class RecordInfo {
     
     private String repaymentDay;
     private String repaymentAmount;
+    
+    private String recordChargeType;
 
 
     public String getRecordId() {
@@ -222,5 +224,13 @@ public class RecordInfo {
 
 	public void setRepaymentAmount(String repaymentAmount) {
 		this.repaymentAmount = repaymentAmount;
+	}
+
+	public String getRecordChargeType() {
+		return recordChargeType;
+	}
+
+	public void setRecordChargeType(String recordChargeType) {
+		this.recordChargeType = recordChargeType;
 	}
 }

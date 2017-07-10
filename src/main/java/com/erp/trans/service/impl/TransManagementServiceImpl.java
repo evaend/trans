@@ -29,6 +29,7 @@ import com.erp.trans.dao.DesplanConnoMapper;
 import com.erp.trans.entity.Consign;
 import com.erp.trans.entity.ConsignDetail;
 import com.erp.trans.entity.DespatchPlan;
+import com.erp.trans.entity.RecordInfo;
 import com.erp.trans.entity.UserInfo;
 import com.erp.trans.service.TransManagementService;
 import com.erp.trans.web.dto.ConsignDto;
@@ -141,28 +142,53 @@ public class TransManagementServiceImpl  extends BaseService implements TransMan
 	}
 
 	@Override
-	public void savePlan(DespatchPlan despatchPlan, String[] consignDetailIds, String[] consignNos) {
+	public void savePlan(DespatchPlan despatchPlan, String[] consignDetailIds, String[] consignNos) throws ValidationException {
 		// TODO Auto-generated method stub
 		/**一、发运计划和关联信息**/
 		//新增发运计划信息
 		despatchPlan.setDespatchPlanId(IdentifieUtil.getGuId());
 		this.insertInfo(despatchPlan);
+//		获取本次操作的运单明细的旧的发运计划ids
+		String[] oldPlanIds = consignDetailMapper.searchOldPlanIdsByCDetails(consignDetailIds);
 		//批量添加发运计划和运单明细的关系
 		consignDetailMapper.batchUpdatePlan(consignDetailIds,despatchPlan.getDespatchPlanId());
 		/**二、更新本次发运计划的承运商所带运单信息**/
-		//1 批量删除运单号原来关联的发运计划
-		desplanConnoMapper.batchDeleteByCnos(consignNos);
-		//2 批量增加运单号新的关系
-		desplanConnoMapper.batchInsertByCnos(consignNos,despatchPlan.getDespatchPlanId());
+		if(consignNos != null && consignNos.length >0){
+			if(StringUtils.isNotBlank(consignNos[0])){
+				//1 批量删除运单号原来关联的发运计划
+				desplanConnoMapper.batchDeleteByCnos(consignNos);
+				//2 批量增加运单号新的关系
+				desplanConnoMapper.batchInsertByCnos(consignNos,despatchPlan.getDespatchPlanId());
+			}
+		}
 		/**三、结费调整**/
-//		删除本次编板的送货单明细的结费信息
+//		删除本次编板的运单明细的结费信息
 		chargeInfoMapper.batchDeleteByCDetails(consignDetailIds);
 //		批量增加本次运单明细结费信息(收入结费)
 		chargeInfoMapper.batchProfitInsertByCDetails(consignDetailIds,despatchPlan);
-//		批量增加本次运单明细结费信息(成本结费)
+//		批量增加本次运单明细结费信息(承运商结费)
 		chargeInfoMapper.batchCostInsertByCDetails(consignDetailIds,despatchPlan);
+//		增加司机结费（如果是轿运车承运商是自有的）
+		RecordInfo recordInfo = this.find(RecordInfo.class, despatchPlan.getRecordId());
+		if(recordInfo == null){
+			throw new ValidationException("轿运车档案不存在");
+		}
+		if( CustomConst.CarrierType.OWN.equals(recordInfo.getCarrierType())){
+			if(StringUtils.isBlank(despatchPlan.getLocationFrom()) || 
+					StringUtils.isBlank(despatchPlan.getLocationTo())){
+				throw new ValidationException("轿运车档案是自有的，为方便司机结费必须选择起运地和目的地");
+			}
+			chargeInfoMapper.batchDriveInsertByDesplan(despatchPlan);
+		}
+//		更新结费表里有变化司机结费的车辆数量
+		chargeInfoMapper.batchUpdateTamount(oldPlanIds);
+//		删除结费表里有可能司机结费数量为0的结费以及其关联的新增的空载结费
+		String[] chargeIds = chargeInfoMapper.selectChargesTamountIs0(oldPlanIds);
+		if(chargeIds != null && chargeIds.length > 0)
+			chargeInfoMapper.batchDeleteTamountIs0(chargeIds);
 		/**四、更新发运计划整体信息**/
 //		删除没有运单明细关联的发运计划
+		despatchPlanMapper.batchDeleteDesPlanIsNull(oldPlanIds);
 	}
 
 	@Override
