@@ -85,5 +85,17 @@
     ]}
   ]
 </script>  
-<script type="text/javascript" src="../js/home.js"></script></body>
+<script type="text/javascript">
+  $.getScript("../js/home.js").done(function(script, textStatus) {
+      console.log( textStatus );
+  })
+  .fail(function(jqxhr, settings, exception) {
+      $.messager.alert('错误提示',  '登录已过期, 请重新登录!');
+      setTimeout(function() {
+          window.parent.location.href = 'login.html';
+      }, 3000);
+  }); 
+</script>
+
+</body>
 </html>

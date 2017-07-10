@@ -33,15 +33,14 @@
 <script type="text/javascript" src="../lib/easyui/easyui-lang-zh_CN.js"></script>    
 <!--<script type="text/javascript" src="../js/addNoLoad.js"></script>-->
 <script type="text/javascript">
-  $.getScript("../js/addNoLoad.js", function(data, textStatus, jqxhr) {
-      if (jqxhr.status !== 200) {
-        $.messager.alert('错误提示',  '登录已过期, 请重新登录!');
-        setTimeout(function() {
-          //这里看看是直接跳  还是给个延迟
-          //这里返回登录页面
+  $.getScript("../js/addNoLoad.js").done(function(script, textStatus) {
+      console.log( textStatus );
+  })
+  .fail(function(jqxhr, settings, exception) {
+      $.messager.alert('错误提示',  '登录已过期, 请重新登录!');
+      setTimeout(function() {
           window.parent.location.href = 'login.html';
-        }, 2000);
-      }
+      }, 3000);
   });
 </script>
 </body>

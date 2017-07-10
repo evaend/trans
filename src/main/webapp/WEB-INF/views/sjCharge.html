@@ -84,5 +84,16 @@
 <script type="text/javascript" src="../lib/easyui/jquery.easyui.min.js"></script>   
 <script type="text/javascript" src="../lib/easyui/easyui-lang-zh_CN.js"></script>  
 <script type="text/javascript" src="../lib/My97DatePicker/WdatePicker.js"></script>   
-<script type="text/javascript" src="../js/sjCharge.js"></script></body>
+<script type="text/javascript" >
+  $.getScript("../js/sjCharge.js").done(function(script, textStatus) {
+      console.log( textStatus );
+  })
+  .fail(function(jqxhr, settings, exception) {
+      $.messager.alert('错误提示',  '登录已过期, 请重新登录!');
+      setTimeout(function() {
+          window.parent.location.href = 'login.html';
+      }, 3000);
+  }); 
+</script>
+</body>
 </html>
