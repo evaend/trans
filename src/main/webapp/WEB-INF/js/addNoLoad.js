@@ -448,9 +448,9 @@ exports.f = __webpack_require__(7);
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function($) {/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ajaxPost; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return getFormData; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return setFormData; });
+/* WEBPACK VAR INJECTION */(function($) {/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return ajaxPost; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return getFormData; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return setFormData; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return resetFormData; });
 /* unused harmony export jsonNull */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_typeof__ = __webpack_require__(50);
@@ -861,7 +861,7 @@ var Table = function Table() {
       return selector.datagrid('deleteRow', selector.datagrid('getRowIndex', item));
     });
     if (url) {
-      __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__utils_common__["a" /* ajaxPost */])({
+      __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__utils_common__["b" /* ajaxPost */])({
         url: url,
         method: 'get'
       }, function (data) {
@@ -1969,7 +1969,7 @@ __WEBPACK_IMPORTED_MODULE_0__component_table__["a" /* table */].init($grid, {
       __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4__actions_grid__["a" /* gridEdit */])($grid, function (rows) {
         var chargeId = rows[0].chargeId;
         // 后台交互
-        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3__utils_common__["a" /* ajaxPost */])({ url: '../charge/insertDriveAccount', data: { chargeId: chargeId } }, function (data) {
+        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3__utils_common__["b" /* ajaxPost */])({ url: '../charge/insertDriveAccount', data: { chargeId: chargeId } }, function (data) {
           // 刷新表格
           __WEBPACK_IMPORTED_MODULE_0__component_table__["a" /* table */].reload($grid);
           __WEBPACK_IMPORTED_MODULE_5__component_message__["a" /* message */].alert({ msg: '新增成功!' });
@@ -1981,7 +1981,7 @@ __WEBPACK_IMPORTED_MODULE_0__component_table__["a" /* table */].init($grid, {
     iconCls: 'icon-edit',
     handler: function handler() {
       __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4__actions_grid__["a" /* gridEdit */])($grid, function (rows) {
-        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3__utils_common__["b" /* setFormData */])($form, rows[0]);
+        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3__utils_common__["c" /* setFormData */])($form, rows[0]);
         __WEBPACK_IMPORTED_MODULE_6_jQuery___default()('#locationFrom').combobox('setValue', rows[0].locationFrom);
         __WEBPACK_IMPORTED_MODULE_6_jQuery___default()('#locationTo').combobox('setValue', rows[0].locationTo);
         __WEBPACK_IMPORTED_MODULE_1__component_window__["a" /* modalWindow */].setTitle($dialog, '编辑').open($dialog);
@@ -1997,17 +1997,17 @@ __WEBPACK_IMPORTED_MODULE_0__component_table__["a" /* table */].init($grid, {
 
 //查询
 __WEBPACK_IMPORTED_MODULE_6_jQuery___default()('#search').on('click', function () {
-  var postData = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3__utils_common__["c" /* getFormData */])(__WEBPACK_IMPORTED_MODULE_6_jQuery___default()('#ff'));
+  var postData = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3__utils_common__["a" /* getFormData */])(__WEBPACK_IMPORTED_MODULE_6_jQuery___default()('#ff'));
   console.log(postData);
   //刷新表格
   __WEBPACK_IMPORTED_MODULE_0__component_table__["a" /* table */].load($grid, postData);
 });
 
 __WEBPACK_IMPORTED_MODULE_1__component_window__["a" /* modalWindow */].init($dialog, { title: '编辑空载' }, function (text) {
-  var postData = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3__utils_common__["c" /* getFormData */])($form);
+  var postData = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3__utils_common__["a" /* getFormData */])($form);
   var isValid = $form.form('validate');
   if (isValid) {
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3__utils_common__["a" /* ajaxPost */])({ url: '../charge/editAccount', data: postData }, function (data) {
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3__utils_common__["b" /* ajaxPost */])({ url: '../charge/editAccount', data: postData }, function (data) {
       //===== 校验结束 =====
       console.log('一条记录', postData);
       //新增成功,关闭窗口

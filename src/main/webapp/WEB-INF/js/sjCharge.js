@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "/dist";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 103);
+/******/ 	return __webpack_require__(__webpack_require__.s = 105);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -448,10 +448,10 @@ exports.f = __webpack_require__(7);
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function($) {/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ajaxPost; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return getFormData; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return setFormData; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return resetFormData; });
+/* WEBPACK VAR INJECTION */(function($) {/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return ajaxPost; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return getFormData; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return setFormData; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return resetFormData; });
 /* unused harmony export jsonNull */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_typeof__ = __webpack_require__(50);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_typeof___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_typeof__);
@@ -835,7 +835,11 @@ var Table = function Table() {
         height: $(window).height() + 20,
         collapsible: true,
         striped: true,
-        rownumbers: true
+        rownumbers: true,
+        pagination: true,
+        pageSize: 15,
+        pageNumber: 1,
+        pageList: [10, 15, 30, 50]
       }, opts));
     } else {
       console.error('传入参数不正确!');
@@ -857,7 +861,7 @@ var Table = function Table() {
       return selector.datagrid('deleteRow', selector.datagrid('getRowIndex', item));
     });
     if (url) {
-      __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__utils_common__["a" /* ajaxPost */])({
+      __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__utils_common__["b" /* ajaxPost */])({
         url: url,
         method: 'get'
       }, function (data) {
@@ -1899,7 +1903,9 @@ $export($export.S + $export.F * !__webpack_require__(4), 'Object', {defineProper
 /* 100 */,
 /* 101 */,
 /* 102 */,
-/* 103 */
+/* 103 */,
+/* 104 */,
+/* 105 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1929,7 +1935,7 @@ __WEBPACK_IMPORTED_MODULE_0__component_table__["a" /* table */].init($grid, {
     iconCls: 'icon-edit',
     handler: function handler() {
       __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3__actions_grid__["a" /* gridEdit */])($grid, function (rows) {
-        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__utils_common__["d" /* setFormData */])($form, rows[0], function () {
+        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__utils_common__["c" /* setFormData */])($form, rows[0], function () {
           if (rows[0].amount === 0) {
             __WEBPACK_IMPORTED_MODULE_5_jQuery___default()('input[name=oilRatio]').val('0.27');
             __WEBPACK_IMPORTED_MODULE_5_jQuery___default()('input[name=serviceRate]').val('0.5');
@@ -1946,18 +1952,18 @@ __WEBPACK_IMPORTED_MODULE_0__component_table__["a" /* table */].init($grid, {
   url: '../charge/searchChargeList?chargeType=03',
   height: __WEBPACK_IMPORTED_MODULE_5_jQuery___default()(window).height() - 65,
   resizeHandle: 'both',
-  columns: [[{ field: 'chargeId', checkbox: true }, { field: 'despatchDate', title: '发运日期', width: 120 }, { field: 'transportTool', title: '轿运车号', width: 150 }, { field: 'name3', title: '车次', width: 100 }, { field: 'mainDrive', title: '主驾', width: 100 }, { field: 'coPilot', title: '副驾', width: 100 }, { field: 'locationFrom', title: '起运地', width: 100 }, { field: 'locationTo', title: '目的地', width: 100 }, { field: 'amount', title: '数量', width: 100 }, { field: 'kilometers', title: '公里数', width: 100 }, { field: 'serviceRate', title: '劳务费率', width: 100 }, { field: 'oilCost', title: '实际油耗', width: 100 }, { field: 'oilRatio', title: '计划油耗系数', width: 100 }, { field: 'oilPrice', title: '燃油单价', width: 100 }, { field: 'oilSubsidy', title: '其他补贴', width: 100 }, { field: 'chargeAmount', title: '结费金额', width: 100 }, { field: 'modifyUserName', title: '修改人', width: 120 }, { field: 'modifyDate', title: '修改时间', width: 150 }]]
+  columns: [[{ field: 'chargeId', checkbox: true }, { field: 'despatchDate', title: '发运日期', width: 120 }, { field: 'transportTool', title: '轿运车号', width: 150 }, { field: 'name3', title: '车次', width: 100 }, { field: 'mainDrive', title: '主驾', width: 100 }, { field: 'coPilot', title: '副驾', width: 100 }, { field: 'locationFrom', title: '起运地', width: 100 }, { field: 'locationTo', title: '目的地', width: 100 }, { field: 'amount', title: '数量', width: 100 }, { field: 'kiloMeters', title: '公里数', width: 100 }, { field: 'serviceRate', title: '劳务费率', width: 100 }, { field: 'oilCost', title: '实际油耗', width: 100 }, { field: 'oilRatio', title: '计划油耗系数', width: 100 }, { field: 'oilPrice', title: '燃油单价', width: 100 }, { field: 'oilSubsidy', title: '油耗补贴', width: 100 }, { field: 'chargeAmount', title: '结费金额', width: 100 }, { field: 'modifyUserName', title: '修改人', width: 120 }, { field: 'modifyDate', title: '修改时间', width: 120 }]]
 });
 
 //编辑window初始化
 __WEBPACK_IMPORTED_MODULE_1__component_window__["a" /* modalWindow */].init($dialog, { title: '编辑' }, function (text) {
-  var postData = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__utils_common__["b" /* getFormData */])($form);
-  postData.chargeAmount = (Number(postData.serviceRate) * Number(postData.kilometers) + (Number(postData.oilRatio) * Number(postData.kilometers) - postData.oilCost) * Number(postData.oilPrice) + Number(postData.oilSubsidy)).toFixed(2);
+  var postData = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__utils_common__["a" /* getFormData */])($form);
+  postData.chargeAmount = (Number(postData.serviceRate) * Number(postData.kiloMeters) + (Number(postData.oilRatio) * Number(postData.kiloMeters) - postData.oilCost) * Number(postData.oilPrice) + Number(postData.otherSubsidy)).toFixed(2);
   console.log(postData, '司机结费数据');
   //===== 校验 =======
   var isValid = $form.form('validate');
   if (isValid) {
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__utils_common__["a" /* ajaxPost */])({ url: '../charge/editAccount', data: postData }, function (data) {
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__utils_common__["b" /* ajaxPost */])({ url: '../charge/editAccount', data: postData }, function (data) {
       //新增成功,关闭窗口
       __WEBPACK_IMPORTED_MODULE_1__component_window__["a" /* modalWindow */].close($dialog);
       __WEBPACK_IMPORTED_MODULE_4__component_message__["a" /* message */].alert({
@@ -1971,7 +1977,7 @@ __WEBPACK_IMPORTED_MODULE_1__component_window__["a" /* modalWindow */].init($dia
 
 //查询
 __WEBPACK_IMPORTED_MODULE_5_jQuery___default()('#search').on('click', function () {
-  var postData = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__utils_common__["b" /* getFormData */])(__WEBPACK_IMPORTED_MODULE_5_jQuery___default()('#ff'));
+  var postData = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__utils_common__["a" /* getFormData */])(__WEBPACK_IMPORTED_MODULE_5_jQuery___default()('#ff'));
   console.log(postData);
   //刷新表格
   __WEBPACK_IMPORTED_MODULE_0__component_table__["a" /* table */].load($grid, postData);

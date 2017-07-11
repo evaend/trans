@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "/dist";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 101);
+/******/ 	return __webpack_require__(__webpack_require__.s = 103);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -448,10 +448,10 @@ exports.f = __webpack_require__(7);
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function($) {/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ajaxPost; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return getFormData; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return setFormData; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return resetFormData; });
+/* WEBPACK VAR INJECTION */(function($) {/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return ajaxPost; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return getFormData; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return setFormData; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return resetFormData; });
 /* unused harmony export jsonNull */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_typeof__ = __webpack_require__(50);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_typeof___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_typeof__);
@@ -861,7 +861,7 @@ var Table = function Table() {
       return selector.datagrid('deleteRow', selector.datagrid('getRowIndex', item));
     });
     if (url) {
-      __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__utils_common__["a" /* ajaxPost */])({
+      __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__utils_common__["b" /* ajaxPost */])({
         url: url,
         method: 'get'
       }, function (data) {
@@ -1935,6 +1935,51 @@ $.fn.combobox.defaults.onHidePanel = function () {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+/* WEBPACK VAR INJECTION */(function($) {/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return location; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_classCallCheck__ = __webpack_require__(18);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_classCallCheck___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_classCallCheck__);
+
+
+/**
+ * @file 地址初始化
+ */
+var Location = function Location() {
+  var _this = this;
+
+  __WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_classCallCheck___default()(this, Location);
+
+  this.init = function (selectors) {
+    var url = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '';
+
+    if ($.isArray(selectors)) {
+      selectors.map(function (item, index) {
+        return _this.create(item, url);
+      });
+    } else {
+      _this.create(selectors, url);
+    }
+  };
+
+  this.create = function (selector, url) {
+    selector.combobox({
+      mode: 'remote',
+      url: url || '../staticData/searchLocationsForSelect',
+      valueField: 'text',
+      textField: 'text',
+      width: 200,
+      height: 28
+    });
+  };
+};
+
+var location = new Location();
+/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(1)))
+
+/***/ }),
+/* 88 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return cascade; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_core_js_object_assign__ = __webpack_require__(11);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_core_js_object_assign___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_babel_runtime_core_js_object_assign__);
@@ -1995,51 +2040,6 @@ var Cascade = function Cascade() {
 var cascade = new Cascade();
 
 /***/ }),
-/* 88 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function($) {/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return location; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_classCallCheck__ = __webpack_require__(18);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_classCallCheck___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_classCallCheck__);
-
-
-/**
- * @file 地址初始化
- */
-var Location = function Location() {
-  var _this = this;
-
-  __WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_classCallCheck___default()(this, Location);
-
-  this.init = function (selectors) {
-    var url = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '';
-
-    if ($.isArray(selectors)) {
-      selectors.map(function (item, index) {
-        return _this.create(item, url);
-      });
-    } else {
-      _this.create(selectors, url);
-    }
-  };
-
-  this.create = function (selector, url) {
-    selector.combobox({
-      mode: 'remote',
-      url: url || '../staticData/searchLocationsForSelect',
-      valueField: 'text',
-      textField: 'text',
-      width: 200,
-      height: 28
-    });
-  };
-};
-
-var location = new Location();
-/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(1)))
-
-/***/ }),
 /* 89 */,
 /* 90 */,
 /* 91 */,
@@ -2052,15 +2052,17 @@ var location = new Location();
 /* 98 */,
 /* 99 */,
 /* 100 */,
-/* 101 */
+/* 101 */,
+/* 102 */,
+/* 103 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__component_table__ = __webpack_require__(43);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__component_window__ = __webpack_require__(44);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__component_cascade__ = __webpack_require__(87);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__component_location__ = __webpack_require__(88);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__component_cascade__ = __webpack_require__(88);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__component_location__ = __webpack_require__(87);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__utils_common__ = __webpack_require__(31);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__component_message__ = __webpack_require__(42);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__actions_grid__ = __webpack_require__(45);
@@ -2106,7 +2108,7 @@ __WEBPACK_IMPORTED_MODULE_0__component_table__["a" /* table */].init($grid, {
     text: '新增',
     iconCls: 'icon-add',
     handler: function handler() {
-      __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4__utils_common__["c" /* resetFormData */])($form, function () {
+      __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4__utils_common__["d" /* resetFormData */])($form, function () {
         //$('#cys').combobox('setValue', '').combobox('readonly', false);
       });
       __WEBPACK_IMPORTED_MODULE_1__component_window__["a" /* modalWindow */].setTitle($dialog, '新增').open($dialog);
@@ -2121,7 +2123,7 @@ __WEBPACK_IMPORTED_MODULE_0__component_table__["a" /* table */].init($grid, {
           return consignDetailIds.push(item.consignDetailId);
         });
         // 后台交互
-        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4__utils_common__["a" /* ajaxPost */])({ url: '../trans/deleteConsignDetail', data: { consignDetailIds: consignDetailIds } }, function (data) {
+        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4__utils_common__["b" /* ajaxPost */])({ url: '../trans/deleteConsignDetail', data: { consignDetailIds: consignDetailIds } }, function (data) {
           console.log('删除数据', consignDetailIds);
           // 刷新表格
           __WEBPACK_IMPORTED_MODULE_0__component_table__["a" /* table */].reload($grid);
@@ -2137,18 +2139,18 @@ __WEBPACK_IMPORTED_MODULE_0__component_table__["a" /* table */].init($grid, {
 
 //查询按钮
 __WEBPACK_IMPORTED_MODULE_7_jQuery___default()('#search').on('click', function () {
-  var postData = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4__utils_common__["b" /* getFormData */])(__WEBPACK_IMPORTED_MODULE_7_jQuery___default()('#ff'));
+  var postData = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4__utils_common__["a" /* getFormData */])(__WEBPACK_IMPORTED_MODULE_7_jQuery___default()('#ff'));
   //刷新表格
   __WEBPACK_IMPORTED_MODULE_0__component_table__["a" /* table */].load($grid, postData);
 });
 
 __WEBPACK_IMPORTED_MODULE_1__component_window__["a" /* modalWindow */].init($dialog, { title: '车辆信息' }, function (text) {
-  var postData = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4__utils_common__["b" /* getFormData */])($form);
+  var postData = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4__utils_common__["a" /* getFormData */])($form);
   //===== 校验 =======
   var isValid = $form.form('validate');
   //===== 校验结束 =====
   if (isValid) {
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4__utils_common__["a" /* ajaxPost */])({ url: '../trans/insertConsignDto', data: postData }, function (data) {
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4__utils_common__["b" /* ajaxPost */])({ url: '../trans/insertConsignDto', data: postData }, function (data) {
       //if(data){
       console.log('一条记录', postData);
       //新增成功,关闭窗口
@@ -2168,13 +2170,13 @@ __WEBPACK_IMPORTED_MODULE_1__component_window__["a" /* modalWindow */].init($bbD
   selectd.map(function (item, index) {
     ids.push(item.consignDetailId);
   });
-  var postData = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4__utils_common__["b" /* getFormData */])($bbForm);
+  var postData = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4__utils_common__["a" /* getFormData */])($bbForm);
   postData.consignDetailIds = ids;
   postData.consignNos = __WEBPACK_IMPORTED_MODULE_7_jQuery___default()("#consignNos").combobox('getValues');
   var isValid = $bbForm.form('validate');
   //===== 校验结束 =====
   if (isValid) {
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4__utils_common__["a" /* ajaxPost */])({ url: '../trans/makePlan', data: postData }, function (data) {
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4__utils_common__["b" /* ajaxPost */])({ url: '../trans/makePlan', data: postData }, function (data) {
       __WEBPACK_IMPORTED_MODULE_1__component_window__["a" /* modalWindow */].close($bbDialog);
       __WEBPACK_IMPORTED_MODULE_5__component_message__["a" /* message */].alert({
         msg: '\u7F16\u677F\u6210\u529F'
@@ -2222,7 +2224,7 @@ __WEBPACK_IMPORTED_MODULE_7_jQuery___default()('#make').on('click', function () 
   if (!selectd.length) {
     return __WEBPACK_IMPORTED_MODULE_7_jQuery___default.a.messager.alert('提示', '至少选择一项', 'info');
   }
-  __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4__utils_common__["c" /* resetFormData */])($bbForm, function () {
+  __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4__utils_common__["d" /* resetFormData */])($bbForm, function () {
     __WEBPACK_IMPORTED_MODULE_7_jQuery___default()('#carrierName').combobox('setValue', '');
     __WEBPACK_IMPORTED_MODULE_7_jQuery___default()('#transportTool').combobox('setValue', '');
   });
@@ -2249,7 +2251,7 @@ __WEBPACK_IMPORTED_MODULE_7_jQuery___default()('#make').on('click', function () 
 
 //查询按钮
 __WEBPACK_IMPORTED_MODULE_7_jQuery___default()('#search').on('click', function () {
-  var postData = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4__utils_common__["b" /* getFormData */])(__WEBPACK_IMPORTED_MODULE_7_jQuery___default()('#ff'));
+  var postData = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4__utils_common__["a" /* getFormData */])(__WEBPACK_IMPORTED_MODULE_7_jQuery___default()('#ff'));
   console.log(postData);
   //刷新表格
   __WEBPACK_IMPORTED_MODULE_0__component_table__["a" /* table */].load($grid, postData);
