@@ -42,7 +42,7 @@
 				and  cd.CHASSIS_NO REGEXP #{conditiions.chassisNo,jdbcType=VARCHAR}
 			</if>
 			<if test="conditiions.locationFrom != null and conditiions.locationFrom != ''">
-				and  c.LOCATION_FROM = #{conditiions.chassisNo,jdbcType=VARCHAR}
+				and  c.LOCATION_FROM = #{conditiions.locationFrom,jdbcType=VARCHAR}
 			</if>
 			<if test="conditiions.locationTo != null and conditiions.locationTo != ''">
 				and  c.LOCATION_TO = #{conditiions.locationTo,jdbcType=VARCHAR}

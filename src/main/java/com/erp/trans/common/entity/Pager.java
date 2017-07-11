@@ -28,11 +28,11 @@ import com.erp.trans.common.constant.SystemConst;
 public class Pager<E> implements Serializable {
 	
 	/**总记录数*/
-	@JsonProperty("records")
+	@JsonProperty("total")
 	private Integer total=0;
 	
 	/**总页数*/
-	@JsonProperty("total")
+	@JsonProperty("totalPage")
 	private Integer totalPage;
 	
 	/**每页记录数量（默认每页10条）*/

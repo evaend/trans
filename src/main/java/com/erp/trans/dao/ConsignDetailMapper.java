@@ -1,9 +1,11 @@
 package com.erp.trans.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.annotations.Param;
 
+import com.erp.trans.common.entity.Pager;
 import com.erp.trans.entity.ConsignDetail;
 import com.erp.trans.web.dto.ConsignDto;
 
@@ -19,4 +21,6 @@ public interface ConsignDetailMapper {
 	void batchDeleteByIds(@Param("consignDetailIds")String[] consignDetailIds);
 
 	String[] searchOldPlanIdsByCDetails(@Param("consignDetailIds")String[] consignDetailIds);
+
+	List<Map<String, Object>> searchBusinessData(Pager<Map<String, Object>> pager);
 }

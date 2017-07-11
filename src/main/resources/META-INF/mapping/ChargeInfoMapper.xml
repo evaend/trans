@@ -259,11 +259,11 @@
 		  </foreach>  
    </update>
    <delete id="batchDeleteTamountIs0">
-   	  delete from tb_charge_info ci
-      where ci.charge_id in  
+   	  delete from tb_charge_info
+      where charge_id in  
            <foreach collection="chargeIds" item="chargeId" index="index" open="(" close=")" separator=",">
 					#{chargeId, jdbcType=VARCHAR}
-		  </foreach>  or ci.SOURCE_CHARGE_ID in 
+		  </foreach>  or SOURCE_CHARGE_ID in 
 		  <foreach collection="chargeIds" item="chargeId" index="index" open="(" close=")" separator=",">
 					#{chargeId, jdbcType=VARCHAR}
 		  </foreach>

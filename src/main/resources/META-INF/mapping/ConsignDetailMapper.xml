@@ -14,6 +14,20 @@
     <result column="DESPATCH_FSTATE" property="despatchFstate" jdbcType="VARCHAR" />
     <result column="DESPATCH_DATE" property="despatchDate" jdbcType="DATE" />
   </resultMap>
+   <sql id="Data_Return_List">
+  	  cd.CONSIGN_DETAIL_ID "consignDetailId",
+  	  c.CONSIGN_NO "consignNo", cd.CAR_BRAND "carBrand", cd.CAR_MODEL "carModel", 
+      cd.AMOUNT "amount", cd.CHASSIS_NO "chassisNo", 
+      date_format(c.create_date,'%Y-%m-%d %T') "createDate", 
+      date_format(cd.DESPATCH_DATE,'%Y-%m-%d') "despatchDate",
+      c.LOCATION_TO "locationTo", c.RECEIVE_ORG_NAME "receiveOrgName", 
+      c.CONSIGN_ORG_NAME "consignOrgName", 
+      c.LOCATION_FROM "locationFrom",r.CARRIER_NAME "carrierName",r.TRANSPORT_TOOL "transportTool",
+      ci.profitFreightRates "profitFreightRates",
+      ci.profitFreightRates*cd.AMOUNT "profitFreight",
+      ci.costFreightRates "costFreightRates",
+      ci.costFreightRates*cd.AMOUNT "costFreight"
+    </sql>
    <insert id="importConsignDetails" >
     insert into tb_consign_detail (CONSIGN_DETAIL_ID,CONSIGN_ID, CAR_BRAND, CAR_MODEL, 
       AMOUNT, CHASSIS_NO, 
@@ -53,6 +67,58 @@
 					#{consignDetail, jdbcType=VARCHAR}
 		  </foreach>
   </select>
+   <select id="searchBusinessData" resultType="hashMap"
+		parameterType="com.erp.trans.common.entity.Pager">
+		select
+		<include refid="Data_Return_List"></include>
+		from tb_consign_detail cd
+		left join tb_consign c on cd.consign_id = c.consign_id
+		left join tb_despatch_plan dp on cd.despatch_plan_id = dp.despatch_plan_id
+		left join td_record_info r on dp.record_id = r.record_id
+		left join (select  ci.CONSIGN_DETAIL_ID,
+					max(case when ci.CHARGE_TYPE='01' then ci.FREIGHT_RATES else 0 end) as "profitFreightRates",
+					max(case when ci.CHARGE_TYPE='02' then ci.FREIGHT_RATES else 0 end) as "costFreightRates"
+					from tb_charge_info ci 
+					where ci.CHARGE_TYPE in ('01','02')
+					group by ci.CONSIGN_DETAIL_ID
+				   ) ci on cd.CONSIGN_DETAIL_ID = ci.CONSIGN_DETAIL_ID
+		<where>
+			<if test="conditiions.orgId != null and conditiions.orgId != '0' and conditiions.orgId != '-1'">
+				and c.ORG_ID = #{conditiions.orgId,jdbcType=VARCHAR}
+			</if>
+			<if test="conditiions.transportTool != null and conditiions.transportTool != ''">
+				and  r.TRANSPORT_TOOL REGEXP #{conditiions.transportTool,jdbcType=VARCHAR}
+			</if>
+			<if test="conditiions.consignOrgName != null and conditiions.consignOrgName != ''">
+				and  c.CONSIGN_ORG_NAME REGEXP #{conditiions.consignOrgName,jdbcType=VARCHAR}
+			</if>
+			<if test="conditiions.locationFrom != null and conditiions.locationFrom != ''">
+				and  c.LOCATION_FROM = #{conditiions.locationFrom,jdbcType=VARCHAR}
+			</if>
+			<if test="conditiions.locationTo != null and conditiions.locationTo != ''">
+				and  c.LOCATION_TO = #{conditiions.locationTo,jdbcType=VARCHAR}
+			</if>
+			<if test="conditiions.receiveOrgName != null and conditiions.receiveOrgName != ''">
+				and c.RECEIVE_ORG_NAME REGEXP #{conditiions.receiveOrgName,jdbcType=VARCHAR}
+			</if>
+			<if test="conditiions.carrierName != null and conditiions.carrierName != ''">
+				and r.CARRIER_NAME REGEXP #{conditiions.carrierName,jdbcType=VARCHAR}
+			</if>
+			<if test="conditiions.createDateStart != null and conditiions.createDateStart != ''">
+				and <![CDATA[ date_format(c.create_date,'%Y-%m-%d') >= #{conditiions.createDateStart,jdbcType=VARCHAR} ]]>
+			</if>
+			<if test="conditiions.createDateEnd != null and conditiions.createDateEnd != ''">
+				and <![CDATA[ date_format(c.create_date,'%Y-%m-%d') <=  #{conditiions.createDateEnd,jdbcType=VARCHAR} ]]>
+			</if>
+			<if test="conditiions.despatchDateStart != null and conditiions.despatchDateStart != ''">
+				and <![CDATA[ date_format(cd.DESPATCH_DATE,'%Y-%m-%d') >= #{conditiions.despatchDateStart,jdbcType=VARCHAR} ]]>
+			</if>
+			<if test="conditiions.despatchDateEnd != null and conditiions.despatchDateEnd != ''">
+				and <![CDATA[ date_format(cd.DESPATCH_DATE,'%Y-%m-%d') <=  #{conditiions.despatchDateEnd,jdbcType=VARCHAR} ]]>
+			</if>
+		</where>
+		order by c.create_date desc,cd.DESPATCH_DATE desc
+	</select>
   <insert id="insert" parameterType="com.erp.trans.entity.ConsignDetail" >
     insert into tb_consign_detail (CONSIGN_DETAIL_ID, CAR_BRAND, CAR_MODEL, 
       AMOUNT, CHASSIS_NO, MODIFY_USER_ID, 
