@@ -84,14 +84,20 @@
       <div class="col-md-2 vForm-item form-label">  
         <label for="carrierType">承运商类型:</label>  
       </div>  
-      <div class="col-md-4 vForm-item">  
-        <input id="carrierType" name="carrierType" />    
+      <div class="col-md-4 vForm-item">
+        <select id="carrierType" editable='false' name='carrierType' class="easyui-combobox"  style="width:200px;height:28px">   
+          <option value="1">自有</option>  
+          <option value="2">外协</option>   
+        </select>     
       </div> 
       <div class="col-md-2 vForm-item form-label">  
         <label for="recordChargeType">结费类型:</label>  
       </div>  
       <div class="col-md-4 vForm-item">  
-        <input id="recordChargeType" name="recordChargeType" />    
+         <select id="recordChargeType" editable='false' name='recordChargeType' class="easyui-combobox"  style="width:200px;height:28px">   
+          <option value="1">现金</option>  
+          <option value="2">合同</option>   
+        </select>    
       </div> 
       <div class="col-md-2 vForm-item form-label">  
         <label for="mainDrive">主驾:</label>    

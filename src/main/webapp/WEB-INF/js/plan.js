@@ -835,7 +835,11 @@ var Table = function Table() {
         height: $(window).height() + 20,
         collapsible: true,
         striped: true,
-        rownumbers: true
+        rownumbers: true,
+        pagination: true,
+        pageSize: 15,
+        pageNumber: 1,
+        pageList: [10, 15, 30, 50]
       }, opts));
     } else {
       console.error('传入参数不正确!');
@@ -2195,6 +2199,7 @@ __WEBPACK_IMPORTED_MODULE_7_jQuery___default()('#carrierName').combobox({
 
     __WEBPACK_IMPORTED_MODULE_7_jQuery___default()('#carrierName').combobox('setValue', '');
     __WEBPACK_IMPORTED_MODULE_7_jQuery___default()('#consignNos').combobox('setValue', '');
+    __WEBPACK_IMPORTED_MODULE_7_jQuery___default()('#transportTool').combobox('setValue', '');
     var url = '../contractRecords/searchRecordsForSelectByCarrierId?carrierId=' + rec.id;
     __WEBPACK_IMPORTED_MODULE_7_jQuery___default()('#transportTool').combobox('reload', url);
   }
