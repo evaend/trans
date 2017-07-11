@@ -28,6 +28,27 @@
     <table id="addNoLoadGrid" class="easyui-datagrid"></table>
   </div> 
   <!-- grid结束 --> 
+  <!-- 编辑弹出框开始 -->
+  <div id="editWin">
+    <form id="editForm" class='row vForm'>  
+      <input type="hidden" name="chargeId"/>
+      <div class="col-md-2 vForm-item form-label">  
+        <label for="locationFrom">起运地:</label>   
+      </div>  
+       <div class="col-md-4 vForm-item">  
+        <select id="locationFrom"  name='locationFrom' class="easyui-combobox" data-options="required:true" style="width:200px;height:28px">
+        </select> 
+      </div>  
+      <div class="col-md-2 vForm-item form-label">  
+        <label for="locationTo">目的地:</label>   
+      </div>  
+       <div class="col-md-4 vForm-item">  
+        <select id="locationTo"  name='locationTo' class="easyui-combobox" data-options="required:true" style="width:200px;height:28px">
+        </select> 
+      </div> 
+    </form>  
+  </div>
+  <!-- 编辑弹出框结束 -->
 <script type="text/javascript" src="../lib/jquery-3.2.1.min.js"></script>
 <script type="text/javascript" src="../lib/easyui/jquery.easyui.min.js"></script>   
 <script type="text/javascript" src="../lib/easyui/easyui-lang-zh_CN.js"></script>    

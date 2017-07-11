@@ -449,9 +449,9 @@ exports.f = __webpack_require__(7);
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function($) {/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ajaxPost; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return getFormData; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return setFormData; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return resetFormData; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return getFormData; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return setFormData; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return resetFormData; });
 /* unused harmony export jsonNull */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_typeof__ = __webpack_require__(50);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_typeof___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_typeof__);
@@ -835,7 +835,11 @@ var Table = function Table() {
         height: $(window).height() + 20,
         collapsible: true,
         striped: true,
-        rownumbers: true
+        rownumbers: true,
+        pagination: true,
+        pageSize: 15,
+        pageNumber: 1,
+        pageList: [10, 15, 30, 50]
       }, opts));
     } else {
       console.error('传入参数不正确!');
@@ -1883,7 +1887,51 @@ $export($export.S + $export.F * !__webpack_require__(4), 'Object', {defineProper
 
 /***/ }),
 /* 86 */,
-/* 87 */,
+/* 87 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function($) {/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return location; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_classCallCheck__ = __webpack_require__(18);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_classCallCheck___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_classCallCheck__);
+
+
+/**
+ * @file 地址初始化
+ */
+var Location = function Location() {
+  var _this = this;
+
+  __WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_classCallCheck___default()(this, Location);
+
+  this.init = function (selectors) {
+    var url = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '';
+
+    if ($.isArray(selectors)) {
+      selectors.map(function (item, index) {
+        return _this.create(item, url);
+      });
+    } else {
+      _this.create(selectors, url);
+    }
+  };
+
+  this.create = function (selector, url) {
+    selector.combobox({
+      mode: 'remote',
+      url: url || '../staticData/searchLocationsForSelect',
+      valueField: 'text',
+      textField: 'text',
+      width: 200,
+      height: 28
+    });
+  };
+};
+
+var location = new Location();
+/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(1)))
+
+/***/ }),
 /* 88 */,
 /* 89 */,
 /* 90 */
@@ -1893,11 +1941,12 @@ $export($export.S + $export.F * !__webpack_require__(4), 'Object', {defineProper
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__component_table__ = __webpack_require__(43);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__component_window__ = __webpack_require__(44);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__utils_common__ = __webpack_require__(31);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__actions_grid__ = __webpack_require__(45);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__component_message__ = __webpack_require__(42);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_jQuery__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_jQuery___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_jQuery__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__component_location__ = __webpack_require__(87);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__utils_common__ = __webpack_require__(31);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__actions_grid__ = __webpack_require__(45);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__component_message__ = __webpack_require__(42);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_jQuery__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_jQuery___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_jQuery__);
 
 
 
@@ -1905,38 +1954,71 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 
-var $grid = __WEBPACK_IMPORTED_MODULE_5_jQuery___default()('#addNoLoadGrid');
 
+var $grid = __WEBPACK_IMPORTED_MODULE_6_jQuery___default()('#addNoLoadGrid'),
+    $dialog = __WEBPACK_IMPORTED_MODULE_6_jQuery___default()('#editWin'),
+    $form = __WEBPACK_IMPORTED_MODULE_6_jQuery___default()('#editForm');
+//地址初始化      
+__WEBPACK_IMPORTED_MODULE_2__component_location__["a" /* location */].init([__WEBPACK_IMPORTED_MODULE_6_jQuery___default()('#locationFrom'), __WEBPACK_IMPORTED_MODULE_6_jQuery___default()('#locationTo')]);
 //表格初始化
 __WEBPACK_IMPORTED_MODULE_0__component_table__["a" /* table */].init($grid, {
   toolbar: [{
     text: '新增',
-    iconCls: 'icon-edit',
+    iconCls: 'icon-add',
     handler: function handler() {
-      __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3__actions_grid__["a" /* gridEdit */])($grid, function (rows) {
+      __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4__actions_grid__["a" /* gridEdit */])($grid, function (rows) {
         var chargeId = rows[0].chargeId;
         // 后台交互
-        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__utils_common__["a" /* ajaxPost */])({ url: '../charge/insertDriveAccount', data: { chargeId: chargeId } }, function (data) {
+        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3__utils_common__["a" /* ajaxPost */])({ url: '../charge/insertDriveAccount', data: { chargeId: chargeId } }, function (data) {
           // 刷新表格
           __WEBPACK_IMPORTED_MODULE_0__component_table__["a" /* table */].reload($grid);
-          __WEBPACK_IMPORTED_MODULE_4__component_message__["a" /* message */].alert({ msg: '新增成功!' });
+          __WEBPACK_IMPORTED_MODULE_5__component_message__["a" /* message */].alert({ msg: '新增成功!' });
         });
+      });
+    }
+  }, '-', {
+    text: '编辑',
+    iconCls: 'icon-edit',
+    handler: function handler() {
+      __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4__actions_grid__["a" /* gridEdit */])($grid, function (rows) {
+        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3__utils_common__["b" /* setFormData */])($form, rows[0]);
+        __WEBPACK_IMPORTED_MODULE_6_jQuery___default()('#locationFrom').combobox('setValue', rows[0].locationFrom);
+        __WEBPACK_IMPORTED_MODULE_6_jQuery___default()('#locationTo').combobox('setValue', rows[0].locationTo);
+        __WEBPACK_IMPORTED_MODULE_1__component_window__["a" /* modalWindow */].setTitle($dialog, '编辑').open($dialog);
       });
     }
   }],
   title: '计划信息',
   url: '../charge/searchChargeList?chargeType=03',
-  height: __WEBPACK_IMPORTED_MODULE_5_jQuery___default()(window).height() - 65,
+  height: __WEBPACK_IMPORTED_MODULE_6_jQuery___default()(window).height() - 65,
   resizeHandle: 'both',
   columns: [[{ field: 'chargeId', checkbox: true }, { field: 'despatchDate', title: '发运日期', width: 120 }, { field: 'transportTool', title: '轿运车号', width: 150 }, { field: 'name3', title: '车次', width: 100 }, { field: 'mainDrive', title: '主驾', width: 100 }, { field: 'coPilot', title: '副驾', width: 100 }, { field: 'locationFrom', title: '起运地', width: 100 }, { field: 'locationTo', title: '目的地', width: 100 }, { field: 'amount', title: '数量', width: 100 }, { field: 'modifyUserName', title: '修改人', width: 120 }, { field: 'modifyDate', title: '修改时间', width: 120 }]]
 });
 
 //查询
-__WEBPACK_IMPORTED_MODULE_5_jQuery___default()('#search').on('click', function () {
-  var postData = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__utils_common__["b" /* getFormData */])(__WEBPACK_IMPORTED_MODULE_5_jQuery___default()('#ff'));
+__WEBPACK_IMPORTED_MODULE_6_jQuery___default()('#search').on('click', function () {
+  var postData = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3__utils_common__["c" /* getFormData */])(__WEBPACK_IMPORTED_MODULE_6_jQuery___default()('#ff'));
   console.log(postData);
   //刷新表格
   __WEBPACK_IMPORTED_MODULE_0__component_table__["a" /* table */].load($grid, postData);
+});
+
+__WEBPACK_IMPORTED_MODULE_1__component_window__["a" /* modalWindow */].init($dialog, { title: '编辑空载' }, function (text) {
+  var postData = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3__utils_common__["c" /* getFormData */])($form);
+  var isValid = $form.form('validate');
+  if (isValid) {
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3__utils_common__["a" /* ajaxPost */])({ url: '../charge/editAccount', data: postData }, function (data) {
+      //===== 校验结束 =====
+      console.log('一条记录', postData);
+      //新增成功,关闭窗口
+      __WEBPACK_IMPORTED_MODULE_1__component_window__["a" /* modalWindow */].close($dialog);
+      __WEBPACK_IMPORTED_MODULE_5__component_message__["a" /* message */].alert({
+        msg: '\u7A7A\u8F7D' + text + '\u6210\u529F'
+      });
+      //表格刷新
+      __WEBPACK_IMPORTED_MODULE_0__component_table__["a" /* table */].reload($grid);
+    });
+  }
 });
 
 /***/ })
