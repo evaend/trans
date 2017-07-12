@@ -2092,7 +2092,6 @@ __WEBPACK_IMPORTED_MODULE_8_jQuery___default()('#consignOrgId').combobox({
   url: '../staticData/searchOrgForSelect',
   valueField: 'id',
   textField: 'text',
-  editable: false,
   width: 200,
   height: 28
 });
