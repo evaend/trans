@@ -1,0 +1,12 @@
+
+*.class
+
+*.log
+
+*.lst
+
+*.xml
+
+*.properties
+
+*.MF

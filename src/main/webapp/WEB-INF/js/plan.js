@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "/dist";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 103);
+/******/ 	return __webpack_require__(__webpack_require__.s = 105);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -2054,7 +2054,9 @@ var cascade = new Cascade();
 /* 100 */,
 /* 101 */,
 /* 102 */,
-/* 103 */
+/* 103 */,
+/* 104 */,
+/* 105 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2257,7 +2259,7 @@ __WEBPACK_IMPORTED_MODULE_7_jQuery___default()('#search').on('click', function (
 });
 
 //导入按钮
-__WEBPACK_IMPORTED_MODULE_7_jQuery___default()('#import').on('change', function (e) {
+__WEBPACK_IMPORTED_MODULE_7_jQuery___default()('#ff').on('change', '#import', function (e) {
   var files = __WEBPACK_IMPORTED_MODULE_7_jQuery___default()('input[name="consignFile"]').prop('files');
   console.log('新增一条记录', files[0]);
   if (files.length === 0) {
@@ -2270,11 +2272,16 @@ __WEBPACK_IMPORTED_MODULE_7_jQuery___default()('#import').on('change', function 
       secureuri: false,
       fileElementId: 'import',
       success: function success(data) {
-        __WEBPACK_IMPORTED_MODULE_0__component_table__["a" /* table */].reload($grid);
-        __WEBPACK_IMPORTED_MODULE_5__component_message__["a" /* message */].success("运单导入成功");
+        var result = JSON.parse(data.querySelector('pre').innerHTML);
+        if (result.status) {
+          __WEBPACK_IMPORTED_MODULE_0__component_table__["a" /* table */].reload($grid);
+          __WEBPACK_IMPORTED_MODULE_5__component_message__["a" /* message */].success("运单导入成功");
+        } else {
+          __WEBPACK_IMPORTED_MODULE_7_jQuery___default.a.messager.alert('提示信息', result.msg, 'error');
+        }
       },
       error: function error(data, status, e) {
-        console.log(e,'123');
+        console.log(data);
         __WEBPACK_IMPORTED_MODULE_5__component_message__["a" /* message */].error(data.msg);
       }
     });
