@@ -10,10 +10,12 @@
     <title>登录</title>
 </head>
 <body>
-    <div class="wrap">
+    <div class="wrap" style="background: #a4c9f6 url(../images/loginbg.png) center center no-repeat fixed; background-size:cover;">
         <div class="container">
+            <div class="warp-content">
+            <!-- <p class="wrap-title">某某平台登录系统</p> -->
             <form class="form-horizontal login-form" id="loginForm">
-                <p>登录系统</p>
+                <p class="login-text">用户登录</p>
                     <div class="form-group">
                         <div class="col-sm-4">
                         <input type="email" class="form-control input260" name="userNo" id="userNo" placeholder="请输入用户名">
@@ -31,6 +33,8 @@
                     </div>
                     <div class="alert alert-danger hidden" style="width:260px;padding:8px;" role="alert" id="errMsg"></div>
             </form>
+            </div>
+           
         </div>
     </div>
     <script type="text/javascript" src="../lib/jquery-3.2.1.min.js"></script>

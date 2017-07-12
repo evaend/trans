@@ -2272,6 +2272,11 @@ __WEBPACK_IMPORTED_MODULE_7_jQuery___default()('#import').on('change', function 
       fileElementId: 'import',
       success: function success(data) {
         __WEBPACK_IMPORTED_MODULE_0__component_table__["a" /* table */].reload($grid);
+        __WEBPACK_IMPORTED_MODULE_5__component_message__["a" /* message */].success("运单导入成功");
+      },
+      error: function error(data, status, e) {
+        console.log(e,'123');
+        __WEBPACK_IMPORTED_MODULE_5__component_message__["a" /* message */].error(data.msg);
       }
     });
   }
