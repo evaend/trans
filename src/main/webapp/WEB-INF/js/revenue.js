@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "/dist";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 104);
+/******/ 	return __webpack_require__(__webpack_require__.s = 106);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -1948,7 +1948,9 @@ $.fn.combobox.defaults.onHidePanel = function () {
 /* 101 */,
 /* 102 */,
 /* 103 */,
-/* 104 */
+/* 104 */,
+/* 105 */,
+/* 106 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2076,7 +2078,7 @@ __WEBPACK_IMPORTED_MODULE_6_jQuery___default()('#sl').combobox({
   width: 200,
   height: 28,
   onSelect: function onSelect(record) {
-    count();
+    count(record.text);
   }
 });
 __WEBPACK_IMPORTED_MODULE_6_jQuery___default()("#taxAmount").on('input', function () {
@@ -2084,16 +2086,16 @@ __WEBPACK_IMPORTED_MODULE_6_jQuery___default()("#taxAmount").on('input', functio
 });
 
 //taxPrice taxFreeAmount
-var count = function count() {
+var count = function count(percent) {
   var reg = /^[1-9]\d*(\.\d+)?$/;
-  var sl = __WEBPACK_IMPORTED_MODULE_6_jQuery___default()('#sl').combobox('getValue'),
+  var sl = percent || __WEBPACK_IMPORTED_MODULE_6_jQuery___default()('#sl').combobox('getValue'),
       taxAmount = __WEBPACK_IMPORTED_MODULE_6_jQuery___default()('#taxAmount').val();
   var taxPrice = 0,
       taxFreeAmount = 0;
   if (sl && reg.test(taxAmount)) {
-    var percent = sl.replace("%", "");
-    percent = percent / 100;
-    taxPrice = taxAmount * percent;
+    var _percent = sl.replace("%", "");
+    _percent = _percent / 100;
+    taxPrice = taxAmount * _percent;
     taxFreeAmount = taxAmount - taxPrice;
   }
   __WEBPACK_IMPORTED_MODULE_6_jQuery___default()('#taxPrice').val(taxPrice);

@@ -2146,7 +2146,7 @@ __WEBPACK_IMPORTED_MODULE_1__component_table__["a" /* table */].init($grid, {
   title: '收入合同表',
   url: '../contractRecords/searchContractInfo', //'../../lib/mock/incomeContract.json',
   height: __WEBPACK_IMPORTED_MODULE_8_jQuery___default()(window).height() - 95,
-  columns: [[{ field: 'contractId', checkbox: true }, { field: 'consignOrgId', hidden: true }, { field: 'consignOrgName', title: '托运单位', width: 260 }, { field: 'locationFrom', title: '起运地', width: 260 }, { field: 'locationTo', title: '目的地', width: 100 }, { field: 'carBrand', title: '品牌', width: 100 }, { field: 'carModel', title: '车型', width: 100 }, { field: 'freightRates', title: '运价', width: 100, textAlign: 'right' }, { field: 'chargePeriod', title: '结费周期', width: 100 }, { field: 'contractStart', title: '合同开始日期', width: 120 }, { field: 'contractEnd', title: '合同结束日期', width: 120 }, { field: 'modifier', title: '修改人', width: 120 }, { field: 'modifyDate', title: '修改日期', width: 120 }]],
+  columns: [[{ field: 'contractId', checkbox: true }, { field: 'consignOrgId', hidden: true }, { field: 'consignOrgName', title: '托运单位', width: 260 }, { field: 'locationFrom', title: '起运地', width: 260 }, { field: 'locationTo', title: '目的地', width: 100 }, { field: 'carBrand', title: '品牌', width: 100 }, { field: 'carModel', title: '车型', width: 100 }, { field: 'freightRates', title: '运价', width: 100, textAlign: 'right' }, { field: 'chargePeriod', title: '结费周期', width: 100 }, { field: 'contractStart', title: '合同开始日期', width: 120 }, { field: 'contractEnd', title: '合同结束日期', width: 120 }, { field: 'modifyUserName', title: '修改人', width: 120 }, { field: 'modifyDate', title: '修改日期', width: 120 }]],
   queryParams: {
     contractType: '01'
   }

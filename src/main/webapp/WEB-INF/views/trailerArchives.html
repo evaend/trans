@@ -15,12 +15,12 @@
   <!-- 查询表单开始 -->
   <form id="ff" class='row vForm'>  
       <div class="col-md-3 vForm-item">  
-        <label for="trailerNo">挂车号:</label>  
-        <input class="easyui-validatebox" type="text" name="trailerNo" />  
-      </div>  
-      <div class="col-md-3 vForm-item">  
         <label for="transportTool">轿运车:</label>  
         <input class="easyui-validatebox" type="text" name="transportTool" />  
+      </div> 
+      <div class="col-md-3 vForm-item">  
+        <label for="trailerNo">挂车号:</label>  
+        <input class="easyui-validatebox" type="text" name="trailerNo" />  
       </div>  
       <div class="col-md-3 vForm-item">  
         <label for="mainDrive">主驾:</label>  
@@ -91,10 +91,10 @@
         </select>     
       </div> 
       <div class="col-md-2 vForm-item form-label">  
-        <label for="recordChargeType">结费类型:</label>  
+        <label for="recordType">结费类型:</label>  
       </div>  
       <div class="col-md-4 vForm-item">  
-         <select id="recordChargeType" editable='false' name='recordChargeType' class="easyui-combobox"  style="width:200px;height:28px">   
+         <select id="recordType" editable='false' name='recordType' class="easyui-combobox"  style="width:200px;height:28px">   
           <option value="1">现金</option>  
           <option value="2">合同</option>   
         </select>    
@@ -155,13 +155,13 @@
         <label for="repaymentDay">还款日:</label>    
       </div>  
       <div class="col-md-4 vForm-item">  
-        <input type="text" name="repaymentDay" data-options="required:true" class="easyui-validatebox"/> 
+        <input type="text" name="repaymentDay"  class="easyui-validatebox"/> 
       </div>
       <div class="col-md-2 vForm-item form-label">  
         <label for="repaymentAmount">还款金额:</label>    
       </div>  
       <div class="col-md-4 vForm-item">  
-        <input class="easyui-validatebox" type="text" name="repaymentAmount" data-options="required:true,validType:['number']"/>  
+        <input class="easyui-validatebox" type="text" name="repaymentAmount" data-options="validType:['number']"/>  
       </div>
     </form>  
   </div>

@@ -1972,7 +1972,7 @@ __WEBPACK_IMPORTED_MODULE_1__component_window__["a" /* modalWindow */].init($dia
   //===== 校验 =======
   //===== 校验 =======
   var isValid = $form.form('validate');
-  console.log(isValid);
+  postData.actualPay = (Number(postData.basePay) + Number(postData.positionSalary)+ Number(postData.evaluationReward)+ Number(postData.trafficCommunications)+ Number(postData.seniorityPay)+ Number(postData.payRetro)- Number(postData.buckleUp)).toFixed(2);
   if (isValid) {
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__utils_common__["b" /* ajaxPost */])({ url: '../operationCosts/updatePersonSalary', data: postData }, function (data) {
       //===== 校验结束 =====
