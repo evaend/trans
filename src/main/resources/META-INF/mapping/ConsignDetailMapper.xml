@@ -76,7 +76,9 @@
 		left join tb_despatch_plan dp on cd.despatch_plan_id = dp.despatch_plan_id
 		left join td_record_info r on dp.record_id = r.record_id
 		left join (select  ci.CONSIGN_DETAIL_ID,
+					max(case when ci.CHARGE_TYPE='01' then ci.FREIGHT_RATES else 0 end) as "profitFreightRates",
 					max(case when ci.CHARGE_TYPE='01' then ci.CHARGE_AMOUNT else 0 end) as "profitFreight",
+					max(case when ci.CHARGE_TYPE='02' then ci.FREIGHT_RATES else 0 end) as "costFreightRates",
 					max(case when ci.CHARGE_TYPE='02' then ci.CHARGE_AMOUNT else 0 end) as "costFreight"
 					from tb_charge_info ci 
 					where ci.CHARGE_TYPE in ('01','02')
