@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "/dist";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 111);
+/******/ 	return __webpack_require__(__webpack_require__.s = 96);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -961,7 +961,48 @@ var modalWindow = new Window();
 /* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(1)))
 
 /***/ }),
-/* 45 */,
+/* 45 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function($) {/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return gridDelete; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return gridEdit; });
+/**
+ * @file grid delete
+ * @param {*} grid 
+ */
+var gridDelete = function gridDelete(grid, callback) {
+  var selectd = grid.datagrid('getSelections');
+  var len = selectd.length;
+  if (len === 0) {
+    $.messager.alert('提示', '至少选择一项', 'info');
+  } else {
+    $.messager.confirm('删除确认框', '您确认删除这(批)数据吗？', function (r) {
+      if (r) {
+        callback(selectd);
+      }
+    });
+  }
+};
+
+/**
+ * @file grid edit
+ * @param {*} grid 
+ */
+var gridEdit = function gridEdit(grid, callback) {
+  var selectd = grid.datagrid('getSelections');
+  var len = selectd.length;
+  if (len === 0) {
+    $.messager.alert('提示', '至少选择一项', 'info');
+  } else if (len > 1) {
+    $.messager.alert('提示', '只允许选择一项', 'info');
+  } else {
+    callback(selectd);
+  }
+};
+/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(1)))
+
+/***/ }),
 /* 46 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -1846,7 +1887,51 @@ $export($export.S + $export.F * !__webpack_require__(4), 'Object', {defineProper
 
 /***/ }),
 /* 86 */,
-/* 87 */,
+/* 87 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function($) {/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return location; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_classCallCheck__ = __webpack_require__(18);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_classCallCheck___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_classCallCheck__);
+
+
+/**
+ * @file 地址初始化
+ */
+var Location = function Location() {
+  var _this = this;
+
+  __WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_classCallCheck___default()(this, Location);
+
+  this.init = function (selectors) {
+    var url = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '';
+
+    if ($.isArray(selectors)) {
+      selectors.map(function (item, index) {
+        return _this.create(item, url);
+      });
+    } else {
+      _this.create(selectors, url);
+    }
+  };
+
+  this.create = function (selector, url) {
+    selector.combobox({
+      mode: 'remote',
+      url: url || '../staticData/searchLocationsForSelect',
+      valueField: 'text',
+      textField: 'text',
+      width: 200,
+      height: 28
+    });
+  };
+};
+
+var location = new Location();
+/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(1)))
+
+/***/ }),
 /* 88 */,
 /* 89 */,
 /* 90 */,
@@ -1855,98 +1940,47 @@ $export($export.S + $export.F * !__webpack_require__(4), 'Object', {defineProper
 /* 93 */,
 /* 94 */,
 /* 95 */,
-/* 96 */,
-/* 97 */,
-/* 98 */,
-/* 99 */,
-/* 100 */,
-/* 101 */,
-/* 102 */,
-/* 103 */,
-/* 104 */,
-/* 105 */,
-/* 106 */,
-/* 107 */,
-/* 108 */,
-/* 109 */,
-/* 110 */,
-/* 111 */
+/* 96 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__component_table__ = __webpack_require__(43);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__component_window__ = __webpack_require__(44);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__utils_common__ = __webpack_require__(31);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__component_message__ = __webpack_require__(42);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_jQuery__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_jQuery___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_jQuery__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__component_location__ = __webpack_require__(87);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__utils_common__ = __webpack_require__(31);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__actions_grid__ = __webpack_require__(45);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__component_message__ = __webpack_require__(42);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_jQuery__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_jQuery___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_jQuery__);
 
 
 
 
 
+
+
+
+var $grid = __WEBPACK_IMPORTED_MODULE_6_jQuery___default()('#dataStatisticslGrid');
+//地址初始化      
+__WEBPACK_IMPORTED_MODULE_2__component_location__["a" /* location */].init([__WEBPACK_IMPORTED_MODULE_6_jQuery___default()('#locationFrom'), __WEBPACK_IMPORTED_MODULE_6_jQuery___default()('#locationTo')]);
 //表格初始化
-__WEBPACK_IMPORTED_MODULE_0__component_table__["a" /* table */].init(__WEBPACK_IMPORTED_MODULE_4_jQuery___default()('#waybillGrid'), {
-  toolbar: [{
-    text: '批量编辑',
-    iconCls: 'icon-edit',
-    handler: function handler() {
-      var selectd = __WEBPACK_IMPORTED_MODULE_4_jQuery___default()('#waybillGrid').datagrid('getSelections');
-      var len = selectd.length;
-      if (len === 0) {
-        __WEBPACK_IMPORTED_MODULE_4_jQuery___default.a.messager.alert('提示', '至少选择一项', 'info');
-      } else {
-        __WEBPACK_IMPORTED_MODULE_1__component_window__["a" /* modalWindow */].open(__WEBPACK_IMPORTED_MODULE_4_jQuery___default()('#waybillDialog'));
-      }
-    }
-  }],
-  title: '运单表',
-  url: '../trans/findConsignList',
-  height: __WEBPACK_IMPORTED_MODULE_4_jQuery___default()(window).height() - 95,
-  columns: [[{ field: 'consignDetailId', checkbox: true }, { field: 'createDate', title: '制单日期', width: 150 }, { field: 'consignNo', title: '运单号', width: 200 }, { field: 'camount', title: '数量', width: 70, align: 'right' }, { field: 'consignFsate', title: '状态', width: 70, formatter: function formatter(value) {
-      if (value === "01") {
-        return "已返单";
-      } else if (value === "02") {
-        return "异常单";
-      } else if (value === "00") {
-        return "未返单";
-      } else {
-        return "";
-      }
-    },
-    styler: function styler(value, row, index) {
-      if (value === "00") {
-        return 'color:#e60012';
-      }
-    }
-  }, { field: 'locationFrom', title: '起运地', width: 100 }, { field: 'locationTo', title: '目的地', width: 100 }, { field: 'consignOrgName', title: '托运单位', width: 260 }, { field: 'receiveOrgName', title: '收车单位', width: 260 }, { field: 'carrierName', title: '承运商', width: 260 }, { field: 'returnDate', title: '返单时间', width: 150 }, { field: 'exceptionReason', title: '备注', width: 120 }, { field: 'modifyUser', title: '修改人', width: 120 }, { field: 'modifyDate', title: '修改时间', width: 150 }]]
+__WEBPACK_IMPORTED_MODULE_0__component_table__["a" /* table */].init($grid, {
+  title: '数据统计',
+  url: '../dataStatistics/searchBusinessData',
+  height: __WEBPACK_IMPORTED_MODULE_6_jQuery___default()(window).height() - 125,
+  resizeHandle: 'both',
+  columns: [[{ field: 'chargeId', checkbox: true }, { field: 'transportTool', title: '轿运车', width: 150 },
+  //{field:'name3',title:'车次',width:100}, 
+  { field: 'locationFrom', title: '起运地', width: 100 }, { field: 'locationTo', title: '目的地', width: 100 }, { field: 'createDate', title: '制单时间', width: 150 }, { field: 'despatchDate', title: '发运日期', width: 120 }, { field: 'consignNo', title: '运单号', width: 200 }, { field: 'chassisNo', title: '底盘号', width: 200 }, { field: 'carBrand', title: '品牌', width: 100 }, { field: 'carModel', title: '车型', width: 100 }, { field: 'amount', title: '数量', width: 100 }, { field: 'consignOrgName', title: '托运单位', width: 260 }, { field: 'receiveOrgName', title: '收车单位', width: 260 }, { field: 'carrierName', title: '承运商', width: 260 }, { field: 'profitFreightRates', title: '收入运价', width: 150 }, { field: 'profitFreight', title: '收入', width: 150 }, { field: 'costFreightRates', title: '成本运价', width: 150 }, { field: 'costFreight', title: '成本', width: 150 }]]
 });
 
-__WEBPACK_IMPORTED_MODULE_1__component_window__["a" /* modalWindow */].init(__WEBPACK_IMPORTED_MODULE_4_jQuery___default()('#waybillDialog'), { title: '批量修改' }, function () {
-  var postData = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__utils_common__["a" /* getFormData */])(__WEBPACK_IMPORTED_MODULE_4_jQuery___default()('#waybillFf'));
-  var selectd = __WEBPACK_IMPORTED_MODULE_4_jQuery___default()('#waybillGrid').datagrid('getSelections');
-  var opts = [];
-  selectd.map(function (item, index) {
-    opts.push(item.consignId);
-  });
-  postData.consignIds = opts;
-  __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__utils_common__["b" /* ajaxPost */])({ url: '../trans/updateConsignFstate', data: postData }, function (data) {
-    //批量编辑,关闭窗口
-    __WEBPACK_IMPORTED_MODULE_1__component_window__["a" /* modalWindow */].close(__WEBPACK_IMPORTED_MODULE_4_jQuery___default()('#waybillDialog'));
-    __WEBPACK_IMPORTED_MODULE_3__component_message__["a" /* message */].alert({
-      msg: '批量修改成功'
-    });
-    //表格刷新
-    __WEBPACK_IMPORTED_MODULE_0__component_table__["a" /* table */].reload(__WEBPACK_IMPORTED_MODULE_4_jQuery___default()('#waybillGrid'));
-  });
-});
-
-//查询按钮
-__WEBPACK_IMPORTED_MODULE_4_jQuery___default()('#search').on('click', function () {
-  var postData = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__utils_common__["a" /* getFormData */])(__WEBPACK_IMPORTED_MODULE_4_jQuery___default()('#ff'));
+//查询
+__WEBPACK_IMPORTED_MODULE_6_jQuery___default()('#search').on('click', function () {
+  var postData = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3__utils_common__["a" /* getFormData */])(__WEBPACK_IMPORTED_MODULE_6_jQuery___default()('#ff'));
+  console.log(postData);
   //刷新表格
-  __WEBPACK_IMPORTED_MODULE_0__component_table__["a" /* table */].load(__WEBPACK_IMPORTED_MODULE_4_jQuery___default()('#waybillGrid'), postData);
+  __WEBPACK_IMPORTED_MODULE_0__component_table__["a" /* table */].load($grid, postData);
 });
 
 /***/ })
