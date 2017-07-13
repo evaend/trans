@@ -1968,7 +1968,7 @@ __WEBPACK_IMPORTED_MODULE_2__component_location__["a" /* location */].init([__WE
 __WEBPACK_IMPORTED_MODULE_0__component_table__["a" /* table */].init($grid, {
   title: '数据统计',
   url: '../dataStatistics/searchBusinessData',
-  height: __WEBPACK_IMPORTED_MODULE_6_jQuery___default()(window).height() - 125,
+  height: __WEBPACK_IMPORTED_MODULE_6_jQuery___default()(window).height() - 155,
   resizeHandle: 'both',
   columns: [[{ field: 'chargeId', checkbox: true }, { field: 'transportTool', title: '轿运车', width: 150 },
   //{field:'name3',title:'车次',width:100}, 
@@ -1979,9 +1979,11 @@ __WEBPACK_IMPORTED_MODULE_0__component_table__["a" /* table */].init($grid, {
 __WEBPACK_IMPORTED_MODULE_6_jQuery___default()('#search').on('click', function () {
   var postData = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3__utils_common__["a" /* getFormData */])(__WEBPACK_IMPORTED_MODULE_6_jQuery___default()('#ff'));
   console.log(postData);
+  __WEBPACK_IMPORTED_MODULE_6_jQuery___default()('#export').attr('href', '../dataStatistics/exportBusinessData&createDateStart=' + postData.createDateStart + '&createDateEnd=' + postData.createDateEnd + '&dispatchDateStart=' + postData.dispatchDateStart + '&dispatchDateEnd=' + postData.dispatchDateEnd + '&locationFrom=' + postData.locationFrom + '&locationTo=' + postData.locationTo + '&transportTool=' + postData.transportTool + '&receiveOrgName=' + postData.receiveOrgName + '&consignOrgName=' + postData.consignOrgName + '&carrierName=' + postData.carrierName);
   //刷新表格
   __WEBPACK_IMPORTED_MODULE_0__component_table__["a" /* table */].load($grid, postData);
 });
+__WEBPACK_IMPORTED_MODULE_6_jQuery___default()('#export').attr('href', '../dataStatistics/exportBusinessData');
 
 /***/ })
 /******/ ]);
