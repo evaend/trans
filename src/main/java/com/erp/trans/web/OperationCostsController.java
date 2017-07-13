@@ -87,7 +87,7 @@ public class OperationCostsController {
 		salary.setModifyUserid(userId);
 		salary.setModifyDate(new Date());
 		salary.setOrgId(orgId);
-		operationCostsService.updateInfoCover(salary);
+		operationCostsService.updateInfo(salary);
 	
 	}
 	

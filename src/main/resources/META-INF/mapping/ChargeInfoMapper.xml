@@ -135,15 +135,16 @@
 	<insert id="batchCostInsertByCDetails">
 		insert into tb_charge_info(charge_id,org_id,charge_type,consign_detail_id,
 				despatch_plan_id,contract_id,FREIGHT_RATES,charge_fstate,MODIFY_USER_ID,
-				MODIFY_DATE,MODIFY_USER_NAME)
+				MODIFY_DATE,MODIFY_USER_NAME,CHARGE_AMOUNT)
 				
 		select 	cc.charge_id,#{despatchPlan.orgId, jdbcType=VARCHAR},cc.charge_type,
 		cc.consign_detail_id,cc.despatch_plan_id,cc.contract_id,cc.FREIGHT_RATES,
-		'00',#{despatchPlan.modifyUserId, jdbcType=VARCHAR},now(),#{despatchPlan.modifyUserName, jdbcType=VARCHAR}
+		'00',#{despatchPlan.modifyUserId, jdbcType=VARCHAR},now(),#{despatchPlan.modifyUserName, jdbcType=VARCHAR},cc.FREIGHT_RATES*cc.amount
 		from
 			(SELECT replace(uuid(),'-','') as "charge_id", 
 				'02' as "charge_type",
 				cd.consign_detail_id, 
+				cd.amount,
 				dp.despatch_plan_id,
 				ct.contract_id,
 				ct.FREIGHT_RATES	   
@@ -186,14 +187,15 @@
 	<insert id="batchProfitInsertByCDetails">
 	insert into tb_charge_info(charge_id,org_id,charge_type,consign_detail_id,
 				despatch_plan_id,contract_id,FREIGHT_RATES,charge_fstate,MODIFY_USER_ID,
-				MODIFY_DATE,MODIFY_USER_NAME)
+				MODIFY_DATE,MODIFY_USER_NAME,CHARGE_AMOUNT)
 		select 	cc.charge_id,#{despatchPlan.orgId, jdbcType=VARCHAR},cc.charge_type,
 		cc.consign_detail_id,cc.despatch_plan_id,cc.contract_id,cc.FREIGHT_RATES,
-		'00',#{despatchPlan.modifyUserId, jdbcType=VARCHAR},now(),#{despatchPlan.modifyUserName, jdbcType=VARCHAR}
+		'00',#{despatchPlan.modifyUserId, jdbcType=VARCHAR},now(),#{despatchPlan.modifyUserName, jdbcType=VARCHAR},cc.FREIGHT_RATES*cc.amount
 		from
 			(SELECT replace(uuid(),'-','') as "charge_id", 
 				'01' as "charge_type",
 				cd.consign_detail_id, 
+				cd.amount,
 				cd.despatch_plan_id,
 				ct.contract_id,
 				ct.FREIGHT_RATES	   

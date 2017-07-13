@@ -24,9 +24,9 @@
       c.CONSIGN_ORG_NAME "consignOrgName", 
       c.LOCATION_FROM "locationFrom",r.CARRIER_NAME "carrierName",r.TRANSPORT_TOOL "transportTool",
       ci.profitFreightRates "profitFreightRates",
-      ci.profitFreightRates*cd.AMOUNT "profitFreight",
+      ci.profitFreight "profitFreight",
       ci.costFreightRates "costFreightRates",
-      ci.costFreightRates*cd.AMOUNT "costFreight"
+      ci.costFreight "costFreight"
     </sql>
    <insert id="importConsignDetails" >
     insert into tb_consign_detail (CONSIGN_DETAIL_ID,CONSIGN_ID, CAR_BRAND, CAR_MODEL, 
@@ -76,8 +76,8 @@
 		left join tb_despatch_plan dp on cd.despatch_plan_id = dp.despatch_plan_id
 		left join td_record_info r on dp.record_id = r.record_id
 		left join (select  ci.CONSIGN_DETAIL_ID,
-					max(case when ci.CHARGE_TYPE='01' then ci.FREIGHT_RATES else 0 end) as "profitFreightRates",
-					max(case when ci.CHARGE_TYPE='02' then ci.FREIGHT_RATES else 0 end) as "costFreightRates"
+					max(case when ci.CHARGE_TYPE='01' then ci.CHARGE_AMOUNT else 0 end) as "profitFreight",
+					max(case when ci.CHARGE_TYPE='02' then ci.CHARGE_AMOUNT else 0 end) as "costFreight"
 					from tb_charge_info ci 
 					where ci.CHARGE_TYPE in ('01','02')
 					group by ci.CONSIGN_DETAIL_ID
@@ -119,6 +119,174 @@
 		</where>
 		order by c.create_date desc,cd.DESPATCH_DATE desc
 	</select>
+	 <select id="searchBusinessDataForSta" resultType="hashMap"
+		parameterType="com.erp.trans.common.entity.Pager">
+		select
+		<if test="conditiions.chartType != null and (conditiions.chartType == 'A1' or conditiions.chartType == 'B1')">
+			c.CONSIGN_ORG_NAME "categories", 
+		</if>
+		<if test="conditiions.chartType != null and (conditiions.chartType == 'A3' or conditiions.chartType == 'B2' or conditiions.chartType == 'D1' or conditiions.chartType == 'D2')">
+		 	concat(year(c.CREATE_DATE),'-',month(c.CREATE_DATE)) as "categories",
+		</if>
+		<if test="conditiions.chartType != null and (conditiions.chartType == 'C1' or conditiions.chartType == 'A2')">
+		 	r.CARRIER_NAME "categories",
+		</if>
+		<if test="conditiions.chartType != null and conditiions.chartType == 'C2'">
+			r.TRANSPORT_TOOL "categories",
+		</if>
+		<if test="conditiions.chartType != null and (conditiions.chartType == 'A1' or conditiions.chartType == 'A2' or conditiions.chartType == 'A3')">
+		 	sum(cd.AMOUNT) "data"
+		</if> 
+		<if test="conditiions.chartType != null and (conditiions.chartType == 'B1' or conditiions.chartType == 'B2')">
+		 	sum(ci.profitFreight) "data"
+		</if>
+		<if test="conditiions.chartType != null and (conditiions.chartType == 'C1' or conditiions.chartType == 'C2')">
+			sum(ci.costFreight) "data"
+		</if>
+		<if test="conditiions.chartType != null and conditiions.chartType == 'D1'">
+			sum(ci.profitFreight)-sum(ci.costFreight) "data"
+		</if>
+		<if test="conditiions.chartType != null and conditiions.chartType == 'D2'">
+			sum(ci.profitFreight)-sum(ci.costFreight)-
+			sum(ifnull(s.ACTUAL_PAY,0))-sum(ifnull(t.TAX_PRICE,0))
+			-sum(ifnull(ta.TRAVEL_AMOUNT,0))-sum(ifnull(osd.MONTH_RENT,0)) "data"
+		</if>
+		from tb_consign_detail cd
+		left join tb_consign c on cd.consign_id = c.consign_id
+		left join tb_despatch_plan dp on cd.despatch_plan_id = dp.despatch_plan_id
+		left join td_record_info r on dp.record_id = r.record_id
+		left join (select  ci.CONSIGN_DETAIL_ID,
+					max(case when ci.CHARGE_TYPE='01' then ci.CHARGE_AMOUNT else 0 end) as "profitFreight",
+					max(case when ci.CHARGE_TYPE='02' then ci.CHARGE_AMOUNT else 0 end) as "costFreight"
+					from tb_charge_info ci 
+					where ci.CHARGE_TYPE in ('01','02')
+					group by ci.CONSIGN_DETAIL_ID
+				   ) ci on cd.CONSIGN_DETAIL_ID = ci.CONSIGN_DETAIL_ID
+		<if test="conditiions.chartType != null and conditiions.chartType == 'D2'">
+			left join tb_salary  s on year(c.CREATE_DATE) = s.SALARY_YEAR and month(c.CREATE_DATE) =s.SALARY_MONTH
+			left join tb_tax_info t on year(c.CREATE_DATE) =  year(t.TAX_DATE) and month(c.CREATE_DATE) = month(t.TAX_DATE)
+			left join tb_travel_allowance ta on year(c.CREATE_DATE) =  year(ta.TRAVEL_DATE) and month(c.CREATE_DATE) = month(ta.TRAVEL_DATE)
+	<!-- 		left join tb_insurance i on year(c.CREATE_DATE) =  year(i.TRAVEL_DATE) and month(c.CREATE_DATE) = month(i.TRAVEL_DATE)
+	 -->		
+	        left join tb_office_space_fee osd  on year(c.CREATE_DATE) =  year(osd.RENT_DATE) and month(c.CREATE_DATE) = month(osd.RENT_DATE)
+		</if>
+		<where>
+			cd.DESPATCH_FSTATE='01'
+			<if test="conditiions.chartType != null and conditiions.chartType == 'C2'">
+				and r.CARRIER_TYPE = '01'
+			</if>
+			<if test="conditiions.orgId != null and conditiions.orgId != '0' and conditiions.orgId != '-1'">
+				and c.ORG_ID = #{conditiions.orgId,jdbcType=VARCHAR}
+			</if>
+			<if test="conditiions.transportTool != null and conditiions.transportTool != ''">
+				and  r.TRANSPORT_TOOL REGEXP #{conditiions.transportTool,jdbcType=VARCHAR}
+			</if>
+			<if test="conditiions.consignOrgName != null and conditiions.consignOrgName != ''">
+				and  c.CONSIGN_ORG_NAME REGEXP #{conditiions.consignOrgName,jdbcType=VARCHAR}
+			</if>
+			<if test="conditiions.locationFrom != null and conditiions.locationFrom != ''">
+				and  c.LOCATION_FROM = #{conditiions.locationFrom,jdbcType=VARCHAR}
+			</if>
+			<if test="conditiions.locationTo != null and conditiions.locationTo != ''">
+				and  c.LOCATION_TO = #{conditiions.locationTo,jdbcType=VARCHAR}
+			</if>
+			<if test="conditiions.receiveOrgName != null and conditiions.receiveOrgName != ''">
+				and c.RECEIVE_ORG_NAME REGEXP #{conditiions.receiveOrgName,jdbcType=VARCHAR}
+			</if>
+			<if test="conditiions.carrierName != null and conditiions.carrierName != ''">
+				and r.CARRIER_NAME REGEXP #{conditiions.carrierName,jdbcType=VARCHAR}
+			</if>
+			<if test="conditiions.createDateStart != null and conditiions.createDateStart != ''">
+				and <![CDATA[ date_format(c.create_date,'%Y-%m-%d') >= #{conditiions.createDateStart,jdbcType=VARCHAR} ]]>
+			</if>
+			<if test="conditiions.createDateEnd != null and conditiions.createDateEnd != ''">
+				and <![CDATA[ date_format(c.create_date,'%Y-%m-%d') <=  #{conditiions.createDateEnd,jdbcType=VARCHAR} ]]>
+			</if>
+			<if test="conditiions.despatchDateStart != null and conditiions.despatchDateStart != ''">
+				and <![CDATA[ date_format(cd.DESPATCH_DATE,'%Y-%m-%d') >= #{conditiions.despatchDateStart,jdbcType=VARCHAR} ]]>
+			</if>
+			<if test="conditiions.despatchDateEnd != null and conditiions.despatchDateEnd != ''">
+				and <![CDATA[ date_format(cd.DESPATCH_DATE,'%Y-%m-%d') <=  #{conditiions.despatchDateEnd,jdbcType=VARCHAR} ]]>
+			</if>
+		</where>
+		<if test="conditiions.chartType != null and conditiions.chartType == 'C2'">
+			group by r.TRANSPORT_TOOL
+		</if>
+		<if test="conditiions.chartType != null and (conditiions.chartType == 'A3' or conditiions.chartType == 'B2' or conditiions.chartType == 'D1' or conditiions.chartType == 'D2')">
+			group by  concat(year(c.CREATE_DATE),'-',month(c.CREATE_DATE))
+		</if>
+		<if test="conditiions.chartType != null and (conditiions.chartType == 'C1' or conditiions.chartType == 'A2')">
+			group by  r.CARRIER_NAME
+		</if>
+		<if test="conditiions.chartType != null and (conditiions.chartType == 'A1' or conditiions.chartType == 'B1')">
+			group by  c.CONSIGN_ORG_NAME
+		</if>
+	</select>
+	
+	 <select id="searchDriveBusinessDataForSta" resultType="hashMap"
+		parameterType="com.erp.trans.common.entity.Pager">
+		select
+			dp.MAIN_DRIVE "categories",
+		<if test="conditiions.chartType != null and (conditiions.chartType == 'C3' or conditiions.chartType == 'E1')">	
+			sum(cdi.CHARGE_AMOUNT) "data"
+		</if>
+		<if test="conditiions.chartType != null and conditiions.chartType == 'E2'">
+			sum(cdi.TAMOUNT)/(r.LOAD_AMOUNT*count(0)) "data"
+		</if>
+		<if test="conditiions.chartType != null and conditiions.chartType == 'E3'">
+			sum(case when cdi.SOURCE_CHARGE_ID is not null then 0 
+   			 else cdi.KILOMETERS end)/sum(cdi.KILOMETERS)  "data"
+   		</if>
+		from (
+			select cdi.org_id,cdi.despatch_plan_id,cdi.CHARGE_AMOUNT,cdi.TAMOUNT,
+			cdi.KILOMETERS,cdi.SOURCE_CHARGE_ID,cdi.location_from,cdi.location_to
+			from tb_charge_info cdi 
+			where cdi.CHARGE_TYPE='03') cdi 			
+			left join tb_despatch_plan dp on cdi.despatch_plan_id = dp.despatch_plan_id 
+			left join td_record_info r on dp.record_id = r.record_id 
+		<where>
+			<if test="conditiions.orgId != null and conditiions.orgId != '0' and conditiions.orgId != '-1'">
+				and cdi.ORG_ID = #{conditiions.orgId,jdbcType=VARCHAR}
+			</if>
+			<if test="conditiions.transportTool != null and conditiions.transportTool != ''">
+				and  r.TRANSPORT_TOOL REGEXP #{conditiions.transportTool,jdbcType=VARCHAR}
+			</if>
+			<if test="conditiions.locationFrom != null and conditiions.locationFrom != ''">
+				and  cdi.LOCATION_FROM = #{conditiions.locationFrom,jdbcType=VARCHAR}
+			</if>
+			<if test="conditiions.locationTo != null and conditiions.locationTo != ''">
+				and  cdi.LOCATION_TO = #{conditiions.locationTo,jdbcType=VARCHAR}
+			</if>			
+			<if test="conditiions.carrierName != null and conditiions.carrierName != ''">
+				and r.CARRIER_NAME REGEXP #{conditiions.carrierName,jdbcType=VARCHAR}
+			</if>
+			<if test="conditiions.despatchDateStart != null and conditiions.despatchDateStart != ''">
+				and <![CDATA[ date_format(dp.MODIFY_DATE,'%Y-%m-%d') >= #{conditiions.despatchDateStart,jdbcType=VARCHAR} ]]>
+			</if>
+			<if test="conditiions.despatchDateEnd != null and conditiions.despatchDateEnd != ''">
+				and <![CDATA[ date_format(dp.MODIFY_DATE,'%Y-%m-%d') <=  #{conditiions.despatchDateEnd,jdbcType=VARCHAR} ]]>
+			</if>
+			and exists (
+				select 0 from tb_consign_detail cd
+				left join tb_consign c on cd.consign_id = c.consign_id
+				where cd.despatch_plan_id = dp.despatch_plan_id
+				<if test="conditiions.consignOrgName != null and conditiions.consignOrgName != ''">
+					and  c.CONSIGN_ORG_NAME REGEXP #{conditiions.consignOrgName,jdbcType=VARCHAR}
+				</if>
+				<if test="conditiions.receiveOrgName != null and conditiions.receiveOrgName != ''">
+					and c.RECEIVE_ORG_NAME REGEXP #{conditiions.receiveOrgName,jdbcType=VARCHAR}
+				</if>
+				<if test="conditiions.createDateStart != null and conditiions.createDateStart != ''">
+					and <![CDATA[ date_format(c.create_date,'%Y-%m-%d') >= #{conditiions.createDateStart,jdbcType=VARCHAR} ]]>
+				</if>
+				<if test="conditiions.createDateEnd != null and conditiions.createDateEnd != ''">
+					and <![CDATA[ date_format(c.create_date,'%Y-%m-%d') <=  #{conditiions.createDateEnd,jdbcType=VARCHAR} ]]>
+			</if>
+			)
+		</where>
+		group by dp.RECORD_ID
+	</select>
+	
   <insert id="insert" parameterType="com.erp.trans.entity.ConsignDetail" >
     insert into tb_consign_detail (CONSIGN_DETAIL_ID, CAR_BRAND, CAR_MODEL, 
       AMOUNT, CHASSIS_NO, MODIFY_USER_ID, 

@@ -26,6 +26,8 @@ public class FilterServlet implements Filter {
 	private String[] uriRegexExpress = {
 			"/lib/[^\\s]*",
 			 "/js/login.js",
+			 "/login/login" ,
+			 "/",
 			"/login/userLogin" // 用户登录
 	};
 	

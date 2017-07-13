@@ -228,5 +228,47 @@ public class CustomConst {
         put("mainDrive", "主驾");
         put("coPliot", "副驾驶");
     }};
-	
+
+	/**
+	 * 文件导出Excel表对应字段名(数据统计)
+	 */
+	public final static Map<String,String> DataStatisticsExcelMap = new HashMap<String, String>() {{
+		put("transportTool", "轿运车");  
+        put("locationFrom", "起运地"); 
+        put("locationTo", "目的地");  
+        put("createDate", "制单时间");
+        put("despatchDate", "发运时间");
+        put("consignNo", "运单号"); 
+        put("chassisNo", "底盘号"); 
+        put("carBrand", "品牌");
+        put("carModel", "车型");
+        put("amount", "数量");
+        put("consignOrgName", "托运单位");
+        put("receiveOrgName", "收车单位");
+        put("carrierName", "承运商");
+        put("profitFreightRates", "收入运价");
+        put("profitFreight", "收入");
+        put("costFreightRates", "成本运价");
+        put("costFreight", "成本");
+    }};
+    
+    /**
+     * 数据统计的类型
+     */
+    public final static Map<String,String> DataStatisticsMap = new HashMap<String, String>() {{
+		put("A1", "托运量");  
+        put("A2", "承运量"); 
+        put("A3", "总运量");  
+        put("B1", "托运收入");
+        put("B2", "月总收入");
+        put("C1", "承运结费"); 
+        put("C2", "自有轿运车费"); 
+        put("C3", "司机费");
+        put("D1", "月运输利润");
+        put("D2", "月净利润");
+        put("E1", "司机收入");
+        put("E2", "平均负载率");
+        put("E3", "重载率");
+    }};
+   
 }

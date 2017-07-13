@@ -23,4 +23,8 @@ public interface ConsignDetailMapper {
 	String[] searchOldPlanIdsByCDetails(@Param("consignDetailIds")String[] consignDetailIds);
 
 	List<Map<String, Object>> searchBusinessData(Pager<Map<String, Object>> pager);
+
+	List<Map<String, Object>> searchBusinessDataForSta(Pager<Map<String, Object>> pager);
+
+	List<Map<String, Object>> searchDriveBusinessDataForSta(Pager<Map<String, Object>> pager);
 }
