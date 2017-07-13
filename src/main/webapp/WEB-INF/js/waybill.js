@@ -1902,7 +1902,7 @@ __WEBPACK_IMPORTED_MODULE_0__component_table__["a" /* table */].init(__WEBPACK_I
     }
   }],
   title: '运单表',
-  url: '../trans/findConsignList',
+  url: '../transController/findConsignList',
   height: __WEBPACK_IMPORTED_MODULE_4_jQuery___default()(window).height() - 95,
   columns: [[{ field: 'consignDetailId', checkbox: true }, { field: 'createDate', title: '制单日期', width: 150 }, { field: 'consignNo', title: '运单号', width: 200 }, { field: 'camount', title: '数量', width: 70, align: 'right' }, { field: 'consignFsate', title: '状态', width: 70, formatter: function formatter(value) {
       if (value === "01") {
@@ -1931,7 +1931,7 @@ __WEBPACK_IMPORTED_MODULE_1__component_window__["a" /* modalWindow */].init(__WE
     opts.push(item.consignId);
   });
   postData.consignIds = opts;
-  __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__utils_common__["b" /* ajaxPost */])({ url: '../trans/updateConsignFstate', data: postData }, function (data) {
+  __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__utils_common__["b" /* ajaxPost */])({ url: '../transController/updateConsignFstate', data: postData }, function (data) {
     //批量编辑,关闭窗口
     __WEBPACK_IMPORTED_MODULE_1__component_window__["a" /* modalWindow */].close(__WEBPACK_IMPORTED_MODULE_4_jQuery___default()('#waybillDialog'));
     __WEBPACK_IMPORTED_MODULE_3__component_message__["a" /* message */].alert({

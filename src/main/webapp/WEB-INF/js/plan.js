@@ -2123,7 +2123,7 @@ __WEBPACK_IMPORTED_MODULE_0__component_table__["a" /* table */].init($grid, {
           return consignDetailIds.push(item.consignDetailId);
         });
         // 后台交互
-        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4__utils_common__["b" /* ajaxPost */])({ url: '../trans/deleteConsignDetail', data: { consignDetailIds: consignDetailIds } }, function (data) {
+        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4__utils_common__["b" /* ajaxPost */])({ url: '../transController/deleteConsignDetail', data: { consignDetailIds: consignDetailIds } }, function (data) {
           console.log('删除数据', consignDetailIds);
           // 刷新表格
           __WEBPACK_IMPORTED_MODULE_0__component_table__["a" /* table */].reload($grid);
@@ -2132,7 +2132,7 @@ __WEBPACK_IMPORTED_MODULE_0__component_table__["a" /* table */].init($grid, {
     }
   }],
   title: '发运计划信息表',
-  url: '../trans/searchDispatchInfo',
+  url: '../transController/searchDispatchInfo',
   height: __WEBPACK_IMPORTED_MODULE_7_jQuery___default()(window).height() - 120,
   columns: [[{ field: 'consignDetailId', checkbox: true }, { field: 'createDate', title: '制单日期', width: 150 }, { field: 'despatchDate', title: '发运日期', width: 120 }, { field: 'consignNo', title: '运单号', width: 200 }, { field: 'chassisNo', title: '底盘号', width: 200 }, { field: 'amount', title: '数量', width: 70, align: 'right' }, { field: 'locationFrom', title: '起运地', width: 100 }, { field: 'locationTo', title: '目的地', width: 100 }, { field: 'carBrand', title: '品牌', width: 100 }, { field: 'carModel', title: '车型', width: 100 }, { field: 'transportTool', title: '轿运车', width: 150 },
   //{field:'name9',title:'车次',width:100}, 
@@ -2152,7 +2152,7 @@ __WEBPACK_IMPORTED_MODULE_1__component_window__["a" /* modalWindow */].init($dia
   var isValid = $form.form('validate');
   //===== 校验结束 =====
   if (isValid) {
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4__utils_common__["b" /* ajaxPost */])({ url: '../trans/insertConsignDto', data: postData }, function (data) {
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4__utils_common__["b" /* ajaxPost */])({ url: '../transController/insertConsignDto', data: postData }, function (data) {
       //if(data){
       console.log('一条记录', postData);
       //新增成功,关闭窗口
@@ -2178,7 +2178,7 @@ __WEBPACK_IMPORTED_MODULE_1__component_window__["a" /* modalWindow */].init($bbD
   var isValid = $bbForm.form('validate');
   //===== 校验结束 =====
   if (isValid) {
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4__utils_common__["b" /* ajaxPost */])({ url: '../trans/makePlan', data: postData }, function (data) {
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4__utils_common__["b" /* ajaxPost */])({ url: '../transController/makePlan', data: postData }, function (data) {
       __WEBPACK_IMPORTED_MODULE_1__component_window__["a" /* modalWindow */].close($bbDialog);
       __WEBPACK_IMPORTED_MODULE_5__component_message__["a" /* message */].alert({
         msg: '\u7F16\u677F\u6210\u529F'
@@ -2269,7 +2269,7 @@ __WEBPACK_IMPORTED_MODULE_7_jQuery___default()('#ff').on('change', '#import', fu
     });
   } else {
     __WEBPACK_IMPORTED_MODULE_7_jQuery___default.a.ajaxFileUpload({
-      url: '../trans/importConsign',
+      url: '../transController/importConsign',
       secureuri: false,
       fileElementId: 'import',
       success: function success(data) {
