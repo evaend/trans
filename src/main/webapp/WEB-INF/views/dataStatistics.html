@@ -13,62 +13,89 @@
 </head>
 <body>
   <!-- 查询表单开始 -->
-  <form id="ff" class='row vForm'>
-    <div class="col-md-5 vForm-item">  
-        <label for="createDateStart">制单时间:</label>  
-        <input type="text" name="createDateStart" id="starDate" class="Wdate"  
-        onFocus="WdatePicker({isShowClear:false,isShowToday:false,isShowOK:false,readOnly:true,maxDate:'#F{$dp.$D(\'endDate\')||\'2030-10-01\'}'})"/>  
-        至
-        <input type="text" name="createDateEnd" id="endDate" class="Wdate"  
-        onFocus="WdatePicker({isShowClear:false,isShowToday:false,isShowOK:false,readOnly:true,minDate:'#F{$dp.$D(\'starDate\')}',maxDate:'2030-10-01'})"//>
+  <form id="ff" class='vForm'>
+    <div class="row">
+        <div class="col-md-5 vForm-item">  
+            <label for="createDateStart">制单时间:</label>  
+            <input type="text" name="createDateStart" id="starDate" class="Wdate"  
+            onFocus="WdatePicker({isShowClear:false,isShowToday:false,isShowOK:false,readOnly:true,maxDate:'#F{$dp.$D(\'endDate\')||\'2030-10-01\'}'})"/>  
+            至
+            <input type="text" name="createDateEnd" id="endDate" class="Wdate"  
+            onFocus="WdatePicker({isShowClear:false,isShowToday:false,isShowOK:false,readOnly:true,minDate:'#F{$dp.$D(\'starDate\')}',maxDate:'2030-10-01'})"//>
+        </div>
+        <div class="col-md-5 vForm-item">  
+            <label for="dispatchDateStart">发运日期:</label>  
+            <input type="text" name="dispatchDateStart" id="dispatchDateStart" class="Wdate"  
+            onFocus="WdatePicker({isShowClear:false,isShowToday:false,isShowOK:false,readOnly:true,maxDate:'#F{$dp.$D(\'dispatchDateEnd\')||\'2030-10-01\'}'})"/>  
+            至
+            <input type="text" name="dispatchDateEnd" id="dispatchDateEnd" class="Wdate" 
+            onFocus="WdatePicker({isShowClear:false,isShowToday:false,isShowOK:false,readOnly:true,minDate:'#F{$dp.$D(\'dispatchDateStart\')}',maxDate:'2030-10-01'})"//>
+        </div>
+        <div class="col-md-3 vForm-item">  
+            <label for="locationFrom">起运地:</label>
+            <select id="locationFrom"  name='locationFrom' class="easyui-combobox" style="width:200px;height:28px">
+            </select> 
+        </div>  
+        <div class="col-md-3 vForm-item">  
+            <label for="locationTo">目的地:</label>  
+            <select id="locationTo" name='locationTo' class="easyui-combobox" style="width:200px;height:28px">
+            </select> 
+        </div>
+        <div class="col-md-3 vForm-item">  
+            <label for="transportTool">轿运车:</label>  
+            <input class="easyui-validatebox" type="text" name="transportTool" />  
+        </div> 
+        <div class="col-md-3 vForm-item">  
+            <label for="receiveOrgName">收车单位:</label>  
+            <input class="easyui-validatebox" type="text" name="receiveOrgName" /> 
+        </div>
+        <div class="col-md-3 vForm-item">  
+            <label for="consignOrgName">托运单位:</label>  
+            <input class="easyui-validatebox" type="text" name="consignOrgName" /> 
+        </div> 
+        <div class="col-md-4 vForm-item">  
+            <label for="carrierName">承运商:</label>  
+            <input class="easyui-validatebox" type="text" name="carrierName" /> 
+            <span>
+            <a id="search" href="#" class="easyui-linkbutton" data-options="iconCls:'icon-search'">查询</a>
+            </span> 
+        </div> 
+         <div class="col-md-4 vForm-item"> 
+            <select id="cc" class="easyui-combobox"  editable='false'style="width:200px;">  
+                <option value="A1">托运单位运量</option>  
+                <option value="A2">承运商运量</option> 
+                <option value="A3">总运量</option>  
+                <option value="B1">托运单位收入</option>  
+                <option value="B2">总收入</option>  
+                <option value="C1">承运商结费</option>  
+                <option value="C2">自由轿运车结费</option>  
+                <option value="C3">司机结费</option>  
+                <option value="D1">运输利润</option>  
+                <option value="D2">净利润</option>  
+                <option value="E1">司机收入</option>  
+                <option value="E2">平均负载率</option>  
+                <option value="E3">重载率</option>   
+            </select>
+      </div> 
     </div>
-    <div class="col-md-5 vForm-item">  
-        <label for="dispatchDateStart">发运日期:</label>  
-        <input type="text" name="dispatchDateStart" id="dispatchDateStart" class="Wdate"  
-        onFocus="WdatePicker({isShowClear:false,isShowToday:false,isShowOK:false,readOnly:true,maxDate:'#F{$dp.$D(\'dispatchDateEnd\')||\'2030-10-01\'}'})"/>  
-        至
-        <input type="text" name="dispatchDateEnd" id="dispatchDateEnd" class="Wdate" 
-        onFocus="WdatePicker({isShowClear:false,isShowToday:false,isShowOK:false,readOnly:true,minDate:'#F{$dp.$D(\'dispatchDateStart\')}',maxDate:'2030-10-01'})"//>
+    <div class="row">
+        <div class="col-md-2 vForm-item">
+            <a id="export" href="#" class="easyui-linkbutton" data-options="iconCls:'icon-print'">导出</a>  
+        </div> 
     </div>
-    <div class="col-md-3 vForm-item">  
-        <label for="locationFrom">起运地:</label>
-        <select id="locationFrom"  name='locationFrom' class="easyui-combobox" style="width:200px;height:28px">
-        </select> 
-      </div>  
-      <div class="col-md-3 vForm-item">  
-        <label for="locationTo">目的地:</label>  
-         <select id="locationTo" name='locationTo' class="easyui-combobox" style="width:200px;height:28px">
-        </select> 
-    </div>
-    <div class="col-md-3 vForm-item">  
-        <label for="transportTool">轿运车:</label>  
-        <input class="easyui-validatebox" type="text" name="transportTool" />  
-    </div> 
-    <div class="col-md-3 vForm-item">  
-        <label for="carrierName">收车单位:</label>  
-        <input class="easyui-validatebox" type="text" name="carrierName" /> 
-    </div>
-    <div class="col-md-3 vForm-item">  
-        <label for="carrierName">托运单位:</label>  
-        <input class="easyui-validatebox" type="text" name="carrierName" /> 
-    </div> 
-    <div class="col-md-4 vForm-item">  
-        <label for="carrierName">承运商:</label>  
-        <input class="easyui-validatebox" type="text" name="carrierName" /> 
-        <span>
-          <a id="search" href="#" class="easyui-linkbutton" data-options="iconCls:'icon-search'">查询</a>
-        </span> 
-    </div> 
   </form>  
-
   <!-- 表格开始 -->
   <div style='padding:0 8px'>
     <table id="dataStatisticslGrid" class="easyui-datagrid"></table>
   </div>  
+  <div id="dataCharts"></div>
   <!-- 表格结束 -->   
 <script type="text/javascript" src="../lib/jquery-3.2.1.min.js"></script>
 <script type="text/javascript" src="../lib/easyui/jquery.easyui.min.js"></script>   
 <script type="text/javascript" src="../lib/easyui/easyui-lang-zh_CN.js"></script>  
 <script type="text/javascript" src="../lib/My97DatePicker/WdatePicker.js"></script>
 <script type="text/javascript" src="../js/dataStatistics.js"></script></body>
+<script>
+ 
+</script>
 </html>
