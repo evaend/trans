@@ -15,12 +15,15 @@
   <!-- 查询表单开始 -->
   <form id="ff" class='row vForm'>  
     <div class="col-md-6 vForm-item">  
-      <label for="startDate">日期:</label>  
-        <input type="text" name="starDate" id="starDate" class="Wdate"  
-        onFocus="WdatePicker({isShowClear:false,isShowToday:false,isShowOK:false,readOnly:true,maxDate:'#F{$dp.$D(\'endDate\')||\'2030-10-01\'}'})"/>  
-        至
-        <input type="text" name="endDate" id="endDate" class="Wdate"  
-        onFocus="WdatePicker({isShowClear:false,isShowToday:false,isShowOK:false,readOnly:true,minDate:'#F{$dp.$D(\'starDate\')}',maxDate:'2030-10-01'})"/>  
+      <label for="startDate">年:</label>  
+      <select id="insuranceYear" editable='false' name='insuranceYear' class="easyui-combobox"  style="width:200px;height:28px">   
+          <option value="2017">2017</option>  
+          <option value="2018">2018</option>
+          <option value="2019">2019</option>  
+          <option value="2020">2020</option>  
+          <option value="2021">2021</option>  
+          <option value="2022">2022</option>     
+        </select>  
       <a id="search" href="#" class="easyui-linkbutton" data-options="iconCls:'icon-search'">查询</a>  
     </div>  
   </form>
@@ -34,6 +37,19 @@
   <div id="insuranceDialog">
     <form id="insuranceFf" class='row vForm'>  
       <input type="hidden" name="insuranceId"/>
+      <div class="col-md-2 vForm-item form-label">  
+        <label for="insuranceYear">年:</label>   
+      </div> 
+      <div class="col-md-4 vForm-item">  
+        <select id="insuranceYear" editable='false' name='insuranceYear' class="easyui-combobox"  style="width:200px;height:28px">   
+          <option value="2017">2017</option>  
+          <option value="2018">2018</option>
+          <option value="2019">2019</option>  
+          <option value="2020">2020</option>  
+          <option value="2021">2021</option>  
+          <option value="2022">2022</option>     
+        </select> 
+      </div>
       <div class="col-md-2 vForm-item form-label">  
         <label for="insuranceNo">保险单号:</label>   
       </div>  
