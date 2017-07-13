@@ -1858,7 +1858,7 @@ __WEBPACK_IMPORTED_MODULE_2_jQuery___default()('#loginBtn').on('click', function
         data: postData
     }).then(function (data) {
         if (data.loginResult === "success") {
-            window.location.href = "index.html";
+            window.location.href = "../views/index.html";
         } else {
             __WEBPACK_IMPORTED_MODULE_2_jQuery___default()("#errMsg").removeClass("hidden");
             __WEBPACK_IMPORTED_MODULE_2_jQuery___default()("#errMsg").html("登录失败");
