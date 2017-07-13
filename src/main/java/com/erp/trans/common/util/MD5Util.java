@@ -21,7 +21,7 @@ public class MD5Util {
 	public static String bytetoString(byte[] digest) {  
 	    String str = "";  
 	    String tempStr = "";  
-	    for (int i = 1; i < digest.length; i++) {   
+	    for (int i = 0; i < digest.length; i++) {   
 		    tempStr = (Integer.toHexString(digest[i] & 0xff));   
 		    if (tempStr.length() == 1) {    
 		    	str = str + "0" + tempStr;   

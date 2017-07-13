@@ -13,6 +13,7 @@
     <result column="MODIFY_DATE" jdbcType="TIMESTAMP" property="modifyDate" />
     <result column="USER_LEVEL" jdbcType="VARCHAR" property="userLevel" />
     <result column="PWD" jdbcType="VARCHAR" property="pwd" />
+    <result column="USER_TYPE" jdbcType="VARCHAR" property="userType" />
   </resultMap>
   <sql id="Base_Column_List">
     USER_ID, USER_NO, USER_NAME, FSTATE, ORG_ID, MOBILE_PHONE, E_MAIL, CREATE_DATE, MODIFY_DATE

@@ -60,7 +60,7 @@ public class UserServiceImpl extends BaseService implements UserService {
 			loginSuccess = false;
 			result = "用户名不存在";
 		}else{
-			if( newUserInfo.getPwd()!= null && !MD5Util.MD5Encrypt(pwd).toUpperCase().equals(newUserInfo.getPwd().toUpperCase())){
+			if( newUserInfo.getPwd()!= null && !pwd.toUpperCase().equals(newUserInfo.getPwd().toUpperCase())){
 				loginSuccess = false;
 				result = "用户名或者密码错误";
 			}else if(!newUserInfo.getFstate().equals(CustomConst.Fstate.USABLE)){

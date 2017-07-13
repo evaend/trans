@@ -31,6 +31,8 @@ public class UserInfo {
     private Date createDate;
 
     private Date modifyDate;
+    
+    private String userType;
 
     public String getUserId() {
         return userId;
@@ -127,4 +129,12 @@ public class UserInfo {
     public void setModifyDate(Date modifyDate) {
         this.modifyDate = modifyDate;
     }
+
+	public String getUserType() {
+		return userType;
+	}
+
+	public void setUserType(String userType) {
+		this.userType = userType;
+	}
 }
