@@ -85,6 +85,7 @@
 					group by ci.CONSIGN_DETAIL_ID
 				   ) ci on cd.CONSIGN_DETAIL_ID = ci.CONSIGN_DETAIL_ID
 		<where>
+			cd.DESPATCH_FSTATE='01'
 			<if test="conditiions.orgId != null and conditiions.orgId != '0' and conditiions.orgId != '-1'">
 				and c.ORG_ID = #{conditiions.orgId,jdbcType=VARCHAR}
 			</if>
@@ -140,18 +141,18 @@
 		 	sum(cd.AMOUNT) "data"
 		</if> 
 		<if test="conditiions.chartType != null and (conditiions.chartType == 'B1' or conditiions.chartType == 'B2')">
-		 	sum(ci.profitFreight) "data"
+		 	FORMAT(sum(ci.profitFreight),2) "data"
 		</if>
 		<if test="conditiions.chartType != null and (conditiions.chartType == 'C1' or conditiions.chartType == 'C2')">
-			sum(ci.costFreight) "data"
+			FORMAT(sum(ci.costFreight),2) "data"
 		</if>
 		<if test="conditiions.chartType != null and conditiions.chartType == 'D1'">
-			sum(ci.profitFreight)-sum(ci.costFreight) "data"
+			FORMAT((sum(ci.profitFreight)-sum(ci.costFreight)),2)"data"
 		</if>
 		<if test="conditiions.chartType != null and conditiions.chartType == 'D2'">
-			sum(ci.profitFreight)-sum(ci.costFreight)-
+			FORMAT((sum(ci.profitFreight)-sum(ci.costFreight)-
 			sum(ifnull(s.ACTUAL_PAY,0))-sum(ifnull(t.TAX_PRICE,0))
-			-sum(ifnull(ta.TRAVEL_AMOUNT,0))-sum(ifnull(osd.MONTH_RENT,0)) "data"
+			-sum(ifnull(ta.TRAVEL_AMOUNT,0))),2) "data"
 		</if>
 		from tb_consign_detail cd
 		left join tb_consign c on cd.consign_id = c.consign_id
@@ -168,9 +169,8 @@
 			left join tb_salary  s on year(c.CREATE_DATE) = s.SALARY_YEAR and month(c.CREATE_DATE) =s.SALARY_MONTH
 			left join tb_tax_info t on year(c.CREATE_DATE) =  year(t.TAX_DATE) and month(c.CREATE_DATE) = month(t.TAX_DATE)
 			left join tb_travel_allowance ta on year(c.CREATE_DATE) =  year(ta.TRAVEL_DATE) and month(c.CREATE_DATE) = month(ta.TRAVEL_DATE)
-	<!-- 		left join tb_insurance i on year(c.CREATE_DATE) =  year(i.TRAVEL_DATE) and month(c.CREATE_DATE) = month(i.TRAVEL_DATE)
-	 -->		
-	        left join tb_office_space_fee osd  on year(c.CREATE_DATE) =  year(osd.RENT_DATE) and month(c.CREATE_DATE) = month(osd.RENT_DATE)
+	<!-- 	left join tb_insurance i on year(c.CREATE_DATE) =  year(i.TRAVEL_DATE) and month(c.CREATE_DATE) = month(i.TRAVEL_DATE)	
+	        left join tb_office_space_fee osd  on year(c.CREATE_DATE) =  year(osd.RENT_DATE) and month(c.CREATE_DATE) = month(osd.RENT_DATE) -->
 		</if>
 		<where>
 			cd.DESPATCH_FSTATE='01'
@@ -230,14 +230,14 @@
 		select
 			dp.MAIN_DRIVE "categories",
 		<if test="conditiions.chartType != null and (conditiions.chartType == 'C3' or conditiions.chartType == 'E1')">	
-			sum(cdi.CHARGE_AMOUNT) "data"
+			FORMAT(sum(cdi.CHARGE_AMOUNT),2) "data"
 		</if>
 		<if test="conditiions.chartType != null and conditiions.chartType == 'E2'">
-			sum(cdi.TAMOUNT)/(r.LOAD_AMOUNT*count(0)) "data"
+			FORMAT(sum(cdi.TAMOUNT)/(r.LOAD_AMOUNT*count(0)),2) "data"
 		</if>
 		<if test="conditiions.chartType != null and conditiions.chartType == 'E3'">
-			sum(case when cdi.SOURCE_CHARGE_ID is not null then 0 
-   			 else cdi.KILOMETERS end)/sum(cdi.KILOMETERS)  "data"
+			FORMAT(sum(case when cdi.SOURCE_CHARGE_ID is not null then 0 
+   			 else cdi.KILOMETERS end)/sum(cdi.KILOMETERS),2)  "data"
    		</if>
 		from (
 			select cdi.org_id,cdi.despatch_plan_id,cdi.CHARGE_AMOUNT,cdi.TAMOUNT,

@@ -311,6 +311,7 @@ public class TransManagementController {
 			final StringBuffer msg = new StringBuffer();
 			List<Consign> consignList = new ArrayList<Consign>();
 			final Set<String> consignNos = new HashSet<String>();
+			final Set<String> chassisNos = new HashSet<String>();
 			List<ConsignDto> entityList = ExcelUtils.readExcel(
 					consignExcelFile.getInputStream(),1, ConsignDto.class, 
 					new EntityHandler<ConsignDto>(){
@@ -322,6 +323,10 @@ public class TransManagementController {
 							//运单号
 							if(StringUtils.trimToNull(entity.getConsignNo())!=null){
 								consignNos.add(entity.getConsignNo().trim());
+							}
+							//底盘号
+							if(StringUtils.trimToNull(entity.getChassisNo())!=null){
+								chassisNos.add(entity.getChassisNo().trim());
 							}
 							//TASK ed 其他:数据格式校验
 //							String error = validMaterial(entity);
@@ -338,11 +343,15 @@ public class TransManagementController {
 		//TASK 可以做一些校验。
 		String[] filterNos = transManagementService.filterExistConsignNos( consignNos.toArray());
 		if(ArrayUtils.isNotEmpty(filterNos)){
-			msg.append("[运单号检查] - ").append(Arrays.toString(filterNos)).append("，运单号重复，请检查<br/>");
+			msg.append("[运单号] - ").append(Arrays.toString(filterNos)).append("，已存在!");
+		}
+		String[] filterchassisNos = transManagementService.filterExistChassisNos( chassisNos.toArray());
+		if(ArrayUtils.isNotEmpty(filterNos)){
+			msg.append("[底盘号] - ").append(Arrays.toString(filterchassisNos)).append("，已存在!");
 		}
 		String message = msg.toString();
 		if(StringUtils.isNotEmpty(message)){
-			throw new ValidationException("<b>数据检查不通过，请检查数据:</b><p>" + message);
+			throw new ValidationException("数据检查不通过，请检查数据:" + message);
 		}
 		Assert.notEmpty(entityList, "列表:没有发现运单，请检查文档");
 		//TASK Excel表格 => 导入excel中的运单

@@ -36,5 +36,7 @@ public interface TransManagementService extends IBaseService {
 
 	public String[] filterExistConsignNos(Object[] array);
 
+	public String[] filterExistChassisNos(Object[] array);
+
 	
 }

@@ -23,4 +23,6 @@ public interface ConsignMapper {
 	void clearNoUseConsign();
 
 	String[] filterExistConsignNos(@Param("consignNos")Object[] consignNos);
+
+	String[] filterExistChassisNos(@Param("chassisNos")Object[] chassisNos);
 }

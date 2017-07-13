@@ -24,6 +24,8 @@ public class Insurance {
     private String orgId;
 
     private String insuranceNo;
+    
+    private String insuranceYear;
 
     public String getInsuranceId() {
         return insuranceId;
@@ -88,4 +90,12 @@ public class Insurance {
     public void setInsuranceNo(String insuranceNo) {
         this.insuranceNo = insuranceNo == null ? null : insuranceNo.trim();
     }
+
+	public String getInsuranceYear() {
+		return insuranceYear;
+	}
+
+	public void setInsuranceYear(String insuranceYear) {
+		this.insuranceYear = insuranceYear;
+	}
 }

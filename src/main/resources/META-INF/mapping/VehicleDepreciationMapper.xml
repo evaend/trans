@@ -9,10 +9,11 @@
     <result column="MONTHLY_DEPRECIATION" property="monthlyDepreciation" jdbcType="VARCHAR" />
     <result column="MODIFY_DATE" property="modifyDate" jdbcType="TIMESTAMP" />
     <result column="MODIFY_USERID" property="modifyUserid" jdbcType="VARCHAR" />
-    <result column="ORG_ID" property="orgId" jdbcType="VARCHAR" />
+    <result column="ORG_ID" property="orgId" jdbcType="VARCHAR" /> 
+    <result column="SERVICE_BEGIN_YEAR" jdbcType="VARCHAR" property="serviceBeginYear" />
   </resultMap>
   <sql id="Base_Column_List">
-   VEHICLE_DEPRECIATION_ID,TRANSPORT_TOOL_NO,VEHICLE_ASSETS,SERVICE_LIFE,MONTHLY_DEPRECIATION
+   VEHICLE_DEPRECIATION_ID,TRANSPORT_TOOL_NO,VEHICLE_ASSETS,SERVICE_LIFE,MONTHLY_DEPRECIATION,SERVICE_BEGIN_YEAR
   </sql>
   <!-- 查询车辆折旧信息 -->
   <select id="searchVehicleDep" resultMap="BaseResultMap" parameterType="com.erp.trans.common.entity.Pager">

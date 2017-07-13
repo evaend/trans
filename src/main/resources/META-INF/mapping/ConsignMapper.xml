@@ -128,6 +128,17 @@
 		left JOIN tb_consign on tb_consign.consign_no=cnos.cno
 		WHERE tb_consign.consign_no is  not null
    </select>
+    <select id="filterExistChassisNos" resultType="string">
+  		SELECT distinct cnos.cno
+		FROM (
+			<foreach collection="chassisNos" item="chassisNo" index="index" open=" " close=" " separator="UNION">
+				select #{chassisNos[${index}], jdbcType=VARCHAR} cno FROM dual
+	    	</foreach>
+		  ) cnos
+		left JOIN tb_consign_detail on tb_consign_detail.chassis_no=cnos.cno
+		WHERE tb_consign_detail.chassis_no is  not null
+   </select>
+   
   <insert id="insert" parameterType="com.erp.trans.entity.Consign" >
     insert into tb_consign (CONSIGN_ID, CONSIGN_NO, CAMOUNT, 
       LOCATION_TO, RECEIVE_ORG_ID, RECEIVE_ORG_NAME, 

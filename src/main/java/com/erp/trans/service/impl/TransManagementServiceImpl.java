@@ -194,12 +194,22 @@ public class TransManagementServiceImpl  extends BaseService implements TransMan
 	@Override
 	public void deleteConsignDetail(String[] consignDetailIds) {
 		// TODO Auto-generated method stub
+//		获取本次操作的运单明细的旧的发运计划ids
+		String[] oldPlanIds = consignDetailMapper.searchOldPlanIdsByCDetails(consignDetailIds);
 //		删除运单明细
 		consignDetailMapper.batchDeleteByIds(consignDetailIds);
 //		删除运单明细的结费信息
 		chargeInfoMapper.batchDeleteByCDetails(consignDetailIds);
 //		如果运单明细关联的运单都删掉了，就删除运单
 		consignMapper.clearNoUseConsign();
+//		更新结费表里有变化司机结费的车辆数量
+		chargeInfoMapper.batchUpdateTamount(oldPlanIds);
+//		删除结费表里有可能司机结费数量为0的结费以及其关联的新增的空载结费
+		String[] chargeIds = chargeInfoMapper.selectChargesTamountIs0(oldPlanIds);
+		if(chargeIds != null && chargeIds.length > 0)
+			chargeInfoMapper.batchDeleteTamountIs0(chargeIds);
+//		删除没有运单明细关联的发运计划
+		despatchPlanMapper.batchDeleteDesPlanIsNull(oldPlanIds);
 	}
 
 	@Override
@@ -218,6 +228,14 @@ public class TransManagementServiceImpl  extends BaseService implements TransMan
 		if(consigns != null && consigns.size() > 0){
 			throw new ValidationException("运单号已存在，请检查");
 		}
+//		00、查询底盘号是否已存在，不容许底盘号重复
+		ConsignDetail consigndetail0 = new ConsignDetail();
+		consigndetail0.setChassisNo(consigndto.getChassisNo());
+		List<ConsignDetail> consigndetails = this.searchList(consigndetail0);
+		if(consigndetails != null && consigndetails.size() > 0){
+			throw new ValidationException("底盘号已存在，请检查");
+		}
+		
 //		1、新增运单主记录
 		Consign consign = new Consign();
 		consign.setConsignId(IdentifieUtil.getGuId());
@@ -252,6 +270,12 @@ public class TransManagementServiceImpl  extends BaseService implements TransMan
 	public String[] filterExistConsignNos(Object[] array) {
 		// TODO Auto-generated method stub
 		return consignMapper.filterExistConsignNos(array);
+	}
+
+	@Override
+	public String[] filterExistChassisNos(Object[] array) {
+		// TODO Auto-generated method stub
+		return consignMapper.filterExistChassisNos(array);
 	}
 
 }

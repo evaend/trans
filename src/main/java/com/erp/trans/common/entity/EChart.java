@@ -10,9 +10,7 @@
 package com.erp.trans.common.entity;  
 
 import java.io.Serializable;
-import java.util.Set;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import java.util.List;
 
 /**
  * 图表返回数据的实体Bean <br> 
@@ -23,7 +21,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
  */
 public class EChart<E> implements Serializable {
 	
-	private Set<String> categories;
+	private List<String> categories;
 	
 	/**返回的series*/
 	private EChartSeries series;
@@ -31,11 +29,11 @@ public class EChart<E> implements Serializable {
     public EChart() {
 		super();
     }
-	public Set<String> getCategories() {
+	public List<String> getCategories() {
 		return categories;
 	}
 
-	public void setCategories(Set<String> categories) {
+	public void setCategories(List<String> categories) {
 		this.categories = categories;
 	}
 

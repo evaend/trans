@@ -1,7 +1,7 @@
 package com.erp.trans.common.entity;
 
 import java.io.Serializable;
-import java.util.Set;
+import java.util.List;
 
 public class EChartSeries implements Serializable{ 
 		/**图表类型（默认柱状图）*/
@@ -11,7 +11,7 @@ public class EChartSeries implements Serializable{
 		private String name;
 		
 		/**需要展示的数据*/
-		private Set<String> data;
+		private List<String> data;
 
 		public String getType() {
 			return type;
@@ -29,11 +29,11 @@ public class EChartSeries implements Serializable{
 			this.name = name;
 		}
 
-		public Set<String> getData() {
+		public List<String> getData() {
 			return data;
 		}
 
-		public void setData(Set<String> data) {
+		public void setData(List<String> data) {
 			this.data = data;
 		}
 }

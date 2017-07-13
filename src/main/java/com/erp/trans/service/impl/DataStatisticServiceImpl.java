@@ -2,10 +2,8 @@ package com.erp.trans.service.impl;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -41,8 +39,8 @@ public class DataStatisticServiceImpl extends BaseService implements DataStatist
 				businessDataList = consignDetailMapper.searchBusinessDataForSta(pager);			
 			}
 			EChart<Map<String, Object>> eChart = new EChart<Map<String, Object>>();
-			Set<String> categories = new HashSet<String>();
-			Set<String> data = new HashSet<String>();
+			List<String> categories = new ArrayList<String>();
+			List<String> data = new ArrayList<String>();
 			for(Map<String, Object> map:businessDataList){
 				categories.add(map.get("categories").toString());
 				data.add(map.get("data").toString());
@@ -51,6 +49,10 @@ public class DataStatisticServiceImpl extends BaseService implements DataStatist
 			EChartSeries eChartSeries = new EChartSeries();
 			eChartSeries.setName(CustomConst.DataStatisticsMap.get(chartType));
 			eChartSeries.setData(data);
+			List<String> lineCharge = Arrays.asList("A3","B2","D1","D2");
+			if(lineCharge.contains(chartType)){
+				eChartSeries.setType("line");//折线图
+			}
 			eChart.setSeries(eChartSeries);
 			return eChart;
 		}

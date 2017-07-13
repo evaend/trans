@@ -24,6 +24,8 @@ public class VehicleDepreciation {
     private String modifyUserid;
 
     private String orgId;
+    
+    private String serviceBeginYear;
 
     public String getVehicleDepreciationId() {
         return vehicleDepreciationId;
@@ -88,4 +90,12 @@ public class VehicleDepreciation {
     public void setOrgId(String orgId) {
         this.orgId = orgId == null ? null : orgId.trim();
     }
+
+	public String getServiceBeginYear() {
+		return serviceBeginYear;
+	}
+
+	public void setServiceBeginYear(String serviceBeginYear) {
+		this.serviceBeginYear = serviceBeginYear;
+	}
 }
