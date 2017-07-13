@@ -61,7 +61,7 @@
             </span> 
         </div> 
          <div class="col-md-4 vForm-item"> 
-            <select id="cc" class="easyui-combobox"  editable='false'style="width:200px;">  
+            <select id="selectCharts" class="easyui-combobox"  editable='false'style="width:200px;">  
                 <option value="A1">托运单位运量</option>  
                 <option value="A2">承运商运量</option> 
                 <option value="A3">总运量</option>  
@@ -88,7 +88,15 @@
   <div style='padding:0 8px'>
     <table id="dataStatisticslGrid" class="easyui-datagrid"></table>
   </div>  
-  <div id="dataCharts"></div>
+ 
+  <div class="panel panel-success" style="margin-top:10px;">
+      <div class="panel-heading">
+        <h3 class="panel-title">统计图表</h3>
+      </div>
+      <div class="panel-body">
+         <div id="dataCharts" style="height:400px;width:100%"></div>
+    </div>
+  </div>
   <!-- 表格结束 -->   
 <script type="text/javascript" src="../lib/jquery-3.2.1.min.js"></script>
 <script type="text/javascript" src="../lib/easyui/jquery.easyui.min.js"></script>   
