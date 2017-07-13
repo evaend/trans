@@ -46,7 +46,7 @@ import com.erp.trans.web.dto.ConsignDto;
  * 
  * */
 @Controller
-@RequestMapping("/trans")
+@RequestMapping("/transController")
 public class TransManagementController {
 	
 	public final static Logger logger = LoggerFactory.getLogger(TransManagementController.class);

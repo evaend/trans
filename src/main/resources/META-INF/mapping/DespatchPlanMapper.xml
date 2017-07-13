@@ -57,7 +57,7 @@
 				and <![CDATA[ date_format(c.create_date,'%Y-%m-%d') <=  #{conditiions.createDateEnd,jdbcType=VARCHAR} ]]>
 			</if>
 		</where>
-		order by c.create_date desc,cd.DESPATCH_DATE desc,cd.DESPATCH_FSTATE
+		order by cd.DESPATCH_FSTATE,c.create_date desc,cd.DESPATCH_DATE desc
 	</select>
   <insert id="insert" parameterType="com.erp.trans.entity.DespatchPlan" >
     insert into tb_despatch_plan (DESPATCH_PLAN_ID, MOUNT, RECORD_ID, 

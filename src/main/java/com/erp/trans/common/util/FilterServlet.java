@@ -47,7 +47,7 @@ public class FilterServlet implements Filter {
 			logger.trace("请求参数 : " + JSONUtils.toJson(request.getParameterMap()));
 		}
 		
-		if(!requestURI.matches("[^\\s]+\\.(jpg|jpeg|png|bmp|gif|html|css|ico|svg|woff|woff2|map|rar)")){
+		if(!requestURI.matches("[^\\s]+\\.(jpg|jpeg|png|bmp|gif|html|css|ico|svg|woff|woff2|map|rar|ico)")){
 			//放过的请求
 			for (String regex: uriRegexExpress) {
 				String compareRegex = contextPath + regex;
