@@ -18,7 +18,7 @@
           <img src="../images/people.png" width="22" height="32"/>
        </div>
       <div style="display:inline-block;margin-left:10px;">
-          您好，<span>admin</span> 
+          您好，<span id="username"></span> 
         <p>欢迎使用整车物流管理平台</p>
       </div>
       </div>
@@ -50,7 +50,7 @@
 <script type="text/javascript" src="../lib/jquery-3.2.1.min.js"></script>
 <script type="text/javascript" src="../lib/easyui/jquery.easyui.min.js"></script>  
 <script type="text/javascript">
-  var username = 'admin';
+  //var username = 'admin';
   var mock = [];
   //财务
   var cwMenuList = [
@@ -104,12 +104,12 @@
             role = '超级管理员';
             break;
           case "1":
-            mock = cwMenuList.concat(bbList);
-            role = '财务';
-            break;
-          case "2":
             mock = ddMenuList.concat(bbList);
             role = '调度';
+            break;
+          case "2":
+            mock = cwMenuList.concat(bbList);
+            role = '财务';
             break;    
           default:
             $.messager.alert('错误提示',  '用户账号信息错误,请联系管理员！');

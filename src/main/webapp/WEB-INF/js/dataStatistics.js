@@ -22113,6 +22113,7 @@ __WEBPACK_IMPORTED_MODULE_6_jQuery___default()('#search').on('click', function (
     __WEBPACK_IMPORTED_MODULE_6_jQuery___default.a.ajax({
       url: '../dataStatistics/showBusinessData?chartType=' + value,
       dataType: 'json',
+      method: 'post',
       data: postData
     }).then(function (data) {
       if (data.categories && data.series) {
