@@ -69,7 +69,7 @@
       ci.MODIFY_USER_NAME "modifyUserName",
       date_format(ci.MODIFY_DATE,'%Y-%m-%d %T') "modifyDate",
       ci.KILO_PRICE "kiloPrice",ci.KILOMETERS "kilometers",ci.OIL_COST "oilCost",ci.SERVICE_RATE "serviceRate",
-      ci.OIL_RATIO "oilRatio",ci.OIL_PRICE "oilPrice",ci.OIL_SUBSIDY "oilSubsidy"
+      ci.OIL_RATIO "oilRatio",ci.OIL_PRICE "oilPrice",ci.OIL_SUBSIDY "oilSubsidy",ci.SOURCE_CHARGE_ID "sourceChargeId"
       
   </sql>
    <select id="searchChargeList" resultType="hashMap"
@@ -112,18 +112,18 @@
 			<if test="conditiions.transportTool != null and conditiions.transportTool != ''">
 				and  r.TRANSPORT_TOOL REGEXP #{conditiions.transportTool,jdbcType=VARCHAR}
 			</if>
-			<if test="conditiions.chargeFstate != null and conditiions.chargeFstate != '' and conditiions.chargeFstate != 0">
+			<if test="conditiions.chargeFstate != null and conditiions.chargeFstate != ''">
 				and ci.charge_fstate = #{conditiions.chargeFstate,jdbcType=VARCHAR}
 			</if>
 			<if test="conditiions.dispatchDateStart != null and conditiions.dispatchDateStart != ''">
 				and <![CDATA[ date_format(dp.MODIFY_DATE,'%Y-%m-%d') >= #{conditiions.dispatchDateStart,jdbcType=VARCHAR} ]]>
 			</if>
-			<if test="conditiions.createDateEnd != null and conditiions.createDateEnd != ''">
-				and <![CDATA[ date_format(dp.MODIFY_DATE,'%Y-%m-%d') <=  #{conditiions.createDateEnd,jdbcType=VARCHAR} ]]>
+			<if test="conditiions.dispatchDateEnd != null and conditiions.dispatchDateEnd != ''">
+				and <![CDATA[ date_format(dp.MODIFY_DATE,'%Y-%m-%d') <=  #{conditiions.dispatchDateEnd,jdbcType=VARCHAR} ]]>
 			</if>
 		</where>
 		<if test="conditiions.chargeType!= null and conditiions.chargeType == '03'">
-				order by r.TRANSPORT_TOOL,dp.MODIFY_DATE desc
+				order by r.TRANSPORT_TOOL,ci.MODIFY_DATE
 		</if>
 		<if test="conditiions.chargeType!= null and conditiions.chargeType == '01'">
 				order by cd.DESPATCH_DATE desc,ci.charge_fstate

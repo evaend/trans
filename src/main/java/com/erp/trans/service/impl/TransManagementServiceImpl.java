@@ -153,13 +153,11 @@ public class TransManagementServiceImpl  extends BaseService implements TransMan
 		//批量添加发运计划和运单明细的关系
 		consignDetailMapper.batchUpdatePlan(consignDetailIds,despatchPlan.getDespatchPlanId());
 		/**二、更新本次发运计划的承运商所带运单信息**/
-		if(consignNos != null && consignNos.length >0){
-			if(StringUtils.isNotBlank(consignNos[0])){
+		if(consignNos != null && consignNos.length >1){
 				//1 批量删除运单号原来关联的发运计划
 				desplanConnoMapper.batchDeleteByCnos(consignNos);
 				//2 批量增加运单号新的关系
 				desplanConnoMapper.batchInsertByCnos(consignNos,despatchPlan.getDespatchPlanId());
-			}
 		}
 		/**三、结费调整**/
 //		删除本次编板的运单明细的结费信息

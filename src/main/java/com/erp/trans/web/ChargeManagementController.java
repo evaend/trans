@@ -176,7 +176,24 @@ public class ChargeManagementController {
 		
 		chargeManagementService.insertInfo(chargeInfo);
 	}
-	
+	/**
+	 *  删除司机空载信息
+	 */
+	@ResponseBody
+	@RequestMapping(value = "deleteDriveAccount")
+	public void deleteDriveAccount(@RequestParam(value="chargeId")String chargeId,
+			HttpServletRequest request) throws ValidationException {
+		// 操作人id
+		String userId = (String) request.getSession().getAttribute(LoginUser.SESSION_USERID);
+		// 操作人name
+		String userName = (String) request.getSession().getAttribute(LoginUser.SESSION_USERNAME);
+		LocalAssertUtils.notBlank(chargeId, "请选择删除的司机空载记录");
+		ChargeInfo chargeInfo = chargeManagementService.find(ChargeInfo.class, chargeId);
+		if(StringUtils.isBlank(chargeInfo.getSourceChargeId())){
+			throw new ValidationException("此记录非空载记录，不能删除");
+		}
+		chargeManagementService.deleteInfo(chargeInfo);
+	}
 	//导出结费信息列表
 	@RequestMapping("exportChargeInfoList")
 	@ResponseBody

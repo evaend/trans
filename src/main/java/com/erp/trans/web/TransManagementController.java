@@ -92,6 +92,7 @@ public class TransManagementController {
 //		}
 
 		pager.addQueryParam("orgId", orgId);// 当前登录机构
+		pager.addQueryParam("consignNo", consignNo);//运单号
 		pager.addQueryParam("carrierName", carrierName);// 承运商名称，模糊搜索
 		pager.addQueryParam("consignFstate", consignFstate);// 运单状态
 
