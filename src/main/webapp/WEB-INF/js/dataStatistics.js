@@ -22086,11 +22086,15 @@ __webpack_require__(160);
 var $grid = __WEBPACK_IMPORTED_MODULE_6_jQuery___default()('#dataStatisticslGrid');
 //地址初始化      
 __WEBPACK_IMPORTED_MODULE_2__component_location__["a" /* location */].init([__WEBPACK_IMPORTED_MODULE_6_jQuery___default()('#locationFrom'), __WEBPACK_IMPORTED_MODULE_6_jQuery___default()('#locationTo')]);
+__WEBPACK_IMPORTED_MODULE_6_jQuery___default()('#dataCharts').css({
+  width: __WEBPACK_IMPORTED_MODULE_6_jQuery___default()(window).width() - 100,
+  height: __WEBPACK_IMPORTED_MODULE_6_jQuery___default()(window).height() - 170
+});
 //表格初始化
 __WEBPACK_IMPORTED_MODULE_0__component_table__["a" /* table */].init($grid, {
   title: '数据统计',
   url: '../dataStatistics/searchBusinessData',
-  height: __WEBPACK_IMPORTED_MODULE_6_jQuery___default()(window).height() - 125,
+  height: __WEBPACK_IMPORTED_MODULE_6_jQuery___default()(window).height() - 160,
   resizeHandle: 'both',
   columns: [[{ field: 'chargeId', checkbox: true }, { field: 'transportTool', title: '轿运车', width: 150 },
   //{field:'name3',title:'车次',width:100}, 

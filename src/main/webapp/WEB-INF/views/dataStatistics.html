@@ -77,26 +77,25 @@
                 <option value="E3">重载率</option>   
             </select>
       </div> 
-    </div>
-    <div class="row">
-        <div class="col-md-2 vForm-item">
+        <div class="col-md-1 vForm-item">
             <a id="export" href="#" class="easyui-linkbutton" data-options="iconCls:'icon-print'">导出</a>  
         </div> 
     </div>
   </form>  
   <!-- 表格开始 -->
-  <div style='padding:0 8px'>
-    <table id="dataStatisticslGrid" class="easyui-datagrid"></table>
-  </div>  
  
-  <div class="panel panel-success" style="margin-top:10px;">
-      <div class="panel-heading">
-        <h3 class="panel-title">统计图表</h3>
-      </div>
-      <div class="panel-body">
-         <div id="dataCharts" style="height:400px;width:100%"></div>
+
+    <div id="tab" class="easyui-tabs" style="width:100%;">
+        <div title="数据统计" style="display:none;">
+            <div style='padding:0 8px'>
+                <table id="dataStatisticslGrid" class="easyui-datagrid"></table>
+            </div>  
+        </div>
+        <div title="统计图表" data-options="closable:true" style="display:none;">
+               <div id="dataCharts"></div>
+        </div>
     </div>
-  </div>
+
   <!-- 表格结束 -->   
 <script type="text/javascript" src="../lib/jquery-3.2.1.min.js"></script>
 <script type="text/javascript" src="../lib/easyui/jquery.easyui.min.js"></script>   

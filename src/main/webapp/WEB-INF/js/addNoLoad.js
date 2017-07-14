@@ -2081,7 +2081,9 @@ __WEBPACK_IMPORTED_MODULE_0__component_table__["a" /* table */].init($grid, {
   url: '../charge/searchChargeList?chargeType=03',
   height: __WEBPACK_IMPORTED_MODULE_6_jQuery___default()(window).height() - 65,
   resizeHandle: 'both',
-  columns: [[{ field: 'chargeId', checkbox: true }, { field: 'despatchDate', title: '发运日期', width: 120 }, { field: 'transportTool', title: '轿运车号', width: 150 }, { field: 'name3', title: '车次', width: 100 }, { field: 'mainDrive', title: '主驾', width: 100 }, { field: 'coPilot', title: '副驾', width: 100 }, { field: 'locationFrom', title: '起运地', width: 100 }, { field: 'locationTo', title: '目的地', width: 100 }, { field: 'amount', title: '数量', width: 100 }, { field: 'modifyUserName', title: '修改人', width: 120 }, { field: 'modifyDate', title: '修改时间', width: 120 }]]
+  columns: [[{ field: 'chargeId', checkbox: true }, { field: 'despatchDate', title: '发运日期', width: 120 }, { field: 'transportTool', title: '轿运车号', width: 150 },
+  // {field:'name3',title:'车次',width:100}, 
+  { field: 'mainDrive', title: '主驾', width: 100 }, { field: 'coPilot', title: '副驾', width: 100 }, { field: 'locationFrom', title: '起运地', width: 100 }, { field: 'locationTo', title: '目的地', width: 100 }, { field: 'amount', title: '数量', width: 100 }, { field: 'modifyUserName', title: '修改人', width: 120 }, { field: 'modifyDate', title: '修改时间', width: 120 }]]
 });
 
 //查询
