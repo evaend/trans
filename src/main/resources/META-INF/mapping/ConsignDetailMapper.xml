@@ -141,16 +141,16 @@
 		 	sum(cd.AMOUNT) "data"
 		</if> 
 		<if test="conditiions.chartType != null and (conditiions.chartType == 'B1' or conditiions.chartType == 'B2')">
-		 	FORMAT(sum(ci.profitFreight),2) "data"
+		 	round(sum(ci.profitFreight),2) "data"
 		</if>
 		<if test="conditiions.chartType != null and (conditiions.chartType == 'C1' or conditiions.chartType == 'C2')">
-			FORMAT(sum(ci.costFreight),2) "data"
+			round(sum(ci.costFreight),2) "data"
 		</if>
 		<if test="conditiions.chartType != null and conditiions.chartType == 'D1'">
-			FORMAT((sum(ci.profitFreight)-sum(ci.costFreight)),2)"data"
+			round((sum(ci.profitFreight)-sum(ci.costFreight)),2)"data"
 		</if>
 		<if test="conditiions.chartType != null and conditiions.chartType == 'D2'">
-			FORMAT((sum(ci.profitFreight)-sum(ci.costFreight)-
+			round((sum(ci.profitFreight)-sum(ci.costFreight)-
 			sum(ifnull(s.ACTUAL_PAY,0))-sum(ifnull(t.TAX_PRICE,0))
 			-sum(ifnull(ta.TRAVEL_AMOUNT,0))),2) "data"
 		</if>
@@ -175,7 +175,7 @@
 		<where>
 			cd.DESPATCH_FSTATE='01'
 			<if test="conditiions.chartType != null and conditiions.chartType == 'C2'">
-				and r.CARRIER_TYPE = '01'
+				and r.CARRIER_TYPE = '1'
 			</if>
 			<if test="conditiions.orgId != null and conditiions.orgId != '0' and conditiions.orgId != '-1'">
 				and c.ORG_ID = #{conditiions.orgId,jdbcType=VARCHAR}
@@ -230,13 +230,13 @@
 		select
 			dp.MAIN_DRIVE "categories",
 		<if test="conditiions.chartType != null and (conditiions.chartType == 'C3' or conditiions.chartType == 'E1')">	
-			FORMAT(sum(cdi.CHARGE_AMOUNT),2) "data"
+			round(sum(cdi.CHARGE_AMOUNT),2) "data"
 		</if>
 		<if test="conditiions.chartType != null and conditiions.chartType == 'E2'">
-			FORMAT(sum(cdi.TAMOUNT)/(r.LOAD_AMOUNT*count(0)),2) "data"
+			round(sum(cdi.TAMOUNT)/(r.LOAD_AMOUNT*count(0)),2) "data"
 		</if>
 		<if test="conditiions.chartType != null and conditiions.chartType == 'E3'">
-			FORMAT(sum(case when cdi.SOURCE_CHARGE_ID is not null then 0 
+			round(sum(case when cdi.SOURCE_CHARGE_ID is not null then 0 
    			 else cdi.KILOMETERS end)/sum(cdi.KILOMETERS),2)  "data"
    		</if>
 		from (

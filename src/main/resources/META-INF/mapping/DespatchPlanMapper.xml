@@ -56,8 +56,14 @@
 			<if test="conditiions.createDateEnd != null and conditiions.createDateEnd != ''">
 				and <![CDATA[ date_format(c.create_date,'%Y-%m-%d') <=  #{conditiions.createDateEnd,jdbcType=VARCHAR} ]]>
 			</if>
+			<if test="conditiions.dispatchDateStart != null and conditiions.dispatchDateStart != ''">
+				and  <![CDATA[ date_format(cd.DESPATCH_DATE,'%Y-%m-%d') >= #{conditiions.dispatchDateStart,jdbcType=VARCHAR} ]]>
+			</if>
+			<if test="conditiions.dispatchDateEnd != null and conditiions.dispatchDateEnd != ''">
+				and  <![CDATA[ date_format(cd.DESPATCH_DATE,'%Y-%m-%d') <=  #{conditiions.dispatchDateEnd,jdbcType=VARCHAR} ]]>
+			</if>
 		</where>
-		order by cd.DESPATCH_FSTATE,c.create_date desc,cd.DESPATCH_DATE desc
+		order by cd.DESPATCH_FSTATE,c.CONSIGN_NO,c.create_date desc,cd.DESPATCH_DATE desc
 	</select>
   <insert id="insert" parameterType="com.erp.trans.entity.DespatchPlan" >
     insert into tb_despatch_plan (DESPATCH_PLAN_ID, MOUNT, RECORD_ID, 

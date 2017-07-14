@@ -112,6 +112,8 @@ public class TransManagementController {
 			@RequestParam(value = "chassisNo", required = false) String chassisNo,
 			@RequestParam(value = "createDateStart", required = false) String createDateStart,
 			@RequestParam(value = "createDateEnd", required = false) String createDateEnd,
+			@RequestParam(value = "dispatchDateStart", required = false) String dispatchDateStart,
+			@RequestParam(value = "dispatchDateEnd", required = false) String dispatchDateEnd,
 			@RequestParam(value = "locationFrom", required = false) String locationFrom,
 			@RequestParam(value = "locationTo", required = false) String locationTo,
 			@RequestParam(value = "dispatchFstate", required = false) String dispatchFstate,
@@ -139,7 +141,18 @@ public class TransManagementController {
 //			Calendar cal1 = Calendar.getInstance();
 //			pager.addQueryParam("createDateEnd", formatter.format(cal1.getTime()));// 默认当前时间
 //		}
+		if (StringUtils.isNotBlank(dispatchDateStart)) {
+			pager.addQueryParam("dispatchDateStart", dispatchDateStart);
+		} 
+//		else {
+//			Calendar cal = Calendar.getInstance();
+//			cal.add(Calendar.MONTH, -2);
+//			pager.addQueryParam("dispatchDateStart", formatter.format(cal.getTime()));// 默认前两个月开始
+//		}
 
+		if (StringUtils.isNotBlank(dispatchDateEnd)) {
+			pager.addQueryParam("dispatchDateEnd", dispatchDateEnd);
+		} 
 		pager.addQueryParam("orgId", orgId);// 当前登录机构
 		pager.addQueryParam("consignNo", consignNo);//运单号
 		pager.addQueryParam("chassisNo", chassisNo);//底盘号

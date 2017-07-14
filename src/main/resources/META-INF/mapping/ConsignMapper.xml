@@ -75,10 +75,10 @@
 				and c.CONSIGN_FSATE = #{conditiions.consignFstate,jdbcType=VARCHAR}
 			</if>
 			<if test="conditiions.dispatchDateStart != null and conditiions.dispatchDateStart != ''">
-				and exists (select 0 from tb_consign_detail cd where cd.consign_id = c.consign_id and <![CDATA[ date_format(cd.DISPATCH_DATE,'%Y-%m-%d') >= #{conditiions.dispatchDateStart,jdbcType=VARCHAR} ]]>)
+				and exists (select 0 from tb_consign_detail cd where cd.consign_id = c.consign_id and <![CDATA[ date_format(cd.DESPATCH_DATE,'%Y-%m-%d') >= #{conditiions.dispatchDateStart,jdbcType=VARCHAR} ]]>)
 			</if>
 			<if test="conditiions.dispatchDateEnd != null and conditiions.dispatchDateEnd != ''">
-				and exists (select 0 from tb_consign_detail cd where cd.consign_id = c.consign_id and <![CDATA[ date_format(cd.DISPATCH_DATE,'%Y-%m-%d') <=  #{conditiions.dispatchDateEnd,jdbcType=VARCHAR} ]]>)
+				and exists (select 0 from tb_consign_detail cd where cd.consign_id = c.consign_id and <![CDATA[ date_format(cd.DESPATCH_DATE,'%Y-%m-%d') <=  #{conditiions.dispatchDateEnd,jdbcType=VARCHAR} ]]>)
 			</if>
 		</where>
 		order by c.consign_fsate,date_format(c.MODIFY_DATE,'%Y-%m-%d %T') desc

@@ -1,6 +1,8 @@
 package com.erp.trans.common.util;
 
 import java.io.IOException;
+import java.util.Arrays;
+import java.util.List;
 
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
@@ -28,6 +30,10 @@ public class FilterServlet implements Filter {
 			 "/js/login.js",
 			 "/login/login" ,
 			 "/",
+			 "182.254.152.181",
+			 "wuliu101.com",
+			 "www.wuliu101.com",
+			 "/views/login.html",
 			"/login/userLogin" // 用户登录
 	};
 	
@@ -47,7 +53,7 @@ public class FilterServlet implements Filter {
 			logger.trace("请求参数 : " + JSONUtils.toJson(request.getParameterMap()));
 		}
 		
-		if(!requestURI.matches("[^\\s]+\\.(jpg|jpeg|png|bmp|gif|html|css|ico|svg|woff|woff2|map|rar|ico)")){
+		if(!requestURI.matches("[^\\s]+\\.(jpg|jpeg|png|bmp|gif|css|ico|svg|woff|woff2|map|rar|ico)")){
 			//放过的请求
 			for (String regex: uriRegexExpress) {
 				String compareRegex = contextPath + regex;
@@ -74,6 +80,17 @@ public class FilterServlet implements Filter {
 			if (session == null || session.getAttribute(CustomConst.LoginUser.SESSION_USERID) == null){
 				response.setStatus(CustomConst.ResponseStatus.UNLOGIN);
 				return;
+			}else{
+				  //财务
+				  List<String> cwMenuList = Arrays.asList("tyfCharge.html","cysCharge.html","sjCharge.html",
+						  "wages.html","officePlace.html","clzd.html","revenue.html","depreciation.html","insurance.html",
+						  "incomeContract.html","costContract.html","trailerArchives.html","personalArchives.html");		  
+				  //调度
+				  List<String> ddMenuList = Arrays.asList("plan.html","waybill.html","addNoLoad.html");
+				  //报表
+				  List<String> bbList = Arrays.asList("dataStatistics.html");
+//				  cwMenuList.
+//				  requestURI.indexOf(str)
 			}
 		}
 		
