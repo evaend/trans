@@ -29,12 +29,19 @@
         至
         <input type="text" name="dispatchDateEnd" id="endDate" class="Wdate" 
         onFocus="WdatePicker({isShowClear:false,isShowToday:false,isShowOK:false,readOnly:true,minDate:'#F{$dp.$D(\'starDate\')}',maxDate:'2030-10-01'})"//>
-      
+      </div>
+       <div class="col-md-3 vForm-item">  
+        <label for="chargeFstate">状态:</label>  
+        <select id="chargeFstate" editable='false' name='chargeFstate' class="easyui-combobox"  style="width:120px;height:28px;">  
+          <option value="">全部</option>  
+          <option value="01">已对账</option>  
+          <option value="00">未对账</option>   
+        </select>  
         <span>
           <a id="search" href="#" class="easyui-linkbutton" data-options="iconCls:'icon-search'">查询</a>  
-        </span> 
-      </div>  
-      <div class="col-md-12 vForm-item">
+      </span>     
+      </div>
+      <div class="col-md-8 vForm-item">
         <a id="export" href="#" class="easyui-linkbutton" data-options="iconCls:'icon-print'">导出</a>  
         <a id="check" href="#" class="easyui-linkbutton" data-options="iconCls:'icon-ok'">对账</a>
       </div> 
