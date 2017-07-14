@@ -50,6 +50,7 @@
       ci.GPS_PAYMENT "gpsPayment",ci.CHARGE_AMOUNT "chargeAmount",
       ci.MODIFY_USER_NAME "modifyUserName",
       date_format(ci.MODIFY_DATE,'%Y-%m-%d %T') "modifyDate",
+      ci.CHARGE_FSTATE "chargeFstate",
       ci.KILO_PRICE "kiloPrice",ci.KILOMETERS "kilometers",ci.OIL_COST "oilCost",ci.SERVICE_RATE "serviceRate",
       ci.OIL_RATIO "oilRatio",ci.OIL_PRICE "oilPrice",ci.OIL_SUBSIDY "oilSubsidy"
       
