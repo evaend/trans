@@ -406,6 +406,7 @@ public class OperationCostsController {
 	public Pager<Map<String, Object>> searchInsurance(
 			@RequestParam(value = "startDate", required = false) String startDate,
 			@RequestParam(value = "endDate", required = false) String endDate,
+			@RequestParam(value = "insuranceYear", required = false) String insuranceYear,
 			@RequestParam(value = "page", required = false) Integer page,
 			@RequestParam(value = "pagesize", required = false) Integer pagesize, HttpServletRequest request) {
 		Pager<Map<String, Object>> pager = new Pager<Map<String, Object>>(true);
@@ -419,6 +420,7 @@ public class OperationCostsController {
 		pager.addQueryParam("orgId", orgId);// 当前登录机构
 		pager.addQueryParam("startDate", startDate);//开始日期
 		pager.addQueryParam("endDate", endDate);//结束日期
+		pager.addQueryParam("insuranceYear", insuranceYear);//baoxiannianfen日期
 
 		List<Map<String, Object>> insuranceList = operationCostsService.searchInsurance(pager);
 		pager.setRows(insuranceList);

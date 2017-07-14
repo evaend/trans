@@ -24,6 +24,9 @@
 				<if test="conditiions.orgId != null and conditiions.orgId != '0' and conditiions.orgId != '-1'">
 					and i.ORG_ID = #{conditiions.orgId,jdbcType=VARCHAR}
 				</if>
+				<if test="conditiions.insuranceYear != null and conditiions.insuranceYear != ''">
+					and i.INSURANCE_YEAR = #{conditiions.insuranceYear,jdbcType=VARCHAR}
+				</if>
 				<if test="conditiions.startDate != null and conditiions.startDate != ''">
 				and <![CDATA[ date_format(i.MODIFY_DATE,'%Y-%m-%d') >= #{conditiions.startDate,jdbcType=VARCHAR} ]]>
 			</if>

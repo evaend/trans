@@ -192,7 +192,7 @@ public class ChargeManagementController {
 		if(StringUtils.isBlank(chargeInfo.getSourceChargeId())){
 			throw new ValidationException("此记录非空载记录，不能删除");
 		}
-		chargeManagementService.deleteInfo(chargeInfo);
+		chargeManagementService.deleteInfoById(ChargeInfo.class,chargeId);
 	}
 	//导出结费信息列表
 	@RequestMapping("exportChargeInfoList")

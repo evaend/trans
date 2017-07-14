@@ -25,7 +25,9 @@
     date_format(pr.P_BIRTHDATE,'%Y-%m-%d') "pBirthdate",pr.P_IDNO "pIdno",pr.P_PHONE "pPhone",
     pr.P_HOME_ADDRESS "pHomeAddress",pr.P_EMERGENCY "pEmergency",
     pr.P_EMERGENCY_PHONE "pEmergencyPhone",
-    pr.P_BANK_CARD "pBankCard",pr.REMARK "remark",od.DEPARTMENT_NAME "departmentName",
+    pr.P_BANK_CARD "pBankCard",pr.REMARK "remark",
+    pr.DEPARTMENT_ID "departmentId",
+    od.DEPARTMENT_NAME "departmentName",
    date_format(pr.MODIFY_DATE,'%Y-%m-%d')  "modifyDate"
   </sql>
   <!-- 查询人事档案信息 -->
