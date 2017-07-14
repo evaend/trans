@@ -2033,7 +2033,7 @@ __WEBPACK_IMPORTED_MODULE_1__component_table__["a" /* table */].init($grid, {
   url: '../contractRecords/searchRecordInfo',
   height: __WEBPACK_IMPORTED_MODULE_6_jQuery___default()(window).height() - 95,
   columns: [[{ field: 'recordId', checkbox: true }, { field: 'transportTool', title: '轿运车', width: 150 }, { field: 'trailerNo', title: '挂车号', width: 150 }, { field: 'loadAmount', title: '核载', width: 100 }, { field: 'carrierName', title: '承运商', width: 260 }, { field: 'carrierType', title: '承运商类型', width: 100, formatter: function formatter(value) {
-      return value == 1 ? '自由' : '外协';
+      return value == 1 ? '自有' : '外协';
     } }, { field: 'recordType', title: '结费类型', width: 100, formatter: function formatter(value) {
       return value == 1 ? '现金' : '合同';
     } }, { field: 'mainDrive', title: '主驾', width: 100, textAlign: 'right' }, { field: 'mainDrivePhone', title: '主驾电话', width: 100 }, { field: 'coPilot', title: '副驾', width: 100 }, { field: 'coPilotPhone', title: '副驾电话', width: 100 }, { field: 'recordStart', title: '档案开始日期', width: 120 }, { field: 'recordEnd', title: '档案结束日期', width: 120 }, { field: 'registerDate', title: '注册时间', width: 120 }, { field: 'insuranceDate', title: '投保时间', width: 120 }, { field: 'repaymentDay', title: '还款日', width: 100 }, { field: 'repaymentAmount', title: '还款金额 ', width: 120 }]]

@@ -2134,7 +2134,7 @@ __WEBPACK_IMPORTED_MODULE_0__component_table__["a" /* table */].init($grid, {
   title: '发运计划信息表',
   url: '../transController/searchDispatchInfo',
   height: __WEBPACK_IMPORTED_MODULE_7_jQuery___default()(window).height() - 120,
-  columns: [[{ field: 'consignDetailId', checkbox: true }, { field: 'createDate', title: '制单日期', width: 150 }, { field: 'despatchDate', title: '发运日期', width: 120 }, { field: 'consignNo', title: '运单号', width: 200 }, { field: 'chassisNo', title: '底盘号', width: 200 }, { field: 'amount', title: '数量', width: 70, align: 'right' }, { field: 'locationFrom', title: '起运地', width: 100 }, { field: 'locationTo', title: '目的地', width: 100 }, { field: 'carBrand', title: '品牌', width: 100 }, { field: 'carModel', title: '车型', width: 100 }, { field: 'transportTool', title: '轿运车', width: 150 },
+  columns: [[{ field: 'consignDetailId', checkbox: true }, { field: 'createDate', title: '制单日期', width: 180 }, { field: 'despatchDate', title: '发运日期', width: 120 }, { field: 'consignNo', title: '运单号', width: 200 }, { field: 'chassisNo', title: '底盘号', width: 200 }, { field: 'amount', title: '数量', width: 70, align: 'right' }, { field: 'locationFrom', title: '起运地', width: 100 }, { field: 'locationTo', title: '目的地', width: 100 }, { field: 'carBrand', title: '品牌', width: 100 }, { field: 'carModel', title: '车型', width: 100 }, { field: 'transportTool', title: '轿运车', width: 150 },
   //{field:'name9',title:'车次',width:100}, 
   { field: 'consignOrgName', title: '托运单位', width: 260 }, { field: 'receiveOrgName', title: '收车单位', width: 260 }, { field: 'carrierName', title: '承运商', width: 260 }]]
 });

@@ -23,13 +23,13 @@
         <input class="easyui-validatebox" type="text" name="chassisNo" />  
       </div>  
       <div class="col-md-6 vForm-item">  
-        <label for="createDateStart">制单时间:</label>  
+        <label for="createDateStart">制单日期:</label>  
         <input type="text" name="createDateStart" id="starDate" class="Wdate"  
         onFocus="WdatePicker({isShowClear:false,isShowToday:false,isShowOK:false,readOnly:true,maxDate:'#F{$dp.$D(\'endDate\')||\'2030-10-01\'}'})"/>  
         至
         <input type="text" name="createDateEnd" id="endDate" class="Wdate"  
         onFocus="WdatePicker({isShowClear:false,isShowToday:false,isShowOK:false,readOnly:true,minDate:'#F{$dp.$D(\'starDate\')}',maxDate:'2030-10-01'})"//>
-      </div>   
+      </div>    
       <div class="col-md-3 vForm-item">  
         <label for="locationFrom">起运地:</label>
         <select id="locationFrom"  name='locationFrom' class="easyui-combobox" style="width:200px;height:28px">
@@ -39,7 +39,15 @@
         <label for="locationTo">目的地:</label>  
          <select id="locationTo" name='locationTo' class="easyui-combobox" style="width:200px;height:28px">
         </select> 
-      </div>  
+      </div> 
+       <div class="col-md-6 vForm-item">  
+        <label for="dispatchDateStart">发运日期:</label>  
+          <input type="text" name="dispatchDateStart" id="dispatchDateStart" class="Wdate"  
+        onFocus="WdatePicker({isShowClear:false,isShowToday:false,isShowOK:false,readOnly:true,maxDate:'#F{$dp.$D(\'dispatchDateEnd\')||\'2030-10-01\'}'})"/>  
+        至
+        <input type="text" name="dispatchDateEnd" id="dispatchDateEnd" class="Wdate" 
+        onFocus="WdatePicker({isShowClear:false,isShowToday:false,isShowOK:false,readOnly:true,minDate:'#F{$dp.$D(\'dispatchDateStart\')}',maxDate:'2030-10-01'})"//>
+      </div>
       <div class="col-md-5 vForm-item">  
         <label for="dispatchFstate">编板状态:</label>  
         <select id="dispatchFstate" editable='false' name='dispatchFstate' class="easyui-combobox"  style="width:200px;height:28px">  

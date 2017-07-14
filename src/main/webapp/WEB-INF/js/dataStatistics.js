@@ -22097,6 +22097,7 @@ __WEBPACK_IMPORTED_MODULE_0__component_table__["a" /* table */].init($grid, {
   { field: 'locationFrom', title: '起运地', width: 100 }, { field: 'locationTo', title: '目的地', width: 100 }, { field: 'createDate', title: '制单时间', width: 150 }, { field: 'despatchDate', title: '发运日期', width: 120 }, { field: 'consignNo', title: '运单号', width: 200 }, { field: 'chassisNo', title: '底盘号', width: 200 }, { field: 'carBrand', title: '品牌', width: 100 }, { field: 'carModel', title: '车型', width: 100 }, { field: 'amount', title: '数量', width: 100 }, { field: 'consignOrgName', title: '托运单位', width: 260 }, { field: 'receiveOrgName', title: '收车单位', width: 260 }, { field: 'carrierName', title: '承运商', width: 260 }, { field: 'profitFreightRates', title: '收入运价', width: 150 }, { field: 'profitFreight', title: '收入', width: 150 }, { field: 'costFreightRates', title: '成本运价', width: 150 }, { field: 'costFreight', title: '成本', width: 150 }]]
 });
 
+var myChart = echarts.init(document.getElementById('dataCharts'));
 //查询
 __WEBPACK_IMPORTED_MODULE_6_jQuery___default()('#search').on('click', function () {
   var postData = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3__utils_common__["a" /* getFormData */])(__WEBPACK_IMPORTED_MODULE_6_jQuery___default()('#ff'));
@@ -22104,16 +22105,39 @@ __WEBPACK_IMPORTED_MODULE_6_jQuery___default()('#search').on('click', function (
   __WEBPACK_IMPORTED_MODULE_6_jQuery___default()('#export').attr('href', '../dataStatistics/exportBusinessData&createDateStart=' + postData.createDateStart + '&createDateEnd=' + postData.createDateEnd + '&dispatchDateStart=' + postData.dispatchDateStart + '&dispatchDateEnd=' + postData.dispatchDateEnd + '&locationFrom=' + postData.locationFrom + '&locationTo=' + postData.locationTo + '&transportTool=' + postData.transportTool + '&receiveOrgName=' + postData.receiveOrgName + '&consignOrgName=' + postData.consignOrgName + '&carrierName=' + postData.carrierName);
   //刷新表格
   __WEBPACK_IMPORTED_MODULE_0__component_table__["a" /* table */].load($grid, postData);
+
+  //图表刷新
+  var value = __WEBPACK_IMPORTED_MODULE_6_jQuery___default()('#selectCharts').combobox('getValue'),
+      text = __WEBPACK_IMPORTED_MODULE_6_jQuery___default()('#selectCharts').combobox('getText');
+  if (value && text) {
+    __WEBPACK_IMPORTED_MODULE_6_jQuery___default.a.ajax({
+      url: '../dataStatistics/showBusinessData?chartType=' + value,
+      dataType: 'json',
+      data: postData
+    }).then(function (data) {
+      if (data.categories && data.series) {
+        ;
+        // 绘制图表
+        myChart.setOption({
+          title: { text: text },
+          tooltip: {},
+          xAxis: {
+            data: data.categories
+          },
+          yAxis: {},
+          series: data.series
+        });
+      }
+    });
+  }
 });
 __WEBPACK_IMPORTED_MODULE_6_jQuery___default()('#export').attr('href', '../dataStatistics/exportBusinessData');
-
-var searchData = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3__utils_common__["a" /* getFormData */])(__WEBPACK_IMPORTED_MODULE_6_jQuery___default()('#ff'));
-var myChart = echarts.init(document.getElementById('dataCharts'));
 __WEBPACK_IMPORTED_MODULE_6_jQuery___default()('#selectCharts').combobox({
   valueField: 'id',
   textField: 'text',
   editable: false,
   onSelect: function onSelect(rec) {
+    var searchData = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3__utils_common__["a" /* getFormData */])(__WEBPACK_IMPORTED_MODULE_6_jQuery___default()('#ff'));
     __WEBPACK_IMPORTED_MODULE_6_jQuery___default.a.ajax({
       url: '../dataStatistics/showBusinessData?chartType=' + rec.id,
       dataType: 'json',

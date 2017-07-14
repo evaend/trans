@@ -49,13 +49,11 @@
   </div>
 <script type="text/javascript" src="../lib/jquery-3.2.1.min.js"></script>
 <script type="text/javascript" src="../lib/easyui/jquery.easyui.min.js"></script>  
-<script>
-  var mock = [
-    {title: '运输管理', id: 1, subList: [
-      {title: '发运计划信息', id: 13, uri: '../views/plan.html'},
-      {title: '运单管理', id: 12, uri: '../views/waybill.html'},
-      {title: '新增空载', id: 14, uri: '../views/addNoLoad.html'},
-    ]},
+<script type="text/javascript">
+  var username = 'admin';
+  var mock = [];
+  //财务
+  var cwMenuList = [
     {title: '结算管理', id: 2, subList: [
       {title: '托运方结费', id: 21, uri: '../views/tyfCharge.html'},
       {title: '承运商结费', id: 23, uri: '../views/cysCharge.html'},
@@ -69,37 +67,73 @@
       {title: '车辆折旧', id: 33, uri: '../views/depreciation.html'},
       {title: '保险', id: 33, uri: '../views/insurance.html'},
     ]},
-    {title: '统计报表', id: 4, subList: [
-      {title: '数据统计', id: 41, uri: '../views/dataStatistics.html'},
-      // {title: '运量统计', id: 42, uri: '../views/volumeAnalysis.html'},
-      // {title: '收入统计', id: 43, uri: '../views/incomeAnalysis.html'},
-      // {title: '成本统计', id: 44, uri: '../views/costAnalysis.html'},
-      // {title: '利润统计', id: 45, uri: '../views/profitAnalysis.html'},
-      // {title: '司机结费统计', id: 46, uri: '../views/driverAnalysis.html'}
-    ]},
     {title: '合同档案', id: 5, subList: [
       {title: '收入合同', id: 51, uri: '../views/incomeContract.html'},
       {title: '成本合同', id: 52, uri: '../views/costContract.html'},
       {title: '轿运车档案', id: 53, uri: '../views/trailerArchives.html'},
       {title: '人事档案', id: 54, uri: '../views/personalArchives.html'}
     ]}
-    // ,
-    // {title: '系统管理', id: 6, subList: [
-    //   {title: '用户管理', id: 61, uri: 'http://www.baidu.com'},
-    //   {title: '模块管理', id: 62, uri: 'http://www.baidu.com'}
-    // ]}
   ]
-</script>  
-<script type="text/javascript">
-  $.getScript("../js/home.js").done(function(script, textStatus) {
-      console.log( textStatus );
-  })
-  .fail(function(jqxhr, settings, exception) {
+  //调度
+  var ddMenuList = [
+    {title: '运输管理', id: 1, subList: [
+      {title: '发运计划信息', id: 13, uri: '../views/plan.html'},
+      {title: '运单管理', id: 12, uri: '../views/waybill.html'},
+      {title: '新增空载', id: 14, uri: '../views/addNoLoad.html'},
+    ]}
+  ];
+  //报表
+  var bbList = [{title: '统计报表', id: 4, subList: [
+      {title: '数据统计', id: 41, uri: '../views/dataStatistics.html'},
+      // {title: '运量统计', id: 42, uri: '../views/volumeAnalysis.html'},
+      // {title: '收入统计', id: 43, uri: '../views/incomeAnalysis.html'},
+      // {title: '成本统计', id: 44, uri: '../views/costAnalysis.html'},
+      // {title: '利润统计', id: 45, uri: '../views/profitAnalysis.html'},
+      // {title: '司机结费统计', id: 46, uri: '../views/driverAnalysis.html'}
+    ]}];
+  $.ajax({
+    url: '../login/getUserInfo',
+    dataType: "json",
+    success: function(data){
+      if (data) {
+        var role = '';
+       // data.userType = 0;
+        switch (data.userType) {
+          case "0":
+            mock = ddMenuList.concat(cwMenuList.concat(bbList));
+            role = '超级管理员';
+            break;
+          case "1":
+            mock = cwMenuList.concat(bbList);
+            role = '财务';
+            break;
+          case "2":
+            mock = ddMenuList.concat(bbList);
+            role = '调度';
+            break;    
+          default:
+            $.messager.alert('错误提示',  '用户账号信息错误,请联系管理员！');
+            break;     
+        }
+        $('#username').html(data.userName + '(' + role +')');
+        $.getScript("../js/home.js").done(function(script, textStatus) {  
+          console.log( textStatus );
+        })
+        .fail(function(jqxhr, settings, exception) {
+            $.messager.alert('错误提示',  '登录已过期, 请重新登录!');
+            setTimeout(function() {
+                window.parent.location.href = 'login.html';
+            }, 3000);
+        }); 
+      }
+    },
+    error: function() {
       $.messager.alert('错误提示',  '登录已过期, 请重新登录!');
       setTimeout(function() {
           window.parent.location.href = 'login.html';
       }, 3000);
-  }); 
+    }
+  });
 </script>
 
 </body>
