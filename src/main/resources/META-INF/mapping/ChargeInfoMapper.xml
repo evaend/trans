@@ -159,9 +159,10 @@
 						and cd.despatch_plan_id = dp.despatch_plan_id 
 						and dp.record_id = r.record_id
 						and con.carrier_name = r.carrier_name
+						and cd.CONSIGN_ID = c.CONSIGN_ID
 						and c.LOCATION_FROM  = con.LOCATION_FROM and c.LOCATION_TO = con.LOCATION_TO 
-						and (cd.car_brand = con.car_brand or con.car_brand is null) 
-						and (cd.car_model = con.car_model or con.car_model is null)
+						and (cd.car_brand = con.car_brand or con.car_brand ='其他') 
+						and (cd.car_model = con.car_model or con.car_model ='其他')
 						and cd.DESPATCH_DATE between con.CONTRACT_START and con.CONTRACT_END
 				) ct on ct.consign_detail_id = cd.consign_detail_id
 				where cd.consign_detail_id in  
@@ -205,9 +206,10 @@
  					from tb_contract con,tb_consign_detail cd, tb_consign c   
 					where con.contract_type='01' and c.ORG_ID = con.org_id 
 						and con.CONSIGN_ORG_NAME = c.CONSIGN_ORG_NAME
+						and cd.CONSIGN_ID = c.CONSIGN_ID
 						and c.LOCATION_FROM  = con.LOCATION_FROM and c.LOCATION_TO = con.LOCATION_TO 
-						and (cd.car_brand = con.car_brand or con.car_brand is null) 
-						and (cd.car_model = con.car_model or con.car_model is null)
+						and (cd.car_brand = con.car_brand or con.car_brand ='其他') 
+						and (cd.car_model = con.car_model or con.car_model ='其他')
 						and cd.DESPATCH_DATE between con.CONTRACT_START and con.CONTRACT_END
 				) ct on ct.consign_detail_id = cd.consign_detail_id
 				where cd.consign_detail_id in  
