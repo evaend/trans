@@ -37,6 +37,7 @@
          <select editable='false' name='travelType' class="easyui-combobox"  style="width:200px;height:28px;">   
           <option value="出差">出差</option>  
           <option value="业务招待">业务招待</option>  
+          <option value="其他">其他</option>  
         </select> 
       </div> 
       <div class="col-md-2 vForm-item form-label">  
@@ -62,7 +63,7 @@
       </div>  
       <div class="col-md-4 vForm-item">  
           <input type="text" name="travelDate" id="travelDate" class="Wdate"  
-        onFocus="WdatePicker({isShowClear:false,isShowToday:false,isShowOK:false,readOnly:true,maxDate:'#F{\'2030-10-01\'}'})"/>  
+        onFocus="WdatePicker({readOnly:true,maxDate:'#F{\'2030-10-01\'}'})"/>  
          
       </div> 
       <div class="col-md-2 vForm-item form-label">  
