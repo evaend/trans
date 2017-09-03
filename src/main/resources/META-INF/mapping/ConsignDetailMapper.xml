@@ -46,7 +46,7 @@
       update tb_consign_detail 
       set DESPATCH_PLAN_ID = #{despatchPlanId, jdbcType=VARCHAR},
       DESPATCH_FSTATE = '01',
-      DESPATCH_DATE = #{despatchDate, jdbcType=VARCHAR}
+      DESPATCH_DATE = #{dispatchDate, jdbcType=VARCHAR}
       where CONSIGN_DETAIL_ID in 
       <foreach collection="consignDetailIds" item="consignDetail" index="index" open="(" close=")" separator=",">
 				#{consignDetail, jdbcType=VARCHAR}
