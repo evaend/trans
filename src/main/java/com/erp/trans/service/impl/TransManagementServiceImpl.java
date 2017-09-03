@@ -142,7 +142,7 @@ public class TransManagementServiceImpl  extends BaseService implements TransMan
 	}
 
 	@Override
-	public void savePlan(DespatchPlan despatchPlan, String[] consignDetailIds, String[] consignNos) throws ValidationException {
+	public void savePlan(DespatchPlan despatchPlan, String[] consignDetailIds, String[] consignNos, String dispatchDate) throws ValidationException {
 		// TODO Auto-generated method stub
 		/**一、发运计划和关联信息**/
 		//新增发运计划信息
@@ -151,7 +151,7 @@ public class TransManagementServiceImpl  extends BaseService implements TransMan
 //		获取本次操作的运单明细的旧的发运计划ids
 		String[] oldPlanIds = consignDetailMapper.searchOldPlanIdsByCDetails(consignDetailIds);
 		//批量添加发运计划和运单明细的关系
-		consignDetailMapper.batchUpdatePlan(consignDetailIds,despatchPlan.getDespatchPlanId());
+		consignDetailMapper.batchUpdatePlan(consignDetailIds,despatchPlan.getDespatchPlanId(),dispatchDate);
 		/**二、更新本次发运计划的承运商所带运单信息**/
 		if(consignNos != null && consignNos.length >1){
 				//1 批量删除运单号原来关联的发运计划

@@ -225,6 +225,11 @@ public class ChargeManagementController {
 					"freightRates", "subsidy","qualityLoss","misCosts","gpsPayment","reverseCharge","advances","prepaidOilCard","chargeAmount",
 					"modifyUserName","modifyDate");
 		}
+		if(chargeType.equals(CustomConst.ChargeType.DRIVE)){//司机结费导出	      
+			fieldName = Arrays.asList("transportTool","despatchDate", "mainDrive", "coPilot", "locationFrom",
+					"locationTo", "amount","kilometers", "serviceRate","oilCost", "oilRatio",
+					"oilPrice", "oilSubsidy","chargeAmount");
+		}
 		
 		// 当前登录用户的机构
 		String orgId = (String) request.getSession().getAttribute(LoginUser.SESSION_USER_ORGID);

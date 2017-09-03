@@ -11,6 +11,7 @@
     <result column="ORG_ID" property="orgId" jdbcType="VARCHAR" />
     <result column="MAIN_DRIVE" property="mainDrive" jdbcType="VARCHAR" />
     <result column="MAIN_DRIVE_PHONE" property="mainDrivePhone" jdbcType="VARCHAR" />
+    <result column="DESPATCH_DATE" property="despatchDate" jdbcType="DATE" />
   </resultMap>
   <sql id="Desplan_Return_List">
   	  cd.CONSIGN_DETAIL_ID "consignDetailId",
@@ -20,7 +21,7 @@
       c.CONSIGN_ORG_NAME "consignOrgName", 
       c.LOCATION_FROM "locationFrom",r.CARRIER_NAME "carrierName",r.TRANSPORT_TOOL "transportTool",
       date_format(c.create_date,'%Y-%m-%d %T') "createDate", 
-      u.USER_NAME "modifyUser"
+      u.USER_NAME "modifyUser",cd.REMARK "remark"
   </sql>
    <select id="searchDispatchInfo" resultType="hashMap"
 		parameterType="com.erp.trans.common.entity.Pager">

@@ -13,6 +13,7 @@
     <result column="DESPATCH_PLAN_ID" property="despatchPlanId" jdbcType="VARCHAR" />
     <result column="DESPATCH_FSTATE" property="despatchFstate" jdbcType="VARCHAR" />
     <result column="DESPATCH_DATE" property="despatchDate" jdbcType="DATE" />
+    <result column="REMARK" property="remark" jdbcType="VARCHAR" />
   </resultMap>
    <sql id="Data_Return_List">
   	  cd.CONSIGN_DETAIL_ID "consignDetailId",
@@ -45,7 +46,7 @@
       update tb_consign_detail 
       set DESPATCH_PLAN_ID = #{despatchPlanId, jdbcType=VARCHAR},
       DESPATCH_FSTATE = '01',
-      DESPATCH_DATE = now()
+      DESPATCH_DATE = #{despatchDate, jdbcType=VARCHAR}
       where CONSIGN_DETAIL_ID in 
       <foreach collection="consignDetailIds" item="consignDetail" index="index" open="(" close=")" separator=",">
 				#{consignDetail, jdbcType=VARCHAR}

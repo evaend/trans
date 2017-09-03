@@ -16,7 +16,7 @@ public interface ConsignDetailMapper {
 
 	int importConsignDetails(List<ConsignDto> list);
 
-	void batchUpdatePlan(@Param("consignDetailIds")String[] consignDetailIds, @Param("despatchPlanId")String despatchPlanId);
+	void batchUpdatePlan(@Param("consignDetailIds")String[] consignDetailIds, @Param("despatchPlanId")String despatchPlanId, @Param("dispatchDate")String dispatchDate);
 
 	void batchDeleteByIds(@Param("consignDetailIds")String[] consignDetailIds);
 

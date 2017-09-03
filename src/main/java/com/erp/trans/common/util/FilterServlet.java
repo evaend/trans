@@ -18,6 +18,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.erp.trans.common.constant.CustomConst;
+import com.erp.trans.common.constant.CustomConst.LoginUser;
+import com.erp.trans.entity.UserInfo;
 
 /**
  * 全局请求过滤器
@@ -33,7 +35,6 @@ public class FilterServlet implements Filter {
 			 "182.254.152.181",
 			 "wuliu101.com",
 			 "www.wuliu101.com",
-			 "/views/login.html",
 			"/login/userLogin" // 用户登录
 	};
 	
@@ -53,7 +54,7 @@ public class FilterServlet implements Filter {
 			logger.trace("请求参数 : " + JSONUtils.toJson(request.getParameterMap()));
 		}
 		
-		if(!requestURI.matches("[^\\s]+\\.(jpg|jpeg|png|bmp|gif|css|ico|svg|woff|woff2|map|rar|ico)")){
+		if(!requestURI.matches("[^\\s]+\\.(jpg|jpeg|png|bmp|gif|css|html|ico|svg|woff|woff2|map|rar|ico)")){
 			//放过的请求
 			for (String regex: uriRegexExpress) {
 				String compareRegex = contextPath + regex;
@@ -82,13 +83,25 @@ public class FilterServlet implements Filter {
 				return;
 			}else{
 				  //财务
-				  List<String> cwMenuList = Arrays.asList("tyfCharge.html","cysCharge.html","sjCharge.html",
-						  "wages.html","officePlace.html","clzd.html","revenue.html","depreciation.html","insurance.html",
-						  "incomeContract.html","costContract.html","trailerArchives.html","personalArchives.html");		  
+				  List<String> cwMenuList = Arrays.asList("tyfCharge.js","cysCharge.js","sjCharge.js",
+						  "wages.js","officePlace.js","clzd.js","revenue.js","depreciation.js","insurance.js",
+						  "incomeContract.js","costContract.js","trailerArchives.js","personalArchives.js");		  
 				  //调度
-				  List<String> ddMenuList = Arrays.asList("plan.html","waybill.html","addNoLoad.html");
+				  List<String> ddMenuList = Arrays.asList("plan.js","waybill.js","addNoLoad.js");
 				  //报表
-				  List<String> bbList = Arrays.asList("dataStatistics.html");
+				  List<String> bbList = Arrays.asList("dataStatistics.js");
+				  UserInfo userInfo = (UserInfo)session.getAttribute(LoginUser.SESSION_USER_INFO);
+				  if(userInfo.getUserType().equals("1")){//调度
+					  if(cwMenuList.contains(requestURI)){
+						  response.setStatus(CustomConst.ResponseStatus.PERMISSIONREFUSE);
+						  return;
+					  }
+				  }else if(userInfo.getUserType().equals("2")){//财务
+					  if(ddMenuList.contains(requestURI)){
+						  response.setStatus(CustomConst.ResponseStatus.PERMISSIONREFUSE);
+						  return;
+					  }
+				  }
 //				  cwMenuList.
 //				  requestURI.indexOf(str)
 			}

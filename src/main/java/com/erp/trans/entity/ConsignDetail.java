@@ -27,6 +27,8 @@ public class ConsignDetail {
     private String despatchFstate;
     
     private Date despatchDate;
+    
+    private String remark;
 
     public String getConsignDetailId() {
         return consignDetailId;
@@ -115,4 +117,13 @@ public class ConsignDetail {
 	public void setDespatchDate(Date despatchDate) {
 		this.despatchDate = despatchDate;
 	}
+
+	public String getRemark() {
+		return remark;
+	}
+
+	public void setRemark(String remark) {
+		this.remark = remark;
+	}
+	
 }

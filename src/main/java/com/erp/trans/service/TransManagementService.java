@@ -26,7 +26,7 @@ public interface TransManagementService extends IBaseService {
 
 	public void isWithCarrier(String[] consignNos) throws ValidationException;
 
-	public void savePlan(DespatchPlan despatchPlan, String[] consignDetailIds, String[] consignNos) throws ValidationException;
+	public void savePlan(DespatchPlan despatchPlan, String[] consignDetailIds, String[] consignNos, String dispatchDate) throws ValidationException;
 
 	public void deleteConsignDetail(String[] consignDetailIds);
 

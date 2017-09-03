@@ -6,12 +6,14 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.apache.commons.lang.ArrayUtils;
@@ -29,14 +31,18 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.erp.trans.common.adapter.CustomDateTransfer;
+import com.erp.trans.common.constant.CustomConst;
 import com.erp.trans.common.constant.CustomConst.ConsignFstate;
 import com.erp.trans.common.constant.CustomConst.LoginUser;
 import com.erp.trans.common.entity.Pager;
 import com.erp.trans.common.exception.ValidationException;
 import com.erp.trans.common.util.DateUtils;
 import com.erp.trans.common.util.ExcelUtils;
+import com.erp.trans.common.util.ExportUtil;
+import com.erp.trans.common.util.LocalAssertUtils;
 import com.erp.trans.common.util.ExcelUtils.EntityHandler;
 import com.erp.trans.entity.Consign;
+import com.erp.trans.entity.ConsignDetail;
 import com.erp.trans.entity.DespatchPlan;
 import com.erp.trans.entity.UserInfo;
 import com.erp.trans.service.TransManagementService;
@@ -180,6 +186,7 @@ public class TransManagementController {
 	
 	/**
 	 * 编板计划
+	 * @throws ParseException 
 	 */
 	@ResponseBody
 	@RequestMapping(value = "makePlan")
@@ -187,10 +194,11 @@ public class TransManagementController {
 			@RequestParam(value = "recordId", required = false) String recordId,
 			@RequestParam(value = "mainDrive", required = false) String mainDrive,
 			@RequestParam(value = "mainDrivePhone", required = false) String mainDrivePhone,
+			@RequestParam(value = "despatchDate", required = false) String despatchDate,
 			@RequestParam(value = "consignNos[]", required = false) String[] consignNos,
 			@RequestParam(value = "locationFrom", required = false) String locationFrom,
 			@RequestParam(value = "locationTo", required = false) String locationTo,
-			HttpServletRequest request) throws ValidationException {
+			HttpServletRequest request) throws ValidationException, ParseException {
         if(consignDetailIds == null || consignDetailIds.length == 0){
         	throw new ValidationException("请选择运单明细");
         }
@@ -217,7 +225,8 @@ public class TransManagementController {
 		despatchPlan.setModifyUserName(userName);
 		despatchPlan.setLocationFrom(locationFrom);
 		despatchPlan.setLocationTo(locationTo);
-		transManagementService.savePlan(despatchPlan,consignDetailIds,consignNos);
+		despatchPlan.setDespatchDate(DateUtils.convertDate(despatchDate, "yyyy-MM-dd"));
+		transManagementService.savePlan(despatchPlan,consignDetailIds,consignNos,despatchDate);
 		
 	}
 	
@@ -250,13 +259,23 @@ public class TransManagementController {
 	 * 编辑运单
 	 */
 	@ResponseBody
-	@RequestMapping(value = "updateConsignDto")
-	public void updateConsignDto(ConsignDto consignDto,
+	@RequestMapping(value = "updateConsignDetail")
+	public void updateConsignDetail(
+			String consignDetailId,String remark,
 			HttpServletRequest request) throws ValidationException {
 		// 操作人id
 		String userId = (String) request.getSession().getAttribute(LoginUser.SESSION_USERID);
 		// 操作人name
 		String userName = (String) request.getSession().getAttribute(LoginUser.SESSION_USERNAME);
+		if(StringUtils.isBlank(consignDetailId)){
+			throw new ValidationException("请选择要编辑的发运单");
+		}
+		ConsignDetail consignDetail = new ConsignDetail();
+		consignDetail.setConsignDetailId(consignDetailId);
+		consignDetail.setRemark(remark);
+		consignDetail.setModifyDate(new Date());
+		consignDetail.setModifyUserId(userId);
+		transManagementService.updateInfo(consignDetail);
 	}
 	
 	/**
@@ -378,6 +397,67 @@ public class TransManagementController {
 		protected void initBinder(WebDataBinder binder) {
 			binder.registerCustomEditor(Date.class, new CustomDateTransfer("yyyy-MM-dd", true));
 		}
-			
+		
+		//导出运单列表
+		@RequestMapping("exportConsignInfoList")
+		@ResponseBody
+		public void exportConsignInfoList(
+				@RequestParam(value = "consignNo", required = false) String consignNo,
+				@RequestParam(value = "carrierName", required = false) String carrierName,
+				@RequestParam(value = "dispatchDateStart", required = false) String dispatchDateStart,
+				@RequestParam(value = "dispatchDateEnd", required = false) String dispatchDateEnd,
+				@RequestParam(value = "consignFsate", required = false) String consignFstate,
+				HttpServletRequest request,
+				HttpServletResponse response) throws Exception {
+			Pager<Map<String, Object>> pager = new Pager<Map<String, Object>>(false);
+
+			List<String> fieldName = null;
+			fieldName = Arrays.asList("consignNo","createDate","carrierName", "camount", "locationFrom", "locationTo",
+						"consignOrgName", "receiveOrgName","returnDate");
+		
+			// 当前登录用户的机构
+			String orgId = (String) request.getSession().getAttribute(LoginUser.SESSION_USER_ORGID);
+			if (StringUtils.isNotBlank(dispatchDateStart)) {
+				pager.addQueryParam("dispatchDateStart", dispatchDateStart);
+			} 
+//			else {
+//				Calendar cal = Calendar.getInstance();
+//				cal.add(Calendar.MONTH, -2);
+//				pager.addQueryParam("dispatchDateStart", formatter.format(cal.getTime()));// 默认前两个月开始
+//			}
+
+			if (StringUtils.isNotBlank(dispatchDateEnd)) {
+				pager.addQueryParam("dispatchDateEnd", dispatchDateEnd);
+			} 
+//			else {
+//				Calendar cal1 = Calendar.getInstance();
+//				pager.addQueryParam("dispatchDateEnd", formatter.format(cal1.getTime()));// 默认当前时间
+//			}
+
+			pager.addQueryParam("orgId", orgId);// 当前登录机构
+			pager.addQueryParam("consignNo", consignNo);//运单号
+			pager.addQueryParam("carrierName", carrierName);// 承运商名称，模糊搜索
+			pager.addQueryParam("consignFstate", consignFstate);// 运单状态
+
+			List<Map<String, Object>> consignList = transManagementService.findConsignList(pager);
+
+			String nowDay = DateUtils.DateToStr(new Date(), "yyyy-MM-dd");
+			String fileName = nowDay + "-运单信息表";
+			Map<String,String> ConsignExcelMap = new HashMap<String, String>() {{
+				put("consignNo", "运单号");
+				put("camount", "数量");
+				put("receiveOrgName", "收车单位");
+				put("returnDate", "托运单位");
+		        put("consignOrgName", "托运单位");  
+		        put("createDate", "制单日期"); 
+		        put("locationFrom", "起运地");
+		        put("locationTo", "目的地");
+		        put("carrierName", "承运商");
+			}};
+
+			ExportUtil.exportExcel(response, fieldName, consignList, null, "运   单   信   息   表", null, null, fileName
+					,ConsignExcelMap
+					);
+		}
 			
 }

@@ -62,7 +62,7 @@
       dp.MAIN_DRIVE_PHONE "mainDrivePhone",r.CO_PILOT "coPilot",
       ci.LOCATION_FROM "locationFrom",
       ci.LOCATION_TO "locationTo",
-      date_format(dp.MODIFY_DATE,'%Y-%m-%d %T') "despatchDate",
+      date_format(dp.DESPATCH_DATE,'%Y-%m-%d %T') "despatchDate",
       r.CARRIER_NAME "carrierName",r.TRANSPORT_TOOL "transportTool",
       ci.FREIGHT_RATES "freightRates",ci.ADVANCES "advances",ci.PREPAID_OIL_CARD "prepaidOilCard",
       ci.QUALITY_LOSS "qualityLoss",ci.SUBSIDY "subsidy",ci.REVERSE_CHARGE "reverseCharge",ci.MIS_COSTS "misCosts",

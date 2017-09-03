@@ -26,6 +26,7 @@ public class DespatchPlan {
     
     private String locationFrom;
     private String locationTo;
+    private Date despatchDate;
 
     public String getDespatchPlanId() {
         return despatchPlanId;
@@ -114,5 +115,14 @@ public class DespatchPlan {
 	public void setLocationTo(String locationTo) {
 		this.locationTo = locationTo;
 	}
+
+	public Date getDespatchDate() {
+		return despatchDate;
+	}
+
+	public void setDespatchDate(Date despatchDate) {
+		this.despatchDate = despatchDate;
+	}
+	
 	
 }

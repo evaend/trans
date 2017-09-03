@@ -227,6 +227,12 @@ public class CustomConst {
         put("transportTool", "轿运车");
         put("mainDrive", "主驾");
         put("coPliot", "副驾驶");
+        put("kilometers", "公里数");
+        put("serviceRate", "劳务费率");
+        put("oilCost", "实际油耗");
+        put("oilRatio", "油耗系数");
+        put("oilPrice", "燃油单价");
+        put("oilSubsidy", "油耗补贴");
     }};
 
 	/**
