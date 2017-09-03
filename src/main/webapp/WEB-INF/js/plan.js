@@ -1,4 +1,3 @@
-
 /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
@@ -2200,18 +2199,36 @@ toolbar: [{
   text: '删除',
   iconCls: 'icon-remove',
   handler: function handler() {
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_6__actions_grid__["b" /* gridDelete */])($grid, function (rows) {
+    var selectd = $grid.datagrid('getSelections');
+    var len = selectd.length;
+    if (len === 0) {
+      __WEBPACK_IMPORTED_MODULE_7_jQuery___default.a.messager.alert('提示', '至少选择一项', 'info');
+    } else {
       var consignDetailIds = [];
-      rows.map(function (item, index) {
-        return consignDetailIds.push(item.consignDetailId);
+      var chassisNo = "";
+      selectd.map(function (item, index) {
+        if (item.despatchDate !== null) {
+          chassisNo = chassisNo + (item.chassisNo + ',</br>');
+        }
       });
-      // 后台交互
-      __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4__utils_common__["b" /* ajaxPost */])({ url: '../transController/deleteConsignDetail', data: { consignDetailIds: consignDetailIds } }, function (data) {
-        console.log('删除数据', consignDetailIds);
-        // 刷新表格
-        __WEBPACK_IMPORTED_MODULE_0__component_table__["a" /* table */].reload($grid);
+      var msg = chassisNo === "" ? "请确认是否删除？" : '\u8F66\u67B6\u53F7\u4E3A' + chassisNo + '已经编板，请确认后删除';
+      __WEBPACK_IMPORTED_MODULE_7_jQuery___default.a.messager.confirm('删除确认框', msg, function (r) {
+        if (r) {
+          selectd.map(function (item, index) {
+            return consignDetailIds.push(item.consignDetailId);
+          });
+          // 后台交互
+          __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4__utils_common__["b" /* ajaxPost */])({ url: '../transController/deleteConsignDetail', data: { consignDetailIds: consignDetailIds } }, function (data) {
+            console.log('删除数据', consignDetailIds);
+            // 刷新表格
+            __WEBPACK_IMPORTED_MODULE_5__component_message__["a" /* message */].alert({
+              msg: '\u5220\u9664\u6210\u529F'
+            });
+            __WEBPACK_IMPORTED_MODULE_0__component_table__["a" /* table */].reload($grid);
+          });
+        }
       });
-    });
+    }
   }
 }],
 title: '发运计划信息表',

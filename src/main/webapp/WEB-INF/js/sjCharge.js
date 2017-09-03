@@ -2026,7 +2026,7 @@ __WEBPACK_IMPORTED_MODULE_0__component_table__["a" /* table */].init($grid, {
   resizeHandle: 'both',
   columns: [[{ field: 'chargeId', checkbox: true }, { field: 'despatchDate', title: '发运日期', width: 120 }, { field: 'transportTool', title: '轿运车号', width: 150 },
   //{field:'name3',title:'车次',width:100}, 
-  { field: 'mainDrive', title: '主驾', width: 100 }, { field: 'coPilot', title: '副驾', width: 100 }, { field: 'locationFrom', title: '起运地', width: 100 }, { field: 'locationTo', title: '目的地', width: 100 }, { field: 'amount', title: '数量', width: 100 }, { field: 'kilometers', title: '公里数', width: 100 }, { field: 'serviceRate', title: '劳务费率', width: 100 }, { field: 'oilCost', title: '实际油耗', width: 100 }, { field: 'oilRatio', title: '计划油耗系数', width: 100 }, { field: 'oilPrice', title: '燃油单价', width: 100 }, { field: 'oilSubsidy', title: '其他补贴', width: 100 }, { field: 'chargeAmount', title: '结费金额', width: 100 }, { field: 'modifyUserName', title: '修改人', width: 120 }, { field: 'modifyDate', title: '修改时间', width: 120 }]]
+  { field: 'mainDrive', title: '主驾', width: 100 }, { field: 'coPilot', title: '副驾', width: 100 }, { field: 'locationFrom', title: '起运地', width: 100 }, { field: 'locationTo', title: '目的地', width: 100 }, { field: 'amount', title: '数量', width: 100 }, { field: 'kilometers', title: '公里数', width: 100 }, { field: 'serviceRate', title: '劳务费率', width: 100 }, { field: 'oilCost', title: '实际油费', width: 100 }, { field: 'oilRatio', title: '计划油耗系数', width: 100 }, { field: 'oilPrice', title: '计划燃油单价', width: 100 }, { field: 'oilSubsidy', title: '其他补贴', width: 100 }, { field: 'chargeAmount', title: '结费金额', width: 100 }, { field: 'modifyUserName', title: '修改人', width: 120 }, { field: 'modifyDate', title: '修改时间', width: 120 }]]
 });
 
 //编辑window初始化
