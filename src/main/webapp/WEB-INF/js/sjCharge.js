@@ -2032,7 +2032,7 @@ __WEBPACK_IMPORTED_MODULE_0__component_table__["a" /* table */].init($grid, {
 //编辑window初始化
 __WEBPACK_IMPORTED_MODULE_1__component_window__["a" /* modalWindow */].init($dialog, { title: '编辑' }, function (text) {
   var postData = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__utils_common__["a" /* getFormData */])($form);
-  postData.chargeAmount = (Number(postData.serviceRate) * Number(postData.kilometers) + (Number(postData.oilRatio) * Number(postData.kilometers) - postData.oilCost) * Number(postData.oilPrice) + Number(postData.oilSubsidy)).toFixed(2);
+  postData.chargeAmount = (Number(postData.serviceRate) * Number(postData.kilometers) + (Number(postData.oilRatio) * Number(postData.kilometers)) * Number(postData.oilPrice) + Number(postData.oilSubsidy) - postData.oilCost).toFixed(2) ;
   console.log(postData, '司机结费数据');
   //===== 校验 =======
   var isValid = $form.form('validate');

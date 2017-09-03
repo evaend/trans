@@ -72,7 +72,7 @@
     <table id="planGrid" class="easyui-datagrid"></table>
   </div>  
   <!-- 表格结束 -->
-  <!-- 新增/编辑弹出框开始 -->
+  <!-- 新增弹出框开始 -->
   <div id="planDialog">
     <form id="planFf" class='row vForm' method='post'>  
        <input type="hidden" name="consignId"/>
@@ -130,7 +130,20 @@
       </div> 
     </form>  
   </div>
-  <!-- 新增/编辑弹出框结束 -->
+  <!-- 新增弹出框结束 -->
+    <!-- 编辑弹出框开始 -->
+    <div id="editWin">
+      <form id="editForm" class='row vForm'>  
+        <input type="hidden" name="consignDetailId"/>
+        <div class="col-md-2 vForm-item form-label">  
+          <label for="consignNo">备注:</label>   
+        </div>  
+        <div class="col-md-4 vForm-item">  
+          <input   type="text" name="remark" />  
+        </div> 
+      </form>  
+    </div>
+    <!-- 编辑弹出框结束 -->
   <!-- 编板弹出框开始 -->
   <div id="bbDialog">
     <form id="bbFf" class='row vForm' method='post'>  
@@ -178,6 +191,14 @@
       <div class="col-md-4 vForm-item"> 
         <input name="consignNos"  style="width: 200px"  id="consignNos">  
       </div> 
+      <div class="col-md-2 vForm-item form-label">  
+        <label for="despatchDate">发运日期:</label>   
+      </div>  
+      <div class="col-md-4 vForm-item"> 
+        <input type="text" name="despatchDate" id="despatchDate" class="Wdate"  
+        onFocus="WdatePicker({readOnly:true})"/>  
+      </div> 
+
     </form>  
   </div>
   <!-- 编板弹出框结束 -->

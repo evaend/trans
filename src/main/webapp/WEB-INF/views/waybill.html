@@ -40,8 +40,12 @@
         </select>  
         <span>
           <a id="search" href="#" class="easyui-linkbutton" data-options="iconCls:'icon-search'">查询</a>
+          <a id="export" href="#" class="easyui-linkbutton" data-options="iconCls:'icon-print'">导出</a>  
         </span>     
       </div>  
+      <div class="col-md-2 vForm-item">
+
+      </div>
   </form>  
 
   <!-- 表格开始 -->
@@ -93,6 +97,7 @@
           window.parent.location.href = 'login.html';
       }, 3000);
   }); 
+  $('#export').attr('href','../transController/exportConsignInfoList')
 </script>
 </body>
 </html>

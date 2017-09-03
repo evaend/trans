@@ -27,9 +27,12 @@
         onFocus="WdatePicker({readOnly:true,minDate:'#F{$dp.$D(\'starDate\')}',maxDate:'2030-10-01'})"//>
       
         <span>
-          <a id="search" href="#" class="easyui-linkbutton" data-options="iconCls:'icon-search'">查询</a>  
+          <a id="search" href="#" class="easyui-linkbutton" data-options="iconCls:'icon-search'">查询</a> 
         </span> 
       </div> 
+      <div class="col-md-2">
+        <a id="export" href="#" class="easyui-linkbutton" data-options="iconCls:'icon-print'">导出</a> 
+      </div>
   </form>  
   <!-- 查询表单结束 -->
   <!-- grid开始 -->
@@ -54,7 +57,7 @@
         <input class="easyui-validatebox" data-options="required:true" type="text" name="kilometers" />  
       </div>
       <div class="col-md-2 vForm-item form-label">  
-        <label for="oilCost">实际油耗:</label>   
+        <label for="oilCost">实际油费:</label>   
       </div>  
       <div class="col-md-4 vForm-item">  
         <input class="easyui-validatebox" data-options="required:true" type="text" name="oilCost" />  
@@ -66,7 +69,7 @@
         <input class="easyui-validatebox" data-options="required:true" type="text" name="oilRatio" />  
       </div> 
       <div class="col-md-2 vForm-item form-label">  
-        <label for="oilPrice">燃油单价:</label>   
+        <label for="oilPrice">计划燃油单价:</label>   
       </div>  
       <div class="col-md-4 vForm-item">  
         <input class="easyui-validatebox" data-options="required:true" type="text" name="oilPrice" />  
@@ -94,6 +97,8 @@
           window.parent.location.href = 'login.html';
       }, 3000);
   }); 
+
+  $('#export').attr('href','../charge/exportChargeInfoList?chargeType=03')
 </script>
 </body>
 </html>
