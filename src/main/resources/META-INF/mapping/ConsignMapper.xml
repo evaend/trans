@@ -25,7 +25,7 @@
       c.CONSIGN_ID "consignId",  c.CONSIGN_NO "consignNo",  c.CAMOUNT "camount", 
        c.LOCATION_TO "locationTo",  c.RECEIVE_ORG_ID "receiveOrgId",  c.RECEIVE_ORG_NAME "receiveOrgName", 
        c.CONSIGN_FSATE "consignFsate",  c.CONSIGN_ORG_ID "consignOrgId",  c.CONSIGN_ORG_NAME "consignOrgName", 
-       r.carrier_name "carrierName",
+       r.carrier_name "carrierName", 
        c.LOCATION_FROM "locationFrom",  
        date_format(c.RETURN_DATE,'%Y-%m-%d %T') "returnDate",
        c.EXCEPTION_REASON "exceptionReason",
@@ -57,10 +57,12 @@
 		left join ts_user_info u on u.user_id = c.MODIFY_USER_ID
 		left join (
 			select cr.consign_id,dc.consign_no,r.carrier_name 
-			from tb_consign cr,tb_despatch_plan dp,td_record_info r,tb_desplan_conno dc 
-			where cr.CONSIGN_NO = dc.CONSIGN_NO
-			and dp.record_id = r.record_id and dp.despatch_plan_id = dc.despatch_plan_id
-		) r on r.consign_id = c.consign_id
+			from 
+			tb_consign cr
+			left join tb_desplan_conno dc on cr.CONSIGN_NO = dc.CONSIGN_NO
+			left join tb_despatch_plan dp on dp.despatch_plan_id = dc.despatch_plan_id
+            left join td_record_info r on dp.record_id = r.record_id
+		) r on r.consign_id = c.consign_id 
 		<where>
 			<if test="conditiions.orgId != null and conditiions.orgId != '0' and conditiions.orgId != '-1'">
 				and c.ORG_ID = #{conditiions.orgId,jdbcType=VARCHAR}

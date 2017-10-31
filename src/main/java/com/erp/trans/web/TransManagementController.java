@@ -447,7 +447,7 @@ public class TransManagementController {
 				put("consignNo", "运单号");
 				put("camount", "数量");
 				put("receiveOrgName", "收车单位");
-				put("returnDate", "托运单位");
+				put("returnDate", "返单时间");
 		        put("consignOrgName", "托运单位");  
 		        put("createDate", "制单日期"); 
 		        put("locationFrom", "起运地");

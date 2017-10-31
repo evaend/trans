@@ -226,6 +226,7 @@ public class CustomConst {
         put("carrierName", "承运商");
         put("transportTool", "轿运车");
         put("mainDrive", "主驾");
+        put("amount", "数量");
         put("coPliot", "副驾驶");
         put("kilometers", "公里数");
         put("serviceRate", "劳务费率");
