@@ -2243,7 +2243,8 @@ var postData = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4__utils_common__
 //刷新表格
 __WEBPACK_IMPORTED_MODULE_0__component_table__["a" /* table */].load($grid, postData);
 });
-__WEBPACK_IMPORTED_MODULE_0__component_table__["a" /* table */].load($grid, { createDateStart: show(), createDateEnd: show() });
+
+
 __WEBPACK_IMPORTED_MODULE_1__component_window__["a" /* modalWindow */].init($dialog, { title: '车辆信息' }, function (text) {
 var postData = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4__utils_common__["a" /* getFormData */])($form);
 //===== 校验 =======
@@ -2406,7 +2407,7 @@ if (files.length === 0) {
   });
 }
 });
-
+__WEBPACK_IMPORTED_MODULE_0__component_table__["a" /* table */].load($grid, { createDateStart: show(), createDateEnd: show() });
 function show() {
 var mydate = new Date();
 var str = "" + mydate.getFullYear() + "-";
