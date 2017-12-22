@@ -116,6 +116,8 @@ public class TransManagementController {
 	public Pager<Map<String, Object>> searchDispatchInfo(
 			@RequestParam(value = "consignNo", required = false) String consignNo,
 			@RequestParam(value = "chassisNo", required = false) String chassisNo,
+			@RequestParam(value = "consignOrgName", required = false) String consignOrgName,
+			@RequestParam(value = "carrierName", required = false) String carrierName,
 			@RequestParam(value = "createDateStart", required = false) String createDateStart,
 			@RequestParam(value = "createDateEnd", required = false) String createDateEnd,
 			@RequestParam(value = "dispatchDateStart", required = false) String dispatchDateStart,
@@ -162,6 +164,8 @@ public class TransManagementController {
 		pager.addQueryParam("orgId", orgId);// 当前登录机构
 		pager.addQueryParam("consignNo", consignNo);//运单号
 		pager.addQueryParam("chassisNo", chassisNo);//底盘号
+		pager.addQueryParam("consignOrgName", consignOrgName);//托运单位
+		pager.addQueryParam("carrierName", carrierName);//承运商
 		pager.addQueryParam("locationFrom", locationFrom);//起运地
 		pager.addQueryParam("locationTo", locationTo);//目的地
 		pager.addQueryParam("dispatchFstate", dispatchFstate);//编板状态

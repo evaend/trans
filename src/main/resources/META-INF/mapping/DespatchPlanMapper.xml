@@ -42,6 +42,12 @@
 			<if test="conditiions.chassisNo != null and conditiions.chassisNo != ''">
 				and  cd.CHASSIS_NO REGEXP #{conditiions.chassisNo,jdbcType=VARCHAR}
 			</if>
+			<if test="conditiions.consignOrgName != null and conditiions.consignOrgName != ''">
+				and  c.CONSIGN_ORG_NAME REGEXP #{conditiions.consignOrgName,jdbcType=VARCHAR}
+			</if>
+			<if test="conditiions.carrierName!= null and conditiions.carrierName != ''">
+				and  r.CARRIER_NAME REGEXP #{conditiions.carrierName,jdbcType=VARCHAR}
+			</if>
 			<if test="conditiions.locationFrom != null and conditiions.locationFrom != ''">
 				and  c.LOCATION_FROM = #{conditiions.locationFrom,jdbcType=VARCHAR}
 			</if>

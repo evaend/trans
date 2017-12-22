@@ -22106,7 +22106,7 @@ var myChart = echarts.init(document.getElementById('dataCharts'));
 __WEBPACK_IMPORTED_MODULE_6_jQuery___default()('#search').on('click', function () {
   var postData = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3__utils_common__["a" /* getFormData */])(__WEBPACK_IMPORTED_MODULE_6_jQuery___default()('#ff'));
   console.log(postData);
-  __WEBPACK_IMPORTED_MODULE_6_jQuery___default()('#export').attr('href', '../dataStatistics/exportBusinessData&createDateStart=' + postData.createDateStart + '&createDateEnd=' + postData.createDateEnd + '&dispatchDateStart=' + postData.dispatchDateStart + '&dispatchDateEnd=' + postData.dispatchDateEnd + '&locationFrom=' + postData.locationFrom + '&locationTo=' + postData.locationTo + '&transportTool=' + postData.transportTool + '&receiveOrgName=' + postData.receiveOrgName + '&consignOrgName=' + postData.consignOrgName + '&carrierName=' + postData.carrierName);
+  __WEBPACK_IMPORTED_MODULE_6_jQuery___default()('#export').attr('href', '../dataStatistics/exportBusinessData?createDateStart=' + postData.createDateStart + '&createDateEnd=' + postData.createDateEnd + '&despatchDateStart=' + postData.despatchDateStart + '&despatchDateEnd=' + postData.despatchDateEnd + '&locationFrom=' + postData.locationFrom + '&locationTo=' + postData.locationTo + '&transportTool=' + postData.transportTool + '&receiveOrgName=' + postData.receiveOrgName + '&consignOrgName=' + postData.consignOrgName + '&carrierName=' + postData.carrierName);
   //刷新表格
   __WEBPACK_IMPORTED_MODULE_0__component_table__["a" /* table */].load($grid, postData);
 
