@@ -39,4 +39,5 @@ public interface TransManagementService extends IBaseService {
 	public String[] filterExistChassisNos(Object[] array);
 
 	
+    String findCarrierNameByConsignId(String consignId);
 }

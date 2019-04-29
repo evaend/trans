@@ -130,7 +130,7 @@
 			c.CONSIGN_ORG_NAME "categories", 
 		</if>
 		<if test="conditiions.chartType != null and (conditiions.chartType == 'A3' or conditiions.chartType == 'B2' or conditiions.chartType == 'D1' or conditiions.chartType == 'D2')">
-		 	concat(year(c.CREATE_DATE),'-',month(c.CREATE_DATE)) as "categories",
+		 	concat(year(cd.DESPATCH_DATE),'-',month(cd.DESPATCH_DATE)) as "categories",
 		</if>
 		<if test="conditiions.chartType != null and (conditiions.chartType == 'C1' or conditiions.chartType == 'A2')">
 		 	r.CARRIER_NAME "categories",
@@ -140,21 +140,22 @@
 		</if>
 		<if test="conditiions.chartType != null and (conditiions.chartType == 'A1' or conditiions.chartType == 'A2' or conditiions.chartType == 'A3')">
 		 	sum(cd.AMOUNT) "data"
-		</if> 
-		<if test="conditiions.chartType != null and (conditiions.chartType == 'B1' or conditiions.chartType == 'B2')">
-		 	round(sum(ci.profitFreight),2) "data"
 		</if>
-		<if test="conditiions.chartType != null and (conditiions.chartType == 'C1' or conditiions.chartType == 'C2')">
-			round(sum(ci.costFreight),2) "data"
-		</if>
-		<if test="conditiions.chartType != null and conditiions.chartType == 'D1'">
-			round((sum(ci.profitFreight)-sum(ci.costFreight)),2)"data"
-		</if>
-		<if test="conditiions.chartType != null and conditiions.chartType == 'D2'">
-			round((sum(ci.profitFreight)-sum(ci.costFreight)-
-			sum(ifnull(s.ACTUAL_PAY,0))-sum(ifnull(t.TAX_PRICE,0))
-			-sum(ifnull(ta.TRAVEL_AMOUNT,0))),2) "data"
-		</if>
+		 <if test="conditiions.chartType != null and (conditiions.chartType == 'B1' or conditiions.chartType == 'B2')">
+			 CAST(sum(ci.profitFreight) as DECIMAL(12,2)) "data"
+		 </if>
+		 <if test="conditiions.chartType != null and (conditiions.chartType == 'C1' or conditiions.chartType == 'C2')">
+			 CAST(sum(ci.costFreight) as DECIMAL(12,2)) "data"
+		 </if>
+		 <if test="conditiions.chartType != null and conditiions.chartType == 'D1'">
+			 CAST((sum(ci.profitFreight)-sum(ci.costFreight)) as DECIMAL(12,2))"data"
+		 </if>
+		 <if test="conditiions.chartType != null and conditiions.chartType == 'D2'">
+			 CAST((
+			 sum(ci.profitFreight) - sum(ci.costFreight) - sum(ifnull(s.ACTUAL_PAY, 0)) -
+			 sum(ifnull(t.TAX_PRICE, 0)) - sum(ifnull(ta.TRAVEL_AMOUNT, 0))
+			 ) AS DECIMAL (12, 2)) "data"
+		 </if>
 		from tb_consign_detail cd
 		left join tb_consign c on cd.consign_id = c.consign_id
 		left join tb_despatch_plan dp on cd.despatch_plan_id = dp.despatch_plan_id
@@ -216,7 +217,8 @@
 			group by r.TRANSPORT_TOOL
 		</if>
 		<if test="conditiions.chartType != null and (conditiions.chartType == 'A3' or conditiions.chartType == 'B2' or conditiions.chartType == 'D1' or conditiions.chartType == 'D2')">
-			group by  concat(year(c.CREATE_DATE),'-',month(c.CREATE_DATE))
+			group by  concat(year(cd.DESPATCH_DATE),'-',month(cd.DESPATCH_DATE))
+			ORDER BY YEAR (cd.DESPATCH_DATE),MONTH (cd.DESPATCH_DATE)
 		</if>
 		<if test="conditiions.chartType != null and (conditiions.chartType == 'C1' or conditiions.chartType == 'A2')">
 			group by  r.CARRIER_NAME

@@ -194,12 +194,12 @@ public class TransManagementServiceImpl  extends BaseService implements TransMan
 		// TODO Auto-generated method stub
 //		获取本次操作的运单明细的旧的发运计划ids
 		String[] oldPlanIds = consignDetailMapper.searchOldPlanIdsByCDetails(consignDetailIds);
+//		如果运单明细关联的运单都删掉了，就删除运单
+		consignMapper.clearNoUseConsign(consignDetailIds);
 //		删除运单明细
 		consignDetailMapper.batchDeleteByIds(consignDetailIds);
 //		删除运单明细的结费信息
 		chargeInfoMapper.batchDeleteByCDetails(consignDetailIds);
-//		如果运单明细关联的运单都删掉了，就删除运单
-		consignMapper.clearNoUseConsign();
 //		更新结费表里有变化司机结费的车辆数量
 		chargeInfoMapper.batchUpdateTamount(oldPlanIds);
 //		删除结费表里有可能司机结费数量为0的结费以及其关联的新增的空载结费
@@ -274,6 +274,11 @@ public class TransManagementServiceImpl  extends BaseService implements TransMan
 	public String[] filterExistChassisNos(Object[] array) {
 		// TODO Auto-generated method stub
 		return consignMapper.filterExistChassisNos(array);
+	}
+
+	@Override
+	public String findCarrierNameByConsignId(String consignId) {
+		return consignMapper.findCarrierNameByConsignId(consignId);
 	}
 
 }

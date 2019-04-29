@@ -24,14 +24,17 @@
   <sql id="Consign_Return_List">
       c.CONSIGN_ID "consignId",  c.CONSIGN_NO "consignNo",  c.CAMOUNT "camount", 
        c.LOCATION_TO "locationTo",  c.RECEIVE_ORG_ID "receiveOrgId",  c.RECEIVE_ORG_NAME "receiveOrgName", 
-       c.CONSIGN_FSATE "consignFsate",  c.CONSIGN_ORG_ID "consignOrgId",  c.CONSIGN_ORG_NAME "consignOrgName", 
-       r.carrier_name "carrierName", 
+       c.CONSIGN_FSATE "consignFsate",  c.CONSIGN_ORG_ID "consignOrgId",  c.CONSIGN_ORG_NAME "consignOrgName",
        c.LOCATION_FROM "locationFrom",  
        date_format(c.RETURN_DATE,'%Y-%m-%d %T') "returnDate",
        c.EXCEPTION_REASON "exceptionReason",
        date_format(c.CREATE_DATE,'%Y-%m-%d %T') "createDate",
        date_format(c.MODIFY_DATE,'%Y-%m-%d %T') "modifyDate", 
       u.USER_NAME "modifyUser"
+      <if test="(conditiions.carrierName != null and conditiions.carrierName != '' )
+                or (conditiions.flag != null and conditiions.flag == 'export')">
+          ,r.carrier_name "carrierName"
+      </if>
   </sql>
    <insert id="importConsigns" >
     insert into tb_consign (CONSIGN_ID, CONSIGN_NO, CAMOUNT, 
@@ -48,6 +51,16 @@
       #{list[${index}].createUserId,jdbcType=VARCHAR}, #{list[${index}].modifyUserId,jdbcType=VARCHAR},  #{list[${index}].orgId,jdbcType=VARCHAR}
      </foreach> 
   </insert>
+
+    <select id="findCarrierNameByConsignId" resultType="String">
+        select r.carrier_name
+        from
+        tb_consign cr
+        left join tb_desplan_conno dc on cr.CONSIGN_NO = dc.CONSIGN_NO
+        left join tb_despatch_plan dp on dp.despatch_plan_id = dc.despatch_plan_id
+        left join td_record_info r on dp.record_id = r.record_id
+        where cr.consign_id = #{consignId}
+    </select>
   
   <select id="findConsignList" resultType="hashMap"
 		parameterType="com.erp.trans.common.entity.Pager">
@@ -55,14 +68,17 @@
 		<include refid="Consign_Return_List"></include>
 		from tb_consign c
 		left join ts_user_info u on u.user_id = c.MODIFY_USER_ID
-		left join (
-			select cr.consign_id,dc.consign_no,r.carrier_name 
-			from 
-			tb_consign cr
+        <if test="(conditiions.carrierName != null and conditiions.carrierName != '' )
+                    or (conditiions.flag != null and conditiions.flag == 'export')">
+        left join (
+                select cr.consign_id,dc.consign_no,r.carrier_name
+                from
+                tb_consign cr
 			left join tb_desplan_conno dc on cr.CONSIGN_NO = dc.CONSIGN_NO
 			left join tb_despatch_plan dp on dp.despatch_plan_id = dc.despatch_plan_id
             left join td_record_info r on dp.record_id = r.record_id
-		) r on r.consign_id = c.consign_id 
+		) r on r.consign_id = c.consign_id
+        </if>
 		<where>
 			<if test="conditiions.orgId != null and conditiions.orgId != '0' and conditiions.orgId != '-1'">
 				and c.ORG_ID = #{conditiions.orgId,jdbcType=VARCHAR}
@@ -116,8 +132,13 @@
   
   <delete id="clearNoUseConsign">
   		delete from tb_consign
-  		where consign_id not in(
-  			select distinct consign_id from tb_consign_detail
+  		where EXISTS (
+  		      SELECT 0 from tb_consign_detail where tb_consign.consign_id
+  		      = tb_consign_detail.consign_id
+              and tb_consign_detail.CONSIGN_DETAIL_ID in
+              <foreach collection="consignDetailIds" item="consignDetail" index="index" open="(" close=")" separator=",">
+                  #{consignDetail, jdbcType=VARCHAR}
+              </foreach>
   		)
   </delete>
   <select id="filterExistConsignNos" resultType="string">

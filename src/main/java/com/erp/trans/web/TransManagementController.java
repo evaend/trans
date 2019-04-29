@@ -103,6 +103,11 @@ public class TransManagementController {
 		pager.addQueryParam("consignFstate", consignFstate);// 运单状态
 
 		List<Map<String, Object>> deliveryList = transManagementService.findConsignList(pager);
+		if(StringUtils.isBlank(carrierName)) {
+			for (Map<String, Object> map : deliveryList) {
+				map.put("carrierName", transManagementService.findCarrierNameByConsignId((String) map.get("consignId")));
+			}
+		}
 		pager.setRows(deliveryList);
 
 		return pager;
@@ -442,6 +447,8 @@ public class TransManagementController {
 			pager.addQueryParam("consignNo", consignNo);//运单号
 			pager.addQueryParam("carrierName", carrierName);// 承运商名称，模糊搜索
 			pager.addQueryParam("consignFstate", consignFstate);// 运单状态
+			pager.addQueryParam("flag", "export");
+
 
 			List<Map<String, Object>> consignList = transManagementService.findConsignList(pager);
 

@@ -20,9 +20,11 @@ public interface ConsignMapper {
 
 	void updateConsign(@Param("consigns")List<Consign> consigns);
 
-	void clearNoUseConsign();
+	void clearNoUseConsign(@Param("consignDetailIds")String[] consignDetailIds);
 
 	String[] filterExistConsignNos(@Param("consignNos")Object[] consignNos);
 
 	String[] filterExistChassisNos(@Param("chassisNos")Object[] chassisNos);
+
+	String findCarrierNameByConsignId(@Param("consignId")String consignId);
 }
