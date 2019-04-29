@@ -2233,7 +2233,7 @@ toolbar: [{
 }],
 title: '发运计划信息表',
 url: '../transController/searchDispatchInfo',
-queryParams: {createDateStart:"2017-11-01",createDateEnd:"2017-11-01"},
+queryParams: {createDateStart:currentTime,createDateEnd:currentTime},
 height: __WEBPACK_IMPORTED_MODULE_7_jQuery___default()(window).height() - 150,
 columns: [[{ field: 'consignDetailId', checkbox: true }, { field: 'createDate', title: '制单日期', width: 150 }, { field: 'despatchDate', title: '发运日期', width: 120 }, { field: 'consignNo', title: '运单号', width: 200 }, { field: 'chassisNo', title: '底盘号', width: 200 }, { field: 'amount', title: '数量', width: 70, align: 'right' }, { field: 'locationFrom', title: '起运地', width: 100 }, { field: 'locationTo', title: '目的地', width: 100 }, { field: 'carBrand', title: '品牌', width: 100 }, { field: 'carModel', title: '车型', width: 100 }, { field: 'transportTool', title: '轿运车', width: 150 }, { field: 'consignOrgName', title: '托运单位', width: 260 }, { field: 'receiveOrgName', title: '收车单位', width: 260 }, { field: 'carrierName', title: '承运商', width: 260 }, { field: 'remark', title: '备注', width: 260 }]]
 });
